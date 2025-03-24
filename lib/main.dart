@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'auth_screen.dart';
 import 'login_screen.dart';
 
 void main() {
@@ -13,9 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'CaslFit',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
