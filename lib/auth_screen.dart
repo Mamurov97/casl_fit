@@ -29,35 +29,23 @@ class AuthScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 64.0),
-                  Row(
-                    children: [
-                      Text(
-                        "Sign up",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
+
                   const SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.0),
-                      color: Colors.brown.withOpacity(0.5),
+                      color: Color(0xFF313230).withOpacity(0.6),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 32.0).copyWith(bottom: 64.0),
                     child: Column(
                       children: [
-                        CustomTextField(hintText: 'Name'),
+                        CustomTextField(hintText: 'Ism'),
                         const SizedBox(height: 4),
                         CustomTextField(hintText: "Email"),
                         const SizedBox(height: 4),
-                        CustomTextField(hintText: "Contact no."),
+                        CustomTextField(hintText: "Tel. raqam"),
                         const SizedBox(height: 4),
-                        CustomTextField(hintText: "Password", isPassword: true),
+                        CustomTextField(hintText: "Parol", isPassword: true),
                         const SizedBox(height: 32.0),
                         SizedBox(
                           width: double.infinity,
@@ -65,12 +53,12 @@ class AuthScreen extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
+                              backgroundColor: Color(0xFFD3FF36),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            child: const Text("Continue", style: TextStyle(color: Colors.white)),
+                            child: const Text("Davom etish", style: TextStyle(color: Colors.black)),
                           ),
                         )
                       ],

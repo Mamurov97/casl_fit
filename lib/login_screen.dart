@@ -1,5 +1,7 @@
+import 'package:casl_fit/qr_screen.dart';
 import 'package:casl_fit/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import 'auth_screen.dart';
 
@@ -8,6 +10,12 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var maskFormatter = MaskTextInputFormatter(
+      mask: '(##) ###-##-##',
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy,
+    );
+
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -20,46 +28,41 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 64.0),
-                  Row(
-                    children: [
-                      const Text(
-                        "Hi !",
-                        style: TextStyle(
-                          fontSize: 28,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.0),
-                      color: Colors.brown.withOpacity(0.5),
+                      color: Color(0xFF313230).withOpacity(0.6),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 32.0).copyWith(bottom: 64.0),
                     child: Column(
                       children: [
-                        CustomTextField(hintText: "+998"),
-                        const SizedBox(height: 4),
-                        CustomTextField(hintText: "Password"),
-                        const SizedBox(height: 4),
+                        CustomTextField(hintText:"",format: maskFormatter),
+                        const SizedBox(height: 8),
+                        CustomTextField(hintText: "Parol kiriting",isPassword: true,),
+                        const SizedBox(height: 32),
                         SizedBox(
                           width: double.infinity,
                           height: 52.0,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const QrScreen()),
+                              );
+
+                            },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
+                              backgroundColor: Color(0xFFD3FF36),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            child: const Text("Continue", style: TextStyle(color: Colors.white)),
+                            child: const Text("Davom etish", style: TextStyle(color: Colors.black)),
                           ),
                         ),
                         const SizedBox(height: 32),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
                               onTap: () {
@@ -69,17 +72,19 @@ class LoginScreen extends StatelessWidget {
                                 );
                               },
                               child: const Text(
-                                "Don't have an account? Sign up",
-                                style: TextStyle(color: Colors.white,fontSize: 16),
+                                "Ro'yxatdan o'ting",
+                                style: TextStyle(color: Color(0xFFD3FF36),fontSize: 16),
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 8,),
+                        SizedBox(height: 8),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+
                           children: [
                             const Text(
-                              "Forgot your password ?",
+                              "Parolni unutdingizmi",
                               style: TextStyle(color: Colors.white,fontSize: 14),
                             ),
                           ],
