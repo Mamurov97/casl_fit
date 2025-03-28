@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'application/app_manager/app_manager_cubit.dart';
-import 'application/auth/init/init_auth_bloc.dart';
+import 'application/auth/init/auth_bloc.dart';
 import 'domain/common/app_init.dart';
 import 'presentation/app_widget.dart';
 

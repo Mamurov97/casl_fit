@@ -21,6 +21,7 @@ dependencies:
   gap: ^3.0.1
   dotted_line: ^3.2.3
   flutter_easyloading: ^3.0.5
+  oktoast: ^3.4.0
   auto_size_text: ^3.0.0
   flutter_slidable: ^4.0.0
   fl_chart: ^0.70.2
@@ -52,7 +53,6 @@ dependencies:
   # State management
   flutter_bloc: ^9.1.0
   bloc: ^9.0.0
-  get: ^4.7.2
 
   # Local storage
   shared_preferences: ^2.5.3

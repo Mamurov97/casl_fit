@@ -11,10 +11,29 @@
   "un_selected": "Tanlanmagan...",
   "ta": "ta",
   "sign_in": {
-    "login": "Kirish",
-    "login_to_your_account": "Akkountga kirish",
     "phone_number": "Telefon raqami",
-    "password": "Parol"
+    "password": "Parol",
+    "login": "Kirish",
+    "password_recovery": "Parolni tiklash",
+    "register_dialog": {
+      "attention": "Diqqat!",
+      "content": "Sizning raqamingiz registratsiyadan o'tmagan. Dasturdan foydalanish uchun ro'yxatdan o'ting.",
+      "back": "Orqaga",
+      "register": "Registratsiya"
+    },
+    "not_found_dialog": {
+      "attention": "Diqqat!",
+      "content": "Kiritilgan raqam ma'lumotlar bazasidan topilmadi.",
+      "back": "Orqaga",
+      "contact": "Bog'lanish"
+    },
+    "contact_dialog": {
+      "attention": "Bog'lanish usulini tanlang",
+      "content": "Telefon yoki Telegram orqali bog'laning.",
+      "phone": "Telefon",
+      "telegram": "Telegram",
+      "back": "Orqaga"
+    }
   },
   "passcode": {
     "confirmation": "Tasdiqlash",
@@ -22,7 +41,12 @@
     "confirm_passcode": "Pin-kod tasdiqlash",
     "enter_passcode": "Pin-kod kiriting"
   },
-
+  "toast": {
+    "success": "Muvofaqqiyatli",
+    "error": "Xatolik",
+    "info": "Ma'lumot",
+    "warning": "Ogohlantirish"
+  },
   "errors": {
     "field_empty": "Maydon to'ldirilishi shart",
     "mask_error": "Noto'g'ri format",

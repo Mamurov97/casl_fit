@@ -3,6 +3,7 @@ import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oktoast/oktoast.dart';
 
 import 'routes/coordinator.dart';
 
@@ -18,18 +19,20 @@ class AppWidget extends StatelessWidget {
         } else if (state is AppManagerError) {
           return ErrorView(error: state.error);
         } else {
-          return MaterialApp.router(
-            title: 'Chico Fergana',
-            theme: AppTheme.data,
-            themeMode: AppTheme.themeMode,
-            locale: context.locale,
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            routeInformationParser: router.routeInformationParser,
-            routeInformationProvider: router.routeInformationProvider,
-            routerDelegate: router.routerDelegate,
-            builder: EasyLoading.init(),
+          return OKToast(
+            child: MaterialApp.router(
+              title: 'CaslFit',
+              theme: AppTheme.data,
+              themeMode: AppTheme.themeMode,
+              locale: context.locale,
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              routeInformationParser: router.routeInformationParser,
+              routeInformationProvider: router.routeInformationProvider,
+              routerDelegate: router.routerDelegate,
+              builder: EasyLoading.init(),
+            ),
           );
         }
       },

@@ -5,7 +5,7 @@ import 'entity/pages.dart';
 import 'entity/routes.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: Routes.qrCode.path,
+  initialLocation: Routes.signIn.path,
 
   routes: <GoRoute>[
     ///auth

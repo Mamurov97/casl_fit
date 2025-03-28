@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:casl_fit/domain/common/enums/bloc_status.dart';
+import 'package:casl_fit/presentation/components/dialogs/auth_dialogs.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:casl_fit/application/auth/init/init_auth_bloc.dart';
+import 'package:casl_fit/application/auth/init/auth_bloc.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
@@ -21,7 +24,7 @@ class _SignInPageState extends State<SignInPage> {
   var maskFormatter = MaskTextInputFormatter(
     mask: '+### (##) ###-##-##',
     filter: {"#": RegExp(r'[0-9]')},
-    initialText: "+998",
+    initialText: '+998',
     type: MaskAutoCompletionType.lazy,
   );
 
@@ -32,111 +35,150 @@ class _SignInPageState extends State<SignInPage> {
     return DeFocus(
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is SignInSuccess) {
-            context.push(Routes.createPasscode.path);
-          } else if (state is SignInError) {
-            EasyLoading.showError(state.error);
-          }
+          //auth statusini eshitish
+          if (state.authStatus.isError) Toast.showErrorToast(message: state.errorMessage, duration: const Duration(seconds: 4));
+          if (state.authStatus.isRegister) AuthDialogs.showRegisterDialog(context, onRegister: () => context.push(Routes.register.path));
+          if (state.authStatus.isNotFound) AuthDialogs.showNotFoundDialog(context);
+
+          //login statusini eshitish
+          if (state.loginStatus.isSuccess) context.go(Routes.checkPasscode.path);
+          if (state.loginStatus.isError) Toast.showErrorToast(message: state.errorMessage);
+
+          //pas
         },
         builder: (context, state) {
           return Scaffold(
-            backgroundColor: AppTheme.colors.background,
-            body: FormBuilder(
-              key: formKey,
-              enabled: state is! SignInLoading,
-              child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: ScreenSize.w16).copyWith(top: 100.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 40.h, bottom: 40.h),
-                      child: Text(
-                        tr('sign_in.login_to_your_account'),
-                        style: AppTheme.data.textTheme.displayMedium?.copyWith(
-                          color: AppTheme.colors.black,
-                        ),
-                      ),
+            body: Stack(
+              children: [
+                Image.asset(
+                  AppImages.background,
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
+                ),
+                Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.r),
+                      color: const Color(0xFF313230).withValues(alpha: 0.5),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 2.h, left: 5.w),
-                      child: Text(
-                        tr('sign_in.phone_number'),
-                        style: AppTheme.data.textTheme.titleMedium,
-                      ),
-                    ),
-                    FormBuilderTextField(
-                      initialValue: '+998',
-                      name: "phone",
-                      inputFormatters: [maskFormatter],
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        hintText: tr('sign_in.phone_number'),
-                      ),
-                      textInputAction: TextInputAction.next,
-                      validator: (v) {
-                        if (v?.isEmpty ?? false) {
-                          return tr('errors.field_empty');
-                        }
-                        if (!maskFormatter.isFill()) {
-                          return tr('errors.mask_error');
-                        }
-                        return null;
-                      },
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.h, bottom: 2.h, left: 5.w),
-                      child: Text(
-                        tr('sign_in.password'),
-                        style: AppTheme.data.textTheme.titleMedium,
-                      ),
-                    ),
-                    FormBuilderTextField(
-                      initialValue: '',
-                      name: 'password',
-                      obscureText: !passwordVisible,
-                      decoration: InputDecoration(
-                        hintText: tr('sign_in.password'),
-                        suffixIcon: IconButton(
-                          icon: Icon(passwordVisible ? Icons.visibility : Icons.visibility_off),
-                          onPressed: () {
-                            passwordVisible = !passwordVisible;
-                            setState(() {});
-                          },
-                        ),
-                      ),
-                      textInputAction: TextInputAction.done,
-                      validator: (v) {
-                        if (v?.isEmpty ?? false) {
-                          return tr('errors.field_empty');
-                        }
-                        return null;
-                      },
-                    ),
-                    Gap(15.h),
-                    ElevatedButton(
-                      onPressed: state is SignInLoading
-                          ? null
-                          : () async {
-                              if (formKey.currentState!.validate()) {
-                                context.read<AuthBloc>().add(
-                                      SignInEvent(
-                                        phone: maskFormatter.getUnmaskedText().substring(3),
-                                        password: formKey.currentState?.fields["password"]?.value,
-                                      ),
-                                    );
+                    margin: EdgeInsets.symmetric(horizontal: 12.w).copyWith(top: 100.h),
+                    padding: EdgeInsets.all(14.w),
+                    child: FormBuilder(
+                      key: formKey,
+                      enabled: !(state.loginStatus.isLoading || state.authStatus.isLoading),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          FormBuilderTextField(
+                            initialValue: '+998',
+                            name: "phone",
+                            autofocus: true,
+                            inputFormatters: [maskFormatter],
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              labelText: tr('sign_in.phone_number'),
+                              hintText: tr('sign_in.phone_number'),
+                              suffixIcon: state.authStatus.isLoading
+                                  ? LoadingAnimationWidget.fallingDot(
+                                      color: AppTheme.colors.primary,
+                                      size: ScreenSize.h36,
+                                    )
+                                  : state.authStatus.isLogin
+                                      ? const Icon(CupertinoIcons.checkmark_circle_fill, color: CupertinoColors.activeGreen)
+                                      : state.authStatus.isError || state.authStatus.isRegister || state.authStatus.isNotFound
+                                          ? IconButton(
+                                              onPressed: () {
+                                                if (maskFormatter.isFill()) {
+                                                  context.read<AuthBloc>().add(CheckPhoneNumber(phone: maskFormatter.getUnmaskedText().replaceRange(0, 3, '')));
+                                                } else {
+                                                  Toast.showWarningToast(message: 'errors.mask_error'.tr());
+                                                }
+                                              },
+                                              icon: const Icon(CupertinoIcons.arrow_counterclockwise, color: CupertinoColors.activeOrange))
+                                          : const SizedBox(),
+                            ),
+                            textInputAction: TextInputAction.done,
+                            onChanged: (value) {
+                              if (maskFormatter.isFill()) {
+                                context.read<AuthBloc>().add(CheckPhoneNumber(phone: maskFormatter.getUnmaskedText()));
+                              }else if(!state.authStatus.isInitial){
+                                context.read<AuthBloc>().add(const ChangeAuthStatusEvent());
                               }
                             },
-                      child: state is SignInLoading
-                          ? LoadingAnimationWidget.fallingDot(
-                              color: AppTheme.colors.primary,
-                              size: ScreenSize.h36,
-                            )
-                          : Text(tr('sign_in.login')),
+                            validator: (v) {
+                              if ((v?.isEmpty ?? false) || (v?.length ?? 0) < 5) {
+                                return tr('errors.field_empty');
+                              }
+                              if (!maskFormatter.isFill()) {
+                                return tr('errors.mask_error');
+                              }
+                              return null;
+                            },
+                          ),
+                          Gap(10.h),
+                          FormBuilderTextField(
+                            initialValue: '',
+                            name: 'password',
+                            obscureText: !passwordVisible,
+                            decoration: InputDecoration(
+                              labelText: tr('sign_in.password'),
+                              hintText: tr('sign_in.password'),
+                              suffixIcon: IconButton(
+                                icon: Icon(passwordVisible ? Icons.visibility : Icons.visibility_off),
+                                onPressed: () {
+                                  passwordVisible = !passwordVisible;
+                                  setState(() {});
+                                },
+                              ),
+                            ),
+                            textInputAction: TextInputAction.done,
+                            validator: (v) {
+                              if (v?.isEmpty ?? false) {
+                                return tr('errors.field_empty');
+                              }
+                              return null;
+                            },
+                          ),
+                          Visibility(
+                            visible: state.authStatus.isLogin,
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 10.h),
+                              child: TextButtonX(
+                                onPressed: () {},
+                                text: 'sign_in.password_recovery'.tr(),
+                              ),
+                            ),
+                          ),
+                          Gap(20.h),
+                          ElevatedButton(
+                            onPressed: state.loginStatus.isLoading
+                                ? null
+                                : () {
+                                    if (formKey.currentState!.validate()) {
+                                      context.read<AuthBloc>().add(
+                                            LoginEvent(
+                                              phone: maskFormatter.getUnmaskedText().substring(3),
+                                              password: formKey.currentState?.fields["password"]?.value,
+                                            ),
+                                          );
+                                    }
+                                  },
+                            child: state.loginStatus.isLoading
+                                ? LoadingAnimationWidget.fallingDot(
+                                    color: AppTheme.colors.primary,
+                                    size: ScreenSize.h36,
+                                  )
+                                : Text(tr('sign_in.login')),
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
           );
         },
