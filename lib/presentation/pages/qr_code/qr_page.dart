@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-class QrScreen extends StatelessWidget {
-  const QrScreen({super.key});
+class QrPage extends StatelessWidget {
+  const QrPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class QrScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -21,20 +21,20 @@ class QrScreen extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset('assets/gym_background.jpg', fit: BoxFit.cover, alignment: Alignment.topCenter),
+          Image.asset('assets/images/gym_background.jpg', fit: BoxFit.cover, alignment: Alignment.topCenter),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(22.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 64.0),
+                  const SizedBox(height: 64.0),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.0),
-                      color: Colors.white.withOpacity(0.8),
+                      color: Colors.white.withValues(alpha: 0.8),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
                     child: Column(
                       children: [
                         QrImageView(

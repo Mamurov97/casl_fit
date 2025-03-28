@@ -1,4 +1,4 @@
-import 'package:casl_fit/qr_screen.dart';
+import 'package:casl_fit/presentation/pages/qr_code/qr_page.dart';
 import 'package:casl_fit/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
       body: Stack(
         children: [
           Image.asset(
-            'assets/gym_background.jpg',
+            'assets/images/gym_background.jpg',
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
@@ -33,15 +33,15 @@ class LoginScreen extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.0),
-                  color: Color(0xFF313230).withValues(alpha: 0.5),
+                  color: const Color(0xFF313230).withValues(alpha: 0.5),
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 12.0).copyWith(top: 200),
-                padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+                margin: const EdgeInsets.symmetric(horizontal: 12.0).copyWith(top: 200),
+                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
                 child: Column(
                   children: [
                     CustomTextField(hintText: "", format: maskFormatter),
                     const SizedBox(height: 5),
-                    CustomTextField(
+                    const CustomTextField(
                       hintText: "Parol kiriting",
                       isPassword: true,
                     ),
@@ -53,11 +53,11 @@ class LoginScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const QrScreen()),
+                            MaterialPageRoute(builder: (context) => const QrPage()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFD3FF36),
+                          backgroundColor: const Color(0xFFD3FF36),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -83,11 +83,11 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 5),
-                    Row(
+                    const SizedBox(height: 5),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           "Parolni unutdingizmi",
                           style: TextStyle(color: Colors.white, fontSize: 14),
                         ),

@@ -10,7 +10,7 @@ class AuthScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -21,31 +21,31 @@ class AuthScreen extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset('assets/gym_background.jpg', fit: BoxFit.cover, alignment: Alignment.topCenter),
+          Image.asset('assets/images/gym_background.jpg', fit: BoxFit.cover, alignment: Alignment.topCenter),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 64.0),
+                  const SizedBox(height: 64.0),
 
                   const SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.0),
-                      color: Color(0xFF313230).withOpacity(0.6),
+                      color: const Color(0xFF313230).withValues(alpha: 0.6),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 32.0).copyWith(bottom: 64.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 32.0).copyWith(bottom: 64.0),
                     child: Column(
                       children: [
-                        CustomTextField(hintText: 'Ism'),
+                        const CustomTextField(hintText: 'Ism'),
                         const SizedBox(height: 4),
-                        CustomTextField(hintText: "Email"),
+                        const CustomTextField(hintText: "Email"),
                         const SizedBox(height: 4),
-                        CustomTextField(hintText: "Tel. raqam"),
+                        const CustomTextField(hintText: "Tel. raqam"),
                         const SizedBox(height: 4),
-                        CustomTextField(hintText: "Parol", isPassword: true),
+                        const CustomTextField(hintText: "Parol", isPassword: true),
                         const SizedBox(height: 32.0),
                         SizedBox(
                           width: double.infinity,
@@ -53,7 +53,7 @@ class AuthScreen extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFFD3FF36),
+                              backgroundColor: const Color(0xFFD3FF36),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),

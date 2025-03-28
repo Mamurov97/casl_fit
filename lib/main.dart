@@ -1,9 +1,38 @@
+import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'login_screen.dart';
+import 'application/app_manager/app_manager_cubit.dart';
+import 'application/auth/init/init_auth_bloc.dart';
+import 'domain/common/app_init.dart';
+import 'presentation/app_widget.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  await runZonedGuarded<Future<void>>(() async {
+    await initializeApp();
+    runApp(
+      EasyLocalization(
+        supportedLocales: const [
+          // Locale('en'),
+          Locale('uz'),
+          // Locale('ru'),
+        ],
+        useFallbackTranslations: true,
+        useOnlyLangCode: true,
+        // fallbackLocale: const Locale('ru'),
+        startLocale: const Locale('uz'),
+        path: 'assets/translations',
+        child: const MyApp(),
+      ),
+    );
+  }, (error, stack) {
+    if (kDebugMode) {
+      print('stack=${stack.toString()}, error = ${error.toString()}');
+    }
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -11,14 +40,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'CaslFit',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()),
+        BlocProvider(create: (context) => AuthBloc()),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => const AppWidget(),
       ),
-      debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
     );
   }
 }

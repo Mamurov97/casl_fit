@@ -1,0 +1,34 @@
+{
+  "save": "Saqlash",
+  "date": "Sana",
+  "pick_date": "Sana tanlang",
+  "all": "Jami",
+  "description": "Izoh",
+  "search": "Qidiruv",
+  "back": "Chiqish",
+  "cancel": "Bekor qilish",
+  "filtr": "Filtr",
+  "un_selected": "Tanlanmagan...",
+  "ta": "ta",
+  "sign_in": {
+    "login": "Kirish",
+    "login_to_your_account": "Akkountga kirish",
+    "phone_number": "Telefon raqami",
+    "password": "Parol"
+  },
+  "passcode": {
+    "confirmation": "Tasdiqlash",
+    "set_passcode": "Pin-kod yaratish",
+    "confirm_passcode": "Pin-kod tasdiqlash",
+    "enter_passcode": "Pin-kod kiriting"
+  },
+
+  "errors": {
+    "field_empty": "Maydon to'ldirilishi shart",
+    "mask_error": "Noto'g'ri format",
+    "unknown": "Noma'lum xatolik yuz berdi.",
+    "empty": "Ma'lumot yo'q",
+    "retry": "Yangilash"
+  }
+}
+    
