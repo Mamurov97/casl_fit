@@ -53,15 +53,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 )
               : null,
 
-          /*  suffixIcon: GestureDetector(
-              onTap: () {
-                showPassword = !showPassword;
-                setState(() {});
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(showPassword ? AppIcons.eye : AppIcons.eyeClosed),
-              )),*/
+
         ),
       ),
     );

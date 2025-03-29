@@ -29,6 +29,13 @@
     "unknown": "Noma'lum xatolik yuz berdi.",
     "empty": "Ma'lumot yo'q",
     "retry": "Yangilash"
+  },
+  "root": {
+    "home": "Home",
+    "status": "Status",
+    "qrcode": "QR code",
+    "program": "Program",
+    "profile": "Profile"
   }
 }
     

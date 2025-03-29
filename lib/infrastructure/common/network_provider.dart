@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'interceptor.dart';
 
@@ -10,10 +11,26 @@ Dio createDio() {
     ..interceptors.addAll(
       [
         DioInterceptor(),
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: true,
+          error: true,
+          compact: false,
+          maxWidth: 90,
+          enabled: true,
+          filter: (options, args) {
+            if (options.path.contains('/posts')) {
+              return false;
+            }
+            return !args.isResponse || !args.hasUint8ListData;
+          },
+        ),
       ],
     )
     ..options = BaseOptions(
-      baseUrl: 'http://api.kinder.vodiytaraqqiyot.uz/api/',
+      baseUrl: 'http://10.100.104.125:9500/api/',
       headers: {
         HttpHeaders.acceptHeader: 'application/json',
       },

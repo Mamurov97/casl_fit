@@ -3,11 +3,15 @@ import 'dart:ui';
 abstract class BaseColors {
   const BaseColors();
 
-  Color get primary => const Color.fromRGBO(45, 15, 213, 1);
+  Color get primary => const Color.fromRGBO(211, 255, 86, 1);
 
   Color get primary30 => const Color.fromRGBO(45, 15, 213, 0.29);
 
-  Color get secondary => const Color.fromRGBO(35, 177, 193, 1);
+  Color get black => const Color(0xFFF6F8F1);
+
+  Color get secondary => const Color.fromRGBO(49, 50, 48, 1);
+
+  Color get background => const Color.fromRGBO(63, 64, 61, 1);
 
   Color get grayLight => const Color.fromRGBO(233, 234, 238, 1);
 
@@ -25,7 +29,7 @@ abstract class BaseColors {
 
   Color get stroke => const Color.fromRGBO(227, 231, 235, 1);
 
-  Color get black => const Color.fromRGBO(0, 0, 0, 1);
+  // Color get black => const Color.fromRGBO(0, 0, 0, 1);
 
   Color get text900 => const Color.fromRGBO(14, 14, 14, 1);
 
@@ -45,5 +49,11 @@ abstract class BaseColors {
 
   Color get green => const Color.fromRGBO(0, 128, 0, 1);
 
-  Color get background;
+  Color get white => const Color.fromRGBO(255, 255, 255, 1);
+
+  Color get black900 => const Color.fromRGBO(49, 50, 48, 1);
+
+  Color get black700 => const Color.fromRGBO(63, 64, 61, 1);
+
+// Color get background;
 }
