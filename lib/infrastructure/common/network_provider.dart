@@ -37,6 +37,6 @@ Dio createDio() {
     );
 }
 
-const String baseUrlAppImage = "http://api.kinder.vodiytaraqqiyot.uz/";
+const String baseUrlAppImage = "http://10.100.104.125:9500/";
 
 final dio = createDio();

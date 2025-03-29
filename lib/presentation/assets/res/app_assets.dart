@@ -14,7 +14,8 @@ class AppIcons {
 
 class AppImages {
   const AppImages._();
-// static const arrowBack = 'assets/icons/arrow_back.svg';
+
+  static const background = 'assets/images/gym_background.jpg';
 }
 
 class AppAnimations {

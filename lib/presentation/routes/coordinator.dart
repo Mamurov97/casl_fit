@@ -23,8 +23,7 @@ String? redirect(BuildContext context, GoRouterState state) {
 }
 
 final GoRouter router = GoRouter(
-  initialLocation: "/root/home",
-
+  initialLocation: Routes.signIn.path,
   routes: <GoRoute>[
     ///auth
     GoRoute(
@@ -33,6 +32,22 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => MaterialPage<void>(
         key: state.pageKey,
         child: const SignInPage(),
+      ),
+    ),
+    GoRoute(
+      name: Routes.register.name,
+      path: Routes.register.path,
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: state.pageKey,
+        child: const RegisterPage(),
+      ),
+    ),
+    GoRoute(
+      name: Routes.verify.name,
+      path: Routes.verify.path,
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: state.pageKey,
+        child: const VerifyPage(),
       ),
     ),
     GoRoute(

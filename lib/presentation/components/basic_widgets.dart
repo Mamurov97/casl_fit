@@ -8,6 +8,7 @@ export 'package:flutter_easyloading/flutter_easyloading.dart';
 
 export 'defocus.dart';
 export 'error_view.dart';
+export 'toast/toast.dart';
 export 'loadings/circular_indicator.dart';
 export 'buttons/main_button.dart';
 export 'buttons/icon_buttonx.dart';
