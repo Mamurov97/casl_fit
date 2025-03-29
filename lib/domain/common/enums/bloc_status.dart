@@ -1,5 +1,5 @@
 ///all blocs default status enum
-enum BlocStatus { initial, loading, success, error }
+enum BlocStatus { initial, loading, success, error, empty }
 
 ///only check phone number enum
 enum VerifyPhoneNumberStatus { initial, loading, error, login, register, notFound }
@@ -12,6 +12,8 @@ extension StatusExtension<T extends Enum> on T {
   bool get isSuccess => name == 'success';
 
   bool get isError => name == 'error';
+
+  bool get isEmpty => name == 'empty';
 
   bool get isLogin => name == 'login';
 

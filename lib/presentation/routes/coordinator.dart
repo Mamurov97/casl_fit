@@ -1,7 +1,4 @@
-import 'package:casl_fit/application/home/qr_code/qr_code_bloc.dart';
-import 'package:casl_fit/presentation/assets/asset_index.dart';
-import 'package:casl_fit/presentation/pages/home/home_page.dart';
-import 'package:casl_fit/presentation/pages/profile/profile_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,8 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
-import '../assets/res/app_assets.dart';
-import '../assets/theme/app_theme.dart';
 import '../components/navigation_helper.dart';
 import 'entity/custom_nav_bar.dart';
 import 'entity/pages.dart';
