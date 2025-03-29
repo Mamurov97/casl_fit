@@ -10,6 +10,7 @@ class Routes implements Coordinate {
   final String path;
 
   ///auth
+  ///
   static const signIn = Routes._(name: 'sign_in_page', path: '/sign_in');
   static const register = Routes._(name: 'register_page', path: '/register');
   static const verify = Routes._(name: 'verify_page', path: '/verify');
@@ -17,7 +18,13 @@ class Routes implements Coordinate {
   static const checkPasscode = Routes._(name: 'check_passcode_page', path: '/check_passcode');
 
   ///bottom_navigation_bar
+  static const root = Routes._(name: 'root', path: '/root');
+  static const home = Routes._(name: 'home', path: '/home');
+
+  static const status = Routes._(name: 'status', path: '/status');
   static const qrCode = Routes._(name: 'qr_code_page', path: '/qr_code');
+  static const program = Routes._(name: 'program', path: '/program');
+  static const profile = Routes._(name: 'profile', path: '/profile');
 
   @override
   String toString() => 'name=$name, path=$path';
