@@ -71,17 +71,17 @@ class AppTheme {
       ),
       labelLarge: TextStyle(
         fontWeight: FontWeight.w600,
-        fontSize: 12.sp,
+        fontSize: 11.sp,
         color: colors.text900,
       ),
       labelMedium: TextStyle(
         fontWeight: FontWeight.w500,
-        fontSize: 12.sp,
+        fontSize: 11.sp,
         color: colors.text900,
       ),
       labelSmall: TextStyle(
         fontWeight: FontWeight.w400,
-        fontSize: 12.sp,
+        fontSize: 11.sp,
         color: colors.text900,
       ),
     );
@@ -91,10 +91,9 @@ class AppTheme {
       fontFamily: 'Inter',
       textTheme: textTheme,
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      scaffoldBackgroundColor: colors.primary,
       dividerColor: colors.divider,
       brightness: themeMode == ThemeMode.light ? Brightness.light : Brightness.dark,
-      textSelectionTheme: TextSelectionThemeData(cursorColor: colors.primary),
+      textSelectionTheme: TextSelectionThemeData(cursorColor: colors.black),
       appBarTheme: AppBarTheme(
         color: colors.primary,
         titleSpacing: 0,
@@ -121,7 +120,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: colors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: colors.secondary,
           disabledBackgroundColor: Colors.grey.shade500,
           minimumSize: Size(1.sw, 48.h),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
@@ -157,23 +156,23 @@ class AppTheme {
         fillColor: Colors.white,
         focusColor: colors.primary,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
+          borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(color: colors.subtleText),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
+          borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(color: colors.primary),
         ),
         disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
+          borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(color: colors.subtleText),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
+          borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(color: colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
+          borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(color: colors.red),
         ),
         helperStyle: textTheme.bodySmall,
@@ -182,7 +181,7 @@ class AppTheme {
         errorStyle: textTheme.labelSmall?.copyWith(color: colors.red, fontSize: 10.sp, height: 0.2),
         errorMaxLines: 3,
         labelStyle: textTheme.labelSmall?.copyWith(color: colors.subtleText, fontSize: 14.sp),
-        floatingLabelStyle: textTheme.labelSmall?.copyWith(color: colors.primary, fontSize: 14.sp),
+        floatingLabelStyle: textTheme.labelSmall?.copyWith(color: colors.black, fontSize: 14.sp),
         contentPadding: EdgeInsets.symmetric(
           horizontal: 12.w,
           vertical: 10.h,

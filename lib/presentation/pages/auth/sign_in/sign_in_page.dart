@@ -61,7 +61,7 @@ class _SignInPageState extends State<SignInPage> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
-                      color: const Color(0xFF313230).withValues(alpha: 0.5),
+                      color: const Color(0xFF313230).withValues(alpha: 0.9),
                     ),
                     margin: EdgeInsets.symmetric(horizontal: 12.w).copyWith(top: 100.h),
                     padding: EdgeInsets.all(14.w),
@@ -72,6 +72,7 @@ class _SignInPageState extends State<SignInPage> {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(tr('sign_in.phone_number'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
                           FormBuilderTextField(
                             initialValue: '+998',
                             name: "phone",
@@ -79,7 +80,6 @@ class _SignInPageState extends State<SignInPage> {
                             inputFormatters: [maskFormatter],
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
-                              labelText: tr('sign_in.phone_number'),
                               hintText: tr('sign_in.phone_number'),
                               suffixIcon: state.authStatus.isLoading
                                   ? LoadingAnimationWidget.fallingDot(
@@ -92,7 +92,7 @@ class _SignInPageState extends State<SignInPage> {
                                           ? IconButton(
                                               onPressed: () {
                                                 if (maskFormatter.isFill()) {
-                                                  context.read<AuthBloc>().add(CheckPhoneNumber(phone: maskFormatter.getUnmaskedText().replaceRange(0, 3, '')));
+                                                  context.read<AuthBloc>().add(CheckPhoneNumber(phone: maskFormatter.getUnmaskedText()));
                                                 } else {
                                                   Toast.showWarningToast(message: 'errors.mask_error'.tr());
                                                 }
@@ -119,12 +119,12 @@ class _SignInPageState extends State<SignInPage> {
                             },
                           ),
                           Gap(10.h),
+                          Text(tr('sign_in.password'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
                           FormBuilderTextField(
                             initialValue: '',
                             name: 'password',
                             obscureText: !passwordVisible,
                             decoration: InputDecoration(
-                              labelText: tr('sign_in.password'),
                               hintText: tr('sign_in.password'),
                               suffixIcon: IconButton(
                                 icon: Icon(passwordVisible ? Icons.visibility : Icons.visibility_off),
@@ -142,10 +142,11 @@ class _SignInPageState extends State<SignInPage> {
                               return null;
                             },
                           ),
-                          Visibility(
-                            visible: state.authStatus.isLogin,
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 10.h),
+                          Container(
+                            height: 35.h,
+                            alignment: Alignment.bottomLeft,
+                            child: Visibility(
+                              visible: state.authStatus.isLogin,
                               child: TextButtonX(
                                 onPressed: () => context.push(Routes.register.path),
                                 text: 'sign_in.password_recovery'.tr(),
@@ -160,7 +161,7 @@ class _SignInPageState extends State<SignInPage> {
                                     if (formKey.currentState!.validate()) {
                                       context.read<AuthBloc>().add(
                                             LoginEvent(
-                                              phone: maskFormatter.getUnmaskedText().substring(3),
+                                              phone: maskFormatter.getUnmaskedText(),
                                               password: formKey.currentState?.fields["password"]?.value,
                                             ),
                                           );

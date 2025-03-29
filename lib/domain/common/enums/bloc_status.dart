@@ -21,3 +21,13 @@ extension StatusExtension<T extends Enum> on T {
 
   bool get isNotFound => name == 'notFound';
 }
+
+extension VerifyPhoneNumberStatusParsing on String {
+  VerifyPhoneNumberStatus toVerifyPhoneNumberStatus() {
+    final normalized = trim().toLowerCase();
+    return VerifyPhoneNumberStatus.values.firstWhere(
+      (e) => e.name.toLowerCase() == normalized,
+      orElse: () => VerifyPhoneNumberStatus.error,
+    );
+  }
+}
