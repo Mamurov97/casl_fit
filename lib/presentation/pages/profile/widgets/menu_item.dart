@@ -1,9 +1,10 @@
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/assets/theme/app_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MenuItem extends StatelessWidget {
+class MenuItem extends StatefulWidget {
   final String title;
   final String icon;
   final bool hasSwitch;
@@ -20,7 +21,13 @@ class MenuItem extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<MenuItem> createState() => _MenuItemState();
+}
+
+class _MenuItemState extends State<MenuItem> {
+  @override
   Widget build(BuildContext context) {
+    bool switchChange = widget.switchValue;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 4.h),
       child: Container(
@@ -35,24 +42,29 @@ class MenuItem extends StatelessWidget {
             Row(
               children: [
                 SvgPicture.asset(
-                  icon,
+                  widget.icon,
                   height: 16.r,
                   colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn), // Replace with AppTheme.colors.primary
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  title,
+                  widget.title,
                   style: const TextStyle(color: Colors.white),
                 ),
               ],
             ),
-            hasSwitch
+            widget.hasSwitch
                 ? SizedBox(
                     width: 40.0,
                     height: 20.0,
-                    child: Switch(
-                      value: switchValue,
-                      onChanged: onSwitchChanged,
+                    child: CupertinoSwitch(
+                      activeColor: AppTheme.colors.primary,
+                      thumbColor: AppTheme.colors.secondary,
+                      value: switchChange,
+                      onChanged: (value) {
+                        switchChange = value;
+                        setState(() {});
+                      },
                     ),
                   )
                 : Container(
@@ -61,10 +73,10 @@ class MenuItem extends StatelessWidget {
                       color: Colors.white,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.arrow_forward_ios,
                       color: Colors.grey,
-                      size: 12.0,
+                      size: 10.r,
                     ),
                   ),
           ],

@@ -1,76 +1,146 @@
+import 'dart:ui';
+
+import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/qr_code/response/qr_code_response.dart';
+import 'package:casl_fit/presentation/assets/asset_index.dart';
+import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-
 import '../../../application/home/qr_code/qr_code_bloc.dart';
 import '../../../utils/utils.dart';
 import '../../assets/theme/app_theme.dart';
 
-class QrPage extends StatelessWidget {
+class QrPage extends StatefulWidget {
   const QrPage({super.key});
+
+  @override
+  State<QrPage> createState() => _QrPageState();
+}
+
+class _QrPageState extends State<QrPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-       /* leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),*/
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: BlocConsumer<QrCodeBloc, QrCodeState>(
         listener: (context, state) {},
         builder: (context, state) {
-          return Stack(
-            fit: StackFit.expand,
+            return Stack(
+              fit: StackFit.expand,
             children: [
               Image.asset('assets/images/gym_background.jpg', fit: BoxFit.cover, alignment: Alignment.topCenter),
               Center(
-                child: Padding(
+                    child: Padding(
                   padding: const EdgeInsets.all(22.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      if (state.status == Status.success)
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            color: Colors.white.withOpacity(0.9),
-                          ),
-                          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
-                          child: Column(
-                            children: [
-                              QrImageView(
-                                data: (state.qrCodeResponse ?? QrCodeResponse()).qrCodeToken.toString(),
-                                version: QrVersions.auto,
-                                size: 320,
-                                gapless: false,
-                              )
-                            ],
-                          ),
+                      Gap(0.15.sh),
+                      if (state.status == BlocStatus.success)
+                        Stack(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.0),
+                                color: Colors.white.withOpacity(0.9),
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  QrImageView(
+                                    data: (state.qrCodeResponse ?? QrCodeResponse()).qrCodeToken.toString(),
+                                    version: QrVersions.auto,
+                                    size: 0.4.sh,
+                                    gapless: false,
+                                  ),
+                                  if (state.status == Status.loading)
+                                    Positioned.fill(
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        color: Colors.white.withOpacity(0.6),
+                                        child: CircularProgressIndicator(
+                                          color: AppTheme.colors.primary,
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                            if (state.isExpired)
+                              Positioned.fill(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  child: BackdropFilter(
+                                    filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      color: Colors.white.withOpacity(0.6),
+                                      child: Text(
+                                        "QR kod muddati tugadi",
+                                        style: TextStyle(
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                          ],
                         )
-                      else if (state.status == Status.loading)
-                        Center(
-                          child: CircularProgressIndicator(
-                            color: AppTheme.colors.primary,
-                          ),
+                      else if (state.status == BlocStatus.loading)
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(
+                              child: CircularProgressIndicator(
+                                color: AppTheme.colors.primary,
+                              ),
+                            ),
+                          ],
                         )
-                      else const SizedBox()
+                      else
+                        const SizedBox(),
                     ],
                   ),
-                )
-
-              ),
-            ],
-          );
+                )),
+              ],
+            );
         },
       ),
-    );
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: BlocBuilder<QrCodeBloc, QrCodeState>(
+          builder: (context, state) {
+            int minutes = state.remainingSeconds ~/ 60;
+            int seconds = state.remainingSeconds % 60;
+            return ((state.status != BlocStatus.loading))
+                ? Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 16.h),
+                    child: AbsorbPointer(
+                      absorbing: !state.isExpired,
+                      child: MainButton(
+                        text: state.isExpired ? 'qrcode.get_new_qr'.tr() : "$minutes:${seconds.toString().padLeft(2, '0')}",
+                        onPressed: () {
+                          context.read<QrCodeBloc>().add(GetQrCodeTokenEvent());
+                        },
+                        textColor: AppTheme.colors.secondary,
+                      ),
+                    ),
+                  )
+                : const SizedBox();
+          },
+        ));
   }
 }

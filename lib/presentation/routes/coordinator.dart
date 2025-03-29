@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
+import '../../application/home/profile/profile_bloc.dart';
 import '../components/navigation_helper.dart';
 import 'entity/custom_nav_bar.dart';
 import 'entity/pages.dart';
@@ -18,7 +19,7 @@ String? redirect(BuildContext context, GoRouterState state) {
 }
 
 final GoRouter router = GoRouter(
-  initialLocation: Routes.signIn.path,
+  initialLocation: "${Routes.root.path}/home",
   routes: <GoRoute>[
     ///auth
     GoRoute(
@@ -154,7 +155,12 @@ final GoRouter router = GoRouter(
                     path: Routes.profile.path,
                     redirect: (context, state) => redirect(context, state),
                     pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const ProfilePage());
+                      return MaterialPage<void>(
+                          key: state.pageKey,
+                          child: BlocProvider(
+                            create: (context) => ProfileBloc()..add(GetProfileDataEvent()),
+                            child: const ProfilePage(),
+                          ));
                     }),
               ],
             ),

@@ -30,7 +30,7 @@ class AppManagerCubit extends Cubit<AppManagerState> {
       UserData.workerId = pref.getWorkerId;
       UserData.phone = pref.getPhone;
       UserData.role = pref.getRole;
-      UserData.token ="5|glBJ9rAt6UvA2j8pZTE0RtRprpPvZ8MOG22eyWGD74221b3f";
+      UserData.token ="11|yMByFoVz9fl6AQZ30wPwwmx91dJIWkPgcEb5dnlwa51a16b8";
 
       emit(AppManagerInitial());
     } catch (e) {
