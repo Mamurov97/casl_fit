@@ -104,7 +104,7 @@ class _SignInPageState extends State<SignInPage> {
                             onChanged: (value) {
                               if (maskFormatter.isFill()) {
                                 context.read<AuthBloc>().add(CheckPhoneNumber(phone: maskFormatter.getUnmaskedText()));
-                              }else if(!state.authStatus.isInitial){
+                              } else if (!state.authStatus.isInitial) {
                                 context.read<AuthBloc>().add(const ChangeAuthStatusEvent());
                               }
                             },
@@ -147,7 +147,7 @@ class _SignInPageState extends State<SignInPage> {
                             child: Padding(
                               padding: EdgeInsets.only(top: 10.h),
                               child: TextButtonX(
-                                onPressed: () {},
+                                onPressed: () => context.push(Routes.register.path),
                                 text: 'sign_in.password_recovery'.tr(),
                               ),
                             ),

@@ -8,6 +8,7 @@
   "back": "Chiqish",
   "cancel": "Bekor qilish",
   "filtr": "Filtr",
+  "continue": "Davom etish",
   "un_selected": "Tanlanmagan...",
   "ta": "ta",
   "sign_in": {
@@ -35,6 +36,16 @@
       "back": "Orqaga"
     }
   },
+  "register": {
+    "password": "Parol",
+    "retry_password": "Parolni takrorlang"
+  },
+  "verify": {
+    "verify_code": "Tasdiqlash kodi",
+    "sms_send": " 4 xonali kod {phone}\nraqamiga sms tarzda yuborildi.",
+    "resend_sms": "Kodni qayta yuborish",
+    "timer": "Kodni qayta yuborish ({time})"
+  },
   "passcode": {
     "confirmation": "Tasdiqlash",
     "set_passcode": "Pin-kod yaratish",
@@ -50,6 +61,10 @@
   "errors": {
     "field_empty": "Maydon to'ldirilishi shart",
     "mask_error": "Noto'g'ri format",
+    "min_length": "Kamida 6 ta belgi kiritilishi kerak.",
+    "no_letter": "Kamida bitta harf kiritilishi kerak.",
+    "no_digit": "Kamida bitta raqam kiritilishi kerak.",
+    "passwords_not_equal": "Parollar mos kelmadi.",
     "unknown": "Noma'lum xatolik yuz berdi.",
     "empty": "Ma'lumot yo'q",
     "retry": "Yangilash"

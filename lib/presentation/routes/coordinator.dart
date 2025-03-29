@@ -18,6 +18,22 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
+      name: Routes.register.name,
+      path: Routes.register.path,
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: state.pageKey,
+        child: const RegisterPage(),
+      ),
+    ),
+    GoRoute(
+      name: Routes.verify.name,
+      path: Routes.verify.path,
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: state.pageKey,
+        child: const VerifyPage(),
+      ),
+    ),
+    GoRoute(
       name: Routes.checkPasscode.name,
       path: Routes.checkPasscode.path,
       pageBuilder: (context, state) => MaterialPage<void>(
