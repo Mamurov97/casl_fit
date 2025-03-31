@@ -127,7 +127,7 @@ class _SignInPageState extends State<SignInPage> {
                             decoration: InputDecoration(
                               hintText: tr('sign_in.password'),
                               suffixIcon: IconButton(
-                                icon: Icon(passwordVisible ? Icons.visibility : Icons.visibility_off),
+                                icon: Icon(passwordVisible ? Icons.visibility_off : Icons.visibility),
                                 onPressed: () {
                                   passwordVisible = !passwordVisible;
                                   setState(() {});

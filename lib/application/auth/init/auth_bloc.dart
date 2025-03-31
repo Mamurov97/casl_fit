@@ -21,7 +21,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final response = await repo.verifyNumber(phone: event.phone);
         if (response['status'] == true) {
           emit(state.copyWith(authStatus: response['result']['page'].toString().toVerifyPhoneNumberStatus()));
-          print(state.authStatus);
         } else {
           emit(state.copyWith(authStatus: VerifyPhoneNumberStatus.error, errorMessage: response['error']['message']));
         }
@@ -89,9 +88,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     // OTP yuborish
     on<SendOtpEvent>((event, emit) async {
       emit(state.copyWith(otpStatus: BlocStatus.loading, password: event.password));
-
-      emit(state.copyWith(otpStatus: BlocStatus.success));
-      // emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: ));
+      try {
+        final response = await repo.sendOtp(phone: state.phoneNumber ?? '');
+        if (response['status'] == true) {
+          emit(state.copyWith(otpStatus: BlocStatus.success));
+        } else {
+          emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: response['error']['message']));
+        }
+      } catch (e) {
+        emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
+      }
     });
 
     // Parolni tiklash jarayonini boshlash
@@ -101,7 +107,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(otpStatus: BlocStatus.success));
       // emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: ));
     });
-
 
     // OTPni tekshirish
     on<VerifyOtpEvent>((event, emit) async {
