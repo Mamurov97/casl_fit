@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:casl_fit/domain/common/enums/bloc_status.dart';
-import 'package:casl_fit/presentation/components/dialogs/auth_dialogs.dart';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:casl_fit/application/auth/init/auth_bloc.dart';
+import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
+import 'package:casl_fit/presentation/components/dialogs/auth_dialogs.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -41,10 +40,11 @@ class _SignInPageState extends State<SignInPage> {
           if (state.authStatus.isNotFound) AuthDialogs.showNotFoundDialog(context);
 
           //login statusini eshitish
-          if (state.loginStatus.isSuccess) context.go(Routes.checkPasscode.path);
-          if (state.loginStatus.isError) Toast.showErrorToast(message: state.errorMessage);
-
-          //pas
+          if (state.loginStatus.isSuccess) context.go('/root/home');
+          if (state.loginStatus.isError) {
+            Toast.showErrorToast(message: state.errorMessage);
+            context.read<AuthBloc>().add(const ChangeLoginStatusEvent());
+          }
         },
         builder: (context, state) {
           return Scaffold(

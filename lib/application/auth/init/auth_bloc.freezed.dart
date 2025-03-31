@@ -20,33 +20,33 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
     required TResult Function(String phone, String password) login,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String phone) sendOtp,
-    required TResult Function(String phone, int otpCode) verifyOtp,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
     TResult? Function(String phone, String password)? login,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String phone)? sendOtp,
-    TResult? Function(String phone, int otpCode)? verifyOtp,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
     TResult Function(String phone, String password)? login,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String phone)? sendOtp,
-    TResult Function(String phone, int otpCode)? verifyOtp,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +55,8 @@ mixin _$AuthEvent {
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
     required TResult Function(ChangeAuthStatusEvent value)
         changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
     required TResult Function(LoginEvent value) login,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
@@ -65,6 +67,7 @@ mixin _$AuthEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult? Function(LoginEvent value)? login,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
@@ -75,6 +78,7 @@ mixin _$AuthEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult Function(LoginEvent value)? login,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
@@ -175,11 +179,11 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
     required TResult Function(String phone, String password) login,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String phone) sendOtp,
-    required TResult Function(String phone, int otpCode) verifyOtp,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
   }) {
     return checkPhoneNumber(phone);
   }
@@ -189,11 +193,11 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
     TResult? Function(String phone, String password)? login,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String phone)? sendOtp,
-    TResult? Function(String phone, int otpCode)? verifyOtp,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
   }) {
     return checkPhoneNumber?.call(phone);
   }
@@ -203,11 +207,11 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
     TResult Function(String phone, String password)? login,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String phone)? sendOtp,
-    TResult Function(String phone, int otpCode)? verifyOtp,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
     required TResult orElse(),
   }) {
     if (checkPhoneNumber != null) {
@@ -222,6 +226,8 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
     required TResult Function(ChangeAuthStatusEvent value)
         changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
     required TResult Function(LoginEvent value) login,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
@@ -235,6 +241,7 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult? Function(LoginEvent value)? login,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
@@ -248,6 +255,7 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult Function(LoginEvent value)? login,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
@@ -319,11 +327,11 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
     required TResult Function(String phone, String password) login,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String phone) sendOtp,
-    required TResult Function(String phone, int otpCode) verifyOtp,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
   }) {
     return changeAuthStatusEvent();
   }
@@ -333,11 +341,11 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
     TResult? Function(String phone, String password)? login,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String phone)? sendOtp,
-    TResult? Function(String phone, int otpCode)? verifyOtp,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
   }) {
     return changeAuthStatusEvent?.call();
   }
@@ -347,11 +355,11 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
     TResult Function(String phone, String password)? login,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String phone)? sendOtp,
-    TResult Function(String phone, int otpCode)? verifyOtp,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
     required TResult orElse(),
   }) {
     if (changeAuthStatusEvent != null) {
@@ -366,6 +374,8 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
     required TResult Function(ChangeAuthStatusEvent value)
         changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
     required TResult Function(LoginEvent value) login,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
@@ -379,6 +389,7 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult? Function(LoginEvent value)? login,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
@@ -392,6 +403,7 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult Function(LoginEvent value)? login,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
@@ -407,6 +419,146 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
 
 abstract class ChangeAuthStatusEvent implements AuthEvent {
   const factory ChangeAuthStatusEvent() = _$ChangeAuthStatusEventImpl;
+}
+
+/// @nodoc
+abstract class _$$ChangeLoginStatusEventImplCopyWith<$Res> {
+  factory _$$ChangeLoginStatusEventImplCopyWith(
+          _$ChangeLoginStatusEventImpl value,
+          $Res Function(_$ChangeLoginStatusEventImpl) then) =
+      __$$ChangeLoginStatusEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ChangeLoginStatusEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ChangeLoginStatusEventImpl>
+    implements _$$ChangeLoginStatusEventImplCopyWith<$Res> {
+  __$$ChangeLoginStatusEventImplCopyWithImpl(
+      _$ChangeLoginStatusEventImpl _value,
+      $Res Function(_$ChangeLoginStatusEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
+  const _$ChangeLoginStatusEventImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.changeLoginStatusEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeLoginStatusEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phone) checkPhoneNumber,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
+  }) {
+    return changeLoginStatusEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone)? checkPhoneNumber,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
+  }) {
+    return changeLoginStatusEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone)? checkPhoneNumber,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
+    TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
+    required TResult orElse(),
+  }) {
+    if (changeLoginStatusEvent != null) {
+      return changeLoginStatusEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
+    required TResult Function(LoginEvent value) login,
+    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
+    required TResult Function(SendOtpEvent value) sendOtp,
+    required TResult Function(VerifyOtpEvent value) verifyOtp,
+  }) {
+    return changeLoginStatusEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(LoginEvent value)? login,
+    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
+    TResult? Function(SendOtpEvent value)? sendOtp,
+    TResult? Function(VerifyOtpEvent value)? verifyOtp,
+  }) {
+    return changeLoginStatusEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(LoginEvent value)? login,
+    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
+    TResult Function(SendOtpEvent value)? sendOtp,
+    TResult Function(VerifyOtpEvent value)? verifyOtp,
+    required TResult orElse(),
+  }) {
+    if (changeLoginStatusEvent != null) {
+      return changeLoginStatusEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeLoginStatusEvent implements AuthEvent {
+  const factory ChangeLoginStatusEvent() = _$ChangeLoginStatusEventImpl;
 }
 
 /// @nodoc
@@ -488,11 +640,11 @@ class _$LoginEventImpl implements LoginEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
     required TResult Function(String phone, String password) login,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String phone) sendOtp,
-    required TResult Function(String phone, int otpCode) verifyOtp,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
   }) {
     return login(phone, password);
   }
@@ -502,11 +654,11 @@ class _$LoginEventImpl implements LoginEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
     TResult? Function(String phone, String password)? login,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String phone)? sendOtp,
-    TResult? Function(String phone, int otpCode)? verifyOtp,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
   }) {
     return login?.call(phone, password);
   }
@@ -516,11 +668,11 @@ class _$LoginEventImpl implements LoginEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
     TResult Function(String phone, String password)? login,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String phone)? sendOtp,
-    TResult Function(String phone, int otpCode)? verifyOtp,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -535,6 +687,8 @@ class _$LoginEventImpl implements LoginEvent {
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
     required TResult Function(ChangeAuthStatusEvent value)
         changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
     required TResult Function(LoginEvent value) login,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
@@ -548,6 +702,7 @@ class _$LoginEventImpl implements LoginEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult? Function(LoginEvent value)? login,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
@@ -561,6 +716,7 @@ class _$LoginEventImpl implements LoginEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult Function(LoginEvent value)? login,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
@@ -596,7 +752,7 @@ abstract class _$$PasswordRecoveryEventImplCopyWith<$Res> {
           $Res Function(_$PasswordRecoveryEventImpl) then) =
       __$$PasswordRecoveryEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phone, String password, String otpCode});
+  $Res call({String otpCode});
 }
 
 /// @nodoc
@@ -612,19 +768,9 @@ class __$$PasswordRecoveryEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phone = null,
-    Object? password = null,
     Object? otpCode = null,
   }) {
     return _then(_$PasswordRecoveryEventImpl(
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
       otpCode: null == otpCode
           ? _value.otpCode
           : otpCode // ignore: cast_nullable_to_non_nullable
@@ -636,19 +782,14 @@ class __$$PasswordRecoveryEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
-  const _$PasswordRecoveryEventImpl(
-      {required this.phone, required this.password, required this.otpCode});
+  const _$PasswordRecoveryEventImpl({required this.otpCode});
 
-  @override
-  final String phone;
-  @override
-  final String password;
   @override
   final String otpCode;
 
   @override
   String toString() {
-    return 'AuthEvent.passwordRecovery(phone: $phone, password: $password, otpCode: $otpCode)';
+    return 'AuthEvent.passwordRecovery(otpCode: $otpCode)';
   }
 
   @override
@@ -656,14 +797,11 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PasswordRecoveryEventImpl &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
             (identical(other.otpCode, otpCode) || other.otpCode == otpCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phone, password, otpCode);
+  int get hashCode => Object.hash(runtimeType, otpCode);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -679,13 +817,13 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
     required TResult Function(String phone, String password) login,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String phone) sendOtp,
-    required TResult Function(String phone, int otpCode) verifyOtp,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
   }) {
-    return passwordRecovery(phone, password, otpCode);
+    return passwordRecovery(otpCode);
   }
 
   @override
@@ -693,13 +831,13 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
     TResult? Function(String phone, String password)? login,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String phone)? sendOtp,
-    TResult? Function(String phone, int otpCode)? verifyOtp,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
   }) {
-    return passwordRecovery?.call(phone, password, otpCode);
+    return passwordRecovery?.call(otpCode);
   }
 
   @override
@@ -707,15 +845,15 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
     TResult Function(String phone, String password)? login,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String phone)? sendOtp,
-    TResult Function(String phone, int otpCode)? verifyOtp,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
     required TResult orElse(),
   }) {
     if (passwordRecovery != null) {
-      return passwordRecovery(phone, password, otpCode);
+      return passwordRecovery(otpCode);
     }
     return orElse();
   }
@@ -726,6 +864,8 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
     required TResult Function(ChangeAuthStatusEvent value)
         changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
     required TResult Function(LoginEvent value) login,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
@@ -739,6 +879,7 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult? Function(LoginEvent value)? login,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
@@ -752,6 +893,7 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult Function(LoginEvent value)? login,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
@@ -766,13 +908,9 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
 }
 
 abstract class PasswordRecoveryEvent implements AuthEvent {
-  const factory PasswordRecoveryEvent(
-      {required final String phone,
-      required final String password,
-      required final String otpCode}) = _$PasswordRecoveryEventImpl;
+  const factory PasswordRecoveryEvent({required final String otpCode}) =
+      _$PasswordRecoveryEventImpl;
 
-  String get phone;
-  String get password;
   String get otpCode;
 
   /// Create a copy of AuthEvent
@@ -788,7 +926,7 @@ abstract class _$$SendOtpEventImplCopyWith<$Res> {
           _$SendOtpEventImpl value, $Res Function(_$SendOtpEventImpl) then) =
       __$$SendOtpEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phone});
+  $Res call({String password});
 }
 
 /// @nodoc
@@ -804,12 +942,12 @@ class __$$SendOtpEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phone = null,
+    Object? password = null,
   }) {
     return _then(_$SendOtpEventImpl(
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -818,14 +956,14 @@ class __$$SendOtpEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SendOtpEventImpl implements SendOtpEvent {
-  const _$SendOtpEventImpl({required this.phone});
+  const _$SendOtpEventImpl({required this.password});
 
   @override
-  final String phone;
+  final String password;
 
   @override
   String toString() {
-    return 'AuthEvent.sendOtp(phone: $phone)';
+    return 'AuthEvent.sendOtp(password: $password)';
   }
 
   @override
@@ -833,11 +971,12 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SendOtpEventImpl &&
-            (identical(other.phone, phone) || other.phone == phone));
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phone);
+  int get hashCode => Object.hash(runtimeType, password);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -852,13 +991,13 @@ class _$SendOtpEventImpl implements SendOtpEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
     required TResult Function(String phone, String password) login,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String phone) sendOtp,
-    required TResult Function(String phone, int otpCode) verifyOtp,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
   }) {
-    return sendOtp(phone);
+    return sendOtp(password);
   }
 
   @override
@@ -866,13 +1005,13 @@ class _$SendOtpEventImpl implements SendOtpEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
     TResult? Function(String phone, String password)? login,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String phone)? sendOtp,
-    TResult? Function(String phone, int otpCode)? verifyOtp,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
   }) {
-    return sendOtp?.call(phone);
+    return sendOtp?.call(password);
   }
 
   @override
@@ -880,15 +1019,15 @@ class _$SendOtpEventImpl implements SendOtpEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
     TResult Function(String phone, String password)? login,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String phone)? sendOtp,
-    TResult Function(String phone, int otpCode)? verifyOtp,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
     required TResult orElse(),
   }) {
     if (sendOtp != null) {
-      return sendOtp(phone);
+      return sendOtp(password);
     }
     return orElse();
   }
@@ -899,6 +1038,8 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
     required TResult Function(ChangeAuthStatusEvent value)
         changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
     required TResult Function(LoginEvent value) login,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
@@ -912,6 +1053,7 @@ class _$SendOtpEventImpl implements SendOtpEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult? Function(LoginEvent value)? login,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
@@ -925,6 +1067,7 @@ class _$SendOtpEventImpl implements SendOtpEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult Function(LoginEvent value)? login,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
@@ -939,10 +1082,10 @@ class _$SendOtpEventImpl implements SendOtpEvent {
 }
 
 abstract class SendOtpEvent implements AuthEvent {
-  const factory SendOtpEvent({required final String phone}) =
+  const factory SendOtpEvent({required final String password}) =
       _$SendOtpEventImpl;
 
-  String get phone;
+  String get password;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -957,7 +1100,7 @@ abstract class _$$VerifyOtpEventImplCopyWith<$Res> {
           $Res Function(_$VerifyOtpEventImpl) then) =
       __$$VerifyOtpEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phone, int otpCode});
+  $Res call({int otpCode});
 }
 
 /// @nodoc
@@ -973,14 +1116,9 @@ class __$$VerifyOtpEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phone = null,
     Object? otpCode = null,
   }) {
     return _then(_$VerifyOtpEventImpl(
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
       otpCode: null == otpCode
           ? _value.otpCode
           : otpCode // ignore: cast_nullable_to_non_nullable
@@ -992,16 +1130,14 @@ class __$$VerifyOtpEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$VerifyOtpEventImpl implements VerifyOtpEvent {
-  const _$VerifyOtpEventImpl({required this.phone, required this.otpCode});
+  const _$VerifyOtpEventImpl({required this.otpCode});
 
-  @override
-  final String phone;
   @override
   final int otpCode;
 
   @override
   String toString() {
-    return 'AuthEvent.verifyOtp(phone: $phone, otpCode: $otpCode)';
+    return 'AuthEvent.verifyOtp(otpCode: $otpCode)';
   }
 
   @override
@@ -1009,12 +1145,11 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VerifyOtpEventImpl &&
-            (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.otpCode, otpCode) || other.otpCode == otpCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phone, otpCode);
+  int get hashCode => Object.hash(runtimeType, otpCode);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1030,13 +1165,13 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
     required TResult Function(String phone, String password) login,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String phone) sendOtp,
-    required TResult Function(String phone, int otpCode) verifyOtp,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
   }) {
-    return verifyOtp(phone, otpCode);
+    return verifyOtp(otpCode);
   }
 
   @override
@@ -1044,13 +1179,13 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
     TResult? Function(String phone, String password)? login,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String phone)? sendOtp,
-    TResult? Function(String phone, int otpCode)? verifyOtp,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
   }) {
-    return verifyOtp?.call(phone, otpCode);
+    return verifyOtp?.call(otpCode);
   }
 
   @override
@@ -1058,15 +1193,15 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
     TResult Function(String phone, String password)? login,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String phone)? sendOtp,
-    TResult Function(String phone, int otpCode)? verifyOtp,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
     required TResult orElse(),
   }) {
     if (verifyOtp != null) {
-      return verifyOtp(phone, otpCode);
+      return verifyOtp(otpCode);
     }
     return orElse();
   }
@@ -1077,6 +1212,8 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
     required TResult Function(ChangeAuthStatusEvent value)
         changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
     required TResult Function(LoginEvent value) login,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
@@ -1090,6 +1227,7 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult? Function(LoginEvent value)? login,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
@@ -1103,6 +1241,7 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
     TResult Function(LoginEvent value)? login,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
@@ -1117,11 +1256,9 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
 }
 
 abstract class VerifyOtpEvent implements AuthEvent {
-  const factory VerifyOtpEvent(
-      {required final String phone,
-      required final int otpCode}) = _$VerifyOtpEventImpl;
+  const factory VerifyOtpEvent({required final int otpCode}) =
+      _$VerifyOtpEventImpl;
 
-  String get phone;
   int get otpCode;
 
   /// Create a copy of AuthEvent
@@ -1133,6 +1270,8 @@ abstract class VerifyOtpEvent implements AuthEvent {
 
 /// @nodoc
 mixin _$AuthState {
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
   VerifyPhoneNumberStatus get authStatus => throw _privateConstructorUsedError;
   BlocStatus get loginStatus => throw _privateConstructorUsedError;
   BlocStatus get registerStatus => throw _privateConstructorUsedError;
@@ -1153,7 +1292,9 @@ abstract class $AuthStateCopyWith<$Res> {
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
   $Res call(
-      {VerifyPhoneNumberStatus authStatus,
+      {String? phoneNumber,
+      String? password,
+      VerifyPhoneNumberStatus authStatus,
       BlocStatus loginStatus,
       BlocStatus registerStatus,
       BlocStatus otpStatus,
@@ -1176,6 +1317,8 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? phoneNumber = freezed,
+    Object? password = freezed,
     Object? authStatus = null,
     Object? loginStatus = null,
     Object? registerStatus = null,
@@ -1184,6 +1327,14 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
       authStatus: null == authStatus
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
@@ -1221,7 +1372,9 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {VerifyPhoneNumberStatus authStatus,
+      {String? phoneNumber,
+      String? password,
+      VerifyPhoneNumberStatus authStatus,
       BlocStatus loginStatus,
       BlocStatus registerStatus,
       BlocStatus otpStatus,
@@ -1242,6 +1395,8 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? phoneNumber = freezed,
+    Object? password = freezed,
     Object? authStatus = null,
     Object? loginStatus = null,
     Object? registerStatus = null,
@@ -1250,6 +1405,14 @@ class __$$AuthStateImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
   }) {
     return _then(_$AuthStateImpl(
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
       authStatus: null == authStatus
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
@@ -1282,13 +1445,19 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 
 class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
-      {required this.authStatus,
+      {this.phoneNumber,
+      this.password,
+      required this.authStatus,
       required this.loginStatus,
       required this.registerStatus,
       required this.otpStatus,
       required this.otpVerifyStatus,
       this.errorMessage});
 
+  @override
+  final String? phoneNumber;
+  @override
+  final String? password;
   @override
   final VerifyPhoneNumberStatus authStatus;
   @override
@@ -1304,7 +1473,7 @@ class _$AuthStateImpl implements _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(authStatus: $authStatus, loginStatus: $loginStatus, registerStatus: $registerStatus, otpStatus: $otpStatus, otpVerifyStatus: $otpVerifyStatus, errorMessage: $errorMessage)';
+    return 'AuthState(phoneNumber: $phoneNumber, password: $password, authStatus: $authStatus, loginStatus: $loginStatus, registerStatus: $registerStatus, otpStatus: $otpStatus, otpVerifyStatus: $otpVerifyStatus, errorMessage: $errorMessage)';
   }
 
   @override
@@ -1312,6 +1481,10 @@ class _$AuthStateImpl implements _AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthStateImpl &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
             (identical(other.authStatus, authStatus) ||
                 other.authStatus == authStatus) &&
             (identical(other.loginStatus, loginStatus) ||
@@ -1327,8 +1500,16 @@ class _$AuthStateImpl implements _AuthState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, authStatus, loginStatus,
-      registerStatus, otpStatus, otpVerifyStatus, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      phoneNumber,
+      password,
+      authStatus,
+      loginStatus,
+      registerStatus,
+      otpStatus,
+      otpVerifyStatus,
+      errorMessage);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -1341,13 +1522,19 @@ class _$AuthStateImpl implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
-      {required final VerifyPhoneNumberStatus authStatus,
+      {final String? phoneNumber,
+      final String? password,
+      required final VerifyPhoneNumberStatus authStatus,
       required final BlocStatus loginStatus,
       required final BlocStatus registerStatus,
       required final BlocStatus otpStatus,
       required final BlocStatus otpVerifyStatus,
       final String? errorMessage}) = _$AuthStateImpl;
 
+  @override
+  String? get phoneNumber;
+  @override
+  String? get password;
   @override
   VerifyPhoneNumberStatus get authStatus;
   @override

@@ -65,6 +65,7 @@
     "no_letter": "Kamida bitta harf kiritilishi kerak.",
     "no_digit": "Kamida bitta raqam kiritilishi kerak.",
     "passwords_not_equal": "Parollar mos kelmadi.",
+    "incorrect_password": "Noto'g'ri parol kiritildi",
     "unknown": "Noma'lum xatolik yuz berdi.",
     "empty": "Ma'lumot yo'q",
     "retry": "Yangilash"

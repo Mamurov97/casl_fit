@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:casl_fit/domain/common/data/user_data.dart';
 import 'package:casl_fit/infrastructure/common/platform_info.dart';
 import 'package:casl_fit/infrastructure/services/shared_service.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
+import 'package:flutter/material.dart';
 
 part 'app_manager_state.dart';
 
@@ -22,15 +22,14 @@ class AppManagerCubit extends Cubit<AppManagerState> {
 
       final pref = await SharedPrefService.initialize();
 
+      UserData.token = pref.getToken;
       UserData.authStatus = pref.isAuthorized;
+      UserData.userId = pref.getUserId;
       UserData.name = pref.getName;
-      UserData.branchName = pref.getBranchName;
-      UserData.workerName = pref.getWorkerName;
-      UserData.branchId = pref.getBranchId;
-      UserData.workerId = pref.getWorkerId;
+      UserData.image = pref.getImage;
       UserData.phone = pref.getPhone;
+      UserData.guid = pref.getGuid;
       UserData.role = pref.getRole;
-      UserData.token ="5|glBJ9rAt6UvA2j8pZTE0RtRprpPvZ8MOG22eyWGD74221b3f";
 
       emit(AppManagerInitial());
     } catch (e) {

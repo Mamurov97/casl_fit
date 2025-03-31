@@ -7,27 +7,27 @@ class AuthRepository {
   }
 
   Future<Map<String, dynamic>> register({required String phone, required String password, required String otpCode}) async {
-    final response = await dio.post('auth/register', data: {"phone": phone, "password": password, "otp_code": otpCode});
+    final response = await dio.post('auth/register', data: {"phone": phone.replaceRange(0, 3, ''), "password": password, "otp_code": otpCode});
     return response.data;
   }
 
   Future<Map<String, dynamic>> login({required String phone, required String password}) async {
-    final response = await dio.post('auth/login', data: {'phone': phone, 'password': password});
+    final response = await dio.post('auth/login', data: {'phone': phone.replaceRange(0, 3, ''), 'password': password});
     return response.data;
   }
 
   Future<Map<String, dynamic>> sendOtp({required String phone}) async {
-    final response = await dio.post('auth/otp', data: {'phone': phone});
+    final response = await dio.post('auth/otp', data: {'phone': phone.replaceRange(0, 3, '')});
     return response.data;
   }
 
   Future<Map<String, dynamic>> verifyOtp({required String phone}) async {
-    final response = await dio.post('auth/otp/verify', data: {'phone': phone});
+    final response = await dio.post('auth/otp/verify', data: {'phone': phone.replaceRange(0, 3, '')});
     return response.data;
   }
 
   Future<Map<String, dynamic>> resetPassword({required String phone, required String password, required String otpCode}) async {
-    final response = await dio.post('auth/reset/password', data: {"phone": phone, "password": password, "otp_code": otpCode});
+    final response = await dio.post('auth/reset/password', data: {"phone": phone.replaceRange(0, 3, ''), "password": password, "otp_code": otpCode});
     return response.data;
   }
 
