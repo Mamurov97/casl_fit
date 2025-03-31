@@ -36,7 +36,15 @@ class _SignInPageState extends State<SignInPage> {
         listener: (context, state) {
           //auth statusini eshitish
           if (state.authStatus.isError) Toast.showErrorToast(message: state.errorMessage, duration: const Duration(seconds: 4));
-          if (state.authStatus.isRegister) AuthDialogs.showRegisterDialog(context, onRegister: () => context.push(Routes.register.path));
+          if (state.authStatus.isRegister) {
+            AuthDialogs.showRegisterDialog(
+              context,
+              onRegister: () {
+                context.read<AuthBloc>().add(const SetRegisterPageType(type: 'register_type'));
+                context.push(Routes.register.path);
+              },
+            );
+          }
           if (state.authStatus.isNotFound) AuthDialogs.showNotFoundDialog(context);
 
           //login statusini eshitish
@@ -148,7 +156,11 @@ class _SignInPageState extends State<SignInPage> {
                             child: Visibility(
                               visible: state.authStatus.isLogin,
                               child: TextButtonX(
-                                onPressed: () => context.push(Routes.register.path),
+                                onPressed: () {
+                                  context.read<AuthBloc>().add(const SetRegisterPageType(type: 'password_recovery_type'));
+
+                                  context.push(Routes.register.path);
+                                },
                                 text: 'sign_in.password_recovery'.tr(),
                               ),
                             ),

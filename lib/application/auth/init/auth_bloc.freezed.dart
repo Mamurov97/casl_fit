@@ -21,7 +21,9 @@ mixin _$AuthEvent {
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
     required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
     required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
     required TResult Function(String otpCode) passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
@@ -32,7 +34,9 @@ mixin _$AuthEvent {
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
     TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
     TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
     TResult? Function(String otpCode)? passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
@@ -43,7 +47,9 @@ mixin _$AuthEvent {
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
     TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
     TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
     TResult Function(String otpCode)? passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
@@ -57,7 +63,10 @@ mixin _$AuthEvent {
         changeAuthStatusEvent,
     required TResult Function(ChangeLoginStatusEvent value)
         changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
     required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
@@ -68,7 +77,9 @@ mixin _$AuthEvent {
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
@@ -79,7 +90,9 @@ mixin _$AuthEvent {
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
@@ -180,7 +193,9 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
     required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
     required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
     required TResult Function(String otpCode) passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
@@ -194,7 +209,9 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
     TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
     TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
     TResult? Function(String otpCode)? passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
@@ -208,7 +225,9 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
     TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
     TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
     TResult Function(String otpCode)? passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
@@ -228,7 +247,10 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
         changeAuthStatusEvent,
     required TResult Function(ChangeLoginStatusEvent value)
         changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
     required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
@@ -242,7 +264,9 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
@@ -256,7 +280,9 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
@@ -328,7 +354,9 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
     required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
     required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
     required TResult Function(String otpCode) passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
@@ -342,7 +370,9 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
     TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
     TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
     TResult? Function(String otpCode)? passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
@@ -356,7 +386,9 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
     TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
     TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
     TResult Function(String otpCode)? passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
@@ -376,7 +408,10 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
         changeAuthStatusEvent,
     required TResult Function(ChangeLoginStatusEvent value)
         changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
     required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
@@ -390,7 +425,9 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
@@ -404,7 +441,9 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
@@ -468,7 +507,9 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
     required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
     required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
     required TResult Function(String otpCode) passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
@@ -482,7 +523,9 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
     TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
     TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
     TResult? Function(String otpCode)? passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
@@ -496,7 +539,9 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
     TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
     TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
     TResult Function(String otpCode)? passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
@@ -516,7 +561,10 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
         changeAuthStatusEvent,
     required TResult Function(ChangeLoginStatusEvent value)
         changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
     required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
@@ -530,7 +578,9 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
@@ -544,7 +594,9 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
@@ -559,6 +611,193 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
 
 abstract class ChangeLoginStatusEvent implements AuthEvent {
   const factory ChangeLoginStatusEvent() = _$ChangeLoginStatusEventImpl;
+}
+
+/// @nodoc
+abstract class _$$SetRegisterPageTypeImplCopyWith<$Res> {
+  factory _$$SetRegisterPageTypeImplCopyWith(_$SetRegisterPageTypeImpl value,
+          $Res Function(_$SetRegisterPageTypeImpl) then) =
+      __$$SetRegisterPageTypeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String type});
+}
+
+/// @nodoc
+class __$$SetRegisterPageTypeImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$SetRegisterPageTypeImpl>
+    implements _$$SetRegisterPageTypeImplCopyWith<$Res> {
+  __$$SetRegisterPageTypeImplCopyWithImpl(_$SetRegisterPageTypeImpl _value,
+      $Res Function(_$SetRegisterPageTypeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+  }) {
+    return _then(_$SetRegisterPageTypeImpl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetRegisterPageTypeImpl implements SetRegisterPageType {
+  const _$SetRegisterPageTypeImpl({required this.type});
+
+  @override
+  final String type;
+
+  @override
+  String toString() {
+    return 'AuthEvent.setRegisterPageTypeEvent(type: $type)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetRegisterPageTypeImpl &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, type);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetRegisterPageTypeImplCopyWith<_$SetRegisterPageTypeImpl> get copyWith =>
+      __$$SetRegisterPageTypeImplCopyWithImpl<_$SetRegisterPageTypeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phone) checkPhoneNumber,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
+    required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
+  }) {
+    return setRegisterPageTypeEvent(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone)? checkPhoneNumber,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
+    TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
+  }) {
+    return setRegisterPageTypeEvent?.call(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone)? checkPhoneNumber,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
+    TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
+    required TResult orElse(),
+  }) {
+    if (setRegisterPageTypeEvent != null) {
+      return setRegisterPageTypeEvent(type);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
+    required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
+    required TResult Function(SendOtpEvent value) sendOtp,
+    required TResult Function(VerifyOtpEvent value) verifyOtp,
+  }) {
+    return setRegisterPageTypeEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
+    TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
+    TResult? Function(SendOtpEvent value)? sendOtp,
+    TResult? Function(VerifyOtpEvent value)? verifyOtp,
+  }) {
+    return setRegisterPageTypeEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
+    TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
+    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
+    TResult Function(SendOtpEvent value)? sendOtp,
+    TResult Function(VerifyOtpEvent value)? verifyOtp,
+    required TResult orElse(),
+  }) {
+    if (setRegisterPageTypeEvent != null) {
+      return setRegisterPageTypeEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetRegisterPageType implements AuthEvent {
+  const factory SetRegisterPageType({required final String type}) =
+      _$SetRegisterPageTypeImpl;
+
+  String get type;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetRegisterPageTypeImplCopyWith<_$SetRegisterPageTypeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -641,7 +880,9 @@ class _$LoginEventImpl implements LoginEvent {
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
     required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
     required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
     required TResult Function(String otpCode) passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
@@ -655,7 +896,9 @@ class _$LoginEventImpl implements LoginEvent {
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
     TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
     TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
     TResult? Function(String otpCode)? passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
@@ -669,7 +912,9 @@ class _$LoginEventImpl implements LoginEvent {
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
     TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
     TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
     TResult Function(String otpCode)? passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
@@ -689,7 +934,10 @@ class _$LoginEventImpl implements LoginEvent {
         changeAuthStatusEvent,
     required TResult Function(ChangeLoginStatusEvent value)
         changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
     required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
@@ -703,7 +951,9 @@ class _$LoginEventImpl implements LoginEvent {
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
@@ -717,7 +967,9 @@ class _$LoginEventImpl implements LoginEvent {
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
@@ -742,6 +994,192 @@ abstract class LoginEvent implements AuthEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoginEventImplCopyWith<_$LoginEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RegisterEventImplCopyWith<$Res> {
+  factory _$$RegisterEventImplCopyWith(
+          _$RegisterEventImpl value, $Res Function(_$RegisterEventImpl) then) =
+      __$$RegisterEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String otpCode});
+}
+
+/// @nodoc
+class __$$RegisterEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$RegisterEventImpl>
+    implements _$$RegisterEventImplCopyWith<$Res> {
+  __$$RegisterEventImplCopyWithImpl(
+      _$RegisterEventImpl _value, $Res Function(_$RegisterEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? otpCode = null,
+  }) {
+    return _then(_$RegisterEventImpl(
+      otpCode: null == otpCode
+          ? _value.otpCode
+          : otpCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RegisterEventImpl implements RegisterEvent {
+  const _$RegisterEventImpl({required this.otpCode});
+
+  @override
+  final String otpCode;
+
+  @override
+  String toString() {
+    return 'AuthEvent.register(otpCode: $otpCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegisterEventImpl &&
+            (identical(other.otpCode, otpCode) || other.otpCode == otpCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, otpCode);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegisterEventImplCopyWith<_$RegisterEventImpl> get copyWith =>
+      __$$RegisterEventImplCopyWithImpl<_$RegisterEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phone) checkPhoneNumber,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
+    required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
+    required TResult Function(String otpCode) passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
+  }) {
+    return register(otpCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone)? checkPhoneNumber,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
+    TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
+    TResult? Function(String otpCode)? passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
+  }) {
+    return register?.call(otpCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone)? checkPhoneNumber,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
+    TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
+    TResult Function(String otpCode)? passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
+    required TResult orElse(),
+  }) {
+    if (register != null) {
+      return register(otpCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
+    required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
+    required TResult Function(SendOtpEvent value) sendOtp,
+    required TResult Function(VerifyOtpEvent value) verifyOtp,
+  }) {
+    return register(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
+    TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
+    TResult? Function(SendOtpEvent value)? sendOtp,
+    TResult? Function(VerifyOtpEvent value)? verifyOtp,
+  }) {
+    return register?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
+    TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
+    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
+    TResult Function(SendOtpEvent value)? sendOtp,
+    TResult Function(VerifyOtpEvent value)? verifyOtp,
+    required TResult orElse(),
+  }) {
+    if (register != null) {
+      return register(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RegisterEvent implements AuthEvent {
+  const factory RegisterEvent({required final String otpCode}) =
+      _$RegisterEventImpl;
+
+  String get otpCode;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RegisterEventImplCopyWith<_$RegisterEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -818,7 +1256,9 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
     required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
     required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
     required TResult Function(String otpCode) passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
@@ -832,7 +1272,9 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
     TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
     TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
     TResult? Function(String otpCode)? passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
@@ -846,7 +1288,9 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
     TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
     TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
     TResult Function(String otpCode)? passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
@@ -866,7 +1310,10 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
         changeAuthStatusEvent,
     required TResult Function(ChangeLoginStatusEvent value)
         changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
     required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
@@ -880,7 +1327,9 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
@@ -894,7 +1343,9 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
@@ -992,7 +1443,9 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
     required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
     required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
     required TResult Function(String otpCode) passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
@@ -1006,7 +1459,9 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
     TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
     TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
     TResult? Function(String otpCode)? passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
@@ -1020,7 +1475,9 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
     TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
     TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
     TResult Function(String otpCode)? passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
@@ -1040,7 +1497,10 @@ class _$SendOtpEventImpl implements SendOtpEvent {
         changeAuthStatusEvent,
     required TResult Function(ChangeLoginStatusEvent value)
         changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
     required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
@@ -1054,7 +1514,9 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
@@ -1068,7 +1530,9 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
@@ -1166,7 +1630,9 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     required TResult Function(String phone) checkPhoneNumber,
     required TResult Function() changeAuthStatusEvent,
     required TResult Function() changeLoginStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
     required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
     required TResult Function(String otpCode) passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
@@ -1180,7 +1646,9 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     TResult? Function(String phone)? checkPhoneNumber,
     TResult? Function()? changeAuthStatusEvent,
     TResult? Function()? changeLoginStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
     TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
     TResult? Function(String otpCode)? passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
@@ -1194,7 +1662,9 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     TResult Function(String phone)? checkPhoneNumber,
     TResult Function()? changeAuthStatusEvent,
     TResult Function()? changeLoginStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
     TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
     TResult Function(String otpCode)? passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
@@ -1214,7 +1684,10 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
         changeAuthStatusEvent,
     required TResult Function(ChangeLoginStatusEvent value)
         changeLoginStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
     required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
@@ -1228,7 +1701,9 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
@@ -1242,7 +1717,9 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
     TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
     TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
@@ -1272,6 +1749,7 @@ abstract class VerifyOtpEvent implements AuthEvent {
 mixin _$AuthState {
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
+  String? get registerPageType => throw _privateConstructorUsedError;
   VerifyPhoneNumberStatus get authStatus => throw _privateConstructorUsedError;
   BlocStatus get loginStatus => throw _privateConstructorUsedError;
   BlocStatus get registerStatus => throw _privateConstructorUsedError;
@@ -1294,6 +1772,7 @@ abstract class $AuthStateCopyWith<$Res> {
   $Res call(
       {String? phoneNumber,
       String? password,
+      String? registerPageType,
       VerifyPhoneNumberStatus authStatus,
       BlocStatus loginStatus,
       BlocStatus registerStatus,
@@ -1319,6 +1798,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   $Res call({
     Object? phoneNumber = freezed,
     Object? password = freezed,
+    Object? registerPageType = freezed,
     Object? authStatus = null,
     Object? loginStatus = null,
     Object? registerStatus = null,
@@ -1334,6 +1814,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String?,
+      registerPageType: freezed == registerPageType
+          ? _value.registerPageType
+          : registerPageType // ignore: cast_nullable_to_non_nullable
               as String?,
       authStatus: null == authStatus
           ? _value.authStatus
@@ -1374,6 +1858,7 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   $Res call(
       {String? phoneNumber,
       String? password,
+      String? registerPageType,
       VerifyPhoneNumberStatus authStatus,
       BlocStatus loginStatus,
       BlocStatus registerStatus,
@@ -1397,6 +1882,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   $Res call({
     Object? phoneNumber = freezed,
     Object? password = freezed,
+    Object? registerPageType = freezed,
     Object? authStatus = null,
     Object? loginStatus = null,
     Object? registerStatus = null,
@@ -1412,6 +1898,10 @@ class __$$AuthStateImplCopyWithImpl<$Res>
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String?,
+      registerPageType: freezed == registerPageType
+          ? _value.registerPageType
+          : registerPageType // ignore: cast_nullable_to_non_nullable
               as String?,
       authStatus: null == authStatus
           ? _value.authStatus
@@ -1447,6 +1937,7 @@ class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
       {this.phoneNumber,
       this.password,
+      this.registerPageType,
       required this.authStatus,
       required this.loginStatus,
       required this.registerStatus,
@@ -1458,6 +1949,8 @@ class _$AuthStateImpl implements _AuthState {
   final String? phoneNumber;
   @override
   final String? password;
+  @override
+  final String? registerPageType;
   @override
   final VerifyPhoneNumberStatus authStatus;
   @override
@@ -1473,7 +1966,7 @@ class _$AuthStateImpl implements _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(phoneNumber: $phoneNumber, password: $password, authStatus: $authStatus, loginStatus: $loginStatus, registerStatus: $registerStatus, otpStatus: $otpStatus, otpVerifyStatus: $otpVerifyStatus, errorMessage: $errorMessage)';
+    return 'AuthState(phoneNumber: $phoneNumber, password: $password, registerPageType: $registerPageType, authStatus: $authStatus, loginStatus: $loginStatus, registerStatus: $registerStatus, otpStatus: $otpStatus, otpVerifyStatus: $otpVerifyStatus, errorMessage: $errorMessage)';
   }
 
   @override
@@ -1485,6 +1978,8 @@ class _$AuthStateImpl implements _AuthState {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.registerPageType, registerPageType) ||
+                other.registerPageType == registerPageType) &&
             (identical(other.authStatus, authStatus) ||
                 other.authStatus == authStatus) &&
             (identical(other.loginStatus, loginStatus) ||
@@ -1504,6 +1999,7 @@ class _$AuthStateImpl implements _AuthState {
       runtimeType,
       phoneNumber,
       password,
+      registerPageType,
       authStatus,
       loginStatus,
       registerStatus,
@@ -1524,6 +2020,7 @@ abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {final String? phoneNumber,
       final String? password,
+      final String? registerPageType,
       required final VerifyPhoneNumberStatus authStatus,
       required final BlocStatus loginStatus,
       required final BlocStatus registerStatus,
@@ -1535,6 +2032,8 @@ abstract class _AuthState implements AuthState {
   String? get phoneNumber;
   @override
   String? get password;
+  @override
+  String? get registerPageType;
   @override
   VerifyPhoneNumberStatus get authStatus;
   @override

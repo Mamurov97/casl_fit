@@ -34,6 +34,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(authStatus: VerifyPhoneNumberStatus.initial));
     });
 
+    //Register page typeini o'zgartirish
+    on<SetRegisterPageType>((event, emit) async {
+      emit(state.copyWith(registerPageType: event.type));
+    });
+
     //Login yoki parol xato bo'lsa loginStatusni initialga qaytarish
     on<ChangeLoginStatusEvent>((event, emit) async {
       emit(state.copyWith(loginStatus: BlocStatus.initial));

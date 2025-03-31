@@ -5,6 +5,7 @@ class AuthState with _$AuthState {
   const factory AuthState({
     String? phoneNumber,
     String? password,
+    String? registerPageType,
     required VerifyPhoneNumberStatus authStatus,
     required BlocStatus loginStatus,
     required BlocStatus registerStatus,

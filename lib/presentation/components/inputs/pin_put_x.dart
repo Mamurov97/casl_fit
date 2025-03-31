@@ -16,7 +16,7 @@ class PintPutX extends StatelessWidget {
     final defaultPinTheme = PinTheme(
       width: 48.w,
       height: 62.h,
-      textStyle: AppTheme.data.textTheme.titleLarge,
+      textStyle: AppTheme.data.textTheme.titleLarge!.copyWith(color: AppTheme.colors.white),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
@@ -28,10 +28,10 @@ class PintPutX extends StatelessWidget {
     );
 
     return Pinput(
-      length: 6,
+      length: 4,
       autofocus: true,
       cursor: ColoredBox(
-        color: AppTheme.colors.black,
+        color: AppTheme.colors.primary,
         child: SizedBox(
           width: 1.5,
           height: 20.h,
