@@ -8,23 +8,17 @@ class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.changeAuthStatusEvent() = ChangeAuthStatusEvent;
 
-  const factory AuthEvent.login({
-    required String phone,
-    required String password,
-  }) = LoginEvent;
+  const factory AuthEvent.changeLoginStatusEvent() = ChangeLoginStatusEvent;
 
-  const factory AuthEvent.passwordRecovery({
-    required String phone,
-    required String password,
-    required String otpCode,
-  }) = PasswordRecoveryEvent;
+  const factory AuthEvent.setRegisterPageTypeEvent({required String type}) = SetRegisterPageType;
 
-  const factory AuthEvent.sendOtp({
-    required String phone,
-  }) = SendOtpEvent;
+  const factory AuthEvent.login({required String phone, required String password}) = LoginEvent;
 
-  const factory AuthEvent.verifyOtp({
-    required String phone,
-    required int otpCode,
-  }) = VerifyOtpEvent;
+  const factory AuthEvent.register({required String otpCode}) = RegisterEvent;
+
+  const factory AuthEvent.passwordRecovery({required String otpCode}) = PasswordRecoveryEvent;
+
+  const factory AuthEvent.sendOtp({required String password}) = SendOtpEvent;
+
+  const factory AuthEvent.verifyOtp({required int otpCode}) = VerifyOtpEvent;
 }

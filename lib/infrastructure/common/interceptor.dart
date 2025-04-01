@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:casl_fit/domain/common/data/user_data.dart';
+import 'package:dio/dio.dart';
 
 import 'dio_exception.dart';
 
@@ -22,9 +22,11 @@ class DioInterceptor extends Interceptor {
 
   @override
   Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    options.headers.addAll({
-      HttpHeaders.authorizationHeader: 'Bearer ${UserData.token}',
-    });
+    const nonToken = ["auth/verify/number", "auth/register", "auth/login", "auth/otp", "auth/otp/verify"];
+
+    if (!nonToken.any((endPoint) => options.path.endsWith(endPoint))) {
+      options.headers.addAll({HttpHeaders.authorizationHeader: 'Bearer ${UserData.token}'});
+    }
     options.path = options.path.replaceAll(RegExp(r'/[{][A-Za-z_]+\}+'), '');
     return super.onRequest(options, handler);
   }

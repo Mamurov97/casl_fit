@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -100,14 +100,14 @@ class AuthDialogs {
                           const SizedBox(width: 8),
                           Text(
                             tr("sign_in.contact_dialog.phone"),
-                            style: TextStyle(color: AppTheme.colors.primary, fontSize: 14.0),
+                            style: const TextStyle(color: CupertinoColors.activeBlue, fontSize: 14.0),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                Container(color: Colors.black, width: 0.15,height: 40),
+                Container(color: Colors.black, width: 0.15, height: 40),
                 Expanded(
                   child: InkWell(
                     onTap: () async {
@@ -128,7 +128,7 @@ class AuthDialogs {
                           const SizedBox(width: 8),
                           Text(
                             tr("sign_in.contact_dialog.telegram"),
-                            style: TextStyle(color: AppTheme.colors.primary, fontSize: 14.0),
+                            style: const TextStyle(color: CupertinoColors.activeBlue, fontSize: 14.0),
                           ),
                         ],
                       ),

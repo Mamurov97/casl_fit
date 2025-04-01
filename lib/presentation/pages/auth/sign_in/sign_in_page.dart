@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:casl_fit/domain/common/enums/bloc_status.dart';
-import 'package:casl_fit/presentation/components/dialogs/auth_dialogs.dart';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:casl_fit/application/auth/init/auth_bloc.dart';
+import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
+import 'package:casl_fit/presentation/components/dialogs/auth_dialogs.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -37,14 +36,23 @@ class _SignInPageState extends State<SignInPage> {
         listener: (context, state) {
           //auth statusini eshitish
           if (state.authStatus.isError) Toast.showErrorToast(message: state.errorMessage, duration: const Duration(seconds: 4));
-          if (state.authStatus.isRegister) AuthDialogs.showRegisterDialog(context, onRegister: () => context.push(Routes.register.path));
+          if (state.authStatus.isRegister) {
+            AuthDialogs.showRegisterDialog(
+              context,
+              onRegister: () {
+                context.read<AuthBloc>().add(const SetRegisterPageType(type: 'register_type'));
+                context.push(Routes.register.path);
+              },
+            );
+          }
           if (state.authStatus.isNotFound) AuthDialogs.showNotFoundDialog(context);
 
           //login statusini eshitish
-          if (state.loginStatus.isSuccess) context.go(Routes.checkPasscode.path);
-          if (state.loginStatus.isError) Toast.showErrorToast(message: state.errorMessage);
-
-          //pas
+          if (state.loginStatus.isSuccess) context.go('/root/home');
+          if (state.loginStatus.isError) {
+            Toast.showErrorToast(message: state.errorMessage);
+            context.read<AuthBloc>().add(const ChangeLoginStatusEvent());
+          }
         },
         builder: (context, state) {
           return Scaffold(
@@ -61,7 +69,7 @@ class _SignInPageState extends State<SignInPage> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
-                      color: const Color(0xFF313230).withValues(alpha: 0.5),
+                      color: const Color(0xFF313230).withValues(alpha: 0.9),
                     ),
                     margin: EdgeInsets.symmetric(horizontal: 12.w).copyWith(top: 100.h),
                     padding: EdgeInsets.all(14.w),
@@ -72,6 +80,7 @@ class _SignInPageState extends State<SignInPage> {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(tr('sign_in.phone_number'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
                           FormBuilderTextField(
                             initialValue: '+998',
                             name: "phone",
@@ -79,7 +88,6 @@ class _SignInPageState extends State<SignInPage> {
                             inputFormatters: [maskFormatter],
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
-                              labelText: tr('sign_in.phone_number'),
                               hintText: tr('sign_in.phone_number'),
                               suffixIcon: state.authStatus.isLoading
                                   ? LoadingAnimationWidget.fallingDot(
@@ -92,7 +100,7 @@ class _SignInPageState extends State<SignInPage> {
                                           ? IconButton(
                                               onPressed: () {
                                                 if (maskFormatter.isFill()) {
-                                                  context.read<AuthBloc>().add(CheckPhoneNumber(phone: maskFormatter.getUnmaskedText().replaceRange(0, 3, '')));
+                                                  context.read<AuthBloc>().add(CheckPhoneNumber(phone: maskFormatter.getUnmaskedText()));
                                                 } else {
                                                   Toast.showWarningToast(message: 'errors.mask_error'.tr());
                                                 }
@@ -119,15 +127,15 @@ class _SignInPageState extends State<SignInPage> {
                             },
                           ),
                           Gap(10.h),
+                          Text(tr('sign_in.password'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
                           FormBuilderTextField(
                             initialValue: '',
                             name: 'password',
                             obscureText: !passwordVisible,
                             decoration: InputDecoration(
-                              labelText: tr('sign_in.password'),
                               hintText: tr('sign_in.password'),
                               suffixIcon: IconButton(
-                                icon: Icon(passwordVisible ? Icons.visibility : Icons.visibility_off),
+                                icon: Icon(passwordVisible ? Icons.visibility_off : Icons.visibility),
                                 onPressed: () {
                                   passwordVisible = !passwordVisible;
                                   setState(() {});
@@ -142,12 +150,17 @@ class _SignInPageState extends State<SignInPage> {
                               return null;
                             },
                           ),
-                          Visibility(
-                            visible: state.authStatus.isLogin,
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 10.h),
+                          Container(
+                            height: 35.h,
+                            alignment: Alignment.bottomLeft,
+                            child: Visibility(
+                              visible: state.authStatus.isLogin,
                               child: TextButtonX(
-                                onPressed: () => context.push(Routes.register.path),
+                                onPressed: () {
+                                  context.read<AuthBloc>().add(const SetRegisterPageType(type: 'password_recovery_type'));
+
+                                  context.push(Routes.register.path);
+                                },
                                 text: 'sign_in.password_recovery'.tr(),
                               ),
                             ),
@@ -160,7 +173,7 @@ class _SignInPageState extends State<SignInPage> {
                                     if (formKey.currentState!.validate()) {
                                       context.read<AuthBloc>().add(
                                             LoginEvent(
-                                              phone: maskFormatter.getUnmaskedText().substring(3),
+                                              phone: maskFormatter.getUnmaskedText(),
                                               password: formKey.currentState?.fields["password"]?.value,
                                             ),
                                           );
