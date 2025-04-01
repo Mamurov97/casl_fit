@@ -26,6 +26,10 @@ class Routes implements Coordinate {
   static const program = Routes._(name: 'program', path: '/program');
   static const profile = Routes._(name: 'profile', path: '/profile');
 
+
+  ///profile
+  static const selectedDefinitions= Routes._(name: "selectedDefinitions",path: '/selectedDefinitions');
+  static const selectedDefinitionTab= Routes._(name: "selectedDefinitionTab",path: '/selectedDefinitionTab');
   @override
   String toString() => 'name=$name, path=$path';
 }

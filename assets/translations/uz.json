@@ -71,11 +71,23 @@
     "retry": "Yangilash"
   },
   "root": {
-    "home": "Home",
-    "status": "Status",
-    "qrcode": "QR code",
-    "program": "Program",
-    "profile": "Profile"
+    "home": "Asosiy",
+    "status": "Statistika",
+    "qrcode": "QR kod",
+    "program": "Dastur",
+    "profile": "Profil"
+  },
+  "qrcode": {
+    "get_new_qr": "Yangi QR kod olish"
+  },
+
+  "profile": {
+    "edit_profile": "Profilni tahrirlash",
+    "notification": "Bildirishnomalar",
+    "setting": "Sozlamalar",
+    "logout": "Profildan chiqish",
+    "profile": "Profil",
+    "definition": "Tanlangan ta'riflar"
   }
 }
     
