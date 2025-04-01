@@ -1,12 +1,23 @@
+import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
-import 'package:casl_fit/presentation/pages/profile/widgets/custom_switch.dart';
+import 'package:casl_fit/presentation/components/basic_widgets.dart';
+import 'package:casl_fit/presentation/pages/profile/widgets/accordion.dart';
 import 'package:casl_fit/presentation/pages/profile/widgets/menu_item.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../application/home/profile/profile_bloc.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  int expandedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +26,7 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Profile', style: TextStyle(color: Colors.white)),
+        title: Text('profile.profile'.tr(), style: TextStyle(color: Colors.white)),
         centerTitle: true,
         actions: [
           IconButton(
@@ -26,102 +37,117 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/profile.jpg'),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'Mondi Morris',
-              style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const Text(
-              'mondimorris@gmail.com',
-              style: TextStyle(color: Colors.grey),
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _infoCard('Weight', '65.5 kg'),
-                _infoCard('Height', '5.7 Fit'),
-                _infoCard('Age', '25 Years'),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.grey[900],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: BlocConsumer<ProfileBloc, ProfileState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            ProfileResponse data = state.profileResponse ?? ProfileResponse();
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Go Premium & Unlock More!', style: TextStyle(color: Colors.white)),
-                  Icon(Icons.arrow_forward_ios, color: Colors.white),
+                  const CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage('assets/profile.jpg'),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    data.name ?? "",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 8.h),
+                  if (data.balans != null)
+                    Text(
+                      "Balans: ${NumberFormat("#,###", "uz_UZ").format(data.balans ?? 0).replaceAll(",", " ")} so'm",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.w500),
+                    ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    data.tel ?? "",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 10.sp, fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(height: 36.h),
+                  MenuItem(
+                    isExpanded: state.isDefinitionExpanded ?? false,
+                    title: 'profile.definition'.tr(),
+                    icon: AppIcons.profile,
+                    onSwitchChanged: (value) {},
+                    onPressed: () {
+                      context.push("${Routes.root.path}${Routes.profile.path}${Routes.selectedDefinitionTab.path}",extra: state.profileResponse??ProfileResponse());
+                    },
+                  ),
+                  if (state.isDefinitionExpanded ?? false)
+                    Wrap(
+                      children: List.generate(state.profileResponse?.tarif?.length ?? 0, (index) {
+                        var list = state.profileResponse?.tarif ?? [];
+                        return Padding(
+                          padding: EdgeInsets.only(left: 8.w, bottom: 4.h),
+                          child: CustomExpansionTileWidget(
+                            title: list[index].tarif ?? "",
+                            isExpanded: expandedIndex == index,
+                            onExpand: () {
+                              expandedIndex = (expandedIndex == index) ? -1 : index;
+                            },
+                            children: [DefinitionTable(definitions: list, index: index)],
+                          ),
+                        );
+                      }),
+                    ),
+                  MenuItem(
+                    title: 'profile.edit_profile'.tr(),
+                    icon: AppIcons.profile,
+                    onPressed: () {},
+                  ),
+                  MenuItem(
+                    title: 'profile.notification'.tr(),
+                    icon: AppIcons.notification,
+                    switchValue: true,
+                    hasSwitch: true,
+                    onSwitchChanged: (value) {},
+                    onPressed: () {},
+                  ),
+                  MenuItem(
+                    title: "profile.setting".tr(),
+                    icon: AppIcons.settings,
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppTheme.colors.primary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.r),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            height: 16.sp,
+                            AppIcons.logout,
+                            colorFilter: ColorFilter.mode(AppTheme.colors.secondary, BlendMode.srcIn),
+                          ),
+                          const SizedBox(width: 8),
+                          Text('profile.logout'.tr(), style: TextStyle(color: AppTheme.colors.secondary)),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            ),
-            const SizedBox(height: 20),
-          MenuItem(
-            title: "Edit Profile",
-            icon:AppIcons.profile,
-            switchValue: true,
-            onSwitchChanged: (value) {
-            },
-          ),
-            MenuItem(
-              title: "Notification",
-              icon:AppIcons.notification,
-              switchValue: true,
-              hasSwitch: true,
-              onSwitchChanged: (value) {
-              },
-            ),
-            MenuItem(
-              title: "Setting",
-              icon:AppIcons.settings,
-              switchValue: true,
-              onSwitchChanged: (value) {
-              },
-            ),
-
-            const SizedBox(height: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.colors.primary,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-              ),
-              onPressed: () {},
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      height: 16.sp,
-                      AppIcons.logout,
-                      colorFilter: ColorFilter.mode(AppTheme.colors.secondary, BlendMode.srcIn),
-                    ),
-                    const SizedBox(width: 8),
-                    Text('Log Out', style: TextStyle(color: AppTheme.colors.secondary)),
-                  ],
-                ),
-              ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
   }
 
-  Widget _infoCard(String title, String value) {
+  Widget infoCard(String title, String value) {
     return Column(
       children: [
         Text(title, style: const TextStyle(color: Colors.grey)),
@@ -130,6 +156,4 @@ class ProfilePage extends StatelessWidget {
       ],
     );
   }
-
-
 }

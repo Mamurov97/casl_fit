@@ -32,7 +32,7 @@ dependencies:
   flutter_layout_grid: ^2.0.7
   font_awesome_flutter: ^10.8.0
   easy_rich_text: ^2.2.0
-  timer_count_down: ^2.2.2
+  accordion: ^2.6.0
 
   # Animations
   flutter_bounce: ^1.1.0
@@ -82,6 +82,7 @@ dependencies:
   datify: ^1.1.5
   qr_flutter: ^4.1.0
   pretty_dio_logger: ^1.4.0
+  timer_count_down: ^2.2.2
 
   # Services
   vibration: ^3.1.3
