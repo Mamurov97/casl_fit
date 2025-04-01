@@ -44,6 +44,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(loginStatus: BlocStatus.initial));
     });
 
+    // OtpStatusni initialga qaytarish
+    on<ChangeOtpStatusEvent>((event, emit) async {
+      emit(state.copyWith(otpStatus: BlocStatus.initial));
+    });
+
+    // ResetPasswordStatusni initialga qaytarish
+    on<ChangeResetPasswordStatusEvent>((event, emit) async {
+      emit(state.copyWith(resetPasswordStatus: BlocStatus.initial));
+    });
+
     // Login jarayonini boshlash
     on<LoginEvent>((event, emit) async {
       emit(state.copyWith(loginStatus: BlocStatus.loading));
@@ -90,6 +100,52 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
 
+    // Registratsiya jarayonini boshlash
+    on<RegisterEvent>((event, emit) async {
+      emit(state.copyWith(registerStatus: BlocStatus.loading));
+      final prefs = await SharedPrefService.initialize();
+
+      try {
+        await repo.register(phone: state.phoneNumber ?? '', password: state.password ?? '', otpCode: event.otpCode).then((response) async {
+          if (response['status'] == true) {
+            final String token = response['result']['token'] ?? '';
+            prefs.setToken(token);
+            UserData.token = token;
+            try {
+              final responseMe = await repo.getMe();
+              if (responseMe['error'] != 'Unauthorized') {
+                final int userId = responseMe['user_id'] ?? 0;
+                final String name = responseMe['name'] ?? '';
+                final String image = responseMe['image'] ?? '';
+                final String phone = responseMe['phone'] ?? '';
+                final String guid = responseMe['guid'] ?? '';
+                final String role = responseMe['role'] ?? '';
+                UserData.userId = userId;
+                UserData.name = name;
+                UserData.image = image;
+                UserData.phone = phone;
+                UserData.guid = guid;
+                UserData.role = role;
+                prefs.setUserId(userId);
+                prefs.setName(name);
+                prefs.setImage(image);
+                prefs.setPhone(phone);
+                prefs.setGuid(guid);
+                prefs.setRole(role);
+                emit(state.copyWith(registerStatus: BlocStatus.success));
+              }
+            } catch (e) {
+              emit(state.copyWith(registerStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
+            }
+          } else {
+            emit(state.copyWith(registerStatus: BlocStatus.error, errorMessage: 'errors.incorrect_password'.tr()));
+          }
+        });
+      } catch (e) {
+        emit(state.copyWith(registerStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
+      }
+    });
+
     // OTP yuborish
     on<SendOtpEvent>((event, emit) async {
       emit(state.copyWith(otpStatus: BlocStatus.loading, password: event.password));
@@ -107,18 +163,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     // Parolni tiklash jarayonini boshlash
     on<PasswordRecoveryEvent>((event, emit) async {
-      emit(state.copyWith(otpStatus: BlocStatus.loading));
+      emit(state.copyWith(resetPasswordStatus: BlocStatus.loading));
 
-      emit(state.copyWith(otpStatus: BlocStatus.success));
+      emit(state.copyWith(resetPasswordStatus: BlocStatus.success));
       // emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: ));
     });
 
-    // OTPni tekshirish
-    on<VerifyOtpEvent>((event, emit) async {
-      emit(state.copyWith(otpVerifyStatus: BlocStatus.loading));
-
-      emit(state.copyWith(otpVerifyStatus: BlocStatus.success));
-      // emit(state.copyWith(otpVerifyStatus: BlocStatus.error, errorMessage: ));
-    });
+    // // OTPni tekshirish
+    // on<VerifyOtpEvent>((event, emit) async {
+    //   emit(state.copyWith(otpVerifyStatus: BlocStatus.loading));
+    //
+    //   emit(state.copyWith(otpVerifyStatus: BlocStatus.success));
+    //   // emit(state.copyWith(otpVerifyStatus: BlocStatus.error, errorMessage: ));
+    // });
   }
 }

@@ -44,6 +44,7 @@ class _SignInPageState extends State<SignInPage> {
                 context.push(Routes.register.path);
               },
             );
+            context.read<AuthBloc>().add(const ChangeAuthStatusEvent());
           }
           if (state.authStatus.isNotFound) AuthDialogs.showNotFoundDialog(context);
 
