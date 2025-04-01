@@ -27,11 +27,11 @@ class ErrorPage extends StatelessWidget {
           ),
           Text(
             error ?? tr('errors.unknown'),
-            style: AppTheme.data.textTheme.titleLarge,
+            style: AppTheme.data.textTheme.titleLarge?.copyWith(color: AppTheme.colors.white),
           ),
           MainButton(
             margin: EdgeInsets.symmetric(horizontal: 75.w).copyWith(top: 15.h),
-            text: tr('errors.retry'),
+            text: tr('errors.retry',),
             onPressed: onPressed,
           ),
         ],

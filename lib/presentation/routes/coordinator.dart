@@ -1,6 +1,4 @@
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
-import 'package:casl_fit/presentation/pages/profile/selected_definitions/selected_plan_tab.dart';
-import 'package:casl_fit/presentation/pages/profile/selected_definitions/selected_definitions_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +8,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../../application/home/profile/profile_bloc.dart';
 import '../components/navigation_helper.dart';
+import '../pages/profile/selected_plan/selected_plan_tab.dart';
 import 'entity/custom_nav_bar.dart';
 import 'entity/pages.dart';
 import 'entity/routes.dart';
@@ -169,7 +168,7 @@ final GoRouter router = GoRouter(
                       return MaterialPage<void>(
                           key: state.pageKey,
                           child: BlocProvider(
-                            create: (context) => ProfileBloc()..add(GetProfileDataEvent()),
+                            create: (context) => ProfileBloc()..add(GetProfileDataEvent())..add(GetPlansEvent()),
                             child: const ProfilePage(),
                           ));
                     }),

@@ -61,7 +61,7 @@ class MainButton extends StatelessWidget {
             : Text(
                 text,
                 style: AppTheme.data.textTheme.titleMedium?.copyWith(
-                  color: disabled! ? Colors.grey.shade700 : (textColor ?? Colors.white),
+                  color: disabled! ? Colors.grey.shade700 : (textColor ?? Colors.black),
                 ),
                 textAlign: TextAlign.center,
               ),

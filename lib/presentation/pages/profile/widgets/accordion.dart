@@ -3,7 +3,6 @@ import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_expansion_tile.dart';
-import 'customsss.dart';
 import 'definition_item.dart';
 
 class CustomExpansionTileWidget extends StatefulWidget {
@@ -104,8 +103,6 @@ class DefinitionLimitsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-
           DefinitionItem(icon: AppIcons.beginTime, title: "Boshlanish vaqti", value: definition.boshlanishVaqt?.split(" ")[0] ?? ""),
           DefinitionItem(icon: AppIcons.endTime, title: "Tugash vaqti", value: definition.tugashVaqt?.split(" ")[0] ?? ""),
           DefinitionItem(icon: AppIcons.remainDay, title: "Qoldiq", value: "${definition.qoldiq} kun"),

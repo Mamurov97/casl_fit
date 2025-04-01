@@ -18,7 +18,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(state.copyWith(status: BlocStatus.loading));
       try {
         final Map<String, dynamic> data = await repo.getProfileData();
-        print(data);
         if (data["status"]) {
           emit(state.copyWith(status: BlocStatus.success, profileResponse: ProfileResponse.fromJson(data["result"])));
         } else {
@@ -28,12 +27,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         emit(state.copyWith(status: BlocStatus.error, errorMessage: e.toString()));
       }
     });
-    on<GetProfileDataEvent>((event, emit) async {
+    on<GetPlansEvent>((event, emit) async {
       emit(state.copyWith(status: BlocStatus.loading));
       try {
-        final Map<String, dynamic> data = await repo.getProfileData();
+        final Map<String, dynamic> data = await repo.getPlan();
         if (data["status"]) {
-          List<PlanResponse> plans = data["data"]?.map<PlanResponse>((element) => PlanResponse.fromJson(element)).toList();
+          List<PlanResponse> plans = data["result"]?.map<PlanResponse>((element) => PlanResponse.fromJson(element)).toList();
 
           emit(state.copyWith(status: BlocStatus.success, plans: plans));
         } else {
