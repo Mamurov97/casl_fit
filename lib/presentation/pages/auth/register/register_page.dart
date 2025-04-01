@@ -1,10 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:casl_fit/application/auth/init/auth_bloc.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -25,85 +28,98 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return DeFocus(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Image.asset(
-              AppImages.background,
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
-              alignment: Alignment.center,
-            ),
-            Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.r),
-                  color: const Color(0xFF313230).withValues(alpha: 0.5),
+      child: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state.otpStatus.isSuccess) context.push(Routes.verify.path);
+        },
+        builder: (context, state) {
+          return Scaffold(
+            body: Stack(
+              children: [
+                Image.asset(
+                  AppImages.background,
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 12.w).copyWith(top: 100.h),
-                padding: EdgeInsets.all(14.w),
-                child: FormBuilder(
-                  key: formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      FormBuilderTextField(
-                        initialValue: '',
-                        name: 'password',
-                        obscureText: !passwordVisibleOne,
-                        decoration: InputDecoration(
-                          labelText: tr('register.password'),
-                          hintText: tr('register.password'),
-                          suffixIcon: IconButton(
-                            icon: Icon(passwordVisibleOne ? Icons.visibility : Icons.visibility_off),
-                            onPressed: () {
-                              setState(() {
-                                passwordVisibleOne = !passwordVisibleOne;
-                              });
-                            },
+                Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.r),
+                      color: const Color(0xFF313230).withValues(alpha: 0.9),
+                    ),
+                    margin: EdgeInsets.symmetric(horizontal: 12.w).copyWith(top: 100.h),
+                    padding: EdgeInsets.all(14.w),
+                    child: FormBuilder(
+                      key: formKey,
+                      enabled: !state.otpStatus.isLoading,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(tr('register.password'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
+                          FormBuilderTextField(
+                            initialValue: '',
+                            name: 'password',
+                            obscureText: !passwordVisibleOne,
+                            decoration: InputDecoration(
+                              hintText: tr('register.password'),
+                              suffixIcon: IconButton(
+                                icon: Icon(passwordVisibleOne ? Icons.visibility_off : Icons.visibility),
+                                onPressed: () {
+                                  passwordVisibleOne = !passwordVisibleOne;
+                                  setState(() {});
+                                },
+                              ),
+                            ),
+                            textInputAction: TextInputAction.done,
+                            validator: validatePassword,
                           ),
-                        ),
-                        textInputAction: TextInputAction.done,
-                        validator: validatePassword,
-                      ),
-                      Gap(10.h),
-                      FormBuilderTextField(
-                        initialValue: '',
-                        name: 'retry_password',
-                        obscureText: !passwordVisibleTwo,
-                        decoration: InputDecoration(
-                          labelText: tr('register.retry_password'),
-                          hintText: tr('register.retry_password'),
-                          suffixIcon: IconButton(
-                            icon: Icon(passwordVisibleTwo ? Icons.visibility : Icons.visibility_off),
-                            onPressed: () {
-                              setState(() {
-                                passwordVisibleTwo = !passwordVisibleTwo;
-                              });
-                            },
+                          Gap(10.h),
+                          Text(tr('register.retry_password'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
+                          FormBuilderTextField(
+                            initialValue: '',
+                            name: 'retry_password',
+                            obscureText: !passwordVisibleTwo,
+                            decoration: InputDecoration(
+                              hintText: tr('register.retry_password'),
+                              suffixIcon: IconButton(
+                                icon: Icon(passwordVisibleTwo ? Icons.visibility_off : Icons.visibility),
+                                onPressed: () {
+                                  passwordVisibleTwo = !passwordVisibleTwo;
+                                  setState(() {});
+                                },
+                              ),
+                            ),
+                            textInputAction: TextInputAction.done,
+                            validator: validateRetryPassword,
                           ),
-                        ),
-                        textInputAction: TextInputAction.done,
-                        validator: validateRetryPassword,
+                          Gap(20.h),
+                          ElevatedButton(
+                            onPressed: state.otpStatus.isLoading
+                                ? null
+                                : () {
+                                    if (formKey.currentState!.saveAndValidate()) {
+                                      context.read<AuthBloc>().add(SendOtpEvent(password: formKey.currentState?.fields['retry_password']?.value));
+                                    }
+                                  },
+                            child: state.otpStatus.isLoading
+                                ? LoadingAnimationWidget.fallingDot(
+                                    color: AppTheme.colors.primary,
+                                    size: ScreenSize.h36,
+                                  )
+                                : Text(tr('continue')),
+                          ),
+                        ],
                       ),
-                      Gap(20.h),
-                      ElevatedButton(
-                        onPressed: () {
-                          if (formKey.currentState!.saveAndValidate()) {
-                            context.push(Routes.verify.path);
-                          }
-                        },
-                        child: Text(tr('continue')),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

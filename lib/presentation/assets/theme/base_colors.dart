@@ -7,7 +7,7 @@ abstract class BaseColors {
 
   Color get primary30 => const Color.fromRGBO(45, 15, 213, 0.29);
 
-  Color get black => const Color(0xFFF6F8F1);
+  Color get black => const Color.fromRGBO(16, 17, 11, 1);
 
   Color get secondary => const Color.fromRGBO(49, 50, 48, 1);
 
