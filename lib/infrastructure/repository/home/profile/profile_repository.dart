@@ -5,4 +5,9 @@ class ProfileRepository{
     final response = await dio.get('client/get-info');
     return response.data;
   }
+
+  Future<Map<String, dynamic>> getPlan() async {
+    final response = await dio.get('client/get-info');
+    return response.data;
+  }
 }

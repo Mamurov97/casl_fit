@@ -1,4 +1,6 @@
-
+import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
+import 'package:casl_fit/presentation/pages/profile/selected_definitions/selected_plan_tab.dart';
+import 'package:casl_fit/presentation/pages/profile/selected_definitions/selected_definitions_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -154,6 +156,15 @@ final GoRouter router = GoRouter(
                     name: Routes.profile.name,
                     path: Routes.profile.path,
                     redirect: (context, state) => redirect(context, state),
+                    routes: [
+                      GoRoute(
+                          name: Routes.selectedDefinitionTab.name,
+                          path: Routes.selectedDefinitionTab.path,
+                          redirect: (context, state) => redirect(context, state),
+                          pageBuilder: (context, state) {
+                            return MaterialPage<void>(key: state.pageKey, child:  SelectedPlanTab(profileResponse: state.extra as ProfileResponse));
+                          }),
+                    ],
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(
                           key: state.pageKey,

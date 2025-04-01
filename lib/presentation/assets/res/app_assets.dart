@@ -8,6 +8,9 @@ class AppIcons {
  static const notification = 'assets/icons/notification.svg';
  static const settings = 'assets/icons/settings.svg';
  static const logout = 'assets/icons/logout.svg';
+ static const beginTime = 'assets/icons/begin_time.svg';
+ static const endTime = 'assets/icons/end_time.svg';
+ static const remainDay = 'assets/icons/remain_day.svg';
 
 
 }
