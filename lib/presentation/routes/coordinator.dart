@@ -1,4 +1,5 @@
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
+import 'package:casl_fit/presentation/pages/profile/selected_definitions/selected_plan_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,8 +66,12 @@ final GoRouter router = GoRouter(
     ),
 
     ///bottom_navigation_bar
-    GoRoute(path: Routes.root.path, name: Routes.root.name, redirect: (context, state) => redirect(context, state), routes: [
-      StatefulShellRoute.indexedStack(
+    GoRoute(
+      path: Routes.root.path,
+      name: Routes.root.name,
+      redirect: (context, state) => redirect(context, state),
+      routes: [
+        StatefulShellRoute.indexedStack(
           builder: (context, state, navigatorShell) {
             int screen = 0;
             return PopScope(
@@ -174,8 +179,10 @@ final GoRouter router = GoRouter(
                     }),
               ],
             ),
-          ])
-    ]),
+          ],
+        )
+      ],
+    ),
   ],
   // errorBuilder: (context, state) => const SizedBox(),
 );

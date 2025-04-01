@@ -1,8 +1,10 @@
 import 'package:casl_fit/application/auth/init/auth_bloc.dart';
+import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/domain/common/second_to_time.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/components/inputs/pin_put_x.dart';
+import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +32,29 @@ class _VerifyPageState extends State<VerifyPage> {
     return DeFocus(
       child: Scaffold(
         body: BlocConsumer<AuthBloc, AuthState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            //loadingni tekshirish
+            if (state.resetPasswordStatus.isLoading || state.registerStatus.isLoading) {
+              ///loading yozish kerak
+            }
+
+            //login statusini eshitish
+            if (state.registerPageType == 'register_type') {
+              if (state.registerStatus.isSuccess) context.go('/root/home');
+              if (state.registerStatus.isError) {
+                Toast.showErrorToast(message: state.errorMessage);
+              }
+              context.read<AuthBloc>().add(const ChangeLoginStatusEvent());
+            }
+            //reset password statusini eshitish
+            if (state.registerPageType == 'password_recovery_type') {
+              if (state.resetPasswordStatus.isSuccess) context.go(Routes.signIn.path);
+              if (state.resetPasswordStatus.isError) {
+                Toast.showErrorToast(message: state.errorMessage);
+              }
+              context.read<AuthBloc>().add(const ChangeResetPasswordStatusEvent());
+            }
+          },
           builder: (context, state) {
             return Stack(
               children: [

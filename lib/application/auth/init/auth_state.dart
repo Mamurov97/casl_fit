@@ -11,6 +11,7 @@ class AuthState with _$AuthState {
     required BlocStatus registerStatus,
     required BlocStatus otpStatus,
     required BlocStatus otpVerifyStatus,
+    required BlocStatus resetPasswordStatus,
     String? errorMessage,
   }) = _AuthState;
 
@@ -20,5 +21,6 @@ class AuthState with _$AuthState {
         registerStatus: BlocStatus.initial,
         otpStatus: BlocStatus.initial,
         otpVerifyStatus: BlocStatus.initial,
+        resetPasswordStatus: BlocStatus.initial,
       );
 }
