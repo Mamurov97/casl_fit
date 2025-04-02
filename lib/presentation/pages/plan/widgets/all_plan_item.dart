@@ -4,20 +4,21 @@ import 'package:flutter/material.dart';
 
 class AllPlanItem extends StatelessWidget {
   final Map<String, dynamic> item;
-   final VoidCallback onPressed;
-  const AllPlanItem({super.key, required this.item,required this.onPressed});
+  final VoidCallback onPressed;
+
+  const AllPlanItem({super.key, required this.item, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-       color: Colors.black,
+      color: Colors.black,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       margin: EdgeInsets.only(bottom: 12.h),
       child: Padding(
         padding: EdgeInsets.all(12.r),
         child: GestureDetector(
-          onTap: (){
-        onPressed();
+          onTap: () {
+            onPressed();
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

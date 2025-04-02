@@ -44,7 +44,7 @@ class PlanPage extends StatelessWidget {
                       icon: AppIcons.status,
                       onPressed: () {
                         context.push(
-                          "${Routes.root.path}${Routes.selectedPlan.path}${Routes.planDetail.path}",
+                          "${Routes.root.path}${Routes.selectedPlan.path}${Routes.planAll.path}",
                         );
                       },
                     ))

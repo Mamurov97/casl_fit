@@ -1,4 +1,5 @@
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
+import 'package:casl_fit/presentation/pages/plan/screen/plan_detail/plan_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -170,12 +171,22 @@ final GoRouter router = GoRouter(
                     redirect: (context, state) => _redirects(),
                     routes: [
                       GoRoute(
-                        name: Routes.planDetail.name,
-                        path: Routes.planDetail.path,
+                        name: Routes.planAll.name,
+                        path: Routes.planAll.path,
                         redirect: (context, state) => _redirects(),
                         pageBuilder: (context, state) {
                           return MaterialPage<void>(key: state.pageKey, child: AllPlanPage());
                         },
+                        routes: [
+                          GoRoute(
+                            name: Routes.planDetail.name,
+                            path: Routes.planDetail.path,
+                            redirect: (context, state) => _redirects(),
+                            pageBuilder: (context, state) {
+                              return MaterialPage<void>(key: state.pageKey, child: const PlanDetailScreen());
+                            },
+                          ),
+                        ]
                       ),
                     ],
                     pageBuilder: (context, state) {

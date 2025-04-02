@@ -32,6 +32,7 @@ class Routes implements Coordinate {
   static const selectedTariffTab = Routes._(name: "selectedDefinitionTab", path: '/selectedDefinitionTab');
 
   ///Plan
+  static const planAll = Routes._(name: "plan_all", path: '/plan_all');
   static const planDetail = Routes._(name: "plan_detail", path: '/plan_detail');
 
   @override
