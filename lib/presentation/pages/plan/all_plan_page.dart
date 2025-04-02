@@ -1,6 +1,8 @@
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/pages/plan/widgets/all_plan_item.dart';
+import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AllPlanPage extends StatelessWidget {
    AllPlanPage({super.key});
@@ -60,7 +62,9 @@ class AllPlanPage extends StatelessWidget {
           return AllPlanItem(
             item: item,
             onPressed: () {
-              print("worked");
+              context.push(
+                "${Routes.root.path}${Routes.selectedPlan.path}${Routes.planAll.path}${Routes.planDetail.path}",
+              );
             },
           );
         },
