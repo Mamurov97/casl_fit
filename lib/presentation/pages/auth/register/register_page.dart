@@ -30,7 +30,10 @@ class _RegisterPageState extends State<RegisterPage> {
     return DeFocus(
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state.otpStatus.isSuccess) context.push(Routes.verify.path);
+          if (state.otpStatus.isSuccess) {
+            context.push(Routes.verify.path);
+            context.read<AuthBloc>().add(const ChangeOtpStatusEvent());
+          }
         },
         builder: (context, state) {
           return Scaffold(

@@ -10,6 +10,10 @@ class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.changeLoginStatusEvent() = ChangeLoginStatusEvent;
 
+  const factory AuthEvent.changeOtpStatusEvent() = ChangeOtpStatusEvent;
+
+  const factory AuthEvent.changeResetPasswordStatusEvent() = ChangeResetPasswordStatusEvent;
+
   const factory AuthEvent.setRegisterPageTypeEvent({required String type}) = SetRegisterPageType;
 
   const factory AuthEvent.login({required String phone, required String password}) = LoginEvent;
