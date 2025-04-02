@@ -1,5 +1,4 @@
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,16 +21,24 @@ final controller = ScrollController();
 
 Future<void> clearAndRoot() async {
   var pref = await SharedPrefService.initialize();
+  var passCode = pref.passcode;
   pref.clear();
+  pref.setPasscode(passCode);
   pref.setAuthStatus(true);
 }
 
-String? redirect(BuildContext context, GoRouterState state) {
+String? _redirects() {
+  String? root;
+
   if (UserData.token.isEmpty) {
     clearAndRoot();
+    root = Routes.signIn.path;
+    return root;
   }
+
   return null;
 }
+
 final GoRouter router = GoRouter(
   initialLocation: "${Routes.root.path}${Routes.home.path}",
   // initialLocation: Routes.signIn.path,
@@ -40,7 +47,6 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: Routes.signIn.name,
       path: Routes.signIn.path,
-      redirect: (context, state) => redirect(context, state),
       pageBuilder: (context, state) => MaterialPage<void>(
         key: state.pageKey,
         child: const SignInPage(),
@@ -83,7 +89,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.root.path,
       name: Routes.root.name,
-      redirect: (context, state) => redirect(context, state),
+      redirect: (context, state) => _redirects(),
       routes: [
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigatorShell) {
@@ -123,7 +129,7 @@ final GoRouter router = GoRouter(
                 GoRoute(
                     name: Routes.home.name,
                     path: Routes.home.path,
-                    redirect: (context, state) => redirect(context, state),
+                    redirect: (context, state) => _redirects(),
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(key: state.pageKey, child: const HomePage());
                     }),
@@ -134,7 +140,7 @@ final GoRouter router = GoRouter(
                 GoRoute(
                     name: Routes.status.name,
                     path: Routes.status.path,
-                    redirect: (context, state) => redirect(context, state),
+                    redirect: (context, state) => _redirects(),
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(key: state.pageKey, child: const HomePage());
                     }),
@@ -145,7 +151,7 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   name: Routes.qrCode.name,
                   path: Routes.qrCode.path,
-                  redirect: (context, state) => redirect(context, state),
+                  redirect: (context, state) => _redirects(),
                   pageBuilder: (context, state) => MaterialPage<void>(
                     key: state.pageKey,
                     child: BlocProvider(
@@ -161,14 +167,14 @@ final GoRouter router = GoRouter(
                 GoRoute(
                     name: Routes.selectedPlan.name,
                     path: Routes.selectedPlan.path,
-                    redirect: (context, state) => redirect(context, state),
+                    redirect: (context, state) => _redirects(),
                     routes: [
                       GoRoute(
                         name: Routes.planDetail.name,
                         path: Routes.planDetail.path,
-                        redirect: (context, state) => redirect(context, state),
+                        redirect: (context, state) => _redirects(),
                         pageBuilder: (context, state) {
-                          return MaterialPage<void>(key: state.pageKey, child:  AllPlanPage());
+                          return MaterialPage<void>(key: state.pageKey, child: AllPlanPage());
                         },
                       ),
                     ],
@@ -195,14 +201,14 @@ final GoRouter router = GoRouter(
                 GoRoute(
                     name: Routes.profile.name,
                     path: Routes.profile.path,
-                    redirect: (context, state) => redirect(context, state),
+                    redirect: (context, state) => _redirects(),
                     routes: [
                       GoRoute(
                           name: Routes.selectedTariffTab.name,
                           path: Routes.selectedTariffTab.path,
-                          redirect: (context, state) => redirect(context, state),
+                          redirect: (context, state) => _redirects(),
                           pageBuilder: (context, state) {
-                            return MaterialPage<void>(key: state.pageKey, child:  SelectedPlanTab(profileResponse: state.extra as ProfileResponse));
+                            return MaterialPage<void>(key: state.pageKey, child: SelectedPlanTab(profileResponse: state.extra as ProfileResponse));
                           }),
                     ],
                     pageBuilder: (context, state) {
