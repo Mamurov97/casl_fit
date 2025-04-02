@@ -1,6 +1,5 @@
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
-import 'package:casl_fit/presentation/pages/program/all_plan_page.dart';
-import 'package:casl_fit/presentation/pages/program/plan_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +11,8 @@ import '../../application/home/profile/profile_bloc.dart';
 import '../../domain/common/data/user_data.dart';
 import '../../infrastructure/services/shared_service.dart';
 import '../components/navigation_helper.dart';
+import '../pages/plan/all_plan_page.dart';
+import '../pages/plan/plan_page.dart';
 import '../pages/profile/selected_plan/selected_plan_tab.dart';
 import 'entity/custom_nav_bar.dart';
 import 'entity/pages.dart';

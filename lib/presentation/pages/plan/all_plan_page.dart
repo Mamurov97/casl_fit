@@ -1,5 +1,5 @@
 import 'package:casl_fit/presentation/assets/asset_index.dart';
-import 'package:casl_fit/presentation/pages/program/widgets/all_plan_item.dart';
+import 'package:casl_fit/presentation/pages/plan/widgets/all_plan_item.dart';
 import 'package:flutter/material.dart';
 
 class AllPlanPage extends StatelessWidget {
@@ -57,7 +57,12 @@ class AllPlanPage extends StatelessWidget {
         itemCount: subscriptions.length,
         itemBuilder: (context, index) {
           final item = subscriptions[index];
-          return AllPlanItem(item: item);
+          return AllPlanItem(
+            item: item,
+            onPressed: () {
+              print("worked");
+            },
+          );
         },
       ),
     );
