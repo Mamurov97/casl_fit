@@ -4,7 +4,6 @@ import 'package:casl_fit/infrastructure/dto/models/home/profile/plan_response.da
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/infrastructure/repository/home/profile/profile_repository.dart';
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart';
 
 part 'profile_event.dart';
 
@@ -21,7 +20,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         if (data["status"]) {
           emit(state.copyWith(status: BlocStatus.success, profileResponse: ProfileResponse.fromJson(data["result"])));
         } else {
-          emit(state.copyWith(status: BlocStatus.error));
+          emit(state.copyWith(status: BlocStatus.error, errorMessage: data["error"]["message"]));
         }
       } on DioException catch (e) {
         emit(state.copyWith(status: BlocStatus.error, errorMessage: e.toString()));

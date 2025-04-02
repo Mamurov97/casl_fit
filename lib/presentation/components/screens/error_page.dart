@@ -27,6 +27,8 @@ class ErrorPage extends StatelessWidget {
           ),
           Text(
             error ?? tr('errors.unknown'),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: AppTheme.data.textTheme.titleLarge?.copyWith(color: AppTheme.colors.white),
           ),
           MainButton(

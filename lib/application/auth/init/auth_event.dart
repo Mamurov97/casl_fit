@@ -20,7 +20,7 @@ class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.register({required String otpCode}) = RegisterEvent;
 
-  const factory AuthEvent.passwordRecovery({required String otpCode}) = PasswordRecoveryEvent;
+  const factory AuthEvent.passwordRecovery({required String phone, required String password, required String otpCode}) = PasswordRecoveryEvent;
 
   const factory AuthEvent.sendOtp({required String password}) = SendOtpEvent;
 

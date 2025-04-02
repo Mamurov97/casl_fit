@@ -164,17 +164,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     // Parolni tiklash jarayonini boshlash
     on<PasswordRecoveryEvent>((event, emit) async {
       emit(state.copyWith(resetPasswordStatus: BlocStatus.loading));
-
-      emit(state.copyWith(resetPasswordStatus: BlocStatus.success));
-      // emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: ));
+      try {
+        final response = await repo.resetPassword(password: event.password, otpCode: event.otpCode, phone: event.phone);
+        if (response['status'] == true) {
+          emit(state.copyWith(resetPasswordStatus: BlocStatus.success));
+        } else {
+          emit(state.copyWith(resetPasswordStatus: BlocStatus.error, errorMessage: response['error']['message']));
+        }
+      } catch (e) {
+        emit(state.copyWith(resetPasswordStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
+      }
     });
-
-    // // OTPni tekshirish
-    // on<VerifyOtpEvent>((event, emit) async {
-    //   emit(state.copyWith(otpVerifyStatus: BlocStatus.loading));
-    //
-    //   emit(state.copyWith(otpVerifyStatus: BlocStatus.success));
-    //   // emit(state.copyWith(otpVerifyStatus: BlocStatus.error, errorMessage: ));
-    // });
   }
 }

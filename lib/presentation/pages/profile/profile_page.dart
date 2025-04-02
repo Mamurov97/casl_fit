@@ -1,3 +1,4 @@
+import 'package:casl_fit/application/app_manager/app_manager_cubit.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
@@ -9,6 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../application/home/profile/profile_bloc.dart';
+import '../../../domain/common/data/user_data.dart';
+import '../../../infrastructure/services/shared_service.dart';
+import '../../components/dialogs/exit_dialog.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -19,9 +23,22 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   int expandedIndex = -1;
+  late SharedPrefService pref;
+
+  @override
+  void initState() {
+    getPref();
+
+    super.initState();
+  }
+
+  void getPref() async {
+    pref = await SharedPrefService.initialize();
+  }
 
   @override
   Widget build(BuildContext context) {
+    AppManagerCubit.context=context;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -44,7 +61,11 @@ class _ProfilePageState extends State<ProfilePage> {
             if (state.status == BlocStatus.loading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state.status == BlocStatus.error) {
-              return ErrorPage(onPressed: () {}, error: "Xatolik sodir bo'ldi");
+              return ErrorPage(
+                  onPressed: () {
+                    context.read<ProfileBloc>().add(GetProfileDataEvent());
+                  },
+                  error: state.errorMessage.toString());
             } else if (state.status == BlocStatus.success) {
               ProfileResponse data = state.profileResponse ?? ProfileResponse();
               return SingleChildScrollView(
@@ -82,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       onSwitchChanged: (value) {},
                       onPressed: () {
                         context.push(
-                          "${Routes.root.path}${Routes.profile.path}${Routes.selectedDefinitionTab.path}",
+                          "${Routes.root.path}${Routes.profile.path}${Routes.selectedTariffTab.path}",
                           extra: state.profileResponse ?? ProfileResponse(),
                         );
                       },
@@ -130,7 +151,20 @@ class _ProfilePageState extends State<ProfilePage> {
                           borderRadius: BorderRadius.circular(16.r),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (contextD) => ExitDialog(
+                            onPressed: () async {
+                              var passCode = pref.passcode;
+                              pref.clear();
+                              pref.setPasscode(passCode);
+                              pref.setAuthStatus(true);
+                              context.go(Routes.signIn.path);
+                            },
+                          ),
+                        );
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         child: Row(

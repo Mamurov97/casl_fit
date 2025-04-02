@@ -11,6 +11,7 @@ class AppIcons {
  static const beginTime = 'assets/icons/begin_time.svg';
  static const endTime = 'assets/icons/end_time.svg';
  static const remainDay = 'assets/icons/remain_day.svg';
+ static const exitIcon = 'assets/icons/exit_icon.svg';
 
 
 }

@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.otpStatus.isSuccess) {
-            context.push(Routes.verify.path);
+            context.push(Routes.verify.path,extra: formKey.currentState?.fields['retry_password']?.value );
             context.read<AuthBloc>().add(const ChangeOtpStatusEvent());
           }
         },
