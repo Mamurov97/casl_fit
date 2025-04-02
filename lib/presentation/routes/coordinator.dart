@@ -1,5 +1,5 @@
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
-import 'package:casl_fit/presentation/pages/profile/selected_definitions/selected_plan_tab.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,24 +8,39 @@ import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../../application/home/profile/profile_bloc.dart';
+import '../../domain/common/data/user_data.dart';
+import '../../infrastructure/services/shared_service.dart';
 import '../components/navigation_helper.dart';
+import '../pages/plan/all_plan_page.dart';
+import '../pages/plan/plan_page.dart';
+import '../pages/profile/selected_plan/selected_plan_tab.dart';
 import 'entity/custom_nav_bar.dart';
 import 'entity/pages.dart';
 import 'entity/routes.dart';
 
 final controller = ScrollController();
 
-String? redirect(BuildContext context, GoRouterState state) {
-  return null;
+Future<void> clearAndRoot() async {
+  var pref = await SharedPrefService.initialize();
+  pref.clear();
+  pref.setAuthStatus(true);
 }
 
+String? redirect(BuildContext context, GoRouterState state) {
+  if (UserData.token.isEmpty) {
+    clearAndRoot();
+  }
+  return null;
+}
 final GoRouter router = GoRouter(
-  initialLocation: Routes.signIn.path,
+  initialLocation: "${Routes.root.path}${Routes.home.path}",
+  // initialLocation: Routes.signIn.path,
   routes: <GoRoute>[
     ///auth
     GoRoute(
       name: Routes.signIn.name,
       path: Routes.signIn.path,
+      redirect: (context, state) => redirect(context, state),
       pageBuilder: (context, state) => MaterialPage<void>(
         key: state.pageKey,
         child: const SignInPage(),
@@ -44,7 +59,7 @@ final GoRouter router = GoRouter(
       path: Routes.verify.path,
       pageBuilder: (context, state) => MaterialPage<void>(
         key: state.pageKey,
-        child: const VerifyPage(),
+        child: VerifyPage(password: state.extra as String),
       ),
     ),
     GoRoute(
@@ -88,7 +103,6 @@ final GoRouter router = GoRouter(
               },
               child: PersistentTabView.router(
                 tabs: tabs,
-                // backgroundColor: AppTheme.colors.bottomSheetColor,
                 popActionScreens: PopActionScreensType.all,
                 navBarOverlap: const NavBarOverlap.full(),
                 onTabChanged: (index) {
@@ -145,39 +159,60 @@ final GoRouter router = GoRouter(
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                    name: Routes.program.name,
-                    path: Routes.program.path,
+                    name: Routes.selectedPlan.name,
+                    path: Routes.selectedPlan.path,
+                    redirect: (context, state) => redirect(context, state),
+                    routes: [
+                      GoRoute(
+                        name: Routes.planDetail.name,
+                        path: Routes.planDetail.path,
+                        redirect: (context, state) => redirect(context, state),
+                        pageBuilder: (context, state) {
+                          return MaterialPage<void>(key: state.pageKey, child:  AllPlanPage());
+                        },
+                      ),
+                    ],
+                    pageBuilder: (context, state) {
+                      return MaterialPage<void>(
+                          key: state.pageKey,
+                          child: BlocProvider(
+                            create: (context) => ProfileBloc()..add(GetProfileDataEvent()),
+                            child: const PlanPage(),
+                          ));
+                    })
+
+                /* GoRoute(
+                    name: Routes.selectedTariff.name,
+                    path: Routes.selectedTariff.path,
                     redirect: (context, state) => redirect(context, state),
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(key: state.pageKey, child: const HomePage());
-                    }),
+                    }),*/
               ],
             ),
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                  name: Routes.profile.name,
-                  path: Routes.profile.path,
-                  redirect: (context, state) => redirect(context, state),
-                  routes: [
-                    GoRoute(
-                        name: Routes.selectedDefinitionTab.name,
-                        path: Routes.selectedDefinitionTab.path,
-                        redirect: (context, state) => redirect(context, state),
-                        pageBuilder: (context, state) {
-                          return MaterialPage<void>(key: state.pageKey, child: SelectedPlanTab(profileResponse: state.extra as ProfileResponse));
-                        }),
-                  ],
-                  pageBuilder: (context, state) {
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: BlocProvider(
-                        create: (context) => ProfileBloc()..add(GetProfileDataEvent()),
-                        child: const ProfilePage(),
-                      ),
-                    );
-                  },
-                ),
+                    name: Routes.profile.name,
+                    path: Routes.profile.path,
+                    redirect: (context, state) => redirect(context, state),
+                    routes: [
+                      GoRoute(
+                          name: Routes.selectedTariffTab.name,
+                          path: Routes.selectedTariffTab.path,
+                          redirect: (context, state) => redirect(context, state),
+                          pageBuilder: (context, state) {
+                            return MaterialPage<void>(key: state.pageKey, child:  SelectedPlanTab(profileResponse: state.extra as ProfileResponse));
+                          }),
+                    ],
+                    pageBuilder: (context, state) {
+                      return MaterialPage<void>(
+                          key: state.pageKey,
+                          child: BlocProvider(
+                            create: (context) => ProfileBloc()..add(GetProfileDataEvent()),
+                            child: const ProfilePage(),
+                          ));
+                    }),
               ],
             ),
           ],

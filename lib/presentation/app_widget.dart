@@ -14,11 +14,13 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppManagerCubit, AppManagerState>(
       builder: (context, state) {
+
         if (state is AppManagerLoading) {
           return const CircularIndicator();
         } else if (state is AppManagerError) {
           return ErrorView(error: state.error);
         } else {
+
           return OKToast(
             child: MaterialApp.router(
               title: 'CaslFit',

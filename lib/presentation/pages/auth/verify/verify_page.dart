@@ -12,7 +12,9 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
 class VerifyPage extends StatefulWidget {
-  const VerifyPage({super.key});
+  final String password;
+
+  const VerifyPage({super.key, required this.password});
 
   @override
   State<VerifyPage> createState() => _VerifyPageState();
@@ -33,10 +35,6 @@ class _VerifyPageState extends State<VerifyPage> {
       child: Scaffold(
         body: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
-            //loadingni tekshirish
-            if (state.resetPasswordStatus.isLoading || state.registerStatus.isLoading) {
-              ///loading yozish kerak
-            }
 
             //login statusini eshitish
             if (state.registerPageType == 'register_type') {
@@ -48,7 +46,11 @@ class _VerifyPageState extends State<VerifyPage> {
             }
             //reset password statusini eshitish
             if (state.registerPageType == 'password_recovery_type') {
-              if (state.resetPasswordStatus.isSuccess) context.go(Routes.signIn.path);
+              print("#####################");
+              print(state.resetPasswordStatus.toString());
+              if (state.resetPasswordStatus.isSuccess) {
+                context.go(Routes.signIn.path);
+              }
               if (state.resetPasswordStatus.isError) {
                 Toast.showErrorToast(message: state.errorMessage);
               }
@@ -108,7 +110,7 @@ class _VerifyPageState extends State<VerifyPage> {
                               context.read<AuthBloc>().add(RegisterEvent(otpCode: value));
                             }
                             if (state.registerPageType == 'password_recovery_type') {
-                              context.read<AuthBloc>().add(PasswordRecoveryEvent(otpCode: value));
+                              context.read<AuthBloc>().add(PasswordRecoveryEvent(otpCode: value, phone: state.phoneNumber.toString(), password: state.password.toString()));
                             }
                           },
                         ),
@@ -155,7 +157,8 @@ class _VerifyPageState extends State<VerifyPage> {
                               ),
                             ),
                           ],
-                        )
+                        ),
+                        if (state.resetPasswordStatus.isLoading || state.registerStatus.isLoading) Center(child: CircularProgressIndicator(color: AppTheme.colors.primary))
                       ],
                     ),
                   ),

@@ -21,7 +21,7 @@ class AppManagerCubit extends Cubit<AppManagerState> {
       PlatformInfo.init();
 
       final pref = await SharedPrefService.initialize();
-
+ 
       UserData.token = pref.getToken;
       UserData.authStatus = pref.isAuthorized;
       UserData.userId = pref.getUserId;

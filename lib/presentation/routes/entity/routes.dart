@@ -28,8 +28,12 @@ class Routes implements Coordinate {
 
 
   ///profile
-  static const selectedDefinitions= Routes._(name: "selectedDefinitions",path: '/selectedDefinitions');
-  static const selectedDefinitionTab= Routes._(name: "selectedDefinitionTab",path: '/selectedDefinitionTab');
+  static const selectedPlan = Routes._(name: "selectedDefinitions", path: '/selectedDefinitions');
+  static const selectedTariffTab = Routes._(name: "selectedDefinitionTab", path: '/selectedDefinitionTab');
+
+  ///Plan
+  static const planDetail = Routes._(name: "plan_detail", path: '/plan_detail');
+
   @override
   String toString() => 'name=$name, path=$path';
 }

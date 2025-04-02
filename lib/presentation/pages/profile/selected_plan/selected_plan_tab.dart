@@ -1,8 +1,10 @@
+import 'package:casl_fit/application/home/profile/profile_bloc.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
-import 'package:casl_fit/presentation/pages/profile/selected_definitions/selected_definitions_page.dart';
+import 'package:casl_fit/presentation/pages/profile/selected_plan/all_plans_page.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SelectedPlanTab extends StatefulWidget {
   final ProfileResponse profileResponse;
@@ -21,7 +23,7 @@ class _SelectedPlanTabState extends State<SelectedPlanTab> with TickerProviderSt
   @override
   void initState() {
     tabController = TabController(length: 2, initialIndex: 0, animationDuration: const Duration(seconds: 0), vsync: this);
-    tabController.addListener(_listenToTabChanges);
+ //  tabController.addListener(_listenToTabChanges);
     super.initState();
   }
 
@@ -29,8 +31,8 @@ class _SelectedPlanTabState extends State<SelectedPlanTab> with TickerProviderSt
 
   void _listenToTabChanges() {
     if (tabIndex != tabController.index) {
-      tabIndex = tabController.index;
-      setState(() {});
+    //  tabIndex = tabController.index;
+     // setState(() {});
     }
   }
 
@@ -74,22 +76,19 @@ class _SelectedPlanTabState extends State<SelectedPlanTab> with TickerProviderSt
               indicator: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(8.r)),
               splashBorderRadius: BorderRadius.circular(8.r),
               controller: tabController,
-              onTap: (t) {
-
-              },
-
+              onTap: (t) {},
               tabs: [
                 Tab(
                     child: Text(
-                  "Mening tarifim",
-                  style: AppTheme.data.textTheme.titleSmall?.copyWith(fontSize: 14.h, color:  Colors.white),
-                )),
+                      "Mening tarifim",
+                      style: AppTheme.data.textTheme.titleSmall?.copyWith(fontSize: 14.h, color: Colors.white),
+                    )),
                 Tab(
                     child: Text(
-                  "Barcha tariflar",
-                  style: AppTheme.data.textTheme.titleSmall?.copyWith(fontSize: 14.h, color: Colors.white),
-                  textAlign: TextAlign.center,
-                )),
+                      "Barcha tariflar",
+                      style: AppTheme.data.textTheme.titleSmall?.copyWith(fontSize: 14.h, color: Colors.white),
+                      textAlign: TextAlign.center,
+                    )),
               ],
             ),
           ),
@@ -100,8 +99,12 @@ class _SelectedPlanTabState extends State<SelectedPlanTab> with TickerProviderSt
 
         controller: tabController,
         children: [
-          SelectedPlanPage(profileResponse: widget.profileResponse),
-          SelectedPlanPage(profileResponse: widget.profileResponse),
+         // SelectedPlanPage(profileResponse: widget.profileResponse),
+          BlocProvider(
+            create: (context) => ProfileBloc()..add(GetPlansEvent()),
+            child: const AllPlanPage(),
+          ),
+          //  SelectedPlanPage(profileResponse: widget.profileResponse),
         ],
       ),
     );
