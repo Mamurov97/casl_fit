@@ -64,7 +64,7 @@ class _SelectedPlanTabState extends State<SelectedPlanTab> with TickerProviderSt
           child: Container(
             // padding: EdgeInsets.symmetric(horizontal: 4.w),
             margin: EdgeInsets.symmetric(horizontal: 12.w),
-            decoration: BoxDecoration(color: AppTheme.colors.secondary.withOpacity(0.7), borderRadius: BorderRadius.circular(8.r)),
+            decoration: BoxDecoration(color: AppTheme.colors.secondary.withValues(alpha: 0.7), borderRadius: BorderRadius.circular(8.r)),
             child: TabBar(
               unselectedLabelColor: Colors.white,
               labelColor: Colors.black,

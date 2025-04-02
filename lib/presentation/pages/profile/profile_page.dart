@@ -4,7 +4,6 @@ import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/pages/profile/widgets/accordion.dart';
-import 'package:casl_fit/presentation/components/buttons/menu_button.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('profile.profile'.tr(), style: TextStyle(color: Colors.white)),
+        title: Text('profile.profile'.tr(), style: const TextStyle(color: Colors.white)),
         centerTitle: true,
         actions: [
           IconButton(

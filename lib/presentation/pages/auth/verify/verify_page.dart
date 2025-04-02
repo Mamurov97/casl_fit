@@ -46,8 +46,6 @@ class _VerifyPageState extends State<VerifyPage> {
             }
             //reset password statusini eshitish
             if (state.registerPageType == 'password_recovery_type') {
-              print("#####################");
-              print(state.resetPasswordStatus.toString());
               if (state.resetPasswordStatus.isSuccess) {
                 context.go(Routes.signIn.path);
               }

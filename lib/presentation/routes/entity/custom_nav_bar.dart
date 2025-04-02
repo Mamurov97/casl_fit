@@ -99,7 +99,7 @@ class DecoratedNavBar extends StatelessWidget {
             ),
           DecoratedBox(
             decoration: decoration.copyWith(
-              color: decoration.color?.withOpacity(opacity),
+              color: decoration.color?.withValues(alpha: opacity),
             ),
             child: Container(
               padding: decoration.padding,
