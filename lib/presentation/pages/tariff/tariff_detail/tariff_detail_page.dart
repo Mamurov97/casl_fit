@@ -1,14 +1,14 @@
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:flutter/material.dart';
 
-class PlanDetailScreen extends StatefulWidget {
-  const PlanDetailScreen({super.key});
+class TariffDetailPage extends StatefulWidget {
+  const TariffDetailPage({super.key});
 
   @override
-  State<PlanDetailScreen> createState() => _PlanDetailScreenState();
+  State<TariffDetailPage> createState() => _TariffDetailPageState();
 }
 
-class _PlanDetailScreenState extends State<PlanDetailScreen> {
+class _TariffDetailPageState extends State<TariffDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

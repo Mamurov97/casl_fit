@@ -1,21 +1,20 @@
-import 'dart:math';
-
 import 'package:casl_fit/presentation/assets/asset_index.dart';
-import 'package:casl_fit/presentation/assets/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MenuItem extends StatefulWidget {
+class MenuButton extends StatefulWidget {
   final String title;
   final String icon;
   final bool hasSwitch;
   final bool switchValue;
-  final bool isExpanded ;
+  final bool isExpanded;
+
   final ValueChanged<bool>? onSwitchChanged;
   final VoidCallback onPressed;
-  const MenuItem({
-    Key? key,
+
+  const MenuButton({
+    super.key,
     required this.title,
     required this.icon,
     required this.onPressed,
@@ -23,13 +22,13 @@ class MenuItem extends StatefulWidget {
     this.hasSwitch = false,
     this.switchValue = false,
     this.onSwitchChanged,
-  }) : super(key: key);
+  });
 
   @override
-  State<MenuItem> createState() => _MenuItemState();
+  State<MenuButton> createState() => _MenuButtonState();
 }
 
-class _MenuItemState extends State<MenuItem> {
+class _MenuButtonState extends State<MenuButton> {
   @override
   Widget build(BuildContext context) {
     bool switchChange = widget.switchValue;
@@ -40,7 +39,7 @@ class _MenuItemState extends State<MenuItem> {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
           decoration: BoxDecoration(
-            color: Colors.grey[850],
+            color: AppTheme.colors.secondary.withValues(alpha: 0.8),
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Row(
@@ -51,7 +50,7 @@ class _MenuItemState extends State<MenuItem> {
                   SvgPicture.asset(
                     widget.icon,
                     height: 16.r,
-                    colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn), // Replace with AppTheme.colors.primary
+                    colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
                   ),
                   const SizedBox(width: 10),
                   Text(
@@ -65,7 +64,7 @@ class _MenuItemState extends State<MenuItem> {
                       width: 40.0,
                       height: 20.0,
                       child: CupertinoSwitch(
-                        activeColor: AppTheme.colors.primary,
+                        activeTrackColor: AppTheme.colors.primary,
                         thumbColor: AppTheme.colors.secondary,
                         value: switchChange,
                         onChanged: (value) {
@@ -80,7 +79,7 @@ class _MenuItemState extends State<MenuItem> {
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
-                      child:AnimatedRotation(
+                      child: AnimatedRotation(
                         turns: widget.isExpanded ? 0.25 : 0,
                         duration: const Duration(milliseconds: 100),
                         curve: Curves.easeInOut,

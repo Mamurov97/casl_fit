@@ -1,5 +1,4 @@
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
-import 'package:casl_fit/presentation/pages/plan/screen/plan_detail/plan_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,8 +10,6 @@ import '../../application/home/profile/profile_bloc.dart';
 import '../../domain/common/data/user_data.dart';
 import '../../infrastructure/services/shared_service.dart';
 import '../components/navigation_helper.dart';
-import '../pages/plan/all_plan_page.dart';
-import '../pages/plan/plan_page.dart';
 import '../pages/profile/selected_plan/selected_plan_tab.dart';
 import 'entity/custom_nav_bar.dart';
 import 'entity/pages.dart';
@@ -166,45 +163,36 @@ final GoRouter router = GoRouter(
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                    name: Routes.selectedPlan.name,
-                    path: Routes.selectedPlan.path,
+                    name: Routes.tariff.name,
+                    path: Routes.tariff.path,
                     redirect: (context, state) => _redirects(),
                     routes: [
                       GoRoute(
-                        name: Routes.planAll.name,
-                        path: Routes.planAll.path,
-                        redirect: (context, state) => _redirects(),
-                        pageBuilder: (context, state) {
-                          return MaterialPage<void>(key: state.pageKey, child: AllPlanPage());
-                        },
-                        routes: [
-                          GoRoute(
-                            name: Routes.planDetail.name,
-                            path: Routes.planDetail.path,
-                            redirect: (context, state) => _redirects(),
-                            pageBuilder: (context, state) {
-                              return MaterialPage<void>(key: state.pageKey, child: const PlanDetailScreen());
-                            },
-                          ),
-                        ]
-                      ),
+                          name: Routes.allTariff.name,
+                          path: Routes.allTariff.path,
+                          redirect: (context, state) => _redirects(),
+                          pageBuilder: (context, state) {
+                            return MaterialPage<void>(key: state.pageKey, child: AllTariffPage());
+                          },
+                          routes: [
+                            GoRoute(
+                              name: Routes.tariffDetail.name,
+                              path: Routes.tariffDetail.path,
+                              redirect: (context, state) => _redirects(),
+                              pageBuilder: (context, state) {
+                                return MaterialPage<void>(key: state.pageKey, child: const TariffDetailPage());
+                              },
+                            ),
+                          ]),
                     ],
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(
                           key: state.pageKey,
                           child: BlocProvider(
                             create: (context) => ProfileBloc()..add(GetProfileDataEvent()),
-                            child: const PlanPage(),
+                            child: const TariffPage(),
                           ));
                     })
-
-                /* GoRoute(
-                    name: Routes.selectedTariff.name,
-                    path: Routes.selectedTariff.path,
-                    redirect: (context, state) => redirect(context, state),
-                    pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const HomePage());
-                    }),*/
               ],
             ),
             StatefulShellBranch(

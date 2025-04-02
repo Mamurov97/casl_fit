@@ -1,11 +1,11 @@
 import 'package:casl_fit/presentation/assets/asset_index.dart';
-import 'package:casl_fit/presentation/pages/plan/widgets/all_plan_item.dart';
+import 'package:casl_fit/presentation/pages/tariff/components/tariff_item.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-class AllPlanPage extends StatelessWidget {
-   AllPlanPage({super.key});
+class AllTariffPage extends StatelessWidget {
+  AllTariffPage({super.key});
+
   final List<Map<String, dynamic>> subscriptions = [
     {
       "title": "12 oylik",
@@ -44,11 +44,11 @@ class AllPlanPage extends StatelessWidget {
       "color": Colors.orange,
     },
   ];
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
-
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
@@ -59,11 +59,11 @@ class AllPlanPage extends StatelessWidget {
         itemCount: subscriptions.length,
         itemBuilder: (context, index) {
           final item = subscriptions[index];
-          return AllPlanItem(
+          return TariffItem(
             item: item,
             onPressed: () {
               context.push(
-                "${Routes.root.path}${Routes.selectedPlan.path}${Routes.planAll.path}${Routes.planDetail.path}",
+                "${Routes.root.path}${Routes.tariff.path}${Routes.allTariff.path}${Routes.tariffDetail.path}",
               );
             },
           );

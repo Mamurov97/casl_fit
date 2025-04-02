@@ -19,21 +19,20 @@ class Routes implements Coordinate {
 
   ///bottom_navigation_bar
   static const root = Routes._(name: 'root', path: '/root');
-  static const home = Routes._(name: 'home', path: '/home');
 
+  ///Tabs
+  static const home = Routes._(name: 'home', path: '/home');
   static const status = Routes._(name: 'status', path: '/status');
-  static const qrCode = Routes._(name: 'qr_code_page', path: '/qr_code');
-  static const program = Routes._(name: 'program', path: '/program');
+  static const qrCode = Routes._(name: 'qr_code', path: '/qr_code');
+  static const tariff = Routes._(name: "tariff", path: '/tariff');
   static const profile = Routes._(name: 'profile', path: '/profile');
 
+  ///Tariff
+  static const allTariff = Routes._(name: "all_tariff", path: '/all_tariff');
+  static const tariffDetail = Routes._(name: "tariff_detail", path: '/tariff_detail');
 
   ///profile
-  static const selectedPlan = Routes._(name: "selectedDefinitions", path: '/selectedDefinitions');
   static const selectedTariffTab = Routes._(name: "selectedDefinitionTab", path: '/selectedDefinitionTab');
-
-  ///Plan
-  static const planAll = Routes._(name: "plan_all", path: '/plan_all');
-  static const planDetail = Routes._(name: "plan_detail", path: '/plan_detail');
 
   @override
   String toString() => 'name=$name, path=$path';
