@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/assets/theme/app_theme.dart';

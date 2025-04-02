@@ -2,7 +2,6 @@ import 'package:casl_fit/application/home/profile/profile_bloc.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/pages/profile/selected_plan/all_plans_page.dart';
-import 'package:casl_fit/presentation/pages/program/plan_page.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

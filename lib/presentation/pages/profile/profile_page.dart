@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../application/home/profile/profile_bloc.dart';
-import '../../../domain/common/data/user_data.dart';
 import '../../../infrastructure/services/shared_service.dart';
 import '../../components/dialogs/exit_dialog.dart';
 
