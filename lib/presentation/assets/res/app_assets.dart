@@ -12,6 +12,9 @@ class AppIcons {
  static const endTime = 'assets/icons/end_time.svg';
  static const remainDay = 'assets/icons/remain_day.svg';
  static const exitIcon = 'assets/icons/exit_icon.svg';
+ static const weight = 'assets/icons/weight.svg';
+ static const height = 'assets/icons/height.svg';
+ static const age = 'assets/icons/age.svg';
 
 
 }

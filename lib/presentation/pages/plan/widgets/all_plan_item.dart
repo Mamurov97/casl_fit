@@ -1,5 +1,4 @@
 import 'package:casl_fit/presentation/assets/asset_index.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AllPlanItem extends StatelessWidget {

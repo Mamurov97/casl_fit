@@ -38,6 +38,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  animated_toast_list:
+    dependency: "direct main"
+    description:
+      name: animated_toast_list
+      sha256: "7d91208a3defee6c03ef474e45942055dd931332e2eb932a75eaa9d85992803d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   archive:
     dependency: transitive
     description:
@@ -450,10 +458,10 @@ packages:
     dependency: "direct main"
     description:
       name: fl_chart
-      sha256: "5276944c6ffc975ae796569a826c38a62d2abcf264e26b88fa6f482e107f4237"
+      sha256: "74959b99b92b9eebeed1a4049426fd67c4abc3c5a0f4d12e2877097d6a11ae08"
       url: "https://pub.dev"
     source: hosted
-    version: "0.70.2"
+    version: "0.69.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -610,6 +618,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.1.0"
+  freedom_table:
+    dependency: "direct main"
+    description:
+      name: freedom_table
+      sha256: bc3b6794895db3b6330d6d987860cab330288027b6aa762751a235669b937cc0
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.6+3"
   freezed:
     dependency: "direct dev"
     description:

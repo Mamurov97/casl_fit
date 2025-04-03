@@ -30,6 +30,7 @@ class Routes implements Coordinate {
   ///profile
   static const selectedPlan = Routes._(name: "selectedDefinitions", path: '/selectedDefinitions');
   static const selectedTariffTab = Routes._(name: "selectedDefinitionTab", path: '/selectedDefinitionTab');
+  static const weightHeight = Routes._(name: "weight_height", path: '/weight_height');
 
   ///Plan
   static const planDetail = Routes._(name: "plan_detail", path: '/plan_detail');

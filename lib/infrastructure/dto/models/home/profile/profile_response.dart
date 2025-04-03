@@ -1,8 +1,8 @@
 class ProfileResponse {
   String? guidClient;
   String? name;
-  String? seriaPassport;
-  String? numberPassport;
+  String? seriyaPassport;
+  String? nomerPassport;
   String? passportIssueDate;
   String? whoIssuedThePassport;
   String? pnfl;
@@ -14,12 +14,15 @@ class ProfileResponse {
   int? balans;
   List<Tarif>? tarif;
   Photo? photo;
+  String? weight;
+  String? height;
+  int? age;
 
   ProfileResponse(
       {this.guidClient,
         this.name,
-        this.seriaPassport,
-        this.numberPassport,
+        this.seriyaPassport,
+        this.nomerPassport,
         this.passportIssueDate,
         this.whoIssuedThePassport,
         this.pnfl,
@@ -30,13 +33,16 @@ class ProfileResponse {
         this.tel,
         this.balans,
         this.tarif,
-        this.photo});
+        this.photo,
+        this.weight,
+        this.height,
+        this.age});
 
   ProfileResponse.fromJson(Map<String, dynamic> json) {
     guidClient = json['GuidClient'];
     name = json['name'];
-    seriaPassport = json['seriya_passport'];
-    numberPassport = json['nomer_passport'];
+    seriyaPassport = json['seriya_passport'];
+    nomerPassport = json['nomer_passport'];
     passportIssueDate = json['passport_issue_date'];
     whoIssuedThePassport = json['who_issued_the_passport'];
     pnfl = json['pnfl'];
@@ -49,18 +55,21 @@ class ProfileResponse {
     if (json['tarif'] != null) {
       tarif = <Tarif>[];
       json['tarif'].forEach((v) {
-        tarif!.add(new Tarif.fromJson(v));
+        tarif!.add(Tarif.fromJson(v));
       });
     }
-    photo = json['photo'] != null ? new Photo.fromJson(json['photo']) : null;
+    photo = json['photo'] != null ? Photo.fromJson(json['photo']) : null;
+    weight = json['weight'];
+    height = json['height'];
+    age = json['age'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['GuidClient'] = guidClient;
     data['name'] = name;
-    data['seriya_passport'] = seriaPassport;
-    data['nomer_passport'] = numberPassport;
+    data['seriya_passport'] = seriyaPassport;
+    data['nomer_passport'] = nomerPassport;
     data['passport_issue_date'] = passportIssueDate;
     data['who_issued_the_passport'] = whoIssuedThePassport;
     data['pnfl'] = pnfl;
@@ -76,12 +85,10 @@ class ProfileResponse {
     if (photo != null) {
       data['photo'] = photo!.toJson();
     }
+    data['weight'] = weight;
+    data['height'] = height;
+    data['age'] = age;
     return data;
-  }
-
-  @override
-  String toString() {
-    return 'ProfileResponse {guidClient: $guidClient, name: $name, seriaPassport: $seriaPassport, numberPassport: $numberPassport, passportIssueDate: $passportIssueDate, whoIssuedThePassport: $whoIssuedThePassport, pnfl: $pnfl, mfy: $mfy, qfy: $qfy, dateBirthday: $dateBirthday, passportName: $passportName, tel: $tel, balans: $balans, tarif: $tarif, photo: $photo}';
   }
 }
 

@@ -1,4 +1,6 @@
+import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
+import 'package:casl_fit/presentation/pages/profile/weight_height/weight_height_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -209,6 +211,18 @@ final GoRouter router = GoRouter(
                           redirect: (context, state) => _redirects(),
                           pageBuilder: (context, state) {
                             return MaterialPage<void>(key: state.pageKey, child: SelectedPlanTab(profileResponse: state.extra as ProfileResponse));
+                          }),
+                      GoRoute(
+                          name: Routes.weightHeight.name,
+                          path: Routes.weightHeight.path,
+                          redirect: (context, state) => _redirects(),
+                          pageBuilder: (context, state) {
+                            return MaterialPage<void>(
+                                key: state.pageKey,
+                                child: BlocProvider(
+                                  create: (context) => WeightHeightBloc()..add(GetWeightHeightEvent(weightHeightEnum: state.extra as WeightHeightEnum)),
+                                  child: const WeightHeightPage(),
+                                ));
                           }),
                     ],
                     pageBuilder: (context, state) {

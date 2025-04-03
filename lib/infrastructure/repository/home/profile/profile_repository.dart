@@ -10,4 +10,24 @@ class ProfileRepository{
     final response = await dio.get('plan/all');
     return response.data;
   }
+
+  Future<Map<String, dynamic>> setWeight({required String weightHeight}) async {
+    final response = await dio.post('client/weight-store', data: {"size": weightHeight});
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> setHeight({required String weightHeight}) async {
+    final response = await dio.post('client/height-store', data: {"size": weightHeight});
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> getWeight() async {
+    final response = await dio.get('client/weight-info');
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> getHeight() async {
+    final response = await dio.get('client/height-info');
+    return response.data;
+  }
 }

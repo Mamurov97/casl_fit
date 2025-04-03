@@ -57,25 +57,4 @@ class PlanPage extends StatelessWidget {
   }
 }
 
-/* Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.h),
-            child: SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: List.generate((state.profileResponse?.tarif ?? []).length, (index) {
-                    var list = state.profileResponse?.tarif ?? [];
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 6.w),
-                      child: CustomExpansionTileWidget(
-                        title: list[index].tarif ?? "",
-                        isExpanded: true,
-                        onExpand: () {
-                        },
-                        children: [DefinitionLimitsCard(definition: list[index])],
-                      ),
-                    );
-                  }),
-                ),
-              ),
-            ),
-          );*/
+
