@@ -14,7 +14,7 @@ class ExitDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-      backgroundColor: AppTheme.colors.secondary.withOpacity(0.7),
+      backgroundColor: AppTheme.colors.secondary.withValues(alpha: 0.7),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       content: Column(
         mainAxisAlignment: MainAxisAlignment.center,

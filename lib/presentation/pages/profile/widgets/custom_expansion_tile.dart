@@ -58,10 +58,10 @@ class CustomExpansionTileController {
         '  https://api.flutter.dev/flutter/material/ExpansionTile/of.html',
       ),
       ErrorHint(
-        'A more efficient solution is to split your build function into several widgets. This '
+        'A more efficient solution is to split your build function into several components. This '
         'introduces a new context from which you can obtain the ExpansionTile. In this solution, '
         'you would have an outer widget that creates the ExpansionTile populated by instances of '
-        'your new inner widgets, and then in these inner widgets you would use ExpansionTileController.of().\n'
+        'your new inner components, and then in these inner components you would use ExpansionTileController.of().\n'
         'An other solution is assign a GlobalKey to the ExpansionTile, '
         'then use the key.currentState property to obtain the ExpansionTile rather than '
         'using the ExpansionTileController.of() function.',

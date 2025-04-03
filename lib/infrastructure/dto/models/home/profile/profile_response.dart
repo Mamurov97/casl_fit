@@ -49,10 +49,10 @@ class ProfileResponse {
     if (json['tarif'] != null) {
       tarif = <Tarif>[];
       json['tarif'].forEach((v) {
-        tarif!.add(new Tarif.fromJson(v));
+        tarif!.add(Tarif.fromJson(v));
       });
     }
-    photo = json['photo'] != null ? new Photo.fromJson(json['photo']) : null;
+    photo = json['photo'] != null ? Photo.fromJson(json['photo']) : null;
   }
 
   Map<String, dynamic> toJson() {

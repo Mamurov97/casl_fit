@@ -11,6 +11,7 @@
   "continue": "Davom etish",
   "un_selected": "Tanlanmagan...",
   "ta": "ta",
+  "loading": "Yuklanmoqda...",
   "sign_in": {
     "phone_number": "Telefon raqami",
     "password": "Parol",
@@ -80,7 +81,6 @@
   "qrcode": {
     "get_new_qr": "Yangi QR kod olish"
   },
-
   "profile": {
     "edit_profile": "Profilni tahrirlash",
     "notification": "Bildirishnomalar",

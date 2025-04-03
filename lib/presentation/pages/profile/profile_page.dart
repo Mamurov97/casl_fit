@@ -4,7 +4,6 @@ import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/pages/profile/widgets/accordion.dart';
-import 'package:casl_fit/presentation/pages/profile/widgets/menu_item.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('profile.profile'.tr(), style: TextStyle(color: Colors.white)),
+        title: Text('profile.profile'.tr(), style: const TextStyle(color: Colors.white)),
         centerTitle: true,
         actions: [
           IconButton(
@@ -95,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: TextStyle(color: Colors.white, fontSize: 10.sp, fontWeight: FontWeight.w500),
                     ),
                     SizedBox(height: 36.h),
-                    MenuItem(
+                    MenuButton(
                       isExpanded: state.isDefinitionExpanded ?? false,
                       title: 'profile.definition'.tr(),
                       icon: AppIcons.profile,
@@ -124,12 +123,12 @@ class _ProfilePageState extends State<ProfilePage> {
                           );
                         }),
                       ),
-                    MenuItem(
+                    MenuButton(
                       title: 'profile.edit_profile'.tr(),
                       icon: AppIcons.profile,
                       onPressed: () {},
                     ),
-                    MenuItem(
+                    MenuButton(
                       title: 'profile.notification'.tr(),
                       icon: AppIcons.notification,
                       switchValue: true,
@@ -137,7 +136,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       onSwitchChanged: (value) {},
                       onPressed: () {},
                     ),
-                    MenuItem(
+                    MenuButton(
                       title: "profile.setting".tr(),
                       icon: AppIcons.settings,
                       onPressed: () {},

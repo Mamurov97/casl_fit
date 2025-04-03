@@ -7,7 +7,7 @@ class ProfileRepository{
   }
 
   Future<Map<String, dynamic>> getPlan() async {
-    final response = await dio.get('plan/all');
+    final response = await dio.get('tariff/all');
     return response.data;
   }
 }

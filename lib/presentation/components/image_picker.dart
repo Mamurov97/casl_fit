@@ -15,17 +15,13 @@ class ImageHelper {
     try {
       final pickedFile = await picker.pickImage(source: ImageSource.gallery);
       if (pickedFile == null) {
-        print("No image selected");
         return null;
       }
 
-      print("Picked file path: ${pickedFile.path}");
       final croppedFile = await _cropImage(pickedFile.path);
 
       return croppedFile;
-    } catch (e, stacktrace) {
-      print("Error while picking/cropping image: $e");
-      print(stacktrace);
+    } catch (e) {
       return null;
     }
   }
@@ -35,17 +31,13 @@ class ImageHelper {
     try {
       final pickedFile = await picker.pickImage(source: ImageSource.camera);
       if (pickedFile == null) {
-        print("No image selected from camera");
         return null;
       }
 
-      print("Picked file path: ${pickedFile.path}");
       final croppedFile = await _cropImage(pickedFile.path);
 
       return croppedFile;
-    } catch (e, stacktrace) {
-      print("Error while picking/cropping image: $e");
-      print(stacktrace);
+    } catch (e) {
       return null;
     }
   }
