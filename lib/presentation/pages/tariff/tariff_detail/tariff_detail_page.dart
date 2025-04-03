@@ -19,7 +19,7 @@ class TariffDetailPage extends StatelessWidget {
     final List<Map<String, dynamic>> narxInfo = [
       {
         "label": "Narxi",
-        "value": "${NumberFormat("#,###", "uz_UZ").format(model?.price ?? 0).replaceAll(",", " ")} so'm",
+        "value": "${NumberFormat("#,###", "uz_UZ").format(model.price ?? 0).replaceAll(",", " ")} so'm",
       },
       /* {"label": "Chegirma", "value": "-1 000 000 so‘m", "color": Colors.blue},
       {"label": "Summa", "value": "6 590 000 so‘m"},
