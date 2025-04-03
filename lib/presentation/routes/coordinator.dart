@@ -163,36 +163,33 @@ final GoRouter router = GoRouter(
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                    name: Routes.tariff.name,
-                    path: Routes.tariff.path,
-                    redirect: (context, state) => _redirects(),
-                    routes: [
-                      GoRoute(
-                          name: Routes.allTariff.name,
-                          path: Routes.allTariff.path,
+                  name: Routes.tariff.name,
+                  path: Routes.tariff.path,
+                  redirect: (context, state) => _redirects(),
+                  routes: [
+                    GoRoute(
+                      name: Routes.allTariff.name,
+                      path: Routes.allTariff.path,
+                      redirect: (context, state) => _redirects(),
+                      pageBuilder: (context, state) {
+                        return MaterialPage<void>(key: state.pageKey, child: const AllTariffPage());
+                      },
+                      routes: [
+                        GoRoute(
+                          name: Routes.tariffDetail.name,
+                          path: Routes.tariffDetail.path,
                           redirect: (context, state) => _redirects(),
                           pageBuilder: (context, state) {
-                            return MaterialPage<void>(key: state.pageKey, child: AllTariffPage());
+                            return MaterialPage<void>(key: state.pageKey, child: const TariffDetailPage());
                           },
-                          routes: [
-                            GoRoute(
-                              name: Routes.tariffDetail.name,
-                              path: Routes.tariffDetail.path,
-                              redirect: (context, state) => _redirects(),
-                              pageBuilder: (context, state) {
-                                return MaterialPage<void>(key: state.pageKey, child: const TariffDetailPage());
-                              },
-                            ),
-                          ]),
-                    ],
-                    pageBuilder: (context, state) {
-                      return MaterialPage<void>(
-                          key: state.pageKey,
-                          child: BlocProvider(
-                            create: (context) => ProfileBloc()..add(GetProfileDataEvent()),
-                            child: const TariffPage(),
-                          ));
-                    })
+                        ),
+                      ],
+                    ),
+                  ],
+                  pageBuilder: (context, state) {
+                    return MaterialPage<void>(key: state.pageKey, child: const TariffPage());
+                  },
+                )
               ],
             ),
             StatefulShellBranch(
