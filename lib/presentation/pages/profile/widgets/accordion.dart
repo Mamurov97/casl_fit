@@ -20,7 +20,7 @@ class CustomExpansionTileWidget extends StatefulWidget {
   });
 
   @override
-  _CustomExpansionTileWidgetState createState() => _CustomExpansionTileWidgetState();
+  State<CustomExpansionTileWidget> createState() => _CustomExpansionTileWidgetState();
 }
 
 class _CustomExpansionTileWidgetState extends State<CustomExpansionTileWidget> {
@@ -97,7 +97,7 @@ class DefinitionLimitsCard extends StatelessWidget {
       padding: EdgeInsets.all(8.w),
   margin:  EdgeInsets.symmetric(vertical: 12.h,horizontal: 0.w).copyWith(left: 12.w),
       decoration: BoxDecoration(
-        color: AppTheme.colors.secondary.withOpacity(0.8),
+        color: AppTheme.colors.secondary.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Column(

@@ -1,14 +1,13 @@
 import 'package:casl_fit/application/app_manager/app_manager_cubit.dart';
-import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
-import 'package:casl_fit/presentation/pages/profile/widgets/info_card.dart';
-import 'package:casl_fit/presentation/pages/profile/widgets/menu_item.dart';
+import 'package:casl_fit/presentation/pages/profile/widgets/accordion.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../application/home/profile/profile_bloc.dart';
 import '../../../infrastructure/services/shared_service.dart';
 import '../../components/dialogs/exit_dialog.dart';
@@ -94,39 +93,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 10.sp, fontWeight: FontWeight.w500),
                     ),
-                    SizedBox(height: 12.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        InfoItem(
-                          type: 'kg',
-                          text: "Vazn",
-                          icon: AppIcons.weight,
-                          value: state.profileResponse?.weight ?? "",
-                          onPressed: () {
-                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight);
-                          },
-                        ),
-                        InfoItem(
-                          type: 'sm',
-                          text: "Bo'y",
-                          icon: AppIcons.height,
-                          value: state.profileResponse?.height ?? "",
-                          onPressed: () {
-                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height);
-                          },
-                        ),
-                        InfoItem(
-                          type: 'yosh',
-                          text: "Yosh",
-                          icon: AppIcons.age,
-                          value: (state.profileResponse?.age ?? 0).toString(),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
                     SizedBox(height: 36.h),
-                    /* MenuItem(
+                    MenuButton(
                       isExpanded: state.isDefinitionExpanded ?? false,
                       title: 'profile.definition'.tr(),
                       icon: AppIcons.profile,
@@ -137,15 +105,30 @@ class _ProfilePageState extends State<ProfilePage> {
                           extra: state.profileResponse ?? ProfileResponse(),
                         );
                       },
-                    ),*/
-                    MenuItem(
+                    ),
+                    if (state.isDefinitionExpanded ?? false)
+                      Wrap(
+                        children: List.generate(state.profileResponse?.tarif?.length ?? 0, (index) {
+                          var list = state.profileResponse?.tarif ?? [];
+                          return Padding(
+                            padding: EdgeInsets.only(left: 8.w, bottom: 4.h),
+                            child: CustomExpansionTileWidget(
+                              title: list[index].tarif ?? "",
+                              isExpanded: expandedIndex == index,
+                              onExpand: () {
+                                expandedIndex = (expandedIndex == index) ? -1 : index;
+                              },
+                              children: [DefinitionTable(definitions: list, index: index)],
+                            ),
+                          );
+                        }),
+                      ),
+                    MenuButton(
                       title: 'profile.edit_profile'.tr(),
                       icon: AppIcons.profile,
-                      onPressed: () {
-
-                      },
+                      onPressed: () {},
                     ),
-                    MenuItem(
+                    MenuButton(
                       title: 'profile.notification'.tr(),
                       icon: AppIcons.notification,
                       switchValue: true,
@@ -153,7 +136,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       onSwitchChanged: (value) {},
                       onPressed: () {},
                     ),
-                    MenuItem(
+                    MenuButton(
                       title: "profile.setting".tr(),
                       icon: AppIcons.settings,
                       onPressed: () {},

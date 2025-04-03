@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../../../application/home/qr_code/qr_code_bloc.dart';
-import '../../../utils/utils.dart';
-import '../../assets/theme/app_theme.dart';
 
 class QrPage extends StatefulWidget {
   const QrPage({super.key});
@@ -52,7 +50,7 @@ class _QrPageState extends State<QrPage> {
                             Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.0),
-                                color: Colors.white.withOpacity(0.9),
+                                color: Colors.white.withValues(alpha: 0.9),
                               ),
                               padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
                               child: Column(
@@ -64,11 +62,11 @@ class _QrPageState extends State<QrPage> {
                                     size: 0.4.sh,
                                     gapless: false,
                                   ),
-                                  if (state.status == Status.loading)
+                                  if (state.status?.isLoading??false)
                                     Positioned.fill(
                                       child: Container(
                                         alignment: Alignment.center,
-                                        color: Colors.white.withOpacity(0.6),
+                                        color: Colors.white.withValues(alpha: 0.6),
                                         child: CircularProgressIndicator(
                                           color: AppTheme.colors.primary,
                                         ),
@@ -85,7 +83,7 @@ class _QrPageState extends State<QrPage> {
                                     filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                                     child: Container(
                                       alignment: Alignment.center,
-                                      color: Colors.white.withOpacity(0.6),
+                                      color: Colors.white.withValues(alpha: 0.6),
                                       child: Text(
                                         "QR kod muddati tugadi",
                                         style: TextStyle(

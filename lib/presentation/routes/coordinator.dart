@@ -12,8 +12,6 @@ import '../../application/home/profile/profile_bloc.dart';
 import '../../domain/common/data/user_data.dart';
 import '../../infrastructure/services/shared_service.dart';
 import '../components/navigation_helper.dart';
-import '../pages/plan/all_plan_page.dart';
-import '../pages/plan/plan_page.dart';
 import '../pages/profile/selected_plan/selected_plan_tab.dart';
 import 'entity/custom_nav_bar.dart';
 import 'entity/pages.dart';
@@ -167,35 +165,33 @@ final GoRouter router = GoRouter(
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                    name: Routes.selectedPlan.name,
-                    path: Routes.selectedPlan.path,
-                    redirect: (context, state) => _redirects(),
-                    routes: [
-                      GoRoute(
-                        name: Routes.planDetail.name,
-                        path: Routes.planDetail.path,
-                        redirect: (context, state) => _redirects(),
-                        pageBuilder: (context, state) {
-                          return MaterialPage<void>(key: state.pageKey, child: AllPlanPage());
-                        },
-                      ),
-                    ],
-                    pageBuilder: (context, state) {
-                      return MaterialPage<void>(
-                          key: state.pageKey,
-                          child: BlocProvider(
-                            create: (context) => ProfileBloc()..add(GetProfileDataEvent()),
-                            child: const PlanPage(),
-                          ));
-                    })
-
-                /* GoRoute(
-                    name: Routes.selectedTariff.name,
-                    path: Routes.selectedTariff.path,
-                    redirect: (context, state) => redirect(context, state),
-                    pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const HomePage());
-                    }),*/
+                  name: Routes.tariff.name,
+                  path: Routes.tariff.path,
+                  redirect: (context, state) => _redirects(),
+                  routes: [
+                    GoRoute(
+                      name: Routes.allTariff.name,
+                      path: Routes.allTariff.path,
+                      redirect: (context, state) => _redirects(),
+                      pageBuilder: (context, state) {
+                        return MaterialPage<void>(key: state.pageKey, child: const AllTariffPage());
+                      },
+                      routes: [
+                        GoRoute(
+                          name: Routes.tariffDetail.name,
+                          path: Routes.tariffDetail.path,
+                          redirect: (context, state) => _redirects(),
+                          pageBuilder: (context, state) {
+                            return MaterialPage<void>(key: state.pageKey, child: const TariffDetailPage());
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                  pageBuilder: (context, state) {
+                    return MaterialPage<void>(key: state.pageKey, child: const TariffPage());
+                  },
+                )
               ],
             ),
             StatefulShellBranch(

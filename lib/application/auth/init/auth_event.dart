@@ -2,9 +2,7 @@ part of 'auth_bloc.dart';
 
 @freezed
 class AuthEvent with _$AuthEvent {
-  const factory AuthEvent.checkPhoneNumber({
-    required String phone,
-  }) = CheckPhoneNumber;
+  const factory AuthEvent.checkPhoneNumber({required String phone}) = CheckPhoneNumber;
 
   const factory AuthEvent.changeAuthStatusEvent() = ChangeAuthStatusEvent;
 

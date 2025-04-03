@@ -1,6 +1,8 @@
+import 'package:casl_fit/infrastructure/common/platform_info.dart';
+import 'package:casl_fit/presentation/assets/asset_index.dart';
+import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:casl_fit/infrastructure/common/platform_info.dart';
 
 class CircularIndicator extends StatelessWidget {
   const CircularIndicator({super.key});
@@ -12,9 +14,14 @@ class CircularIndicator extends StatelessWidget {
       child = SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        child: const Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Color.fromRGBO(56, 131, 146, 1)),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(AppTheme.colors.primary.withValues(alpha: 0.4))),
+              Gap(10.h),
+              Text('loading'.tr(), style: TextStyle(color: AppTheme.colors.primary.withValues(alpha: 0.4))),
+            ],
           ),
         ),
       );
@@ -22,8 +29,15 @@ class CircularIndicator extends StatelessWidget {
       child = SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        child: const Center(
-          child: CupertinoActivityIndicator(),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CupertinoActivityIndicator(color: AppTheme.colors.primary),
+              Gap(10.h),
+              Text('loading'.tr(), style: TextStyle(color: AppTheme.colors.primary.withValues(alpha: 0.4))),
+            ],
+          ),
         ),
       );
     }
