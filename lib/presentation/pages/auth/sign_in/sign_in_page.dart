@@ -61,8 +61,8 @@ class _SignInPageState extends State<SignInPage> {
               children: [
                 Image.asset(
                   AppImages.background,
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+                  height: 1.sh,
+                  width: 1.sw,
                   fit: BoxFit.cover,
                   alignment: Alignment.center,
                 ),

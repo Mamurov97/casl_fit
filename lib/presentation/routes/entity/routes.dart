@@ -32,7 +32,7 @@ class Routes implements Coordinate {
   static const tariffDetail = Routes._(name: "tariff_detail", path: '/tariff_detail');
 
   ///profile
-  static const selectedTariffTab = Routes._(name: "selectedDefinitionTab", path: '/selectedDefinitionTab');
+  static const weightHeight = Routes._(name: "weight_height", path: '/weight_height');
 
   @override
   String toString() => 'name=$name, path=$path';

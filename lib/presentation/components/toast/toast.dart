@@ -78,9 +78,13 @@ class Toast {
         children: [
           Icon(icon, color: CupertinoColors.white),
           const SizedBox(width: 12.0),
-          Text(
-            message,
-            style: const TextStyle(color: CupertinoColors.white),
+          Expanded(
+            child: Text(
+              message,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(color: CupertinoColors.white),
+            ),
           ),
         ],
       ),
