@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../application/home/profile/weight_height/weight_height_bloc.dart';
 import '../components/create_weight_dialog.dart';
-import '../components/my_toast_model.dart';
 import '../widgets/graphic.dart';
 import '../widgets/weight_height_table.dart';
 

@@ -1,12 +1,9 @@
-import 'package:animated_toast_list/animated_toast_list.dart';
 import 'package:casl_fit/application/app_manager/app_manager_cubit.dart';
 import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
-import 'package:casl_fit/presentation/pages/profile/components/my_toast_model.dart';
-import 'package:casl_fit/presentation/pages/profile/widgets/accordion.dart';
 import 'package:casl_fit/presentation/pages/profile/widgets/info_card.dart';
 import 'package:casl_fit/presentation/pages/profile/widgets/menu_item.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
