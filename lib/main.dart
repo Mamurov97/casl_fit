@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:casl_fit/application/tariff/tariff_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()),
         BlocProvider(create: (context) => AuthBloc()),
+        BlocProvider(create: (context) => TariffBloc()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
