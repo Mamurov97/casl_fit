@@ -59,8 +59,8 @@ class ProfileResponse {
       });
     }
     photo = json['photo'] != null ? Photo.fromJson(json['photo']) : null;
-    weight = json['weight'];
-    height = json['height'];
+    weight = json['weight'] is int ? json['weight'].toString() : json['weight'];
+    height = json['height'] is int ? json['height'].toString() : json['height'];
     age = json['age'];
   }
 

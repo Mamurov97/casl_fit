@@ -12,10 +12,8 @@ import '../../../components/toast/toast.dart';
 class CreateWeightDialog extends StatefulWidget {
   const CreateWeightDialog({
     super.key,
-    required this.height,
   });
 
-  final String height;
 
   @override
   State<CreateWeightDialog> createState() => _CreateWeightDialogState();
@@ -28,7 +26,6 @@ class _CreateWeightDialogState extends State<CreateWeightDialog> {
 
   @override
   void initState() {
-    controllerHeight.text = widget.height.toString() != "null" ? widget.height.toString() : '';
     value = true;
     super.initState();
   }

@@ -34,7 +34,8 @@ dependencies:
   easy_rich_text: ^2.2.0
   accordion: ^2.6.0
   freedom_table: ^0.3.6+3
-
+  carousel_slider: ^5.0.0
+  carousel_indicator_simple: ^1.0.0
   # Animations
   flutter_bounce: ^1.1.0
   flutter_animator: ^3.2.2
