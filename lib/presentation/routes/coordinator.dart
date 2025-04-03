@@ -1,5 +1,4 @@
 import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
-import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/presentation/pages/profile/weight_height/weight_height_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +11,6 @@ import '../../application/home/profile/profile_bloc.dart';
 import '../../domain/common/data/user_data.dart';
 import '../../infrastructure/services/shared_service.dart';
 import '../components/navigation_helper.dart';
-import '../pages/profile/selected_plan/selected_plan_tab.dart';
 import 'entity/custom_nav_bar.dart';
 import 'entity/pages.dart';
 import 'entity/routes.dart';
@@ -201,13 +199,6 @@ final GoRouter router = GoRouter(
                     path: Routes.profile.path,
                     redirect: (context, state) => _redirects(),
                     routes: [
-                      GoRoute(
-                          name: Routes.selectedTariffTab.name,
-                          path: Routes.selectedTariffTab.path,
-                          redirect: (context, state) => _redirects(),
-                          pageBuilder: (context, state) {
-                            return MaterialPage<void>(key: state.pageKey, child: SelectedPlanTab(profileResponse: state.extra as ProfileResponse));
-                          }),
                       GoRoute(
                           name: Routes.weightHeight.name,
                           path: Routes.weightHeight.path,

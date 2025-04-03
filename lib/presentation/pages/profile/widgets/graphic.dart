@@ -1,4 +1,4 @@
-import 'package:casl_fit/infrastructure/dto/models/home/plan/weight_height_response.dart';
+import 'package:casl_fit/infrastructure/dto/models/home/profile/weight_height_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -196,7 +196,7 @@ class _WeightGraphState extends State<WeightGraph> {
                   borderData: FlBorderData(
                     show: true,
                     border: Border(
-                      bottom: BorderSide(color: Colors.grey.withOpacity(0.3), width: 1),
+                      bottom: BorderSide(color: Colors.grey.withValues(alpha: 0.3), width: 1),
                       left: const BorderSide(width: 1),
                     ),
                   ),
@@ -212,7 +212,7 @@ class _WeightGraphState extends State<WeightGraph> {
                       tooltipMargin: 4.h,
                       tooltipHorizontalAlignment: FLHorizontalAlignment.right,
                       tooltipPadding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 4.w),
-                      getTooltipColor: (touchedSpot) => Colors.grey.withOpacity(0.4),
+                      getTooltipColor: (touchedSpot) => Colors.grey.withValues(alpha: 0.4),
                       getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                         return touchedBarSpots.map((barSpot) {
                           final int index = barSpot.x.toInt();

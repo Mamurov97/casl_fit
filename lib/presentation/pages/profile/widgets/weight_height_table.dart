@@ -1,7 +1,8 @@
 import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freedom_table/freedom_table.dart';
-import '../../../../infrastructure/dto/models/home/plan/weight_height_response.dart';
+
+import '../../../../infrastructure/dto/models/home/profile/weight_height_response.dart';
 import '../../../assets/asset_index.dart';
 import 'data_table_cell.dart';
 
@@ -33,7 +34,7 @@ class WeightHeightTable extends StatelessWidget {
             child: InkWell(
               onTap: () {},
               child: DataTableCell(
-                  color: index % 2 == 0 ? AppTheme.colors.secondary.withOpacity(0.7) : AppTheme.colors.secondary.withOpacity(1),
+                  color: index % 2 == 0 ? AppTheme.colors.secondary.withValues(alpha: 0.7) : AppTheme.colors.secondary.withValues(alpha: 1),
                   name: DateFormat("dd.MM.yyyy").format(_parseDate(sortedData[index].date ?? DateTime.now().toString())),
                   style: AppTheme.data.textTheme.titleMedium!.copyWith(
                     fontFamily: 'Inter',
@@ -48,7 +49,7 @@ class WeightHeightTable extends StatelessWidget {
             child: InkWell(
               onTap: () {},
               child: DataTableCell(
-                  color: index % 2 == 0 ? AppTheme.colors.secondary.withOpacity(0.7) : AppTheme.colors.secondary.withOpacity(1),
+                  color: index % 2 == 0 ? AppTheme.colors.secondary.withValues(alpha: 0.7) : AppTheme.colors.secondary.withValues(alpha: 1),
                   name: '${sortedData[index].size} ${weightHeightEnum == WeightHeightEnum.weight ? "kg" : "sm"}',
                   style: AppTheme.data.textTheme.titleMedium!.copyWith(
                     fontFamily: 'Inter',

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:casl_fit/infrastructure/dto/models/home/plan/weight_height_response.dart';
+import 'package:casl_fit/infrastructure/dto/models/home/profile/weight_height_response.dart';
 import 'package:casl_fit/infrastructure/repository/home/profile/profile_repository.dart';
 import 'package:dio/dio.dart';
 import '../../../../domain/common/enums/bloc_status.dart';

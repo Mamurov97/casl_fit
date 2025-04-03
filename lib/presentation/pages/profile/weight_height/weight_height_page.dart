@@ -1,5 +1,5 @@
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
-import 'package:casl_fit/infrastructure/dto/models/home/plan/weight_height_response.dart';
+import 'package:casl_fit/infrastructure/dto/models/home/profile/weight_height_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/components/screens/empty_page.dart';
