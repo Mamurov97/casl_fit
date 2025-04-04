@@ -18,8 +18,12 @@ class WeightHeightBloc extends Bloc<WeightHeightEvent, WeightHeightState> {
         final Map<String, dynamic> data = event.weightHeightEnum == WeightHeightEnum.weight ? await repo.getWeight() : await repo.getHeight();
         if (data["status"]) {
           List<WeightHeightResponse> weightHeightList = data["result"]?.map<WeightHeightResponse>((element) => WeightHeightResponse.fromJson(element)).toList();
+          if (weightHeightList.isNotEmpty) {
+            emit(state.copyWith(status: BlocStatus.success, weightHeightList: weightHeightList));
+          }  else{
+            emit(state.copyWith(status: BlocStatus.empty));
 
-          emit(state.copyWith(status: BlocStatus.success, weightHeightList: weightHeightList));
+          }
         } else {
           emit(state.copyWith(status: BlocStatus.error, errorMessage: data["error"]["message"]));
         }

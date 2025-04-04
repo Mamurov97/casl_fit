@@ -14,7 +14,7 @@ class ExitDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-      backgroundColor: AppTheme.colors.secondary.withValues(alpha: 0.7),
+      backgroundColor: AppTheme.colors.black.withValues(alpha: 0.9),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       content: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,15 +32,17 @@ class ExitDialog extends StatelessWidget {
             children: [
               Expanded(
                   child: MainButton(
-                backgroundColor: AppTheme.colors.black,
-                text: 'profile.back_to".tr()',
+                textColor: AppTheme.colors.white,
+                backgroundColor: AppTheme.colors.secondary,
+                text: 'profile.back_to'.tr(),
                 onPressed: () {
                   Navigator.pop(context);
                 },
               )),
-              Gap(12.w),
+              Gap(24.w),
               Expanded(
                   child: MainButton(
+                textColor: AppTheme.colors.white,
                 backgroundColor: AppTheme.colors.red,
                 text: "profile.exit".tr(),
                 onPressed: () {

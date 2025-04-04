@@ -81,13 +81,20 @@
   "qrcode": {
     "get_new_qr": "Yangi QR kod olish"
   },
+  "tariff": {
+    "all_tariff":"Barcha tariflar"
+  },
+
   "profile": {
     "edit_profile": "Profilni tahrirlash",
     "notification": "Bildirishnomalar",
     "setting": "Sozlamalar",
     "logout": "Profildan chiqish",
     "profile": "Profil",
-    "definition": "Tariflar"
+    "definition": "Tariflar",
+    "exit_dialog_text": "Haqiqatdan ham chiqmoqchimisiz",
+    "back_to": "Qaytish",
+    "exit": "Chiqish"
   }
 }
     

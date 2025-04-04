@@ -15,6 +15,7 @@ class AppIcons {
  static const weight = 'assets/icons/weight.svg';
  static const height = 'assets/icons/height.svg';
  static const age = 'assets/icons/age.svg';
+ static const money = 'assets/icons/money.svg';
 
 
 }

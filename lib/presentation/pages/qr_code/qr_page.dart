@@ -63,14 +63,10 @@ class _QrPageState extends State<QrPage> {
                                     gapless: false,
                                   ),
                                   if (state.status?.isLoading??false)
-                                    Positioned.fill(
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        color: Colors.white.withValues(alpha: 0.6),
-                                        child: CircularProgressIndicator(
-                                          color: AppTheme.colors.primary,
-                                        ),
-                                      ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      color: Colors.white.withValues(alpha: 0.6),
+                                      child: const CircularIndicator(),
                                     ),
                                 ],
                               ),
@@ -99,12 +95,12 @@ class _QrPageState extends State<QrPage> {
                           ],
                         )
                       else if (state.status == BlocStatus.loading)
-                        Column(
+                        const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Center(
-                              child: CircularProgressIndicator(
-                                color: AppTheme.colors.primary,
+                            Expanded(
+                              child: Center(
+                                child: CircularIndicator(),
                               ),
                             ),
                           ],

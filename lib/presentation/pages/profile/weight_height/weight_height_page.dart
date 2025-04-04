@@ -2,14 +2,13 @@ import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/weight_height_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
-import 'package:casl_fit/presentation/components/screens/empty_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../application/home/profile/weight_height/weight_height_bloc.dart';
 import '../components/create_weight_dialog.dart';
-import '../widgets/graphic.dart';
-import '../widgets/weight_height_table.dart';
+import '../components/graphic.dart';
+import '../components/weight_height_table.dart';
 
 class WeightHeightPage extends StatelessWidget {
   const WeightHeightPage({super.key});
@@ -36,15 +35,11 @@ class WeightHeightPage extends StatelessWidget {
                     builder: (context) {
                       return BlocProvider(
                         create: (context) => WeightHeightBloc()..add(WeightHeightEnumEvent(weightHeightEnum: variableState.weightHeightEnum)),
-                        child: CreateWeightDialog(
-                          height: variableState.status == BlocStatus.empty ? '' : variableState.weightHeightList?.last.size.toString() ?? "",
-                        ),
+                        child: const CreateWeightDialog(),
                       );
                     }).then((value) {
                   if (value == true&&context.mounted) {
                     context.read<WeightHeightBloc>().add(GetWeightHeightEvent(weightHeightEnum: variableState.weightHeightEnum));
-                  } else {
-                    Toast.showErrorToast(message: variableState.errorMessage.toString());
                   }
                 });
               },
@@ -91,7 +86,7 @@ class WeightHeightPage extends StatelessWidget {
               ));
             } else if (state.status == BlocStatus.loading) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: CircularIndicator(),
               );
             }else if (state.status == BlocStatus.empty) {
               return const EmptyPage();
@@ -108,9 +103,7 @@ class WeightHeightPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           child: MainButton(
-            onPressed: () {
-              //bloc.add(GetWeightHistory(workerId: UserData.workerId));
-            },
+            onPressed: () {},
             text: 'Qayta yuklash',
           ),
         ),

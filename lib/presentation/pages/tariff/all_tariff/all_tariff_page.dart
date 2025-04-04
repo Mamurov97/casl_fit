@@ -46,8 +46,9 @@ class _AllTariffPageState extends State<AllTariffPage> {
               itemCount: state.tariffs?.length,
               itemBuilder: (context, index) {
                 return TariffItem(
+                  isArrow: true,
                   item: state.tariffs?[index],
-                  onPressed: () => context.push("${Routes.root.path}${Routes.tariff.path}${Routes.allTariff.path}${Routes.tariffDetail.path}"),
+                  onPressed: () => context.push("${Routes.root.path}${Routes.tariff.path}${Routes.allTariff.path}${Routes.tariffDetail.path}", extra: state.tariffs?[index]),
                 );
               },
             );
