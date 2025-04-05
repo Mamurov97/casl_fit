@@ -79,13 +79,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 8.h),
-                    if (data.balans != null)
-                      Text(
-                        "Balans: ${NumberFormat("#,###", "uz_UZ").format(data.balans ?? 0).replaceAll(",", " ")} so'm",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.w500),
-                      ),
-                    SizedBox(height: 4.h),
+                    // if (data.balans != null)
+                    //   Text(
+                    //     "Balans: ${NumberFormat("#,###", "uz_UZ").format(data.balans ?? 0).replaceAll(",", " ")} so'm",
+                    //     textAlign: TextAlign.center,
+                    //     style: TextStyle(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.w500),
+                    //   ),
+                    // SizedBox(height: 4.h),
                     Text(
                       data.tel ?? "",
                       textAlign: TextAlign.center,
@@ -126,25 +126,25 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 36.h),
-                    MenuButton(
-                      title: 'profile.edit_profile'.tr(),
-                      icon: AppIcons.profile,
-                      onPressed: () {},
-                    ),
-                    MenuButton(
-                      title: 'profile.notification'.tr(),
-                      icon: AppIcons.notification,
-                      switchValue: true,
-                      hasSwitch: true,
-                      onSwitchChanged: (value) {},
-                      onPressed: () {},
-                    ),
-                    MenuButton(
-                      title: "profile.setting".tr(),
-                      icon: AppIcons.settings,
-                      onPressed: () {},
-                    ),
+                    // SizedBox(height: 36.h),
+                    // MenuButton(
+                    //   title: 'profile.edit_profile'.tr(),
+                    //   icon: AppIcons.profile,
+                    //   onPressed: () {},
+                    // ),
+                    // MenuButton(
+                    //   title: 'profile.notification'.tr(),
+                    //   icon: AppIcons.notification,
+                    //   switchValue: true,
+                    //   hasSwitch: true,
+                    //   onSwitchChanged: (value) {},
+                    //   onPressed: () {},
+                    // ),
+                    // MenuButton(
+                    //   title: "profile.setting".tr(),
+                    //   icon: AppIcons.settings,
+                    //   onPressed: () {},
+                    // ),
                     const SizedBox(height: 20),
                     LogoutButton(prefService: pref),
                   ],
