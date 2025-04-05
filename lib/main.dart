@@ -4,6 +4,7 @@ import 'package:casl_fit/application/tariff/tariff_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,6 +16,9 @@ import 'presentation/app_widget.dart';
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(() async {
     await initializeApp();
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     runApp(
       EasyLocalization(
         supportedLocales: const [

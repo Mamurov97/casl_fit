@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../application/home/profile/weight_height/weight_height_bloc.dart';
+import '../../../components/screens/empty_page.dart';
 import '../components/create_weight_dialog.dart';
 import '../components/graphic.dart';
 import '../components/weight_height_table.dart';
