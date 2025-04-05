@@ -77,6 +77,7 @@ class _TariffPageState extends State<TariffPage> {
                     title: 'tariff.all_tariff'.tr(),
                     icon: AppIcons.status,
                     onPressed: () {
+
                       context.push(
                         "${Routes.root.path}${Routes.tariff.path}${Routes.allTariff.path}",
                       );
