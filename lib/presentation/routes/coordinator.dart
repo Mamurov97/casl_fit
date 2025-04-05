@@ -1,5 +1,6 @@
 import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
 import 'package:casl_fit/infrastructure/dto/models/tariff/tariff_model.dart';
+import 'package:casl_fit/presentation/components/screens/empty_page.dart';
 import 'package:casl_fit/presentation/pages/profile/weight_height/weight_height_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -130,7 +131,7 @@ final GoRouter router = GoRouter(
                     path: Routes.home.path,
                     redirect: (context, state) => _redirects(),
                     pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const HomePage());
+                      return MaterialPage<void>(key: state.pageKey, child: const EmptyPage());
                     }),
               ],
             ),
@@ -141,7 +142,7 @@ final GoRouter router = GoRouter(
                     path: Routes.status.path,
                     redirect: (context, state) => _redirects(),
                     pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const HomePage());
+                      return MaterialPage<void>(key: state.pageKey, child: const EmptyPage());
                     }),
               ],
             ),
