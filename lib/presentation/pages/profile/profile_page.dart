@@ -42,12 +42,12 @@ class _ProfilePageState extends State<ProfilePage> {
         elevation: 0,
         title: Text('profile.profile'.tr(), style: const TextStyle(color: Colors.white)),
         centerTitle: true,
-        actions: [
+        /*actions: [
           IconButton(
             icon: const Icon(Icons.settings, color: Colors.white),
             onPressed: () {},
           ),
-        ],
+        ],*/
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -89,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Text(
                       data.tel ?? "",
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 10.sp, fontWeight: FontWeight.w500),
+                      style: TextStyle(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.w500),
                     ),
                     SizedBox(height: 12.h),
                     Row(

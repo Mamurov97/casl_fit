@@ -94,6 +94,7 @@ class AppTheme {
       dividerColor: colors.divider,
       brightness: themeMode == ThemeMode.light ? Brightness.light : Brightness.dark,
       textSelectionTheme: TextSelectionThemeData(cursorColor: colors.black),
+      scaffoldBackgroundColor: Colors.black,
       appBarTheme: AppBarTheme(
         color: colors.primary,
         titleSpacing: 0,

@@ -38,7 +38,7 @@ class _VerifyPageState extends State<VerifyPage> {
 
             //login statusini eshitish
             if (state.registerPageType == 'register_type') {
-              if (state.registerStatus.isSuccess) context.go('/root/home');
+              if (state.registerStatus.isSuccess) context.go('/root/qr_code');
               if (state.registerStatus.isError) {
                 Toast.showErrorToast(message: state.errorMessage);
               }

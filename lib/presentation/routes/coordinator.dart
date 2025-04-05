@@ -40,7 +40,7 @@ String? _redirects() {
 }
 
 final GoRouter router = GoRouter(
-  initialLocation: "${Routes.root.path}${Routes.home.path}",
+  initialLocation: "${Routes.root.path}${Routes.qrCode.path}",
   // initialLocation: Routes.signIn.path,
   routes: <GoRoute>[
     ///auth
