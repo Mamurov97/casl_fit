@@ -24,6 +24,7 @@ class _QrPageState extends State<QrPage> {
 
   @override
   Widget build(BuildContext context) {
+    var variableState = context.watch<QrCodeBloc>().state;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -62,12 +63,7 @@ class _QrPageState extends State<QrPage> {
                                     size: 0.4.sh,
                                     gapless: false,
                                   ),
-                                  if (state.status?.isLoading??false)
-                                    Container(
-                                      alignment: Alignment.center,
-                                      color: Colors.white.withValues(alpha: 0.6),
-                                      child: const CircularIndicator(),
-                                    ),
+
                                 ],
                               ),
                             ),
@@ -94,17 +90,6 @@ class _QrPageState extends State<QrPage> {
                               ),
                           ],
                         )
-                      else if (state.status == BlocStatus.loading)
-                        const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Center(
-                                child: CircularIndicator(),
-                              ),
-                            ),
-                          ],
-                        )
                       else
                         const SizedBox(),
                     ],
@@ -115,8 +100,12 @@ class _QrPageState extends State<QrPage> {
         },
       ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: BlocBuilder<QrCodeBloc, QrCodeState>(
-          builder: (context, state) {
+        floatingActionButton: (variableState.status?.isLoading ?? false)
+            ? const Center(
+                child: CircularIndicator(),
+              )
+            : BlocBuilder<QrCodeBloc, QrCodeState>(
+                builder: (context, state) {
             int minutes = state.remainingSeconds ~/ 60;
             int seconds = state.remainingSeconds % 60;
             return ((state.status != BlocStatus.loading))
