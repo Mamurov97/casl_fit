@@ -1,5 +1,4 @@
 import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
-import 'package:casl_fit/infrastructure/dto/models/tariff/tariff_model.dart';
 import 'package:casl_fit/presentation/components/screens/coming_soon_page.dart';
 import 'package:casl_fit/presentation/pages/profile/weight_height/weight_height_page.dart';
 import 'package:flutter/material.dart';
