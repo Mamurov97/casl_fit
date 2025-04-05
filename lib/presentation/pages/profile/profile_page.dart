@@ -5,17 +5,14 @@ import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/pages/profile/components/info_card.dart';
+import 'package:casl_fit/presentation/pages/profile/components/logout_button.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../application/home/profile/profile_bloc.dart';
 import '../../../infrastructure/services/shared_service.dart';
-import '../../components/dialogs/exit_dialog.dart';
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
-
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -149,43 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {},
                     ),
                     const SizedBox(height: 20),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppTheme.colors.primary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.r),
-                        ),
-                      ),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (contextD) => ExitDialog(
-                            onPressed: () async {
-                              var passCode = pref.passcode;
-                              pref.clear();
-                              pref.setPasscode(passCode);
-                              pref.setAuthStatus(true);
-                              context.go(Routes.signIn.path);
-                            },
-                          ),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              height: 16.sp,
-                              AppIcons.logout,
-                              colorFilter: ColorFilter.mode(AppTheme.colors.secondary, BlendMode.srcIn),
-                            ),
-                            const SizedBox(width: 8),
-                            Text('profile.logout'.tr(), style: TextStyle(color: AppTheme.colors.secondary)),
-                          ],
-                        ),
-                      ),
-                    ),
+                    LogoutButton(prefService: pref),
                   ],
                 ),
               );
@@ -193,6 +154,15 @@ class _ProfilePageState extends State<ProfilePage> {
             return const SizedBox();
           },
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton:  BlocBuilder<ProfileBloc, ProfileState>(
+        builder: (context, state) {
+          return state.status == BlocStatus.error ?Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: LogoutButton(prefService: pref),
+          ):const SizedBox();
+        },
       ),
     );
   }

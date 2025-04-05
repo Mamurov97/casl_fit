@@ -6,6 +6,7 @@ import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../../../application/home/qr_code/qr_code_bloc.dart';
 
@@ -24,7 +25,6 @@ class _QrPageState extends State<QrPage> {
 
   @override
   Widget build(BuildContext context) {
-    var variableState = context.watch<QrCodeBloc>().state;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -63,7 +63,6 @@ class _QrPageState extends State<QrPage> {
                                     size: 0.4.sh,
                                     gapless: false,
                                   ),
-
                                 ],
                               ),
                             ),
@@ -100,29 +99,26 @@ class _QrPageState extends State<QrPage> {
         },
       ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: (variableState.status?.isLoading ?? false)
-            ? const Center(
-                child: CircularIndicator(),
-              )
-            : BlocBuilder<QrCodeBloc, QrCodeState>(
-                builder: (context, state) {
+        floatingActionButton: BlocBuilder<QrCodeBloc, QrCodeState>(
+          builder: (context, state) {
             int minutes = state.remainingSeconds ~/ 60;
             int seconds = state.remainingSeconds % 60;
-            return ((state.status != BlocStatus.loading))
-                ? Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 16.h),
-                    child: AbsorbPointer(
-                      absorbing: !state.isExpired,
-                      child: MainButton(
-                        text: state.isExpired ? 'qrcode.get_new_qr'.tr() : "$minutes:${seconds.toString().padLeft(2, '0')}",
-                        onPressed: () {
-                          context.read<QrCodeBloc>().add(GetQrCodeTokenEvent());
-                        },
-                        textColor: AppTheme.colors.secondary,
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 16.h),
+              child: ElevatedButton(
+                onPressed: !state.isExpired
+                    ? null
+                    : () {
+                        context.read<QrCodeBloc>().add(GetQrCodeTokenEvent());
+                      },
+                child: state.status == BlocStatus.loading
+                    ? LoadingAnimationWidget.fallingDot(color: AppTheme.colors.primary, size: ScreenSize.h36)
+                    : Text(
+                        state.isExpired ? 'qrcode.get_new_qr'.tr() : "$minutes:${seconds.toString().padLeft(2, '0')}",
                       ),
-                    ),
-                  )
-                : const SizedBox();
+              ),
+            );
+            //  : const SizedBox();
           },
         ));
   }

@@ -33,7 +33,7 @@ class _AllTariffPageState extends State<AllTariffPage> {
       body: BlocBuilder<TariffBloc, TariffState>(
         builder: (context, state) {
           if (state.allTariffStatus.isLoading) return const CircularIndicator();
-          if (state.allTariffStatus.isEmpty) return const EmptyPage();
+          if (state.allTariffStatus.isEmpty) return const ComingSoonPage();
           if (state.allTariffStatus.isError) {
             return ErrorPage(
               onPressed: () => context.read<TariffBloc>().add(const GetTariffs()),
