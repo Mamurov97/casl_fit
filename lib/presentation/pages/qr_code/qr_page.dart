@@ -112,7 +112,7 @@ class _QrPageState extends State<QrPage> {
                         context.read<QrCodeBloc>().add(GetQrCodeTokenEvent());
                       },
                 child: state.status == BlocStatus.loading
-                    ? LoadingAnimationWidget.fallingDot(color: AppTheme.colors.primary, size: ScreenSize.h36)
+                    ? LoadingAnimationWidget.fallingDot(color: AppTheme.colors.black, size: ScreenSize.h36)
                     : Text(
                         state.isExpired ? 'qrcode.get_new_qr'.tr() : "$minutes:${seconds.toString().padLeft(2, '0')}",
                       ),
