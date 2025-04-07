@@ -7,17 +7,28 @@ import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/pages/profile/components/info_card.dart';
 import 'package:casl_fit/presentation/pages/profile/components/logout_button.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
 import '../../../application/home/profile/profile_bloc.dart';
 import '../../../infrastructure/services/shared_service.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  var maskFormatter = MaskTextInputFormatter(
+    mask: '+### (##) ###-##-##',
+    filter: {"#": RegExp(r'[0-9]')},
+    initialText: '+998',
+    type: MaskAutoCompletionType.lazy,
+  );
   int expandedIndex = -1;
   late SharedPrefService pref;
 
@@ -68,30 +79,60 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage(AppIcons.home),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
+                      margin: EdgeInsets.only(bottom: 15.h),
+                      decoration: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(16.r)),
+                      child: IntrinsicHeight(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 80.h,
+                              width: 80.w,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10.r),
+                              ),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Icon(
+                                  CupertinoIcons.person_alt,
+                                  size: 80.w,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      data.name ?? "",
+                                      textAlign: TextAlign.start,
+                                      maxLines: 3,
+                                      style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary),
+                                    ),
+                                  ),
+                                  Text(
+                                    maskFormatter.maskText(data.tel ?? ""),
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Gap(5.h),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 10),
-                    Text(
-                      data.name ?? "",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 8.h),
-                    // if (data.balans != null)
-                    //   Text(
-                    //     "Balans: ${NumberFormat("#,###", "uz_UZ").format(data.balans ?? 0).replaceAll(",", " ")} so'm",
-                    //     textAlign: TextAlign.center,
-                    //     style: TextStyle(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.w500),
-                    //   ),
-                    // SizedBox(height: 4.h),
-                    Text(
-                      data.tel ?? "",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.w500),
-                    ),
-                    SizedBox(height: 12.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -101,9 +142,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           icon: AppIcons.weight,
                           value: state.profileResponse?.weight.toString() ?? "0",
                           onPressed: () {
-                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight).then((value) {
-                              context.read<ProfileBloc>().add(GetProfileDataEvent());
-                            });
+                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight);
                           },
                         ),
                         InfoItem(
@@ -112,9 +151,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           icon: AppIcons.height,
                           value: state.profileResponse?.height.toString() ?? "0",
                           onPressed: () {
-                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height).then((value) {
-                              context.read<ProfileBloc>().add(GetProfileDataEvent());
-                            });
+                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height);
                           },
                         ),
                         InfoItem(
@@ -156,12 +193,14 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton:  BlocBuilder<ProfileBloc, ProfileState>(
+      floatingActionButton: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
-          return state.status == BlocStatus.error ?Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: LogoutButton(prefService: pref),
-          ):const SizedBox();
+          return state.status == BlocStatus.error
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: LogoutButton(prefService: pref),
+                )
+              : const SizedBox();
         },
       ),
     );
