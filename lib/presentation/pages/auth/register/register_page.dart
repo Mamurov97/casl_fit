@@ -3,7 +3,9 @@ import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
+import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -99,14 +101,54 @@ class _RegisterPageState extends State<RegisterPage> {
                             validator: validateRetryPassword,
                           ),
                           Gap(20.h),
+                          Row(
+                            children: [
+                              Checkbox(
+                                  activeColor: AppTheme.colors.primary,
+                                  checkColor: AppTheme.colors.secondary,
+                                  value: state.isPrivacyPolicy ?? false,
+                                  onChanged: (value) {
+                                    context.read<AuthBloc>().add(PrivacyPolicyEvent(isPrivacyPolicy: value ?? false));
+                                  }),
+                              EasyRichText(
+                                tr(
+                                  'register.privacy_policy',
+                                ),
+                                textAlign: TextAlign.center,
+                                defaultStyle: AppTheme.data.textTheme.bodyLarge!.copyWith(color: AppTheme.colors.white),
+                                patternList: [
+                                  EasyRichTextPattern(
+                                    targetString: "test",
+                                    style: AppTheme.data.textTheme.bodyLarge!.copyWith(color: AppTheme.colors.primary),
+                                  ),
+                                  EasyRichTextPattern(
+                                    targetString: 'siyosatiga',
+                                    style: AppTheme.data.textTheme.bodyLarge!.copyWith(color: AppTheme.colors.primary),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        context.push("${Routes.register.path}${Routes.privacyPolicy.path}");
+                                      },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Gap(8.h),
                           ElevatedButton(
-                            onPressed: state.otpStatus.isLoading
-                                ? null
-                                : () {
-                                    if (formKey.currentState!.saveAndValidate()) {
-                                      context.read<AuthBloc>().add(SendOtpEvent(password: formKey.currentState?.fields['retry_password']?.value));
-                                    }
-                                  },
+                            onPressed: () {
+                              if (state.otpStatus.isLoading) return;
+                              if (!formKey.currentState!.saveAndValidate()) return;
+                              if (!(state.isPrivacyPolicy ?? false)) {
+                                Toast.showInfoToast(message: "Maxfiylik siyosatiga rozilik bildiring !");
+                                return;
+                              }
+
+                              if (formKey.currentState!.saveAndValidate()) {
+                                context.read<AuthBloc>().add(
+                                      SendOtpEvent(password: formKey.currentState?.fields['retry_password']?.value),
+                                    );
+                              }
+                            },
                             child: state.otpStatus.isLoading
                                 ? LoadingAnimationWidget.fallingDot(
                                     color: AppTheme.colors.primary,

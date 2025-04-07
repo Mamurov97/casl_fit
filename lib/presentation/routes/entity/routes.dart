@@ -16,6 +16,7 @@ class Routes implements Coordinate {
   static const verify = Routes._(name: 'verify_page', path: '/verify');
   static const createPasscode = Routes._(name: 'set_passcode_page', path: '/set_passcode');
   static const checkPasscode = Routes._(name: 'check_passcode_page', path: '/check_passcode');
+  static const privacyPolicy = Routes._(name: 'privacy_policy', path: '/privacy_policy');
 
   ///bottom_navigation_bar
   static const root = Routes._(name: 'root', path: '/root');

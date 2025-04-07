@@ -53,7 +53,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<ChangeResetPasswordStatusEvent>((event, emit) async {
       emit(state.copyWith(resetPasswordStatus: BlocStatus.initial));
     });
-
+    on<PrivacyPolicyEvent>((event, emit) async {
+      emit(state.copyWith(isPrivacyPolicy: event.isPrivacyPolicy));
+    });
     // Login jarayonini boshlash
     on<LoginEvent>((event, emit) async {
       emit(state.copyWith(loginStatus: BlocStatus.loading));

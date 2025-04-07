@@ -44,7 +44,7 @@ class _QrPageState extends State<QrPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Gap(0.15.sh),
+                      Gap(0.35.sh),
                       if (state.status == BlocStatus.success)
                         Stack(
                           children: [
@@ -53,14 +53,14 @@ class _QrPageState extends State<QrPage> {
                                 borderRadius: BorderRadius.circular(12.0),
                                 color: Colors.white.withValues(alpha: 0.9),
                               ),
-                              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+                              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   QrImageView(
                                     data: (state.qrCodeResponse ?? QrCodeResponse()).qrCodeToken.toString(),
                                     version: QrVersions.auto,
-                                    size: 0.4.sh,
+                                    size: 0.28.sh,
                                     gapless: false,
                                   ),
                                 ],

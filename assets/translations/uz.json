@@ -39,7 +39,8 @@
   },
   "register": {
     "password": "Parol",
-    "retry_password": "Parolni takrorlang"
+    "retry_password": "Parolni takrorlang",
+    "privacy_policy": "Maxfiylik siyosatiga rozimisiz ?"
   },
   "verify": {
     "verify_code": "Tasdiqlash kodi",
