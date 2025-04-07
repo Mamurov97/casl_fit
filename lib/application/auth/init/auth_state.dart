@@ -6,6 +6,7 @@ class AuthState with _$AuthState {
     String? phoneNumber,
     String? password,
     String? registerPageType,
+    bool? isPrivacyPolicy,
     required VerifyPhoneNumberStatus authStatus,
     required BlocStatus loginStatus,
     required BlocStatus registerStatus,

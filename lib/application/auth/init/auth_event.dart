@@ -23,4 +23,6 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.sendOtp({required String password}) = SendOtpEvent;
 
   const factory AuthEvent.verifyOtp({required int otpCode}) = VerifyOtpEvent;
+  const factory AuthEvent.isPrivacyPolicy({required bool isPrivacyPolicy }) = PrivacyPolicyEvent;
+
 }

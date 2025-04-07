@@ -1,5 +1,6 @@
 import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
 import 'package:casl_fit/presentation/components/screens/coming_soon_page.dart';
+import 'package:casl_fit/presentation/pages/auth/privacy_policy/privacy_policy_page.dart';
 import 'package:casl_fit/presentation/pages/profile/weight_height/weight_height_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-
 import '../../application/home/profile/profile_bloc.dart';
 import '../../domain/common/data/user_data.dart';
 import '../../infrastructure/services/shared_service.dart';
@@ -17,7 +17,6 @@ import 'entity/pages.dart';
 import 'entity/routes.dart';
 
 final controller = ScrollController();
-
 Future<void> clearAndRoot() async {
   var pref = await SharedPrefService.initialize();
   var passCode = pref.passcode;
@@ -58,7 +57,16 @@ final GoRouter router = GoRouter(
         key: state.pageKey,
         child: const RegisterPage(),
       ),
-    ),
+        routes: [
+          GoRoute(
+            name: Routes.privacyPolicy.name,
+            path: Routes.privacyPolicy.path,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const PrivacyPolicyPage(),
+            ),
+          ),
+        ]),
     GoRoute(
       name: Routes.verify.name,
       path: Routes.verify.path,

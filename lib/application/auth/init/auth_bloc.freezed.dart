@@ -30,6 +30,7 @@ mixin _$AuthEvent {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +47,7 @@ mixin _$AuthEvent {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +64,7 @@ mixin _$AuthEvent {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +85,7 @@ mixin _$AuthEvent {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,6 +102,7 @@ mixin _$AuthEvent {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -114,6 +119,7 @@ mixin _$AuthEvent {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -220,6 +226,7 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return checkPhoneNumber(phone);
   }
@@ -239,6 +246,7 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return checkPhoneNumber?.call(phone);
   }
@@ -258,6 +266,7 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (checkPhoneNumber != null) {
@@ -284,6 +293,7 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return checkPhoneNumber(this);
   }
@@ -303,6 +313,7 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return checkPhoneNumber?.call(this);
   }
@@ -322,6 +333,7 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (checkPhoneNumber != null) {
@@ -399,6 +411,7 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return changeAuthStatusEvent();
   }
@@ -418,6 +431,7 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return changeAuthStatusEvent?.call();
   }
@@ -437,6 +451,7 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (changeAuthStatusEvent != null) {
@@ -463,6 +478,7 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return changeAuthStatusEvent(this);
   }
@@ -482,6 +498,7 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return changeAuthStatusEvent?.call(this);
   }
@@ -501,6 +518,7 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (changeAuthStatusEvent != null) {
@@ -570,6 +588,7 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return changeLoginStatusEvent();
   }
@@ -589,6 +608,7 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return changeLoginStatusEvent?.call();
   }
@@ -608,6 +628,7 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (changeLoginStatusEvent != null) {
@@ -634,6 +655,7 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return changeLoginStatusEvent(this);
   }
@@ -653,6 +675,7 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return changeLoginStatusEvent?.call(this);
   }
@@ -672,6 +695,7 @@ class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (changeLoginStatusEvent != null) {
@@ -739,6 +763,7 @@ class _$ChangeOtpStatusEventImpl implements ChangeOtpStatusEvent {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return changeOtpStatusEvent();
   }
@@ -758,6 +783,7 @@ class _$ChangeOtpStatusEventImpl implements ChangeOtpStatusEvent {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return changeOtpStatusEvent?.call();
   }
@@ -777,6 +803,7 @@ class _$ChangeOtpStatusEventImpl implements ChangeOtpStatusEvent {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (changeOtpStatusEvent != null) {
@@ -803,6 +830,7 @@ class _$ChangeOtpStatusEventImpl implements ChangeOtpStatusEvent {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return changeOtpStatusEvent(this);
   }
@@ -822,6 +850,7 @@ class _$ChangeOtpStatusEventImpl implements ChangeOtpStatusEvent {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return changeOtpStatusEvent?.call(this);
   }
@@ -841,6 +870,7 @@ class _$ChangeOtpStatusEventImpl implements ChangeOtpStatusEvent {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (changeOtpStatusEvent != null) {
@@ -911,6 +941,7 @@ class _$ChangeResetPasswordStatusEventImpl
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return changeResetPasswordStatusEvent();
   }
@@ -930,6 +961,7 @@ class _$ChangeResetPasswordStatusEventImpl
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return changeResetPasswordStatusEvent?.call();
   }
@@ -949,6 +981,7 @@ class _$ChangeResetPasswordStatusEventImpl
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (changeResetPasswordStatusEvent != null) {
@@ -975,6 +1008,7 @@ class _$ChangeResetPasswordStatusEventImpl
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return changeResetPasswordStatusEvent(this);
   }
@@ -994,6 +1028,7 @@ class _$ChangeResetPasswordStatusEventImpl
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return changeResetPasswordStatusEvent?.call(this);
   }
@@ -1013,6 +1048,7 @@ class _$ChangeResetPasswordStatusEventImpl
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (changeResetPasswordStatusEvent != null) {
@@ -1108,6 +1144,7 @@ class _$SetRegisterPageTypeImpl implements SetRegisterPageType {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return setRegisterPageTypeEvent(type);
   }
@@ -1127,6 +1164,7 @@ class _$SetRegisterPageTypeImpl implements SetRegisterPageType {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return setRegisterPageTypeEvent?.call(type);
   }
@@ -1146,6 +1184,7 @@ class _$SetRegisterPageTypeImpl implements SetRegisterPageType {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (setRegisterPageTypeEvent != null) {
@@ -1172,6 +1211,7 @@ class _$SetRegisterPageTypeImpl implements SetRegisterPageType {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return setRegisterPageTypeEvent(this);
   }
@@ -1191,6 +1231,7 @@ class _$SetRegisterPageTypeImpl implements SetRegisterPageType {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return setRegisterPageTypeEvent?.call(this);
   }
@@ -1210,6 +1251,7 @@ class _$SetRegisterPageTypeImpl implements SetRegisterPageType {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (setRegisterPageTypeEvent != null) {
@@ -1321,6 +1363,7 @@ class _$LoginEventImpl implements LoginEvent {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return login(phone, password);
   }
@@ -1340,6 +1383,7 @@ class _$LoginEventImpl implements LoginEvent {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return login?.call(phone, password);
   }
@@ -1359,6 +1403,7 @@ class _$LoginEventImpl implements LoginEvent {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -1385,6 +1430,7 @@ class _$LoginEventImpl implements LoginEvent {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return login(this);
   }
@@ -1404,6 +1450,7 @@ class _$LoginEventImpl implements LoginEvent {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return login?.call(this);
   }
@@ -1423,6 +1470,7 @@ class _$LoginEventImpl implements LoginEvent {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -1527,6 +1575,7 @@ class _$RegisterEventImpl implements RegisterEvent {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return register(otpCode);
   }
@@ -1546,6 +1595,7 @@ class _$RegisterEventImpl implements RegisterEvent {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return register?.call(otpCode);
   }
@@ -1565,6 +1615,7 @@ class _$RegisterEventImpl implements RegisterEvent {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -1591,6 +1642,7 @@ class _$RegisterEventImpl implements RegisterEvent {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return register(this);
   }
@@ -1610,6 +1662,7 @@ class _$RegisterEventImpl implements RegisterEvent {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return register?.call(this);
   }
@@ -1629,6 +1682,7 @@ class _$RegisterEventImpl implements RegisterEvent {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -1751,6 +1805,7 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return passwordRecovery(phone, password, otpCode);
   }
@@ -1770,6 +1825,7 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return passwordRecovery?.call(phone, password, otpCode);
   }
@@ -1789,6 +1845,7 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (passwordRecovery != null) {
@@ -1815,6 +1872,7 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return passwordRecovery(this);
   }
@@ -1834,6 +1892,7 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return passwordRecovery?.call(this);
   }
@@ -1853,6 +1912,7 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (passwordRecovery != null) {
@@ -1960,6 +2020,7 @@ class _$SendOtpEventImpl implements SendOtpEvent {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return sendOtp(password);
   }
@@ -1979,6 +2040,7 @@ class _$SendOtpEventImpl implements SendOtpEvent {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return sendOtp?.call(password);
   }
@@ -1998,6 +2060,7 @@ class _$SendOtpEventImpl implements SendOtpEvent {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (sendOtp != null) {
@@ -2024,6 +2087,7 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return sendOtp(this);
   }
@@ -2043,6 +2107,7 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return sendOtp?.call(this);
   }
@@ -2062,6 +2127,7 @@ class _$SendOtpEventImpl implements SendOtpEvent {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (sendOtp != null) {
@@ -2165,6 +2231,7 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
         passwordRecovery,
     required TResult Function(String password) sendOtp,
     required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
   }) {
     return verifyOtp(otpCode);
   }
@@ -2184,6 +2251,7 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
         passwordRecovery,
     TResult? Function(String password)? sendOtp,
     TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
   }) {
     return verifyOtp?.call(otpCode);
   }
@@ -2203,6 +2271,7 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
         passwordRecovery,
     TResult Function(String password)? sendOtp,
     TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (verifyOtp != null) {
@@ -2229,6 +2298,7 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
   }) {
     return verifyOtp(this);
   }
@@ -2248,6 +2318,7 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
   }) {
     return verifyOtp?.call(this);
   }
@@ -2267,6 +2338,7 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
     TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
     required TResult orElse(),
   }) {
     if (verifyOtp != null) {
@@ -2290,10 +2362,223 @@ abstract class VerifyOtpEvent implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$PrivacyPolicyEventImplCopyWith<$Res> {
+  factory _$$PrivacyPolicyEventImplCopyWith(_$PrivacyPolicyEventImpl value,
+          $Res Function(_$PrivacyPolicyEventImpl) then) =
+      __$$PrivacyPolicyEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isPrivacyPolicy});
+}
+
+/// @nodoc
+class __$$PrivacyPolicyEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$PrivacyPolicyEventImpl>
+    implements _$$PrivacyPolicyEventImplCopyWith<$Res> {
+  __$$PrivacyPolicyEventImplCopyWithImpl(_$PrivacyPolicyEventImpl _value,
+      $Res Function(_$PrivacyPolicyEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isPrivacyPolicy = null,
+  }) {
+    return _then(_$PrivacyPolicyEventImpl(
+      isPrivacyPolicy: null == isPrivacyPolicy
+          ? _value.isPrivacyPolicy
+          : isPrivacyPolicy // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PrivacyPolicyEventImpl implements PrivacyPolicyEvent {
+  const _$PrivacyPolicyEventImpl({required this.isPrivacyPolicy});
+
+  @override
+  final bool isPrivacyPolicy;
+
+  @override
+  String toString() {
+    return 'AuthEvent.isPrivacyPolicy(isPrivacyPolicy: $isPrivacyPolicy)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PrivacyPolicyEventImpl &&
+            (identical(other.isPrivacyPolicy, isPrivacyPolicy) ||
+                other.isPrivacyPolicy == isPrivacyPolicy));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isPrivacyPolicy);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PrivacyPolicyEventImplCopyWith<_$PrivacyPolicyEventImpl> get copyWith =>
+      __$$PrivacyPolicyEventImplCopyWithImpl<_$PrivacyPolicyEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phone) checkPhoneNumber,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeLoginStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function() changeResetPasswordStatusEvent,
+    required TResult Function(String type) setRegisterPageTypeEvent,
+    required TResult Function(String phone, String password) login,
+    required TResult Function(String otpCode) register,
+    required TResult Function(String phone, String password, String otpCode)
+        passwordRecovery,
+    required TResult Function(String password) sendOtp,
+    required TResult Function(int otpCode) verifyOtp,
+    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
+  }) {
+    return isPrivacyPolicy(this.isPrivacyPolicy);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone)? checkPhoneNumber,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeLoginStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function()? changeResetPasswordStatusEvent,
+    TResult? Function(String type)? setRegisterPageTypeEvent,
+    TResult? Function(String phone, String password)? login,
+    TResult? Function(String otpCode)? register,
+    TResult? Function(String phone, String password, String otpCode)?
+        passwordRecovery,
+    TResult? Function(String password)? sendOtp,
+    TResult? Function(int otpCode)? verifyOtp,
+    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+  }) {
+    return isPrivacyPolicy?.call(this.isPrivacyPolicy);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone)? checkPhoneNumber,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeLoginStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function()? changeResetPasswordStatusEvent,
+    TResult Function(String type)? setRegisterPageTypeEvent,
+    TResult Function(String phone, String password)? login,
+    TResult Function(String otpCode)? register,
+    TResult Function(String phone, String password, String otpCode)?
+        passwordRecovery,
+    TResult Function(String password)? sendOtp,
+    TResult Function(int otpCode)? verifyOtp,
+    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    required TResult orElse(),
+  }) {
+    if (isPrivacyPolicy != null) {
+      return isPrivacyPolicy(this.isPrivacyPolicy);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeLoginStatusEvent value)
+        changeLoginStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(ChangeResetPasswordStatusEvent value)
+        changeResetPasswordStatusEvent,
+    required TResult Function(SetRegisterPageType value)
+        setRegisterPageTypeEvent,
+    required TResult Function(LoginEvent value) login,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
+    required TResult Function(SendOtpEvent value) sendOtp,
+    required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
+  }) {
+    return isPrivacyPolicy(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(ChangeResetPasswordStatusEvent value)?
+        changeResetPasswordStatusEvent,
+    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
+    TResult? Function(LoginEvent value)? login,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
+    TResult? Function(SendOtpEvent value)? sendOtp,
+    TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+  }) {
+    return isPrivacyPolicy?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult Function(ChangeResetPasswordStatusEvent value)?
+        changeResetPasswordStatusEvent,
+    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
+    TResult Function(LoginEvent value)? login,
+    TResult Function(RegisterEvent value)? register,
+    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
+    TResult Function(SendOtpEvent value)? sendOtp,
+    TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    required TResult orElse(),
+  }) {
+    if (isPrivacyPolicy != null) {
+      return isPrivacyPolicy(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PrivacyPolicyEvent implements AuthEvent {
+  const factory PrivacyPolicyEvent({required final bool isPrivacyPolicy}) =
+      _$PrivacyPolicyEventImpl;
+
+  bool get isPrivacyPolicy;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PrivacyPolicyEventImplCopyWith<_$PrivacyPolicyEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AuthState {
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   String? get registerPageType => throw _privateConstructorUsedError;
+  bool? get isPrivacyPolicy => throw _privateConstructorUsedError;
   VerifyPhoneNumberStatus get authStatus => throw _privateConstructorUsedError;
   BlocStatus get loginStatus => throw _privateConstructorUsedError;
   BlocStatus get registerStatus => throw _privateConstructorUsedError;
@@ -2318,6 +2603,7 @@ abstract class $AuthStateCopyWith<$Res> {
       {String? phoneNumber,
       String? password,
       String? registerPageType,
+      bool? isPrivacyPolicy,
       VerifyPhoneNumberStatus authStatus,
       BlocStatus loginStatus,
       BlocStatus registerStatus,
@@ -2345,6 +2631,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? phoneNumber = freezed,
     Object? password = freezed,
     Object? registerPageType = freezed,
+    Object? isPrivacyPolicy = freezed,
     Object? authStatus = null,
     Object? loginStatus = null,
     Object? registerStatus = null,
@@ -2366,6 +2653,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.registerPageType
           : registerPageType // ignore: cast_nullable_to_non_nullable
               as String?,
+      isPrivacyPolicy: freezed == isPrivacyPolicy
+          ? _value.isPrivacyPolicy
+          : isPrivacyPolicy // ignore: cast_nullable_to_non_nullable
+              as bool?,
       authStatus: null == authStatus
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
@@ -2410,6 +2701,7 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       {String? phoneNumber,
       String? password,
       String? registerPageType,
+      bool? isPrivacyPolicy,
       VerifyPhoneNumberStatus authStatus,
       BlocStatus loginStatus,
       BlocStatus registerStatus,
@@ -2435,6 +2727,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? password = freezed,
     Object? registerPageType = freezed,
+    Object? isPrivacyPolicy = freezed,
     Object? authStatus = null,
     Object? loginStatus = null,
     Object? registerStatus = null,
@@ -2456,6 +2749,10 @@ class __$$AuthStateImplCopyWithImpl<$Res>
           ? _value.registerPageType
           : registerPageType // ignore: cast_nullable_to_non_nullable
               as String?,
+      isPrivacyPolicy: freezed == isPrivacyPolicy
+          ? _value.isPrivacyPolicy
+          : isPrivacyPolicy // ignore: cast_nullable_to_non_nullable
+              as bool?,
       authStatus: null == authStatus
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
@@ -2495,6 +2792,7 @@ class _$AuthStateImpl implements _AuthState {
       {this.phoneNumber,
       this.password,
       this.registerPageType,
+      this.isPrivacyPolicy,
       required this.authStatus,
       required this.loginStatus,
       required this.registerStatus,
@@ -2509,6 +2807,8 @@ class _$AuthStateImpl implements _AuthState {
   final String? password;
   @override
   final String? registerPageType;
+  @override
+  final bool? isPrivacyPolicy;
   @override
   final VerifyPhoneNumberStatus authStatus;
   @override
@@ -2526,7 +2826,7 @@ class _$AuthStateImpl implements _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(phoneNumber: $phoneNumber, password: $password, registerPageType: $registerPageType, authStatus: $authStatus, loginStatus: $loginStatus, registerStatus: $registerStatus, otpStatus: $otpStatus, otpVerifyStatus: $otpVerifyStatus, resetPasswordStatus: $resetPasswordStatus, errorMessage: $errorMessage)';
+    return 'AuthState(phoneNumber: $phoneNumber, password: $password, registerPageType: $registerPageType, isPrivacyPolicy: $isPrivacyPolicy, authStatus: $authStatus, loginStatus: $loginStatus, registerStatus: $registerStatus, otpStatus: $otpStatus, otpVerifyStatus: $otpVerifyStatus, resetPasswordStatus: $resetPasswordStatus, errorMessage: $errorMessage)';
   }
 
   @override
@@ -2540,6 +2840,8 @@ class _$AuthStateImpl implements _AuthState {
                 other.password == password) &&
             (identical(other.registerPageType, registerPageType) ||
                 other.registerPageType == registerPageType) &&
+            (identical(other.isPrivacyPolicy, isPrivacyPolicy) ||
+                other.isPrivacyPolicy == isPrivacyPolicy) &&
             (identical(other.authStatus, authStatus) ||
                 other.authStatus == authStatus) &&
             (identical(other.loginStatus, loginStatus) ||
@@ -2562,6 +2864,7 @@ class _$AuthStateImpl implements _AuthState {
       phoneNumber,
       password,
       registerPageType,
+      isPrivacyPolicy,
       authStatus,
       loginStatus,
       registerStatus,
@@ -2584,6 +2887,7 @@ abstract class _AuthState implements AuthState {
       {final String? phoneNumber,
       final String? password,
       final String? registerPageType,
+      final bool? isPrivacyPolicy,
       required final VerifyPhoneNumberStatus authStatus,
       required final BlocStatus loginStatus,
       required final BlocStatus registerStatus,
@@ -2598,6 +2902,8 @@ abstract class _AuthState implements AuthState {
   String? get password;
   @override
   String? get registerPageType;
+  @override
+  bool? get isPrivacyPolicy;
   @override
   VerifyPhoneNumberStatus get authStatus;
   @override
