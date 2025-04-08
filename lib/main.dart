@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'application/app_manager/app_manager_cubit.dart';
 import 'application/auth/init/auth_bloc.dart';
 import 'domain/common/app_init.dart';
@@ -48,7 +47,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()),
+        BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()..checkVersion()),
         BlocProvider(create: (context) => AuthBloc()),
         BlocProvider(create: (context) => TariffBloc()..add(const GetCurrentTariffs())),
       ],
