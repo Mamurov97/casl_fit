@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:casl_fit/presentation/assets/asset_index.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../basic_widgets.dart';
 
@@ -25,11 +21,11 @@ class UpdateAppDialog extends StatelessWidget {
             children: [
               Text(
                 'Yangilash',
-                style: AppTheme.data.textTheme.titleSmall!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w600,color: AppTheme.colors.white),
+                style: AppTheme.data.textTheme.titleSmall!.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w600, color: AppTheme.colors.white),
               ),
               Text(
                 "Dasturga qo'shimcha imkoniyatlar qo'shildi uni yangilab oling !!!",
-                style: AppTheme.data.textTheme.titleSmall!.copyWith(fontSize: 10.sp, fontWeight: FontWeight.w400,color: AppTheme.colors.white),
+                style: AppTheme.data.textTheme.titleSmall!.copyWith(fontSize: 10.sp, fontWeight: FontWeight.w400, color: AppTheme.colors.white),
               ),
               Gap(20.h),
               Lottie.asset(
@@ -53,7 +49,7 @@ class UpdateAppDialog extends StatelessWidget {
                                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r), color: Colors.grey.shade200),
                                   child: Center(
                                     child: Text(
-                                      "Bekor qilish",
+                                      "Keyinroq",
                                       style: AppTheme.data.textTheme.labelSmall!.copyWith(color: AppTheme.colors.black, fontWeight: FontWeight.w500),
                                     ),
                                   )),
@@ -63,15 +59,17 @@ class UpdateAppDialog extends StatelessWidget {
                     Expanded(
                       child: GestureDetector(
                         onTap: () async {
-                          if (Platform.isAndroid) {
-                            _launchUrl();
-                          } else if (Platform.isIOS) {
-                            _launchUrlIos();
-                          } else {
-                            if (kDebugMode) {
-                              print("Error Platform!");
-                            }
-                          }
+                          // if (Platform.isAndroid) {
+                          //   _launchUrl();
+                          // } else if (Platform.isIOS) {
+                          //   _launchUrlIos();
+                          // } else {
+                          //   if (kDebugMode) {
+                          //     print("Error Platform!");
+                          //   }
+                          // }
+
+                          Navigator.pop(context);
                         },
                         child: Container(
                             width: double.infinity,
@@ -95,17 +93,17 @@ class UpdateAppDialog extends StatelessWidget {
     );
   }
 
-  Future<void> _launchUrl() async {
-    final Uri url = Uri.parse('https://play.google.com/store/apps/details?id=com.garantsoft.casl_fit&pli=1');
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
-  }
-
-  Future<void> _launchUrlIos() async {
-    final Uri url = Uri.parse('https://apps.apple.com/us/app/rendostaff/id6739629896');
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
-  }
+// Future<void> _launchUrl() async {
+//   final Uri url = Uri.parse('https://play.google.com/store/apps/details?id=com.garantsoft.casl_fit&pli=1');
+//   if (!await launchUrl(url)) {
+//     throw Exception('Could not launch $url');
+//   }
+// }
+//
+// Future<void> _launchUrlIos() async {
+//   final Uri url = Uri.parse('https://apps.apple.com/us/app/rendostaff/id6739629896');
+//   if (!await launchUrl(url)) {
+//     throw Exception('Could not launch $url');
+//   }
+// }
 }

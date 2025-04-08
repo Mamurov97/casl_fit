@@ -25,7 +25,7 @@ class AppManagerCubit extends Cubit<AppManagerState> {
       PlatformInfo.init();
 
       final pref = await SharedPrefService.initialize();
- 
+
       UserData.token = pref.getToken;
       UserData.authStatus = pref.isAuthorized;
       UserData.userId = pref.getUserId;
@@ -52,12 +52,9 @@ class AppManagerCubit extends Cubit<AppManagerState> {
         info = "android";
       }
       Response response = await dio.post("auth/mobile-check-version", data: {"platform_type": info, "app_version": packageInfo.version});
-      print("123234343453453");
       var result = response.data;
       emit(AppCheckVersionSuccess(result["result"]["update"], result["result"]["update_status"]));
     } catch (e) {
-      print("errororororo");
-      print(e.toString());
       emit(AppCheckVersionError(e.toString()));
     }
   }

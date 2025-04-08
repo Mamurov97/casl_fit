@@ -36,10 +36,13 @@ String? _redirects() {
 
   return null;
 }
+final rootNavigatorKey = GlobalKey<NavigatorState>();
+
 
 final GoRouter router = GoRouter(
   initialLocation: "${Routes.root.path}${Routes.qrCode.path}",
   // initialLocation: Routes.signIn.path,
+  navigatorKey: rootNavigatorKey,
   routes: <GoRoute>[
     ///auth
     GoRoute(
