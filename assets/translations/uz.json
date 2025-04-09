@@ -87,7 +87,9 @@
   "tariff": {
     "all_tariff":"Barcha tariflar"
   },
-
+"body": {
+  "body": "Tana"
+},
   "profile": {
     "edit_profile": "Profilni tahrirlash",
     "notification": "Bildirishnomalar",

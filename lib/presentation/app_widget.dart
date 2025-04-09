@@ -38,23 +38,23 @@ class AppWidget extends StatelessWidget {
               routeInformationProvider: router.routeInformationProvider,
               routerDelegate: router.routerDelegate,
               builder: (context, child) {
-                final state = context.watch<AppManagerCubit>().state;
+                // final state = context.watch<AppManagerCubit>().state;
 
-                if (state is AppCheckVersionSuccess) {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    final navigator = rootNavigatorKey.currentState;
-                    if (navigator?.mounted ?? false) {
-                      showDialog(
-                        context: navigator!.context,
-                        barrierDismissible: state.updateStatus != 'hard',
-                        builder: (_) => const Material(
-                          type: MaterialType.transparency,
-                          child: UpdateAppDialog(status: 'hard'),
-                        ),
-                      );
-                    }
-                  });
-                }
+                // if (state is AppCheckVersionSuccess) {
+                //   WidgetsBinding.instance.addPostFrameCallback((_) {
+                //     final navigator = rootNavigatorKey.currentState;
+                //     if (navigator?.mounted ?? false) {
+                //       showDialog(
+                //         context: navigator!.context,
+                //         barrierDismissible: state.updateStatus != 'hard',
+                //         builder: (_) => const Material(
+                //           type: MaterialType.transparency,
+                //           child: UpdateAppDialog(status: 'hard'),
+                //         ),
+                //       );
+                //     }
+                //   });
+                // }
 
                 return EasyLoading.init()(context, child);
               },

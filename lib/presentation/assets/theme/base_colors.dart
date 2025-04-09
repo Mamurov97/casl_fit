@@ -55,5 +55,11 @@ abstract class BaseColors {
 
   Color get black700 => const Color.fromRGBO(63, 64, 61, 1);
 
+  Color get blueGray => const Color.fromRGBO(177, 184, 200, 1);
+
+  Color get blueGray50 => const Color.fromRGBO(220, 225, 235, 1);
+
+
+
 // Color get background;
 }

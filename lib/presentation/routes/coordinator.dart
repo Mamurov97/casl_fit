@@ -1,6 +1,8 @@
 import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
 import 'package:casl_fit/presentation/components/screens/coming_soon_page.dart';
 import 'package:casl_fit/presentation/pages/auth/privacy_policy/privacy_policy_page.dart';
+import 'package:casl_fit/presentation/pages/body/body_page.dart';
+import 'package:casl_fit/presentation/pages/body/pages/training_page.dart';
 import 'package:casl_fit/presentation/pages/profile/weight_height/weight_height_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +19,7 @@ import 'entity/pages.dart';
 import 'entity/routes.dart';
 
 final controller = ScrollController();
+
 Future<void> clearAndRoot() async {
   var pref = await SharedPrefService.initialize();
   var passCode = pref.passcode;
@@ -36,8 +39,8 @@ String? _redirects() {
 
   return null;
 }
-final rootNavigatorKey = GlobalKey<NavigatorState>();
 
+final rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
   initialLocation: "${Routes.root.path}${Routes.qrCode.path}",
@@ -54,12 +57,12 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
-      name: Routes.register.name,
-      path: Routes.register.path,
-      pageBuilder: (context, state) => MaterialPage<void>(
-        key: state.pageKey,
-        child: const RegisterPage(),
-      ),
+        name: Routes.register.name,
+        path: Routes.register.path,
+        pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const RegisterPage(),
+            ),
         routes: [
           GoRoute(
             name: Routes.privacyPolicy.name,
@@ -151,8 +154,21 @@ final GoRouter router = GoRouter(
                     name: Routes.status.name,
                     path: Routes.status.path,
                     redirect: (context, state) => _redirects(),
+                    routes: [
+                      GoRoute(
+                          name: Routes.training.name,
+                          path: Routes.training.path,
+                          redirect: (context, state) => _redirects(),
+                          pageBuilder: (context, state) {
+                            return MaterialPage<void>(
+                                key: state.pageKey,
+                                child: TrainingPage(
+                                  data: state.extra as Map<String, dynamic>,
+                                ));
+                          }),
+                    ],
                     pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const ComingSoonPage());
+                      return MaterialPage<void>(key: state.pageKey, child: BodyScreen());
                     }),
               ],
             ),
@@ -181,7 +197,7 @@ final GoRouter router = GoRouter(
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(key: state.pageKey, child: const ComingSoonPage());
                     }),
-             /*   GoRoute(
+                /*   GoRoute(
                   name: Routes.tariff.name,
                   path: Routes.tariff.path,
                   redirect: (context, state) => _redirects(),
@@ -230,7 +246,8 @@ final GoRouter router = GoRouter(
                             return MaterialPage<void>(
                                 key: state.pageKey,
                                 child: BlocProvider(
-                                  create: (context) => WeightHeightBloc()..add(GetWeightHeightEvent(weightHeightEnum: state.extra as WeightHeightEnum)),
+                                  create: (context) =>
+                                      WeightHeightBloc()..add(GetWeightHeightEvent(weightHeightEnum: state.extra as WeightHeightEnum)),
                                   child: const WeightHeightPage(),
                                 ));
                           }),

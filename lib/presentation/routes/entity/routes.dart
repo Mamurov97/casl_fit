@@ -28,6 +28,11 @@ class Routes implements Coordinate {
   static const tariff = Routes._(name: "tariff", path: '/tariff');
   static const profile = Routes._(name: 'profile', path: '/profile');
 
+  ///Status
+  static const training = Routes._(name: 'training', path: '/training');
+
+
+
   ///Tariff
   static const allTariff = Routes._(name: "all_tariff", path: '/all_tariff');
   static const tariffDetail = Routes._(name: "tariff_detail", path: '/tariff_detail');
