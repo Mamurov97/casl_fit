@@ -53,12 +53,6 @@ class _ProfilePageState extends State<ProfilePage> {
         elevation: 0,
         title: Text('profile.profile'.tr(), style: const TextStyle(color: Colors.white)),
         centerTitle: true,
-        /*actions: [
-          IconButton(
-            icon: const Icon(Icons.settings, color: Colors.white),
-            onPressed: () {},
-          ),
-        ],*/
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

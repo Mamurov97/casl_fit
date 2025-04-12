@@ -1,7 +1,3 @@
-import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
-import 'package:casl_fit/presentation/components/screens/coming_soon_page.dart';
-import 'package:casl_fit/presentation/pages/auth/privacy_policy/privacy_policy_page.dart';
-import 'package:casl_fit/presentation/pages/profile/weight_height/weight_height_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +36,7 @@ final rootNavigatorKey = GlobalKey<NavigatorState>();
 
 
 final GoRouter router = GoRouter(
-  initialLocation: "${Routes.root.path}${Routes.qrCode.path}",
+  initialLocation: "${Routes.root.path}${Routes.home.path}",
   // initialLocation: Routes.signIn.path,
   navigatorKey: rootNavigatorKey,
   routes: <GoRoute>[
@@ -140,8 +136,17 @@ final GoRouter router = GoRouter(
                     name: Routes.home.name,
                     path: Routes.home.path,
                     redirect: (context, state) => _redirects(),
+                    routes: [
+                      GoRoute(
+                          name: Routes.booking.name,
+                          path: Routes.booking.path,
+                          redirect: (context, state) => _redirects(),
+                          pageBuilder: (context, state) {
+                            return MaterialPage<void>(key: state.pageKey, child: const BookingPage());
+                          }),
+                    ],
                     pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const ComingSoonPage());
+                      return MaterialPage<void>(key: state.pageKey, child: const HomePage());
                     }),
               ],
             ),

@@ -48,7 +48,6 @@ class _SignInPageState extends State<SignInPage> {
           }
           if (state.authStatus.isNotFound) AuthDialogs.showNotFoundDialog(context);
 
-          //login statusini eshitish
           if (state.loginStatus.isSuccess) context.go('/root/qr_code');
           if (state.loginStatus.isError) {
             Toast.showErrorToast(message: state.errorMessage);
