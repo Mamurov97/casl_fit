@@ -15,9 +15,16 @@ export '../../pages/home/home_page.dart';
 export '../../pages/tariff/tariff_page.dart';
 export '../../pages/profile/profile_page.dart';
 
+export 'package:casl_fit/presentation/pages/profile/weight_height/weight_height_page.dart';
+
+export 'package:casl_fit/presentation/components/screens/coming_soon_page.dart';
+export 'package:casl_fit/presentation/pages/auth/privacy_policy/privacy_policy_page.dart';
+export 'package:casl_fit/presentation/pages/home/booking_page.dart';
+
 ///Tariff
 export '../../pages/tariff/all_tariff/all_tariff_page.dart';
 export '../../pages/tariff/tariff_detail/tariff_detail_page.dart';
 
 ///blocs
 export 'package:casl_fit/application/home/qr_code/qr_code_bloc.dart';
+export 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';

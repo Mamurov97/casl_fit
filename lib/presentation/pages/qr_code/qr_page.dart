@@ -23,7 +23,6 @@ class _QrPageState extends State<QrPage> {
   void initState() {
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +36,13 @@ class _QrPageState extends State<QrPage> {
             return Stack(
               fit: StackFit.expand,
               children: [
-                Image.asset('assets/images/gym_background.jpg', fit: BoxFit.cover, alignment: Alignment.topCenter),
+                Image.asset(
+                  AppImages.background,
+                  height: 1.sh,
+                  width: 1.sw,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
+                ),
                 Center(
                     child: Padding(
                   padding: const EdgeInsets.all(22.0),
