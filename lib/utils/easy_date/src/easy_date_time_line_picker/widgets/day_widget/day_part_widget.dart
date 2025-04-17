@@ -47,7 +47,7 @@ class _DayPartWidgetState extends State<DayPartWidget> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          DateFormat('EEE', widget.locale).format(widget.date),
+          DateFormat('EEE',"uz").format(widget.date),
           style: AppTheme.data.textTheme.titleSmall?.copyWith(fontSize: 12.sp, color: widget.isSelectedDay ? AppTheme.colors.black : AppTheme.colors.white),
         ),
         Gap(4.h),

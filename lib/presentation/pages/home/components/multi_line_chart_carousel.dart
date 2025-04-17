@@ -17,14 +17,24 @@ class MultiLineChartCarousel extends StatelessWidget {
       const FlSpot(6, 10),
       const FlSpot(7, 10),
       const FlSpot(8, 8),
-      const FlSpot(9, 6)
+      const FlSpot(9, 6),
+      const FlSpot(10, 8),
+      const FlSpot(11, 11),
+      const FlSpot(12, 9),
+      const FlSpot(13, 10),
     ],
   ];
 
-  final List<String> hours = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'];
+  final List<String> hours = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
   final List<String> day = ['08.04.2025', '09.04.2025', '10.04.2025'];
 
   MultiLineChartCarousel({super.key});
+
+  late final TransformationController _transformationController = TransformationController(Matrix4.diagonal3Values(
+    1.8,
+    1.8,
+    1,
+  ));
 
   @override
   Widget build(BuildContext context) {
@@ -34,25 +44,48 @@ class MultiLineChartCarousel extends StatelessWidget {
         color: AppTheme.colors.secondary.withValues(alpha: 0.9),
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: 16.h, right: 12.w, left: 4.w),
+        padding: EdgeInsets.only(top: 16.h, right: 12.w, left: 4.w, bottom: 8.0),
         child: SizedBox(
-          height: 0.3.sh,
+          height: 0.32.sh,
           width: 1.sw,
           child: LineChart(
             curve: Curves.bounceInOut,
+            transformationConfig: FlTransformationConfig(
+              scaleAxis: FlScaleAxis.horizontal,
+              minScale: 1.0,
+              maxScale: 25.0,
+              panEnabled: true,
+              scaleEnabled: true,
+              transformationController: _transformationController,
+            ),
             LineChartData(
               backgroundColor: AppTheme.colors.secondary,
               gridData: const FlGridData(show: true),
               borderData: FlBorderData(show: true),
               titlesData: FlTitlesData(
                   bottomTitles: AxisTitles(
+                    axisNameSize: 100,
                     sideTitles: SideTitles(
+                      reservedSize:26.h ,
+                      //  reservedSize: 40,
                       showTitles: true,
                       interval: 1,
                       getTitlesWidget: (value, meta) {
                         int index = value.toInt();
                         if (index >= 0 && index < hours.length) {
-                          return Text(hours[index], style: AppTheme.data.textTheme.titleMedium?.copyWith(fontSize: 8.sp, color: AppTheme.colors.white));
+                          return Transform.rotate(
+                            angle: -0.785398,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8.0,),
+                              child: Text(
+                                hours[index],
+                                style: AppTheme.data.textTheme.titleMedium?.copyWith(
+                                  fontSize: 10.sp,
+                                  color: AppTheme.colors.white,
+                                ),
+                              ),
+                            ),
+                          );
                         }
                         return const SizedBox.shrink();
                       },
@@ -64,9 +97,14 @@ class MultiLineChartCarousel extends StatelessWidget {
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      interval: 5,
+                      interval: 3,
                       getTitlesWidget: (value, meta) {
-                        return value != 0 ? Text('${value.toInt()}', style: AppTheme.data.textTheme.titleMedium?.copyWith(fontSize: 10.sp, color: AppTheme.colors.white)) : const SizedBox();
+                        return value != 0
+                            ? Padding(
+                                padding: const EdgeInsets.only(top: 0),
+                                child: Text('${value.toInt()}', style: AppTheme.data.textTheme.titleMedium?.copyWith(fontSize:12.sp, color: AppTheme.colors.white)),
+                              )
+                            : const SizedBox();
                       },
                     ),
                   ),
@@ -78,7 +116,7 @@ class MultiLineChartCarousel extends StatelessWidget {
                     spots: dataSets[0],
                     isCurved: true,
                     color: AppTheme.colors.primary,
-                    barWidth: 6,
+                    barWidth: 2,
                     belowBarData: BarAreaData(show: true),
                     isStrokeCapRound: true,
                     shadow: const Shadow(blurRadius: 12.0, color: Colors.black, offset: Offset(2, 3)),
@@ -88,7 +126,7 @@ class MultiLineChartCarousel extends StatelessWidget {
                         return FlDotCirclePainter(
                           radius: 4,
                           color: AppTheme.colors.primary,
-                          strokeWidth: 2,
+                          strokeWidth: 1,
                           strokeColor: AppTheme.colors.primary,
                         );
                       },
@@ -97,102 +135,13 @@ class MultiLineChartCarousel extends StatelessWidget {
                     curveSmoothness: 0.4),
               ],
               minX: 0,
-              maxX: 9,
+              maxX: 13,
               minY: 0,
-              maxY: 20,
+              maxY: 15,
             ),
           ),
         ),
-      ) /* CarouselSlider.builder(
-        itemCount: dataSets.length,
-        options: CarouselOptions(
-          aspectRatio: 1,
-          enlargeFactor: 0.6,
-          viewportFraction: 0.91,
-          height: 0.28.sh,
-          enlargeCenterPage: true,
-          enableInfiniteScroll: false,
-          autoPlay: false,
-        ),
-        itemBuilder: (context, index, realIndex) {
-          return Column(
-            children: [
-              Gap(8.h),
-              Expanded(
-                child: LineChart(
-                  curve: Curves.bounceInOut,
-                  LineChartData(
-                    backgroundColor: AppTheme.colors.secondary,
-                    gridData: const FlGridData(show: true),
-                    borderData: FlBorderData(show: true),
-                    titlesData: FlTitlesData(
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            interval: 1,
-                            getTitlesWidget: (value, meta) {
-                              int index = value.toInt();
-                              if (index >= 0 && index < hours.length) {
-                                return Text(hours[index], style: AppTheme.data.textTheme.titleMedium?.copyWith(fontSize: 8.sp, color: AppTheme.colors.white));
-                              }
-                              return const SizedBox.shrink();
-                            },
-                          ),
-                        ),
-                        leftTitles: const AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        rightTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            interval: 5,
-                            getTitlesWidget: (value, meta) {
-                              return value != 0
-                                  ? Text(
-                                      '${value.toInt()}',
-                                      style: AppTheme.data.textTheme.titleMedium?.copyWith(fontSize: 10.sp, color: AppTheme.colors.white),
-                                    )
-                                  : const SizedBox();
-                            },
-                          ),
-                        ),
-                        topTitles: const AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        )),
-                    lineBarsData: [
-                      LineChartBarData(
-                          spots: dataSets[index],
-                          isCurved: true,
-                          color: AppTheme.colors.primary,
-                          barWidth: 6,
-                          belowBarData: BarAreaData(show: true),
-                          isStrokeCapRound: true,
-                          shadow: const Shadow(blurRadius: 12.0, color: Colors.black, offset: Offset(2, 3)),
-                          dotData: FlDotData(
-                            show: true,
-                            getDotPainter: (spot, percent, barData, index) {
-                              return FlDotCirclePainter(
-                                radius: 4,
-                                color: AppTheme.colors.primary,
-                                strokeWidth: 2,
-                                strokeColor: AppTheme.colors.primary,
-                              );
-                            },
-                          ),
-                          showingIndicators: List.generate(dataSets[index].length, (i) => i),
-                          curveSmoothness: 0.4),
-                    ],
-                    minX: 0,
-                    maxX: 9,
-                    minY: 0,
-                    maxY: 20,
-                  ),
-                ),
-              ),
-            ],
-          );
-        },
-      )*/
+      )
       ,
     );
   }

@@ -35,7 +35,7 @@ class CustomNavBar extends StatelessWidget {
               ),
             ),
           ),
-        SizedBox(height: 18.h)
+        SizedBox(height: 10.h)
       ],
     );
   }

@@ -70,12 +70,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             try {
               final responseMe = await repo.getMe();
               if (responseMe['error'] != 'Unauthorized') {
-                final int userId = responseMe['user_id'] ?? 0;
-                final String name = responseMe['name'] ?? '';
-                final String image = responseMe['image'] ?? '';
-                final String phone = responseMe['phone'] ?? '';
-                final String guid = responseMe['guid'] ?? '';
-                final String role = responseMe['role'] ?? '';
+                final int userId = responseMe["result"]['user_id'] ?? 0;
+                final String name = responseMe["result"]['name'] ?? '';
+                final String image = responseMe["result"]['image'] ?? '';
+                final String phone = responseMe["result"]['phone'] ?? '';
+                final String guid = responseMe["result"]['guid'] ?? '';
+                final String role = responseMe["result"]['role'] ?? '';
                 UserData.userId = userId;
                 UserData.name = name;
                 UserData.image = image;
@@ -116,12 +116,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             try {
               final responseMe = await repo.getMe();
               if (responseMe['error'] != 'Unauthorized') {
-                final int userId = responseMe['user_id'] ?? 0;
-                final String name = responseMe['name'] ?? '';
-                final String image = responseMe['image'] ?? '';
-                final String phone = responseMe['phone'] ?? '';
-                final String guid = responseMe['guid'] ?? '';
-                final String role = responseMe['role'] ?? '';
+                final int userId = responseMe["result"]['user_id'] ?? 0;
+                final String name = responseMe["result"]['name'] ?? '';
+                final String image = responseMe["result"]['image'] ?? '';
+                final String phone = responseMe["result"]['phone'] ?? '';
+                final String guid = responseMe["result"]['guid'] ?? '';
+                final String role = responseMe["result"]['role'] ?? '';
                 UserData.userId = userId;
                 UserData.name = name;
                 UserData.image = image;

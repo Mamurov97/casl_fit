@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
-import 'package:casl_fit/infrastructure/repository/home/profile/profile_repository.dart';
 import 'package:dio/dio.dart';
+
+import '../../infrastructure/repository/profile/profile_repository.dart';
 
 part 'profile_event.dart';
 

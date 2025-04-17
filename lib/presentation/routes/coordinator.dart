@@ -4,7 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import '../../application/home/profile/profile_bloc.dart';
+import '../../application/home/home_bloc.dart';
+import '../../application/profile/profile_bloc.dart';
+import '../../application/profile/weight_height/weight_height_bloc.dart';
+import '../../application/qr_code/qr_code_bloc.dart';
 import '../../domain/common/data/user_data.dart';
 import '../../infrastructure/services/shared_service.dart';
 import '../components/navigation_helper.dart';
@@ -113,19 +116,22 @@ final GoRouter router = GoRouter(
                   }
                 } else {}
               },
-              child: PersistentTabView.router(
-                tabs: tabs,
-                popActionScreens: PopActionScreensType.all,
-                navBarOverlap: const NavBarOverlap.full(),
-                onTabChanged: (index) {
-                  if (index == 0) {
-                    if (controller.hasClients) {
-                      controller.jumpTo(0);
+              child: SafeArea(
+                top: false,
+                child: PersistentTabView.router(
+                  tabs: tabs,
+                  popActionScreens: PopActionScreensType.all,
+                  navBarOverlap: const NavBarOverlap.full(),
+                  onTabChanged: (index) {
+                    if (index == 0) {
+                      if (controller.hasClients) {
+                        controller.jumpTo(0);
+                      }
                     }
-                  }
-                },
-                navBarBuilder: (navBarConfig) => CustomNavBar(navBarConfig: navBarConfig),
-                navigationShell: navigatorShell,
+                  },
+                  navBarBuilder: (navBarConfig) => CustomNavBar(navBarConfig: navBarConfig),
+                  navigationShell: navigatorShell,
+                ),
               ),
             );
           },
@@ -146,7 +152,12 @@ final GoRouter router = GoRouter(
                           }),
                     ],
                     pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const HomePage());
+                      return MaterialPage<void>(
+                          key: state.pageKey,
+                          child: BlocProvider(
+                            create: (context) => HomeBloc()..add(const GetLiveCountUserEvent()),
+                            child: const HomePage(),
+                          ));
                     }),
               ],
             ),
@@ -179,14 +190,14 @@ final GoRouter router = GoRouter(
             ),
             StatefulShellBranch(
               routes: [
-                GoRoute(
+               /* GoRoute(
                     name: Routes.tariff.name,
                     path: Routes.tariff.path,
                     redirect: (context, state) => _redirects(),
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(key: state.pageKey, child: const ComingSoonPage());
-                    }),
-             /*   GoRoute(
+                    }),*/
+                GoRoute(
                   name: Routes.tariff.name,
                   path: Routes.tariff.path,
                   redirect: (context, state) => _redirects(),
@@ -199,7 +210,7 @@ final GoRouter router = GoRouter(
                         return MaterialPage<void>(key: state.pageKey, child: const AllTariffPage());
                       },
                       routes: [
-                        GoRoute(
+                       /* GoRoute(
                           name: Routes.tariffDetail.name,
                           path: Routes.tariffDetail.path,
                           redirect: (context, state) => _redirects(),
@@ -210,14 +221,14 @@ final GoRouter router = GoRouter(
                                   model: state.extra as TariffModel,
                                 ));
                           },
-                        ),
+                        ),*/
                       ],
                     ),
                   ],
                   pageBuilder: (context, state) {
                     return MaterialPage<void>(key: state.pageKey, child: const TariffPage());
                   },
-                )*/
+                )
               ],
             ),
             StatefulShellBranch(
@@ -278,13 +289,13 @@ final tabs = [
   PersistentRouterTabConfig(
     item: ItemConfig(
         icon: SvgPicture.asset(
-          AppIcons.status,
+          AppIcons.dumbbell,
           height: 20.sp,
           colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
         ),
         activeForegroundColor: AppTheme.colors.primary,
         inactiveIcon: SvgPicture.asset(
-          AppIcons.status,
+          AppIcons.dumbbell,
           height: 20.sp,
           colorFilter: ColorFilter.mode(AppTheme.colors.gray900, BlendMode.srcIn),
         ),
