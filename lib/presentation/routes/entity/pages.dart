@@ -26,5 +26,3 @@ export '../../pages/tariff/all_tariff/all_tariff_page.dart';
 export '../../pages/tariff/tariff_detail/tariff_detail_page.dart';
 
 ///blocs
-export 'package:casl_fit/application/home/qr_code/qr_code_bloc.dart';
-export 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';

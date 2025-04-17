@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/weight_height_response.dart';
-import 'package:casl_fit/infrastructure/repository/home/profile/profile_repository.dart';
 import 'package:dio/dio.dart';
 import '../../../../domain/common/enums/bloc_status.dart';
+import '../../../infrastructure/repository/profile/profile_repository.dart';
 
 part 'weight_height_event.dart';
 
@@ -37,7 +37,7 @@ class WeightHeightBloc extends Bloc<WeightHeightEvent, WeightHeightState> {
         final Map<String, dynamic> data =
             event.weightHeightEnum == WeightHeightEnum.weight ? await repo.setWeight(weightHeight: event.weightHeight) : await repo.setHeight(weightHeight: event.weightHeight);
         if (data["status"]) {
-          emit(state.copyWith(saveStatus: BlocStatus.success));
+          emit(state.copyWith(saveStatus: BlocStatus.success,isCreated: true));
         } else {
           emit(state.copyWith(saveStatus: BlocStatus.error, errorMessage: data["error"]));
         }

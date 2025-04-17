@@ -22,6 +22,12 @@ class WeightHeightEnumEvent extends WeightHeightEvent {
 
   WeightHeightEnumEvent({this.weightHeightEnum});
 }
+
+class IsCreatedEvent extends WeightHeightEvent {
+  final bool? isCreated;
+
+  IsCreatedEvent({this.isCreated});
+}
 /*
 class GetHeightEvent extends WeightHeightEvent {}
 

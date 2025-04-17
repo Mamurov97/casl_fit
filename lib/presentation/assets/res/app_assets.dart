@@ -17,6 +17,7 @@ class AppIcons {
  static const age = 'assets/icons/age.svg';
  static const money = 'assets/icons/money.svg';
  static const dumbbell = 'assets/icons/dumbbell.svg';
+ static const people = 'assets/icons/people.svg';
 
 
 }

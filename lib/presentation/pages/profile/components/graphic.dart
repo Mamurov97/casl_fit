@@ -91,7 +91,7 @@ class _WeightGraphState extends State<WeightGraph> {
     }
 
     return SideTitleWidget(
-      axisSide: meta.axisSide,
+      meta: meta,
       child: Text(text, style: style),
     );
   }
@@ -157,7 +157,8 @@ class _WeightGraphState extends State<WeightGraph> {
                         interval: 50,
                         getTitlesWidget: (value, meta) {
                           return SideTitleWidget(
-                            axisSide: meta.axisSide,
+                           // axisSide: meta.axisSide,
+                            meta: meta,
                             child: Text(value.toInt().toString(), style: const TextStyle(color: Colors.white, fontSize: 10)),
                           );
                         },
@@ -171,7 +172,7 @@ class _WeightGraphState extends State<WeightGraph> {
                           int index = value.toInt() - 1;
                           if (index >= 0 && index < sortedData.length) {
                             return SideTitleWidget(
-                              axisSide: meta.axisSide,
+                              meta: meta,
                               angle: -0.3,
                               child: Text(
                                 DateFormat("dd.MM.yyyy").format(_parseDate(sortedData[index].date ?? DateTime.now().toString())),
@@ -179,8 +180,9 @@ class _WeightGraphState extends State<WeightGraph> {
                               ),
                             );
                           }
-                          return const SideTitleWidget(
-                            axisSide: AxisSide.bottom,
+                          return  SideTitleWidget(
+                        //    axisSide: AxisSide.bottom,
+                            meta: meta,
                             child: Text('', style: TextStyle(color: Colors.white, fontSize: 12)),
                           );
                         },

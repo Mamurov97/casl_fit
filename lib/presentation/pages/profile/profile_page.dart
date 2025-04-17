@@ -1,5 +1,4 @@
 import 'package:casl_fit/application/app_manager/app_manager_cubit.dart';
-import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
@@ -11,8 +10,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-
-import '../../../application/home/profile/profile_bloc.dart';
+import '../../../application/profile/profile_bloc.dart';
+import '../../../application/profile/weight_height/weight_height_bloc.dart';
 import '../../../infrastructure/services/shared_service.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -134,18 +133,26 @@ class _ProfilePageState extends State<ProfilePage> {
                           type: 'kg',
                           text: "Vazn",
                           icon: AppIcons.weight,
-                          value: state.profileResponse?.weight.toString() ?? "0",
+                          value: (state.profileResponse?.weight ?? 0).toString(),
                           onPressed: () {
-                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight);
+                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight).then((value) {
+                              if (value != null && context.mounted) {
+                                context.read<ProfileBloc>().add(GetProfileDataEvent());
+                              }
+                            });
                           },
                         ),
                         InfoItem(
                           type: 'sm',
                           text: "Bo'y",
                           icon: AppIcons.height,
-                          value: state.profileResponse?.height.toString() ?? "0",
+                          value: (state.profileResponse?.height ?? 0).toString(),
                           onPressed: () {
-                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height);
+                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height).then((value) {
+                              if (value != null && context.mounted) {
+                                context.read<ProfileBloc>().add(GetProfileDataEvent());
+                              }
+                            });
                           },
                         ),
                         InfoItem(

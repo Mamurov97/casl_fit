@@ -1,4 +1,5 @@
-import '../../../common/network_provider.dart';
+
+import '../../common/network_provider.dart';
 
 class ProfileRepository{
   Future<Map<String, dynamic>> getProfileData() async {

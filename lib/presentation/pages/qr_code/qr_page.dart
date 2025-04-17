@@ -9,7 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-import '../../../application/home/qr_code/qr_code_bloc.dart';
+import '../../../application/qr_code/qr_code_bloc.dart';
+
 
 class QrPage extends StatefulWidget {
   const QrPage({super.key});

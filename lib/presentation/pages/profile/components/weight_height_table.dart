@@ -1,7 +1,7 @@
-import 'package:casl_fit/application/home/profile/weight_height/weight_height_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freedom_table/freedom_table.dart';
 
+import '../../../../application/profile/weight_height/weight_height_bloc.dart';
 import '../../../../infrastructure/dto/models/home/profile/weight_height_response.dart';
 import '../../../assets/asset_index.dart';
 import 'data_table_cell.dart';

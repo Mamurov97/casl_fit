@@ -5,7 +5,7 @@ import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../application/home/profile/weight_height/weight_height_bloc.dart';
+import '../../../../application/profile/weight_height/weight_height_bloc.dart';
 import '../../../components/screens/empty_page.dart';
 import '../components/create_weight_dialog.dart';
 import '../components/graphic.dart';
@@ -25,6 +25,12 @@ class WeightHeightPage extends StatelessWidget {
         elevation: 0,
         title: Text(variableState.weightHeightEnum == WeightHeightEnum.height ? "Bo'y" : "Vazn", style: const TextStyle(color: Colors.white)),
         centerTitle: true,
+        leading: IconButton(
+            onPressed: () {
+              final isCreated = BlocProvider.of<WeightHeightBloc>(context, listen: false).state.isCreated;
+              Navigator.of(context).pop(isCreated);
+            },
+            icon: const Icon(Icons.arrow_back)),
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 12.w),
@@ -40,6 +46,7 @@ class WeightHeightPage extends StatelessWidget {
                       );
                     }).then((value) {
                   if (value == true&&context.mounted) {
+                    //      context.read<WeightHeightBloc>().add(IsCreatedEvent(isCreated: true));
                     context.read<WeightHeightBloc>().add(GetWeightHeightEvent(weightHeightEnum: variableState.weightHeightEnum));
                   }
                 });
