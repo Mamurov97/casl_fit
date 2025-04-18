@@ -1,15 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:casl_fit/infrastructure/dto/models/home/home_response.dart';
 import 'package:casl_fit/infrastructure/repository/home/home_repository.dart';
-import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../../domain/common/enums/bloc_status.dart';
-
 part 'home_bloc.freezed.dart';
-
 part 'home_event.dart';
-
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -18,6 +12,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     on<GetLiveCountUserEvent>((event, emit) async {
       try {
+
         emit(state.copyWith(status: BlocStatus.loading));
 
         final response = await repo.getUserLiveCount();
