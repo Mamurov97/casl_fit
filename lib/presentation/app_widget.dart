@@ -39,7 +39,7 @@ class AppWidget extends StatelessWidget {
               routeInformationProvider: router.routeInformationProvider,
               routerDelegate: router.routerDelegate,
               builder: (context, child) {
-                final state = context.watch<AppManagerCubit>().state;
+                /*final state = context.watch<AppManagerCubit>().state;
 
                 if (state is AppCheckVersionSuccess&&!kDebugMode) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -55,7 +55,7 @@ class AppWidget extends StatelessWidget {
                       );
                     }
                   });
-                }
+                }*/
 
                 return EasyLoading.init()(context, child);
               },
