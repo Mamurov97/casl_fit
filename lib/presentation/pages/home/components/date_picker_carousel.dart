@@ -2,8 +2,9 @@ import 'package:casl_fit/utils/easy_date/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 
 class DatePickerCarousel extends StatefulWidget {
-  const DatePickerCarousel({super.key});
+  const DatePickerCarousel({super.key, required this.onPressed});
 
+  final Function(int) onPressed;
   @override
   State<DatePickerCarousel> createState() => _NewWidgetExampleState();
 }
@@ -41,6 +42,7 @@ class _NewWidgetExampleState extends State<DatePickerCarousel> {
           onDateChange: (selectedDate) {
             setState(() {
               _selectedDate = selectedDate;
+              widget.onPressed(selectedDate.weekday);
             });
           },
         ),

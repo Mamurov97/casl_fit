@@ -158,7 +158,9 @@ final GoRouter router = GoRouter(
                       return MaterialPage<void>(
                           key: state.pageKey,
                           child: BlocProvider(
-                            create: (context) => HomeBloc()..add(const GetLiveCountUserEvent()),
+                            create: (context) => HomeBloc()
+                              ..add(const GetLiveCountUserEvent())
+                              ..add(const HomeEvent.getDailyUserCount()),
                             child: const HomePage(),
                           ));
                     }),

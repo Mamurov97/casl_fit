@@ -11,7 +11,7 @@ class ProfileResponse {
   String? dateBirthday;
   String? passportName;
   String? tel;
-  int? balans;
+  dynamic? balans;
   List<Tarif>? tarif;
   Photo? photo;
   String? weight;
