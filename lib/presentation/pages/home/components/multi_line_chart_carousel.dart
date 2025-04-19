@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:casl_fit/infrastructure/dto/models/home/daily_count_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -6,30 +7,11 @@ import 'package:flutter/material.dart';
 import '../../../components/basic_widgets.dart';
 
 class MultiLineChartCarousel extends StatelessWidget {
-  final List<List<FlSpot>> dataSets = [
-    [
-      const FlSpot(0, 1),
-      const FlSpot(1, 3),
-      const FlSpot(2, 5),
-      const FlSpot(3, 8),
-      const FlSpot(4, 7),
-      const FlSpot(5, 13),
-      const FlSpot(6, 10),
-      const FlSpot(7, 10),
-      const FlSpot(8, 8),
-      const FlSpot(9, 6),
-      const FlSpot(10, 8),
-      const FlSpot(11, 11),
-      const FlSpot(12, 9),
-      const FlSpot(13, 10),
-    ],
-  ];
+  MultiLineChartCarousel({super.key, required this.dailyCountResponse, required this.startWorkTime, required this.endWorkTime});
 
-  final List<String> hours = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-  final List<String> day = ['08.04.2025', '09.04.2025', '10.04.2025'];
-
-  MultiLineChartCarousel({super.key});
-
+  final Data? dailyCountResponse;
+  final String startWorkTime;
+  final String endWorkTime;
   late final TransformationController _transformationController = TransformationController(Matrix4.diagonal3Values(
     1.8,
     1.8,
@@ -38,6 +20,13 @@ class MultiLineChartCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> hours = generateHourlyRange(startWorkTime, endWorkTime);
+    List<Result> results = dailyCountResponse?.result ?? [];
+    final List<FlSpot> flSpots = generateFlSpots(hours, results);
+    final List<List<FlSpot>> dataSets = [flSpots];
+    final double maxY = flSpots.map((spot) => spot.y).fold<double>(0, (prev, y) => y > prev ? y : prev);
+
+    final bool hasNonZeroClient = dataSets[0].any((spot) => spot.y > 0);
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4.r),
@@ -97,7 +86,7 @@ class MultiLineChartCarousel extends StatelessWidget {
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      interval: 3,
+                      interval: 1,
                       getTitlesWidget: (value, meta) {
                         return value != 0
                             ? Padding(
@@ -124,25 +113,59 @@ class MultiLineChartCarousel extends StatelessWidget {
                       show: true,
                       getDotPainter: (spot, percent, barData, index) {
                         return FlDotCirclePainter(
-                          radius: 4,
-                          color: AppTheme.colors.primary,
+                        radius: 3,
+                        color: AppTheme.colors.primary,
                           strokeWidth: 1,
                           strokeColor: AppTheme.colors.primary,
                         );
                       },
                     ),
                     showingIndicators: List.generate(dataSets[0].length, (i) => i),
-                    curveSmoothness: 0.4),
+                  curveSmoothness: hasNonZeroClient ? 0.4 : 0.0,
+                ),
               ],
               minX: 0,
-              maxX: 13,
+              maxX: (hours.length ?? 0).toDouble(),
               minY: 0,
-              maxY: 15,
+              maxY: maxY + 1,
             ),
           ),
         ),
-      )
-      ,
+      ),
     );
   }
+}
+
+List<String> generateHourlyRange(String start, String end) {
+  final startHour = int.parse(start.split(":")[0]);
+  final endHour = int.parse(end.split(":")[0]);
+
+  List<String> hours = [];
+
+  for (int i = startHour; i <= endHour; i++) {
+    final hourStr = i.toString().padLeft(2, '0');
+    hours.add('$hourStr:00');
+  }
+
+  return hours;
+}
+
+String normalizeHour(String hour) {
+  final parts = hour.split(':');
+  final hourPart = parts[0].padLeft(2, '0');
+  final minutePart = parts[1].padLeft(2, '0');
+  return '$hourPart:$minutePart';
+}
+
+List<FlSpot> generateFlSpots(List<String> hours, List<Result> results) {
+  return List.generate(hours.length, (index) {
+    final hour = hours[index];
+    final toHour = (index + 1 < hours.length) ? hours[index + 1] : hour;
+
+    final match = results.firstWhere(
+      (r) => normalizeHour(r.from ?? '') == hour && normalizeHour(r.to ?? '') == toHour,
+      orElse: () => Result(from: hour, to: toHour, clients: 0),
+    );
+    return FlSpot(index.toDouble(), (match.clients ?? 0).toDouble());
+  });
 }

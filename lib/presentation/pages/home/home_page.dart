@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
                   fit: BoxFit.cover,
                   alignment: Alignment.center,
                 ),
-
               ),
               BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
@@ -58,6 +57,7 @@ class _HomePageState extends State<HomePage> {
                   controller: _refreshController,
                   onRefresh: () {
                     context.read<HomeBloc>().add(const HomeEvent.getLiveUserCount());
+                    context.read<HomeBloc>().add(const HomeEvent.getDailyUserCount());
                     _refreshController.refreshCompleted();
                   },
                   onLoading: () {
@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                                                 )),
                                           ),
                                         ),
-                                  const Spacer(),
+                                  /*const Spacer(),
                                   GestureDetector(
                                     onTap: () {
                                       context.read<HomeBloc>().add(const HomeEvent.getLiveUserCount());
@@ -154,18 +154,31 @@ class _HomePageState extends State<HomePage> {
                                       Icons.refresh,
                                       color: AppTheme.colors.primary,
                                     ),
-                                  )
+                                  )*/
                                 ],
                               ),
                             ),
                           ),
                         ),
-                        const DatePickerCarousel(),
+                        state.dailyUserCountStatus == BlocStatus.success
+                            ? DatePickerCarousel(
+                                onPressed: (int weekDay) {
+                                  context.read<HomeBloc>().add(HomeEvent.getWeekDay(weekDay - 1));
+                                },
+                              )
+                            : const SizedBox(),
                         Gap(4.h),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.w),
-                          child: MultiLineChartCarousel(),
-                        ),
+                        state.dailyUserCountStatus == BlocStatus.success
+                            ? Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                                child: MultiLineChartCarousel(
+                                    dailyCountResponse: (state.dailyCountResponse?.data ?? [])[state.weekDay],
+                                    startWorkTime: state.dailyCountResponse?.startWorkTime ?? "09:00",
+                                    endWorkTime: state.dailyCountResponse?.endWorkTime ?? "23:00"),
+                              )
+                            : const Center(
+                                child: CircularIndicator(),
+                              ),
                       ],
                     ),
                   ),
