@@ -183,7 +183,7 @@ class _WeightGraphState extends State<WeightGraph> {
                           return  SideTitleWidget(
                         //    axisSide: AxisSide.bottom,
                             meta: meta,
-                            child: Text('', style: TextStyle(color: Colors.white, fontSize: 12)),
+                            child: const Text('', style: TextStyle(color: Colors.white, fontSize: 12)),
                           );
                         },
                       ),

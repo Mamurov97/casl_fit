@@ -214,20 +214,20 @@ final GoRouter router = GoRouter(
                       pageBuilder: (context, state) {
                         return MaterialPage<void>(key: state.pageKey, child: const AllTariffPage());
                       },
-                      routes: [
-                       /* GoRoute(
-                          name: Routes.tariffDetail.name,
-                          path: Routes.tariffDetail.path,
-                          redirect: (context, state) => _redirects(),
-                          pageBuilder: (context, state) {
-                            return MaterialPage<void>(
-                                key: state.pageKey,
-                                child: TariffDetailPage(
-                                  model: state.extra as TariffModel,
-                                ));
-                          },
-                        ),*/
-                      ],
+                      // routes: [
+                      //  /* GoRoute(
+                      //     name: Routes.tariffDetail.name,
+                      //     path: Routes.tariffDetail.path,
+                      //     redirect: (context, state) => _redirects(),
+                      //     pageBuilder: (context, state) {
+                      //       return MaterialPage<void>(
+                      //           key: state.pageKey,
+                      //           child: TariffDetailPage(
+                      //             model: state.extra as TariffModel,
+                      //           ));
+                      //     },
+                      //   ),*/
+                      // ],
                     ),
                   ],
                   pageBuilder: (context, state) {

@@ -10,8 +10,6 @@ import 'dio_exception.dart';
 class DioInterceptor extends Interceptor {
   @override
   Future onError(DioException err, ErrorInterceptorHandler handler) async {
-    print("123456789");
-    print(err.toString());
     final checkUnauthorized = !err.requestOptions.headers.containsKey('check_token');
     if (err.response?.statusCode == 401) {
       UserData.token = "";
