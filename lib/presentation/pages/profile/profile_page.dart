@@ -16,7 +16,6 @@ import '../../../infrastructure/services/shared_service.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
-
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -136,7 +135,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           value: (state.profileResponse?.weight ?? 0).toString(),
                           onPressed: () {
                             context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight).then((value) {
-                              if (value != null && context.mounted) {
+                              if (context.mounted) {
                                 context.read<ProfileBloc>().add(GetProfileDataEvent());
                               }
                             });
@@ -149,7 +148,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           value: (state.profileResponse?.height ?? 0).toString(),
                           onPressed: () {
                             context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height).then((value) {
-                              if (value != null && context.mounted) {
+                              if (context.mounted) {
                                 context.read<ProfileBloc>().add(GetProfileDataEvent());
                               }
                             });
@@ -160,7 +159,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           text: "Yosh",
                           icon: AppIcons.age,
                           value: (state.profileResponse?.age ?? 0).toString(),
-                          onPressed: () {},
                         ),
                       ],
                     ),

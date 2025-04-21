@@ -41,6 +41,8 @@ class _CreateWeightDialogState extends State<CreateWeightDialog> {
           }
         }
         if (state.saveStatus == BlocStatus.error) {
+          Toast.showInfoToast(message: state.errorMessage.toString());
+
           Navigator.pop(context, false);
         }
       },

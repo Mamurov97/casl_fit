@@ -39,7 +39,7 @@ class WeightHeightBloc extends Bloc<WeightHeightEvent, WeightHeightState> {
         if (data["status"]) {
           emit(state.copyWith(saveStatus: BlocStatus.success,isCreated: true));
         } else {
-          emit(state.copyWith(saveStatus: BlocStatus.error, errorMessage: data["error"]));
+          emit(state.copyWith(saveStatus: BlocStatus.error, errorMessage: data["error"]['message']));
         }
       } on DioException catch (e) {
         emit(state.copyWith(saveStatus: BlocStatus.error, errorMessage: e.toString()));

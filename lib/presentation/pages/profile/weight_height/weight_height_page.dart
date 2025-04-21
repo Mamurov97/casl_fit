@@ -34,26 +34,32 @@ class WeightHeightPage extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 12.w),
-            child: InkWell(
-              borderRadius: BorderRadius.circular(8.r),
-              onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return BlocProvider(
+            child: BlocConsumer<WeightHeightBloc, WeightHeightState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return InkWell(
+                  borderRadius: BorderRadius.circular(8.r),
+                  onTap: () {
+                    if (checkStatus(state.weightHeightList ?? []) && state.status == BlocStatus.success || state.status == BlocStatus.empty) {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return BlocProvider(
                         create: (context) => WeightHeightBloc()..add(WeightHeightEnumEvent(weightHeightEnum: variableState.weightHeightEnum)),
                         child: const CreateWeightDialog(),
                       );
                     }).then((value) {
                   if (value == true&&context.mounted) {
-                    //      context.read<WeightHeightBloc>().add(IsCreatedEvent(isCreated: true));
                     context.read<WeightHeightBloc>().add(GetWeightHeightEvent(weightHeightEnum: variableState.weightHeightEnum));
                   }
-                });
-              },
-              child: Container(
-                decoration: BoxDecoration(color: AppTheme.colors.primary, borderRadius: BorderRadius.circular(8.r)),
-                child: Padding(
+                      });
+                    } else {
+                      Toast.showInfoToast(message: 'Bir oyda faqat bir marta malumot kiritish mumkin');
+                    }
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(color: AppTheme.colors.primary, borderRadius: BorderRadius.circular(8.r)),
+                    child: Padding(
                   padding: EdgeInsets.all(2.w),
                   child: Icon(
                     Icons.add,
@@ -62,6 +68,8 @@ class WeightHeightPage extends StatelessWidget {
                   ),
                 ),
               ),
+                );
+              },
             ),
           )
         ],
