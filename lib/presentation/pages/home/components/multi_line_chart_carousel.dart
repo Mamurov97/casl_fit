@@ -2,6 +2,7 @@ import 'package:casl_fit/infrastructure/dto/models/home/daily_count_response.dar
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+
 class MultiLineChartCarousel extends StatelessWidget {
   MultiLineChartCarousel({super.key, required this.dailyCountResponse, required this.startWorkTime, required this.endWorkTime});
 

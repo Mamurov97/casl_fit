@@ -1,7 +1,6 @@
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart' show DateFormat;
 
 class DayPartWidget extends StatefulWidget {
   /// Builds a widget that displays a part of a date in a flexible area.

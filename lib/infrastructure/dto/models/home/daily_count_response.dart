@@ -11,8 +11,7 @@ class DailyCountResponse with _$DailyCountResponse {
     List<Data>? data,
   }) = _DailyCountResponse;
 
-  factory DailyCountResponse.fromJson(Map<String, dynamic> json) =>
-      _$DailyCountResponseFromJson(json);
+  factory DailyCountResponse.fromJson(Map<String, dynamic> json) => _$DailyCountResponseFromJson(json);
 }
 
 @freezed

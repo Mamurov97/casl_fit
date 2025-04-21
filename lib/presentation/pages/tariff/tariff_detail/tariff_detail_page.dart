@@ -74,7 +74,7 @@ class TariffDetailPage extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Text(
         title,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
       ),
     );
   }
@@ -85,7 +85,7 @@ class TariffDetailPage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: TextStyle(fontSize: 16, color: Colors.grey)),
+          Text(label, style: const TextStyle(fontSize: 16, color: Colors.grey)),
           Text(value, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: color)),
         ],
       ),

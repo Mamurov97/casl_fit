@@ -45,7 +45,7 @@ final class TopDayElement extends DayElement {
   /// Constructs a `TopDayPart` with an optional `format` string.
   ///
   /// The default format is `"MMM"` (month abbreviation).
-  const TopDayElement([String format = 'MMM']) : super(format);
+  const TopDayElement([super.format = 'MMM']);
 }
 
 /// Represents the middle part of the day, formatted by default as the day number.
@@ -53,7 +53,7 @@ final class MiddleDayElement extends DayElement {
   /// Constructs a `MiddleDayPart` with an optional `format` string.
   ///
   /// The default format is `"d"` (day number).
-  const MiddleDayElement([String format = 'd']) : super(format);
+  const MiddleDayElement([super.format = 'd']);
 }
 
 /// Represents the bottom part of the day, formatted by default as the day of the week.
@@ -61,5 +61,5 @@ final class BottomDayElement extends DayElement {
   /// Constructs a `BottomDayPart` with an optional `format` string.
   ///
   /// The default format is `"E"` (day of the week abbreviation).
-  const BottomDayElement([String format = 'E']) : super(format);
+  const BottomDayElement([super.format = 'E']);
 }
