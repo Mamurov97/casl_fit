@@ -7,6 +7,7 @@ import 'package:casl_fit/presentation/pages/tariff/components/tariff_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../../components/screens/empty_page.dart';
 import '../../routes/entity/routes.dart';
 
 class TariffPage extends StatefulWidget {
@@ -31,7 +32,7 @@ class _TariffPageState extends State<TariffPage> {
       body: BlocBuilder<TariffBloc, TariffState>(
         builder: (context, state) {
           if (state.currentTariffStatus.isLoading) return const CircularIndicator();
-          if (state.currentTariffStatus.isEmpty) return const ComingSoonPage();
+          if (state.currentTariffStatus.isEmpty) return const EmptyPage();
           if (state.currentTariffStatus.isError) {
             return ErrorPage(
               onPressed: () => context.read<TariffBloc>().add(const GetCurrentTariffs()),

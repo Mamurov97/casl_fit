@@ -196,13 +196,6 @@ final GoRouter router = GoRouter(
             ),
             StatefulShellBranch(
               routes: [
-               /* GoRoute(
-                    name: Routes.tariff.name,
-                    path: Routes.tariff.path,
-                    redirect: (context, state) => _redirects(),
-                    pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const ComingSoonPage());
-                    }),*/
                 GoRoute(
                   name: Routes.tariff.name,
                   path: Routes.tariff.path,
