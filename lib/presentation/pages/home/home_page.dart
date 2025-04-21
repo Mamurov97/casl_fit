@@ -9,7 +9,6 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../application/home/home_bloc.dart';
 import '../../components/basic_widgets.dart';
 import 'components/date_picker_carousel.dart';
-import 'components/icon_notification.dart';
 import 'components/multi_line_chart_carousel.dart';
 
 class HomePage extends StatefulWidget {

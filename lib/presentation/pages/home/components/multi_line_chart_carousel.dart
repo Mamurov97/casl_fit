@@ -1,11 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/daily_count_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
-import '../../../components/basic_widgets.dart';
-
 class MultiLineChartCarousel extends StatelessWidget {
   MultiLineChartCarousel({super.key, required this.dailyCountResponse, required this.startWorkTime, required this.endWorkTime});
 
@@ -125,7 +121,7 @@ class MultiLineChartCarousel extends StatelessWidget {
                 ),
               ],
               minX: 0,
-              maxX: (hours.length ?? 0).toDouble(),
+              maxX: (hours.length).toDouble(),
               minY: 0,
               maxY: maxY + 1,
             ),
