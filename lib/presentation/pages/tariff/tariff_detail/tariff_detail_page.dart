@@ -21,10 +21,6 @@ class TariffDetailPage extends StatelessWidget {
         "label": "Narxi",
         "value": "${NumberFormat("#,###", "uz_UZ").format(model.price ?? 0).replaceAll(",", " ")} so'm",
       },
-      /* {"label": "Chegirma", "value": "-1 000 000 so‘m", "color": Colors.blue},
-      {"label": "Summa", "value": "6 590 000 so‘m"},
-      {"label": "Qo‘shimcha to‘lov", "value": "500 000 so‘m", "color": Colors.red},
-      {"label": "Jami", "value": "7 090 000 so‘m"},*/
     ];
 
     return Scaffold(
@@ -38,34 +34,36 @@ class TariffDetailPage extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(12.r),
-        child: Column(
-          children: [
-            TariffItem(
-              isArrow: false,
-              item: model,
-              onPressed: () {},
-            ),
-            Gap(12.h),
-            Expanded(
-              child: ListView(
-                children: [
-                  sectionTitle("Davomiyligi"),
-                  ...abonementInfo.map((item) => infoRow(item["label"]!, item["value"]!)),
-                  SizedBox(height: 18.h),
-                  sectionTitle("Narxi"),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: narxInfo.length,
-                    itemBuilder: (context, index) {
-                      final item = narxInfo[index];
-                      return infoRow(item["label"]!, item["value"]!, color: item["color"] ?? Colors.white);
-                    },
-                  ),
-                ],
+        child: SafeArea(
+          child: Column(
+            children: [
+              TariffItem(
+                isArrow: true,
+                item: model,
+                onPressed: () {},
               ),
-            ),
-          ],
+              Gap(12.h),
+              Expanded(
+                child: ListView(
+                  children: [
+                    sectionTitle("Davomiyligi"),
+                    ...abonementInfo.map((item) => infoRow(item["label"]!, item["value"]!)),
+                    SizedBox(height: 18.h),
+                    sectionTitle("Narxi"),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: narxInfo.length,
+                      itemBuilder: (context, index) {
+                        final item = narxInfo[index];
+                        return infoRow(item["label"]!, item["value"]!, color: item["color"] ?? Colors.white);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

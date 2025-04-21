@@ -40,10 +40,10 @@ class _AllTariffPageState extends State<AllTariffPage> {
               error: state.errorMessage,
             );
           }
-          if (state.allTariffStatus.isSuccess) {
+          if (state.allTariffStatus.isSuccess && state.tariffs != null && (state.tariffs ?? []).isNotEmpty) {
             return ListView.builder(
               padding: const EdgeInsets.all(16),
-              itemCount: state.tariffs?.length,
+              itemCount: (state.tariffs ?? []).length,
               itemBuilder: (context, index) {
                 return TariffItem(
                   isArrow: true,

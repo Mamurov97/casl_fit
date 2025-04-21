@@ -52,8 +52,25 @@ class TariffItem extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 8),
-                      Row(
-                        children: [
+                      (!isArrow)
+                          ? Expanded(
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    height: 20.h,
+                                    AppIcons.beginTime,
+                                    colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                                  ),
+                                  Gap(8.w),
+                                  Text(
+                                    "${item?.monthlyLimit} oyda ${item?.dailyLimit} marta",
+                                    style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : Row(
+                              children: [
                           SvgPicture.asset(
                             height: 20.h,
                             AppIcons.beginTime,

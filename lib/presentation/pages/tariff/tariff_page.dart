@@ -41,49 +41,58 @@ class _TariffPageState extends State<TariffPage> {
           if (state.currentTariffStatus.isSuccess) {
             return Padding(
               padding: EdgeInsets.all(12.h),
-              child: Column(
-                children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      height: 0.2.sh,
-                      autoPlay: false,
-                      enlargeCenterPage: true,
-                      aspectRatio: 16 / 9,
-                      viewportFraction: 0.8,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          _currentIndex = index;
-                          //  print(_currentIndex);
-                        });
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CarouselSlider.builder(
+                      itemCount: state.currentTariff?.length ?? 0,
+                      itemBuilder: (context, index, realIndex) {
+                        return SizedBox(
+                          height: 0.22.sh,
+                          child: TariffItem(
+                            item: state.currentTariff![index],
+                            onPressed: () {},
+                            isArrow: false,
+                          ),
+                        );
+                      },
+                      options: CarouselOptions(
+                        height: 0.2.sh,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 16 / 9,
+                        viewportFraction: 1,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            _currentIndex = index;
+                            //  print(_currentIndex);
+                          });
+                        },
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: (state.currentTariff ?? []).asMap().entries.take(8).map((entry) {
+                        return Container(
+                          width: 8.w,
+                          height: 8.h,
+                          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                          decoration: BoxDecoration(shape: BoxShape.circle, color: _currentIndex == entry.key ? AppTheme.colors.primary : AppTheme.colors.white),
+                        );
+                      }).toList(),
+                    ),
+                    Gap(24.h),
+                    MenuButton(
+                      title: 'tariff.all_tariff'.tr(),
+                      icon: AppIcons.status,
+                      onPressed: () {
+                        context.push(
+                          "${Routes.root.path}${Routes.tariff.path}${Routes.allTariff.path}",
+                        );
                       },
                     ),
-                    items: state.currentTariff?.map((data) {
-                      return TariffItem(item: data, onPressed: () {}, isArrow: false);
-                    }).toList(),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: (state.currentTariff ?? []).asMap().entries.map((entry) {
-                      return Container(
-                        width: 8.w,
-                        height: 8.h,
-                        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                        decoration: BoxDecoration(shape: BoxShape.circle, color: _currentIndex == entry.key ? AppTheme.colors.primary : AppTheme.colors.white),
-                      );
-                    }).toList(),
-                  ),
-                  Gap(24.h),
-                  MenuButton(
-                    title: 'tariff.all_tariff'.tr(),
-                    icon: AppIcons.status,
-                    onPressed: () {
-
-                      context.push(
-                        "${Routes.root.path}${Routes.tariff.path}${Routes.allTariff.path}",
-                      );
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           }

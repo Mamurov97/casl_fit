@@ -9,6 +9,7 @@ import '../../application/profile/profile_bloc.dart';
 import '../../application/profile/weight_height/weight_height_bloc.dart';
 import '../../application/qr_code/qr_code_bloc.dart';
 import '../../domain/common/data/user_data.dart';
+import '../../infrastructure/dto/models/tariff/tariff_model.dart';
 import '../../infrastructure/services/shared_service.dart';
 import '../components/navigation_helper.dart';
 import 'entity/custom_nav_bar.dart';
@@ -212,7 +213,7 @@ final GoRouter router = GoRouter(
                         return MaterialPage<void>(key: state.pageKey, child: const AllTariffPage());
                       },
                       routes: [
-                       /* GoRoute(
+                        GoRoute(
                           name: Routes.tariffDetail.name,
                           path: Routes.tariffDetail.path,
                           redirect: (context, state) => _redirects(),
@@ -223,7 +224,7 @@ final GoRouter router = GoRouter(
                                   model: state.extra as TariffModel,
                                 ));
                           },
-                        ),*/
+                        ),
                       ],
                     ),
                   ],
