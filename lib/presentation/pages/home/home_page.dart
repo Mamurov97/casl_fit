@@ -89,12 +89,12 @@ class _HomePageState extends State<HomePage> {
                                   ],
                                 ),
                               ),
-                              IconNotificationButton(
+                              /*IconNotificationButton(
                                 onPressed: () {},
                                 icon: AppIcons.notification,
                                 iconColor: AppTheme.colors.white,
                                 count: 2,
-                              ),
+                              ),*/
                             ],
                           ),
                         ),
@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                         state.dailyUserCountStatus == BlocStatus.success
                             ? DatePickerCarousel(
                                 onPressed: (int weekDay) {
-                                  context.read<HomeBloc>().add(HomeEvent.getWeekDay(weekDay - 1));
+                                  context.read<HomeBloc>().add(HomeEvent.getWeekDay(weekDay));
                                 },
                               )
                             : const SizedBox(),
@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                             ? Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 8.w),
                                 child: MultiLineChartCarousel(
-                                    dailyCountResponse: (state.dailyCountResponse?.data ?? [])[state.weekDay],
+                                    dailyCountResponse: (state.dailyCountResponse?.data ?? [])[state.weekDay - 1],
                                     startWorkTime: state.dailyCountResponse?.startWorkTime ?? "09:00",
                                     endWorkTime: state.dailyCountResponse?.endWorkTime ?? "23:00"),
                               )

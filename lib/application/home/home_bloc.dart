@@ -30,9 +30,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         emit(state.copyWith(dailyUserCountStatus: BlocStatus.loading));
         final response = await repo.getDailyUserCount();
         DailyCountResponse dailyCountResponse = DailyCountResponse.fromJson(response["result"]);
-        print("#########################");
-        print(dailyCountResponse.toString());
-
         emit(state.copyWith(dailyUserCountStatus: BlocStatus.success, dailyCountResponse: dailyCountResponse));
       } catch (e) {
         emit(state.copyWith(

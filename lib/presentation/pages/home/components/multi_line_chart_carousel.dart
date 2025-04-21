@@ -86,7 +86,7 @@ class MultiLineChartCarousel extends StatelessWidget {
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      interval: 1,
+                      interval: (dailyCountResponse?.clientsTotal ?? 0) > 10 ? 5 : 1,
                       getTitlesWidget: (value, meta) {
                         return value != 0
                             ? Padding(
@@ -151,10 +151,14 @@ List<String> generateHourlyRange(String start, String end) {
 }
 
 String normalizeHour(String hour) {
-  final parts = hour.split(':');
-  final hourPart = parts[0].padLeft(2, '0');
-  final minutePart = parts[1].padLeft(2, '0');
-  return '$hourPart:$minutePart';
+  try {
+    final parts = hour.split(':');
+    final hourPart = parts[0].padLeft(2, '0');
+    final minutePart = parts[1].padLeft(2, '0');
+    return '$hourPart:$minutePart';
+  } catch (e) {
+    return '00:00';
+  }
 }
 
 List<FlSpot> generateFlSpots(List<String> hours, List<Result> results) {

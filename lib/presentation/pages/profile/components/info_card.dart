@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class InfoItem extends StatelessWidget {
-  const InfoItem({super.key, required this.type, required this.text, required this.icon, required this.value, required this.onPressed});
+  const InfoItem({super.key, required this.type, required this.text, required this.icon, required this.value,this.onPressed});
 
   final String icon;
   final String type;
   final String text;
   final String value;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
