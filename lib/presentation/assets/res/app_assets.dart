@@ -18,8 +18,9 @@ class AppIcons {
  static const money = 'assets/icons/money.svg';
  static const dumbbell = 'assets/icons/dumbbell.svg';
  static const people = 'assets/icons/people.svg';
-
-
+  static const calendar = 'assets/icons/calendar.svg';
+  static const day = 'assets/icons/day.svg';
+  static const time = 'assets/icons/time.svg';
 }
 
 class AppImages {

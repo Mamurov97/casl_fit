@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:casl_fit/application/app_manager/app_manager_cubit.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
@@ -45,151 +47,154 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     AppManagerCubit.context = context;
     return Scaffold(
-      backgroundColor: Colors.black,
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text('profile.profile'.tr(), style: const TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: BlocConsumer<ProfileBloc, ProfileState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            if (state.status == BlocStatus.loading) {
-              return const CircularIndicator();
-            } else if (state.status == BlocStatus.error) {
-              return ErrorPage(
-                  onPressed: () {
-                    context.read<ProfileBloc>().add(GetProfileDataEvent());
-                  },
-                  error: state.errorMessage.toString());
-            } else if (state.status == BlocStatus.success) {
-              ProfileResponse data = state.profileResponse ?? ProfileResponse();
-              return SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
-                      margin: EdgeInsets.only(bottom: 15.h),
-                      decoration: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(16.r)),
-                      child: IntrinsicHeight(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 80.h,
-                              width: 80.w,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10.r),
-                              ),
-                              child: Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Icon(
-                                  CupertinoIcons.person_alt,
-                                  size: 80.w,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Stack(
+        children: [
+          Image.asset(
+            AppImages.background,
+            height: 1.sh,
+            width: 1.sw,
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+          ),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+            child: Container(
+              color: Colors.black.withValues(alpha: 0.3),
+              height: 1.sh,
+              width: 1.sw,
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: BlocConsumer<ProfileBloc, ProfileState>(
+                listener: (context, state) {},
+                builder: (context, state) {
+                  if (state.status == BlocStatus.loading) {
+                    return const CircularIndicator();
+                  } else if (state.status == BlocStatus.error) {
+                    return ErrorPage(
+                        onPressed: () {
+                          context.read<ProfileBloc>().add(GetProfileDataEvent());
+                        },
+                        error: state.errorMessage.toString());
+                  } else if (state.status == BlocStatus.success) {
+                    ProfileResponse data = state.profileResponse ?? ProfileResponse();
+                    return SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
+                            margin: EdgeInsets.only(bottom: 15.h),
+                            decoration: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(16.r)),
+                            child: IntrinsicHeight(
+                              child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Expanded(
-                                    child: Text(
-                                      data.name ?? "",
-                                      textAlign: TextAlign.start,
-                                      maxLines: 3,
-                                      style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary),
-                                    ),
-                                  ),
-                                  Text(
-                                    maskFormatter.maskText(data.tel ?? ""),
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
+                                  Container(
+                                    height: 80.h,
+                                    width: 80.w,
+                                    decoration: BoxDecoration(
                                       color: Colors.white,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500,
+                                      borderRadius: BorderRadius.circular(10.r),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Icon(
+                                        CupertinoIcons.person_alt,
+                                        size: 80.w,
+                                      ),
                                     ),
                                   ),
-                                  Gap(5.h),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            data.name ?? "",
+                                            textAlign: TextAlign.start,
+                                            maxLines: 3,
+                                            style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary),
+                                          ),
+                                        ),
+                                        Text(
+                                          maskFormatter.maskText(data.tel ?? ""),
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        Gap(5.h),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InfoItem(
+                                type: 'kg',
+                                text: "Vazn",
+                                icon: AppIcons.weight,
+                                value: (state.profileResponse?.weight ?? 0).toString(),
+                                onPressed: () {
+                                  context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight).then((value) {
+                                    if (context.mounted) {
+                                      context.read<ProfileBloc>().add(GetProfileDataEvent());
+                                    }
+                                  });
+                                },
+                              ),
+                              InfoItem(
+                                type: 'sm',
+                                text: "Bo'y",
+                                icon: AppIcons.height,
+                                value: (state.profileResponse?.height ?? 0).toString(),
+                                onPressed: () {
+                                  context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height).then((value) {
+                                    if (context.mounted) {
+                                      context.read<ProfileBloc>().add(GetProfileDataEvent());
+                                    }
+                                  });
+                                },
+                              ),
+                              InfoItem(
+                                type: 'yosh',
+                                text: "Yosh",
+                                icon: AppIcons.age,
+                                value: (state.profileResponse?.age ?? 0).toString(),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          LogoutButton(prefService: pref),
+                        ],
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        InfoItem(
-                          type: 'kg',
-                          text: "Vazn",
-                          icon: AppIcons.weight,
-                          value: (state.profileResponse?.weight ?? 0).toString(),
-                          onPressed: () {
-                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight).then((value) {
-                              if (context.mounted) {
-                                context.read<ProfileBloc>().add(GetProfileDataEvent());
-                              }
-                            });
-                          },
-                        ),
-                        InfoItem(
-                          type: 'sm',
-                          text: "Bo'y",
-                          icon: AppIcons.height,
-                          value: (state.profileResponse?.height ?? 0).toString(),
-                          onPressed: () {
-                            context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height).then((value) {
-                              if (context.mounted) {
-                                context.read<ProfileBloc>().add(GetProfileDataEvent());
-                              }
-                            });
-                          },
-                        ),
-                        InfoItem(
-                          type: 'yosh',
-                          text: "Yosh",
-                          icon: AppIcons.age,
-                          value: (state.profileResponse?.age ?? 0).toString(),
-                        ),
-                      ],
-                    ),
-                    // SizedBox(height: 36.h),
-                    // MenuButton(
-                    //   title: 'profile.edit_profile'.tr(),
-                    //   icon: AppIcons.profile,
-                    //   onPressed: () {},
-                    // ),
-                    // MenuButton(
-                    //   title: 'profile.notification'.tr(),
-                    //   icon: AppIcons.notification,
-                    //   switchValue: true,
-                    //   hasSwitch: true,
-                    //   onSwitchChanged: (value) {},
-                    //   onPressed: () {},
-                    // ),
-                    // MenuButton(
-                    //   title: "profile.setting".tr(),
-                    //   icon: AppIcons.settings,
-                    //   onPressed: () {},
-                    // ),
-                    const SizedBox(height: 20),
-                    LogoutButton(prefService: pref),
-                  ],
-                ),
-              );
-            }
-            return const SizedBox();
-          },
-        ),
+                    );
+                  }
+                  return const SizedBox();
+                },
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: BlocBuilder<ProfileBloc, ProfileState>(

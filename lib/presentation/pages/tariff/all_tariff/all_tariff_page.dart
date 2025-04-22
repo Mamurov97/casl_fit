@@ -40,19 +40,19 @@ class _AllTariffPageState extends State<AllTariffPage> {
               error: state.errorMessage,
             );
           }
-          if (state.allTariffStatus.isSuccess && state.tariffs != null && (state.tariffs ?? []).isNotEmpty) {
+          /*if (state.allTariffStatus.isSuccess && state.tariffs != null && (state.tariffs ?? []).isNotEmpty) {
             return ListView.builder(
               padding: const EdgeInsets.all(16),
               itemCount: (state.tariffs ?? []).length,
               itemBuilder: (context, index) {
                 return TariffItem(
                   isArrow: true,
-                  item: state.tariffs?[index],
+                  item: state.tariffs?[index].tariffData??[],
                   onPressed: () => context.push("${Routes.root.path}${Routes.tariff.path}${Routes.allTariff.path}${Routes.tariffDetail.path}", extra: state.tariffs?[index]),
                 );
               },
             );
-          }
+          }*/
           return const SizedBox();
         },
       ),

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/weight_height_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
@@ -18,7 +20,7 @@ class WeightHeightPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var variableState = context.watch<WeightHeightBloc>().state;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -74,45 +76,64 @@ class WeightHeightPage extends StatelessWidget {
           )
         ],
       ),
-      body: BlocConsumer<WeightHeightBloc, WeightHeightState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            if (state.status == BlocStatus.success) {
-              return SafeArea(
-                  child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 0.4.sh,
-                      child: WeightHeightTable(
-                        data: state.weightHeightList ?? [],
-                        weightHeightEnum: state.weightHeightEnum,
-                      ),
+      body: Stack(
+        children: [
+          Image.asset(
+            AppImages.background,
+            height: 1.sh,
+            width: 1.sw,
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+          ),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+            child: Container(
+              color: Colors.black.withValues(alpha: 0.3),
+              height: 1.sh,
+              width: 1.sw,
+            ),
+          ),
+          BlocConsumer<WeightHeightBloc, WeightHeightState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                if (state.status == BlocStatus.success) {
+                  return SafeArea(
+                      child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 0.4.sh,
+                          child: WeightHeightTable(
+                            data: state.weightHeightList ?? [],
+                            weightHeightEnum: state.weightHeightEnum,
+                          ),
+                        ),
+                        //   const Spacer(),
+                        SizedBox(
+                          height: 0.35.sh,
+                          child: Visibility(
+                            visible: (state.weightHeightList ?? []).length > 2,
+                            child: WeightGraph(data: (state.weightHeightList ?? []).reversed.toList()),
+                          ),
+                        ),
+                      ],
                     ),
-                    //   const Spacer(),
-                    SizedBox(
-                      height: 0.35.sh,
-                      child: Visibility(
-                        visible: (state.weightHeightList ?? []).length > 2,
-                        child: WeightGraph(data: (state.weightHeightList ?? []).reversed.toList()),
-                      ),
-                    ),
-                  ],
-                ),
-              ));
-            } else if (state.status == BlocStatus.loading) {
-              return const Center(
-                child: CircularIndicator(),
-              );
-            }else if (state.status == BlocStatus.empty) {
-              return const EmptyPage();
-            } else {
-              return ErrorPage(
-                error: state.errorMessage?.isEmpty ?? true ? 'Ko`zda tutilmagan xatolik' : state.errorMessage ?? '',
-                onPressed: () {},
-              );
-            }
-          }),
+                  ));
+                } else if (state.status == BlocStatus.loading) {
+                  return const Center(
+                    child: CircularIndicator(),
+                  );
+                }else if (state.status == BlocStatus.empty) {
+                  return const EmptyPage();
+                } else {
+                  return ErrorPage(
+                    error: state.errorMessage?.isEmpty ?? true ? 'Ko`zda tutilmagan xatolik' : state.errorMessage ?? '',
+                    onPressed: () {},
+                  );
+                }
+              }),
+        ],
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Visibility(
         visible: variableState.status == BlocStatus.error,
