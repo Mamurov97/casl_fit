@@ -6,6 +6,7 @@ import 'package:casl_fit/presentation/pages/tariff/tariff_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/common/enums/bloc_status.dart';
+import '../../components/loadings/circular_indicator.dart';
 import '../../components/screens/error_page.dart';
 
 class TariffTabbar extends StatefulWidget {
@@ -32,8 +33,13 @@ class _TariffTabbarState extends State<TariffTabbar> with TickerProviderStateMix
   void _listenToTabChanges() {
     if (tabIndex != tabController.index) {
       tabIndex = tabController.index;
-      context.read<TariffBloc>().add(const TariffEvent.getTariffs());
-      //  context.read<TariffBloc>().add(const TariffEvent.getCategoryTariff());
+      final tariffBloc = context.read<TariffBloc>();
+
+      final state = tariffBloc.state;
+
+      if (!state.hasLoadedTariffs) {
+        tariffBloc.add(const TariffEvent.getTariffs());
+      }
     }
   }
 
@@ -93,51 +99,54 @@ class _TariffTabbarState extends State<TariffTabbar> with TickerProviderStateMix
                 )),
             elevation: 0,
           ),
-          body: state.allTariffStatus == BlocStatus.loading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : state.allTariffStatus == BlocStatus.error
-                  ? ErrorPage(
+            body: Stack(
+              children: [
+                Image.asset(
+                  AppImages.background,
+                  height: 1.sh,
+                  width: 1.sw,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
+                ),
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                  child: Container(
+                    color: Colors.black.withOpacity(0.3),
+                    height: 1.sh,
+                    width: 1.sw,
+                  ),
+                ),
+                if (state.allTariffStatus == BlocStatus.loading)
+                  const Center(
+                    child: CircularIndicator(),
+                  )
+                else if (state.allTariffStatus == BlocStatus.error)
+                  Center(
+                    child: ErrorPage(
                       onPressed: () {
                         context.read<TariffBloc>().add(const TariffEvent.getTariffs());
-                        //  context.read<TariffBloc>().add(const TariffEvent.getCategoryTariff());
+                        // context.read<TariffBloc>().add(const TariffEvent.getCategoryTariff());
                       },
-                      error: state.errorMessage.toString())
-                  : Stack(
+                      error: state.errorMessage.toString(),
+                    ),
+                  )
+                else
+                  TabBarView(
+                    controller: tabController,
                     children: [
-                      Image.asset(
-                        AppImages.background,
-                        height: 1.sh,
-                        width: 1.sw,
-                        fit: BoxFit.cover,
-                        alignment: Alignment.center,
+                      TariffPage(
+                        tariffType: TariffType.myTariff,
+                        tariffList: state.tariffs,
                       ),
-                      BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                        child: Container(
-                          color: Colors.black.withValues(alpha: 0.3),
-                          height: 1.sh,
-                          width: 1.sw,
-                        ),
+                      TariffPage(
+                        tariffType: TariffType.allTarif,
+                        tariffList: state.tariffs,
+                        categoryTariffList: state.categoryTariffs,
                       ),
-                      TabBarView(
-                          controller: tabController,
-                          children: [
-                            TariffPage(
-                              tariffType: TariffType.myTariff,
-                              tariffList: state.tariffs,
-                            ),
-                            TariffPage(
-                              tariffType: TariffType.allTarif,
-                              tariffList: state.tariffs,
-                              categoryTariffList: state.categoryTariffs,
-                            )
-                          ],
-                        ),
                     ],
                   ),
-        );
+              ],
+            ));
       },
     );
   }

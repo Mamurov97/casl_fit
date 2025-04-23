@@ -795,6 +795,7 @@ mixin _$TariffState {
   BlocStatus get allTariffStatus => throw _privateConstructorUsedError;
   BlocStatus get currentTariffStatus => throw _privateConstructorUsedError;
   BlocStatus get categoryTariffStatus => throw _privateConstructorUsedError;
+  bool get hasLoadedTariffs => throw _privateConstructorUsedError;
   List<TariffModel>? get tariffs => throw _privateConstructorUsedError;
   List<Data>? get localTariffList => throw _privateConstructorUsedError;
   List<CategoryTariffModel>? get categoryTariffs =>
@@ -819,6 +820,7 @@ abstract class $TariffStateCopyWith<$Res> {
       {BlocStatus allTariffStatus,
       BlocStatus currentTariffStatus,
       BlocStatus categoryTariffStatus,
+      bool hasLoadedTariffs,
       List<TariffModel>? tariffs,
       List<Data>? localTariffList,
       List<CategoryTariffModel>? categoryTariffs,
@@ -844,6 +846,7 @@ class _$TariffStateCopyWithImpl<$Res, $Val extends TariffState>
     Object? allTariffStatus = null,
     Object? currentTariffStatus = null,
     Object? categoryTariffStatus = null,
+    Object? hasLoadedTariffs = null,
     Object? tariffs = freezed,
     Object? localTariffList = freezed,
     Object? categoryTariffs = freezed,
@@ -863,6 +866,10 @@ class _$TariffStateCopyWithImpl<$Res, $Val extends TariffState>
           ? _value.categoryTariffStatus
           : categoryTariffStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
+      hasLoadedTariffs: null == hasLoadedTariffs
+          ? _value.hasLoadedTariffs
+          : hasLoadedTariffs // ignore: cast_nullable_to_non_nullable
+              as bool,
       tariffs: freezed == tariffs
           ? _value.tariffs
           : tariffs // ignore: cast_nullable_to_non_nullable
@@ -899,6 +906,7 @@ abstract class _$$TariffStateImplCopyWith<$Res>
       {BlocStatus allTariffStatus,
       BlocStatus currentTariffStatus,
       BlocStatus categoryTariffStatus,
+      bool hasLoadedTariffs,
       List<TariffModel>? tariffs,
       List<Data>? localTariffList,
       List<CategoryTariffModel>? categoryTariffs,
@@ -922,6 +930,7 @@ class __$$TariffStateImplCopyWithImpl<$Res>
     Object? allTariffStatus = null,
     Object? currentTariffStatus = null,
     Object? categoryTariffStatus = null,
+    Object? hasLoadedTariffs = null,
     Object? tariffs = freezed,
     Object? localTariffList = freezed,
     Object? categoryTariffs = freezed,
@@ -941,6 +950,10 @@ class __$$TariffStateImplCopyWithImpl<$Res>
           ? _value.categoryTariffStatus
           : categoryTariffStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
+      hasLoadedTariffs: null == hasLoadedTariffs
+          ? _value.hasLoadedTariffs
+          : hasLoadedTariffs // ignore: cast_nullable_to_non_nullable
+              as bool,
       tariffs: freezed == tariffs
           ? _value._tariffs
           : tariffs // ignore: cast_nullable_to_non_nullable
@@ -972,6 +985,7 @@ class _$TariffStateImpl implements _TariffState {
       {required this.allTariffStatus,
       required this.currentTariffStatus,
       required this.categoryTariffStatus,
+      required this.hasLoadedTariffs,
       final List<TariffModel>? tariffs,
       final List<Data>? localTariffList,
       final List<CategoryTariffModel>? categoryTariffs,
@@ -988,6 +1002,8 @@ class _$TariffStateImpl implements _TariffState {
   final BlocStatus currentTariffStatus;
   @override
   final BlocStatus categoryTariffStatus;
+  @override
+  final bool hasLoadedTariffs;
   final List<TariffModel>? _tariffs;
   @override
   List<TariffModel>? get tariffs {
@@ -1033,7 +1049,7 @@ class _$TariffStateImpl implements _TariffState {
 
   @override
   String toString() {
-    return 'TariffState(allTariffStatus: $allTariffStatus, currentTariffStatus: $currentTariffStatus, categoryTariffStatus: $categoryTariffStatus, tariffs: $tariffs, localTariffList: $localTariffList, categoryTariffs: $categoryTariffs, currentTariff: $currentTariff, errorMessage: $errorMessage)';
+    return 'TariffState(allTariffStatus: $allTariffStatus, currentTariffStatus: $currentTariffStatus, categoryTariffStatus: $categoryTariffStatus, hasLoadedTariffs: $hasLoadedTariffs, tariffs: $tariffs, localTariffList: $localTariffList, categoryTariffs: $categoryTariffs, currentTariff: $currentTariff, errorMessage: $errorMessage)';
   }
 
   @override
@@ -1047,6 +1063,8 @@ class _$TariffStateImpl implements _TariffState {
                 other.currentTariffStatus == currentTariffStatus) &&
             (identical(other.categoryTariffStatus, categoryTariffStatus) ||
                 other.categoryTariffStatus == categoryTariffStatus) &&
+            (identical(other.hasLoadedTariffs, hasLoadedTariffs) ||
+                other.hasLoadedTariffs == hasLoadedTariffs) &&
             const DeepCollectionEquality().equals(other._tariffs, _tariffs) &&
             const DeepCollectionEquality()
                 .equals(other._localTariffList, _localTariffList) &&
@@ -1064,6 +1082,7 @@ class _$TariffStateImpl implements _TariffState {
       allTariffStatus,
       currentTariffStatus,
       categoryTariffStatus,
+      hasLoadedTariffs,
       const DeepCollectionEquality().hash(_tariffs),
       const DeepCollectionEquality().hash(_localTariffList),
       const DeepCollectionEquality().hash(_categoryTariffs),
@@ -1084,6 +1103,7 @@ abstract class _TariffState implements TariffState {
       {required final BlocStatus allTariffStatus,
       required final BlocStatus currentTariffStatus,
       required final BlocStatus categoryTariffStatus,
+      required final bool hasLoadedTariffs,
       final List<TariffModel>? tariffs,
       final List<Data>? localTariffList,
       final List<CategoryTariffModel>? categoryTariffs,
@@ -1096,6 +1116,8 @@ abstract class _TariffState implements TariffState {
   BlocStatus get currentTariffStatus;
   @override
   BlocStatus get categoryTariffStatus;
+  @override
+  bool get hasLoadedTariffs;
   @override
   List<TariffModel>? get tariffs;
   @override
