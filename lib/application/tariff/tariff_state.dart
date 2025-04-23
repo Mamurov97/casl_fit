@@ -6,6 +6,7 @@ class TariffState with _$TariffState {
     required BlocStatus allTariffStatus,
     required BlocStatus currentTariffStatus,
     required BlocStatus categoryTariffStatus,
+    required bool hasLoadedTariffs,
     List<TariffModel>? tariffs,
     List<Data>? localTariffList,
     List<CategoryTariffModel>? categoryTariffs,
@@ -13,5 +14,5 @@ class TariffState with _$TariffState {
     String? errorMessage,
   }) = _TariffState;
 
-  factory TariffState.initial() => const TariffState(categoryTariffStatus: BlocStatus.initial,allTariffStatus: BlocStatus.initial, currentTariffStatus: BlocStatus.initial);
+  factory TariffState.initial() => const TariffState(hasLoadedTariffs:false,categoryTariffStatus: BlocStatus.initial,allTariffStatus: BlocStatus.initial, currentTariffStatus: BlocStatus.initial);
 }

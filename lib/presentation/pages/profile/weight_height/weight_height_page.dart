@@ -1,12 +1,10 @@
 import 'dart:ui';
-
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/weight_height_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../application/profile/weight_height/weight_height_bloc.dart';
 import '../../../components/screens/empty_page.dart';
 import '../components/create_weight_dialog.dart';

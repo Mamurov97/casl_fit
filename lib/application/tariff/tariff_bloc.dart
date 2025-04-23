@@ -41,7 +41,11 @@ class TariffBloc extends Bloc<TariffEvent, TariffState> {
         if (response['status'] == true) {
           final List<TariffModel>? tariffs = response['result'].map<TariffModel>((item) => TariffModel.fromJson(item)).toList();
           if ((tariffs ?? []).isNotEmpty) {
-            emit(state.copyWith(allTariffStatus: BlocStatus.success, tariffs: tariffs));
+            emit(state.copyWith(
+              allTariffStatus: BlocStatus.success,
+              tariffs: tariffs,
+              hasLoadedTariffs: true,
+            ));
           } else {
             emit(state.copyWith(allTariffStatus: BlocStatus.empty));
           }
