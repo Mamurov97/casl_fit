@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +10,24 @@ class ComingSoonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.asset(
-        AppImages.background,
-        height: 1.sh,
-        width: 1.sw,
-        fit: BoxFit.cover,
-        alignment: Alignment.center,
+      body: Stack(
+        children: [
+          Image.asset(
+            AppImages.background,
+            height: 1.sh,
+            width: 1.sw,
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+          ),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+            child: Container(
+              color: Colors.black.withValues(alpha: 0.3),
+              height: 1.sh,
+              width: 1.sw,
+            ),
+          ),
+        ],
       ),
       floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,

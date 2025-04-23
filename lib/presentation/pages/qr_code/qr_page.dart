@@ -44,6 +44,14 @@ class _QrPageState extends State<QrPage> {
                   fit: BoxFit.cover,
                   alignment: Alignment.center,
                 ),
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                  child: Container(
+                    color: Colors.black.withValues(alpha: 0.3),
+                    height: 1.sh,
+                    width: 1.sw,
+                  ),
+                ),
                 Center(
                     child: Padding(
                   padding: const EdgeInsets.all(22.0),

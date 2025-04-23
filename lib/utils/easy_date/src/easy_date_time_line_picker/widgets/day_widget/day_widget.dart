@@ -1,7 +1,6 @@
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../presentation/assets/theme/app_theme.dart';
 import '../../sealed_classes/sealed_classes.exports.dart';
 import '../../theme/theme.exports.dart';
 import 'day_part_widget.dart';
@@ -79,23 +78,12 @@ class _DayWidgetState extends State<DayWidget> {
       if (widget.isSelectedDay) WidgetState.selected,
     };
 
-    final Color? dayBackgroundColor = resolve<Color?>((theme) => widget.isToday ? theme?.currentDayBackgroundColor : theme?.dayBackgroundColor, states);
-    final WidgetStateProperty<Color?> dayOverlayColor = WidgetStateProperty.resolveWith<Color?>(
-      (Set<WidgetState> states) => effectiveValue((theme) => theme?.overlayColor?.resolve(states)),
-    );
+
 
     // Determine the shape of the day widget
     final OutlinedBorder dayShape = widget.isToday ? resolve<OutlinedBorder?>((theme) => theme?.currentDayShape, states)! : resolve<OutlinedBorder?>((theme) => theme?.dayShape, states)!;
 
-    final BorderSide border = resolve<BorderSide?>((theme) => widget.isToday ? theme?.currentDayBorder : theme?.dayBorder, states)!;
 
-    // Create the decoration for the day widget
-    final ShapeDecoration decoration = ShapeDecoration(
-      color: dayBackgroundColor,
-      shape: dayShape.copyWith(
-        side: border,
-      ),
-    );
     final effectiveMainAxisAlignment = widget.dayPartsOrder.length < 3 ? MainAxisAlignment.center : MainAxisAlignment.spaceEvenly;
 
     _statesController.value = states;

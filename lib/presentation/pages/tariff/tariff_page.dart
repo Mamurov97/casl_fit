@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:casl_fit/application/tariff/tariff_bloc.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';

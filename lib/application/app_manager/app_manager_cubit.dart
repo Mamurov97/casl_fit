@@ -5,7 +5,6 @@ import 'package:casl_fit/infrastructure/common/platform_info.dart';
 import 'package:casl_fit/infrastructure/services/shared_service.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:dio/dio.dart';
-import 'package:dio/src/response.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 

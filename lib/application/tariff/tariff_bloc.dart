@@ -30,7 +30,6 @@ class TariffBloc extends Bloc<TariffEvent, TariffState> {
           emit(state.copyWith(currentTariffStatus: BlocStatus.error, errorMessage: response['error']['message']));
         }
       } catch (e) {
-        print(e.toString());
         emit(state.copyWith(currentTariffStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
       }
     });

@@ -26,22 +26,12 @@ class _HomePageState extends State<HomePage> {
         builder: (context, state) {
           return Stack(
             children: [
-              Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color(0xFF1E1F1C), Color(0xFF2C2F26), Color(0xFF1A1C18)],
-                    stops: [0.0, 0.5, 1.0],
-                  ),
-                ),
-                child: Image.asset(
-                  AppImages.background,
-                  height: 1.sh,
-                  width: 1.sw,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.center,
-                ),
+              Image.asset(
+                AppImages.background,
+                height: 1.sh,
+                width: 1.sw,
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
               ),
               BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),

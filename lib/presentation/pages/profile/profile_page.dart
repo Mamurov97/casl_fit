@@ -12,12 +12,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
 import '../../../application/profile/profile_bloc.dart';
 import '../../../application/profile/weight_height/weight_height_bloc.dart';
 import '../../../infrastructure/services/shared_service.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
