@@ -34,6 +34,9 @@ class DioExceptionX extends DioException {
         AppManagerCubit.context!.go(Routes.signIn.path);
         return '';
       } else {
+        if (errorType.toString() == DioExceptionType.connectionError.toString()) {
+          return 'Internet ulanmagan';
+        }
         if (statusCode! >= 500) {
           return 'Server bilan aloqa yo\'q';
         } else {

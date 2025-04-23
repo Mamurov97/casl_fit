@@ -25,7 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(state.copyWith(authStatus: VerifyPhoneNumberStatus.error, errorMessage: response['error']['message']));
         }
       } catch (e) {
-        emit(state.copyWith(authStatus: VerifyPhoneNumberStatus.error, errorMessage: 'errors.unknown'.tr()));
+        emit(state.copyWith(authStatus: VerifyPhoneNumberStatus.error, errorMessage: e.toString()));
       }
     });
 
