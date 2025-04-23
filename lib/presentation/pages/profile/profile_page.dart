@@ -132,7 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ),
                                         ),
                                         Text(
-                                          maskFormatter.maskText(data.tel ?? ""),
+                                          maskFormatter.maskText("+998${data.tel ?? "xxxxxxx"}"),
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
                                             color: Colors.white,

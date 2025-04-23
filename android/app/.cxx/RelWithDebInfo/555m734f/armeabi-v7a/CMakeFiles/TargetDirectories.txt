@@ -1,0 +1,2 @@
+/Users/golibjonmamurov/StudioProjects/casl_fit/android/app/.cxx/RelWithDebInfo/555m734f/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/golibjonmamurov/StudioProjects/casl_fit/android/app/.cxx/RelWithDebInfo/555m734f/armeabi-v7a/CMakeFiles/rebuild_cache.dir
