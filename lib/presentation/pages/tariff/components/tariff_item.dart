@@ -2,9 +2,10 @@ import 'package:casl_fit/infrastructure/dto/models/tariff/tariff_model.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
+import '../../../../utils/utils.dart';
 
 class TariffItem extends StatelessWidget {
-  final TariffModel? item;
+  final Data? item;
   final VoidCallback onPressed;
   final bool isArrow;
 
@@ -32,11 +33,74 @@ class TariffItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        item?.name ?? '',
+                        (item?.nameMobile ?? "").split('(')[0] ?? '',
                         style: AppTheme.data.textTheme.titleLarge?.copyWith(color: AppTheme.colors.white),
                       ),
-                      if (!isArrow) const Divider(thickness: 1),
                       const SizedBox(height: 8),
+
+                      /*   (!isArrow)
+                          ? Expanded(
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    height: 20.h,
+                                    AppIcons.beginTime,
+                                    colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                                  ),
+                                  Gap(8.w),
+                                  Text(
+                                    "${item?.monthlyLimit} oy ",
+                                    style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
+                                  ),
+                                ],
+                              ),
+                            )
+                          :*/
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            height: 20.h,
+                            AppIcons.calendar,
+                            colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                          ),
+                          Gap(8.w),
+                          Text(
+                            "${item?.monthlyLimit} oy",
+                            style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      /*Row(
+                        children: [
+                          SvgPicture.asset(
+                            height: 20.h,
+                            AppIcons.day,
+                            colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                          ),
+                          Gap(8.w),
+                          Text(
+                            "Tashrif kunlari: Har kuni",
+                            style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            height: 20.h,
+                            AppIcons.time,
+                            colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                          ),
+                          Gap(8.w),
+                          Text(
+                            "${extractHourMinute(item?.limitTimeFrom ?? "")} dan ${extractHourMinute(item?.limitTimeTo ?? "")} gacha",
+                            style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),*/
                       Row(
                         children: [
                           SvgPicture.asset(
@@ -51,42 +115,10 @@ class TariffItem extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),
-                      (!isArrow)
-                          ? Expanded(
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset(
-                                    height: 20.h,
-                                    AppIcons.beginTime,
-                                    colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                                  ),
-                                  Gap(8.w),
-                                  Text(
-                                    "${item?.monthlyLimit} oyda ${item?.dailyLimit} marta",
-                                    style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : Row(
-                              children: [
-                          SvgPicture.asset(
-                            height: 20.h,
-                            AppIcons.beginTime,
-                            colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                          ),
-                          Gap(8.w),
-                          Text(
-                            "${item?.monthlyLimit} oyda ${item?.dailyLimit} marta",
-                            style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
-                          ),
-                        ],
-                      ),
                     ],
                   ),
                 ),
-                if (isArrow) Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 24.r)
+                //   if (isArrow) Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 24.r)
               ],
             ),
           ),

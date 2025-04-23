@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
     AppManagerCubit.context = context;
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -185,25 +185,6 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ],
                           ),
-                          // SizedBox(height: 36.h),
-                          // MenuButton(
-                          //   title: 'profile.edit_profile'.tr(),
-                          //   icon: AppIcons.profile,
-                          //   onPressed: () {},
-                          // ),
-                          // MenuButton(
-                          //   title: 'profile.notification'.tr(),
-                          //   icon: AppIcons.notification,
-                          //   switchValue: true,
-                          //   hasSwitch: true,
-                          //   onSwitchChanged: (value) {},
-                          //   onPressed: () {},
-                          // ),
-                          // MenuButton(
-                          //   title: "profile.setting".tr(),
-                          //   icon: AppIcons.settings,
-                          //   onPressed: () {},
-                          // ),
                           const SizedBox(height: 20),
                           LogoutButton(prefService: pref),
                         ],
