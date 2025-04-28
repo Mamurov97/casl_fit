@@ -104,8 +104,10 @@ final GoRouter router = GoRouter(
       redirect: (context, state) => _redirects(),
       routes: [
         StatefulShellRoute.indexedStack(
+
           builder: (context, state, navigatorShell) {
             int screen = 0;
+
             return PopScope(
               canPop: false,
               onPopInvoked: (bool didPop) async {
@@ -129,6 +131,7 @@ final GoRouter router = GoRouter(
                     navBarOverlap: const NavBarOverlap.full(),
                     onTabChanged: (index) {
                       if (index == 0) {
+                        context.read<HomeBloc>().add(const HomeEvent.getLiveUserCount());
                         if (controller.hasClients) {
                           controller.jumpTo(0);
                         }
@@ -160,12 +163,7 @@ final GoRouter router = GoRouter(
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(
                           key: state.pageKey,
-                          child: BlocProvider(
-                            create: (context) => HomeBloc()
-                              ..add(const GetLiveCountUserEvent())
-                              ..add(const HomeEvent.getDailyUserCount()),
-                            child: const HomePage(),
-                          ));
+                          child: const HomePage());
                     }),
               ],
             ),

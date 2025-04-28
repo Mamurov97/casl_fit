@@ -2,7 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/daily_count_response.dart';
 import 'package:casl_fit/infrastructure/repository/home/home_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../domain/common/enums/bloc_status.dart';
+
 part 'home_bloc.freezed.dart';
 part 'home_event.dart';
 part 'home_state.dart';

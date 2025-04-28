@@ -50,7 +50,7 @@ class _DayPartWidgetState extends State<DayPartWidget> {
           style: AppTheme.data.textTheme.titleSmall?.copyWith(fontSize: 12.sp, color: widget.isSelectedDay ? AppTheme.colors.black : AppTheme.colors.white),
         ),
         Gap(4.h),
-        Container(
+     /*   Container(
           height: 35.h,
           width: 35.w,
           decoration: BoxDecoration(color: widget.isSelectedDay ? AppTheme.colors.white : AppTheme.colors.black.withValues(alpha: 0.7), borderRadius: BorderRadius.circular(62.r)),
@@ -63,7 +63,7 @@ class _DayPartWidgetState extends State<DayPartWidget> {
               ),
             ),
           ),
-        )
+        )*/
       ],
     );
   }

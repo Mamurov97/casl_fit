@@ -21,6 +21,9 @@ class AppIcons {
   static const calendar = 'assets/icons/calendar.svg';
   static const day = 'assets/icons/day.svg';
   static const time = 'assets/icons/time.svg';
+  static const wave = 'assets/icons/wave.svg';
+  static const balance = 'assets/icons/balance.svg';
+
 }
 
 class AppImages {

@@ -16,6 +16,8 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../application/profile/profile_bloc.dart';
 import '../../../application/profile/weight_height/weight_height_bloc.dart';
 import '../../../infrastructure/services/shared_service.dart';
+import 'components/custom_option.dart';
+import 'components/definition_item.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -186,6 +188,49 @@ class _ProfilePageState extends State<ProfilePage> {
                             ],
                           ),
                           const SizedBox(height: 20),
+                          Container(
+                            width: 1.sw,
+                            decoration: BoxDecoration(
+                              color: AppTheme.colors.secondary,
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    AppIcons.balance,
+                                    height: 16.sp,
+                                    colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn), // Replace with AppTheme.colors.primary
+                                  ),
+                                  Gap(8.h),
+                                  Text("Balans", style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.white)),
+                                  Spacer(),
+                                  Text(
+                                    "${formatMoney(state.profileResponse?.balans)} so'm",
+                                    style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.primary),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Gap(16.h),
+                          /*CustomProfileOption(
+                            icon: AppIcons.profile,
+                            title: 'Profilni tahrirlash',
+                            onTap: () {},
+                          ),
+                          CustomProfileOption(
+                            icon: AppIcons.notification,
+                            title: 'Bildirishnomalar ',
+                            onTap: () {},
+                          ),
+                          CustomProfileOption(
+                            icon: AppIcons.settings,
+                            title: 'Sozlamalar',
+                            onTap: () {},
+                          ),*/
+                          Gap(24.h),
                           LogoutButton(prefService: pref),
                         ],
                       ),
@@ -221,4 +266,19 @@ class _ProfilePageState extends State<ProfilePage> {
       ],
     );
   }
+}
+String formatMoney(dynamic value) {
+  if (value == null) return "0";
+
+  num number;
+
+  if (value is String) {
+    number = num.tryParse(value) ?? 0;
+  } else if (value is num) {
+    number = value;
+  } else {
+    return "0";
+  }
+
+  return NumberFormat("#,##0", "uz_UZ").format(number);
 }
