@@ -263,7 +263,7 @@ class _DayTimeLinePickerWidgetState extends State<DayTimeLinePickerWidget> {
                         key: ValueKey<DateTime>(date.toDateOnly()),
                         padding: EdgeInsets.symmetric(
                           horizontal: widget.separatorPadding / 2,
-                          vertical: 16.h
+                          vertical: 20.h
                         ),
                         child: DayWidget(
                                 date: date,

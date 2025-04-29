@@ -9,9 +9,28 @@ import '../../../assets/theme/app_theme.dart';
 import '../../../components/dialogs/exit_dialog.dart';
 import '../../../routes/entity/routes.dart';
 
-class LogoutButton extends StatelessWidget {
-  const LogoutButton({super.key, required this.prefService});
- final SharedPrefService prefService;
+class LogoutButton extends StatefulWidget {
+  const LogoutButton({
+    super.key,
+  });
+
+  @override
+  State<LogoutButton> createState() => _LogoutButtonState();
+}
+
+class _LogoutButtonState extends State<LogoutButton> {
+  late SharedPrefService prefService;
+
+  @override
+  void initState() {
+    getPref();
+    super.initState();
+  }
+
+  void getPref() async {
+    prefService = await SharedPrefService.initialize();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(

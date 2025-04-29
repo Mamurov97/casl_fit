@@ -77,168 +77,201 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: BlocConsumer<ProfileBloc, ProfileState>(
-                listener: (context, state) {},
-                builder: (context, state) {
-                  if (state.status == BlocStatus.loading) {
-                    return const CircularIndicator();
-                  } else if (state.status == BlocStatus.error) {
-                    return ErrorPage(
-                        onPressed: () {
-                          context.read<ProfileBloc>().add(GetProfileDataEvent());
-                        },
-                        error: state.errorMessage.toString());
-                  } else if (state.status == BlocStatus.success) {
-                    ProfileResponse data = state.profileResponse ?? ProfileResponse();
-                    return SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
-                            margin: EdgeInsets.only(bottom: 15.h),
-                            decoration: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(16.r)),
-                            child: IntrinsicHeight(
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    height: 80.h,
-                                    width: 80.w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10.r),
-                                    ),
-                                    child: Align(
-                                      alignment: Alignment.bottomCenter,
-                                      child: Icon(
-                                        CupertinoIcons.person_alt,
-                                        size: 80.w,
-                                      ),
+            child: BlocConsumer<ProfileBloc, ProfileState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                if (state.status == BlocStatus.loading) {
+                  return const CircularIndicator();
+                } else if (state.status == BlocStatus.error) {
+                  return ErrorPage(
+                      onPressed: () {
+                        context.read<ProfileBloc>().add(GetProfileDataEvent());
+                      },
+                      error: state.errorMessage.toString());
+                } else if (state.status == BlocStatus.success) {
+                  ProfileResponse data = state.profileResponse ?? ProfileResponse();
+                  return SingleChildScrollView(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        /*   Container(
+                          height: 80.h,
+                          width: 80.w,
+                          decoration:  BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                            border: Border.fromBorderSide(
+                              BorderSide(
+                                color: AppTheme.colors.primary,
+                                width: 2.0,
+                              ),
+                            ),
+
+                          ),
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Icon(
+                              CupertinoIcons.person_alt,
+                              size: 50.w,
+                            ),
+                          ),
+                        ),
+                        Gap(8.h),
+                        Text(
+                          data.name ?? "",
+                          textAlign: TextAlign.start,
+                          maxLines: 3,
+                          style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.white),
+                        ),
+                        Gap(4.h),
+                        Text(
+                          maskFormatter.maskText("+998${data.tel}" ?? ""),
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: Colors.white60,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),*/
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
+                          margin: EdgeInsets.only(bottom: 20.h),
+                          decoration: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(16.r)),
+                          child: IntrinsicHeight(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 80.h,
+                                  width: 80.w,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.white,
+                                  ),
+                                  child: Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: Icon(
+                                      CupertinoIcons.person_alt,
+                                      size: 60.w,
                                     ),
                                   ),
-                                  const SizedBox(width: 10),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            data.name ?? "",
-                                            textAlign: TextAlign.start,
-                                            maxLines: 3,
-                                            style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary),
-                                          ),
-                                        ),
-                                        Text(
-                                          maskFormatter.maskText(data.tel ?? ""),
+                                ),
+                                SizedBox(width: 10.w),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          data.name ?? "",
                                           textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                          maxLines: 3,
+                                          style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary),
                                         ),
-                                        Gap(5.h),
-                                      ],
-                                    ),
+                                      ),
+                                      Text(
+                                        maskFormatter.maskText("+998${data.tel}" ?? ""),
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InfoItem(
-                                type: 'kg',
-                                text: "Vazn",
-                                icon: AppIcons.weight,
-                                value: (state.profileResponse?.weight ?? 0).toString(),
-                                onPressed: () {
-                                  context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight).then((value) {
-                                    if (context.mounted) {
-                                      context.read<ProfileBloc>().add(GetProfileDataEvent());
-                                    }
-                                  });
-                                },
-                              ),
-                              InfoItem(
-                                type: 'sm',
-                                text: "Bo'y",
-                                icon: AppIcons.height,
-                                value: (state.profileResponse?.height ?? 0).toString(),
-                                onPressed: () {
-                                  context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height).then((value) {
-                                    if (context.mounted) {
-                                      context.read<ProfileBloc>().add(GetProfileDataEvent());
-                                    }
-                                  });
-                                },
-                              ),
-                              InfoItem(
-                                type: 'yosh',
-                                text: "Yosh",
-                                icon: AppIcons.age,
-                                value: (state.profileResponse?.age ?? 0).toString(),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 20),
-                          Container(
-                            width: 1.sw,
-                            decoration: BoxDecoration(
-                              color: AppTheme.colors.secondary,
-                              borderRadius: BorderRadius.circular(12.r),
+                        ),
+                        Row(
+                          children: [
+                            InfoItem(
+                              type: 'kg',
+                              text: "Vazn",
+                              icon: AppIcons.weight,
+                              value: (state.profileResponse?.weight ?? 0).toString(),
+                              onPressed: () {
+                                context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.weight).then((value) {
+                                  if (context.mounted) {
+                                    context.read<ProfileBloc>().add(GetProfileDataEvent());
+                                  }
+                                });
+                              },
                             ),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset(
-                                    AppIcons.balance,
-                                    height: 16.sp,
-                                    colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn), // Replace with AppTheme.colors.primary
-                                  ),
-                                  Gap(8.h),
-                                  Text("Balans", style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.white)),
-                                  Spacer(),
-                                  Text(
-                                    "${formatMoney(state.profileResponse?.balans)} so'm",
-                                    style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.primary),
-                                  )
-                                ],
-                              ),
+                            InfoItem(
+                              type: 'sm',
+                              text: "Bo'y",
+                              icon: AppIcons.height,
+                              value: (state.profileResponse?.height ?? 0).toString(),
+                              onPressed: () {
+                                context.push("${Routes.root.path}${Routes.profile.path}${Routes.weightHeight.path}", extra: WeightHeightEnum.height).then((value) {
+                                  if (context.mounted) {
+                                    context.read<ProfileBloc>().add(GetProfileDataEvent());
+                                  }
+                                });
+                              },
+                            ),
+                            InfoItem(
+                              type: 'yosh',
+                              text: "Yosh",
+                              icon: AppIcons.age,
+                              value: (state.profileResponse?.age ?? 0).toString(),
+                            ),
+                          ],
+                        ),
+                        Gap(20.h),
+                        //   Spacer(),
+                        Container(
+                          width: 1.sw,
+                          decoration: BoxDecoration(
+                            color: AppTheme.colors.secondary,
+                            borderRadius: BorderRadius.circular(12.r),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+                            child: Row(
+                              children: [
+                                SvgPicture.asset(
+                                  AppIcons.balance,
+                                  height: 16.sp,
+                                  colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn), // Replace with AppTheme.colors.primary
+                                ),
+                                Gap(8.h),
+                                Text("Balans", style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.white)),
+                                const Spacer(),
+                                Text(
+                                  "${formatMoney(state.profileResponse?.balans)} so'm",
+                                  style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.primary),
+                                )
+                              ],
                             ),
                           ),
-                          Gap(16.h),
-                          /*CustomProfileOption(
-                            icon: AppIcons.profile,
-                            title: 'Profilni tahrirlash',
-                            onTap: () {},
-                          ),
-                          CustomProfileOption(
-                            icon: AppIcons.notification,
-                            title: 'Bildirishnomalar ',
-                            onTap: () {},
-                          ),
-                          CustomProfileOption(
-                            icon: AppIcons.settings,
-                            title: 'Sozlamalar',
-                            onTap: () {},
-                          ),*/
-                          Gap(24.h),
-                          LogoutButton(prefService: pref),
-                        ],
-                      ),
-                    );
-                  }
-                  return const SizedBox();
-                },
-              ),
+                        ),
+                        /*CustomProfileOption(
+                          icon: AppIcons.profile,
+                          title: 'Profilni tahrirlash',
+                          onTap: () {},
+                        ),
+                        CustomProfileOption(
+                          icon: AppIcons.notification,
+                          title: 'Bildirishnomalar ',
+                          onTap: () {},
+                        ),
+                        CustomProfileOption(
+                          icon: AppIcons.settings,
+                          title: 'Sozlamalar',
+                          onTap: () {},
+                        ),*/
+                      ],
+                    ),
+                  );
+                }
+                return const SizedBox();
+              },
             ),
           ),
         ],
@@ -246,12 +279,10 @@ class _ProfilePageState extends State<ProfilePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
-          return state.status == BlocStatus.error
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: LogoutButton(prefService: pref),
-                )
-              : const SizedBox();
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: LogoutButton(),
+          );
         },
       ),
     );

@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                              ),
+                              c ),
                               /*IconNotificationButton(
                                 onPressed: () {},
                                 icon: AppIcons.notification,
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Hafta kunlari bo'yicha o'rtacha tashriflar soni", style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.white, fontSize: 14.sp)),
+                                    Text("Hafta kunlari bo'yicha o'rtacha tashriflar soni", style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.white, fontSize: 12.sp)),
                                     Gap(4.h),
                                     MultiLineChartCarousel(
                                         dailyCountResponse: (state.dailyCountResponse?.data ?? [])[state.weekDay - 1],
@@ -148,9 +148,12 @@ class _HomePageState extends State<HomePage> {
                                     "Hozirda zalda ",
                                     style: AppTheme.data.textTheme.titleMedium!.copyWith(fontSize: 16.sp, color: AppTheme.colors.white),
                                   ),
-                                  Text(
-                                    "${(state.liveUserCount ?? 0)}",
-                                    style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary, fontSize: 20.sp),
+                                  Padding(
+                                    padding:  EdgeInsets.only(right: 12.w),
+                                    child: Text(
+                                      "${(state.liveUserCount ?? 0)}",
+                                      style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary, fontSize: 28.sp),
+                                    ),
                                   ),
 
                                 ],

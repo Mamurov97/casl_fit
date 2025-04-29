@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:casl_fit/application/tariff/tariff_bloc.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/tariff/category_tariff.dart';
@@ -14,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
 import '../../routes/entity/routes.dart';
 
 class TariffPage extends StatefulWidget {
