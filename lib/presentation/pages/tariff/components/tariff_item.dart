@@ -103,20 +103,20 @@ class TariffItem extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),*/
 
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            height: 20.h,
-                            AppIcons.time,
-                            colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                          ),
-                          Gap(8.w),
-                          Text(
-                            "${extractHourMinute(item?.limitTimeFrom ?? "")} - ${extractHourMinute(item?.limitTimeTo ?? "")}",
-                            style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     SvgPicture.asset(
+                      //       height: 20.h,
+                      //       AppIcons.time,
+                      //       colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                      //     ),
+                      //     Gap(8.w),
+                      //     Text(
+                      //       "${extractHourMinute(item?.limitTimeFrom ?? "")} - ${extractHourMinute(item?.limitTimeTo ?? "")}",
+                      //       style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
+                      //     ),
+                      //   ],
+                      // ),
 
                       const SizedBox(height: 8),
 

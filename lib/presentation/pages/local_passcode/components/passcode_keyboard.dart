@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:telegram_bot_dashboard/application/auth/passcode/passcode_cubit.dart';
-import 'package:telegram_bot_dashboard/domain/common/enums/passcode_step.dart';
-import 'package:telegram_bot_dashboard/presentation/assets/asset_index.dart';
+
+import '../../../../application/local_passcode/passcode_cubit.dart';
+import '../../../../domain/common/enums/passcode_step.dart';
+import '../../../assets/asset_index.dart';
 
 class PasscodeKeyboard extends StatelessWidget {
   const PasscodeKeyboard({super.key});
@@ -69,7 +70,7 @@ class PasscodeKeyboard extends StatelessWidget {
           child: SvgPicture.asset(
             icon,
             height: 35.h,
-            colorFilter: ColorFilter.mode(
+            colorFilter: const ColorFilter.mode(
               Colors.white,
               BlendMode.srcIn,
             ),
