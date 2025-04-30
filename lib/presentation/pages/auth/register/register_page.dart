@@ -3,12 +3,11 @@ import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
-import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -21,19 +20,13 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final formKey = GlobalKey<FormBuilderState>();
 
-  bool passwordVisibleOne = false;
-  bool passwordVisibleTwo = false;
-
-  // Alphanumeric regex: faqat lotin harflari va raqamlar
-  final alphanumericRegex = RegExp(r'^[a-zA-Z0-9]+$');
-
   @override
   Widget build(BuildContext context) {
     return DeFocus(
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.otpStatus.isSuccess) {
-            context.push(Routes.verify.path,extra: formKey.currentState?.fields['retry_password']?.value );
+            context.push(Routes.verify.path, extra: 'register');
             context.read<AuthBloc>().add(const ChangeOtpStatusEvent());
           }
         },
@@ -59,104 +52,41 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: FormBuilder(
                       key: formKey,
                       enabled: !state.otpStatus.isLoading,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(tr('register.password'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
-                          FormBuilderTextField(
-                            initialValue: '',
-                            name: 'password',
-                            obscureText: !passwordVisibleOne,
-                            decoration: InputDecoration(
-                              hintText: tr('register.password'),
-                              suffixIcon: IconButton(
-                                icon: Icon(passwordVisibleOne ? Icons.visibility_off : Icons.visibility),
-                                onPressed: () {
-                                  passwordVisibleOne = !passwordVisibleOne;
-                                  setState(() {});
-                                },
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Text(
+                                "register.register".tr(),
+                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.white),
                               ),
                             ),
-                            textInputAction: TextInputAction.done,
-                            validator: validatePassword,
-                          ),
-                          Gap(10.h),
-                          Text(tr('register.retry_password'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
-                          FormBuilderTextField(
-                            initialValue: '',
-                            name: 'retry_password',
-                            obscureText: !passwordVisibleTwo,
-                            decoration: InputDecoration(
-                              hintText: tr('register.retry_password'),
-                              suffixIcon: IconButton(
-                                icon: Icon(passwordVisibleTwo ? Icons.visibility_off : Icons.visibility),
-                                onPressed: () {
-                                  passwordVisibleTwo = !passwordVisibleTwo;
-                                  setState(() {});
-                                },
-                              ),
+                            const Gap(20),
+                            buildRequiredTextField("name", "register.name"),
+                            buildRequiredTextField("surname", "register.surname"),
+                            buildRequiredTextField("patronymic", "register.patronymic"),
+                            buildRequiredDateField("date_birthday", "register.date_birthday"),
+                            const Gap(20),
+                            ElevatedButton(
+                              onPressed: state.otpStatus.isLoading
+                                  ? null
+                                  : () {
+                                      if (formKey.currentState!.saveAndValidate()) {
+                                        final data = formKey.currentState!.value;
+                                        final name = "${data['name']} ${data['surname']} ${data['patronymic']}";
+                                        context.read<AuthBloc>().add(SetRegisterData(name: name, birthday: data['date_birthday'].toString()));
+                                      }
+                                    },
+                              child: state.otpStatus.isLoading
+                                  ? LoadingAnimationWidget.fallingDot(
+                                      color: AppTheme.colors.primary,
+                                      size: ScreenSize.h36,
+                                    )
+                                  : Text(tr('continue')),
                             ),
-                            textInputAction: TextInputAction.done,
-                            validator: validateRetryPassword,
-                          ),
-                          Gap(20.h),
-                          Row(
-                            children: [
-                              Checkbox(
-                                  activeColor: AppTheme.colors.primary,
-                                  checkColor: AppTheme.colors.secondary,
-                                  value: state.isPrivacyPolicy ?? false,
-                                  onChanged: (value) {
-                                    context.read<AuthBloc>().add(PrivacyPolicyEvent(isPrivacyPolicy: value ?? false));
-                                  }),
-                              EasyRichText(
-                                tr(
-                                  'register.privacy_policy',
-                                ),
-                                textAlign: TextAlign.center,
-                                defaultStyle: AppTheme.data.textTheme.bodyLarge!.copyWith(color: AppTheme.colors.white),
-                                patternList: [
-                                  EasyRichTextPattern(
-                                    targetString: "test",
-                                    style: AppTheme.data.textTheme.bodyLarge!.copyWith(color: AppTheme.colors.primary),
-                                  ),
-                                  EasyRichTextPattern(
-                                    targetString: 'siyosatiga',
-                                    style: AppTheme.data.textTheme.bodyLarge!.copyWith(color: AppTheme.colors.primary),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        context.push("${Routes.register.path}${Routes.privacyPolicy.path}");
-                                      },
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Gap(8.h),
-                          ElevatedButton(
-                            onPressed: () {
-                              if (state.otpStatus.isLoading) return;
-                              if (!formKey.currentState!.saveAndValidate()) return;
-                              if (!(state.isPrivacyPolicy ?? false)) {
-                                Toast.showInfoToast(message: "Maxfiylik siyosatiga rozilik bildiring !");
-                                return;
-                              }
-
-                              if (formKey.currentState!.saveAndValidate()) {
-                                context.read<AuthBloc>().add(
-                                      SendOtpEvent(password: formKey.currentState?.fields['retry_password']?.value),
-                                    );
-                              }
-                            },
-                            child: state.otpStatus.isLoading
-                                ? LoadingAnimationWidget.fallingDot(
-                                    color: AppTheme.colors.primary,
-                                    size: ScreenSize.h36,
-                                  )
-                                : Text(tr('continue')),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -169,30 +99,49 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  // Maxsus belgilarga ruxsat beriladi, lekin kamida bitta harf va raqam bo'lishi shart.
-  String? validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return tr('errors.field_empty');
-    }
-    if (value.length < 6) {
-      return tr('errors.min_length');
-    }
-    if (!RegExp(r'[a-zA-Z]').hasMatch(value)) {
-      return tr('errors.no_letter'); // Kamida harf kiritilishi kerak
-    }
-    if (!RegExp(r'\d').hasMatch(value)) {
-      return tr('errors.no_digit'); // Kamida raqam kiritilishi kerak
-    }
-    return null;
-  }
+  Widget buildLabel(String text) => Text(text, style: Theme.of(context).textTheme.labelLarge!.copyWith(color: CupertinoColors.white));
 
-  String? validateRetryPassword(String? value) {
-    final passwordValue = formKey.currentState?.fields['password']?.value;
-    final baseValidation = validatePassword(value);
-    if (baseValidation != null) return baseValidation;
-    if (passwordValue != null && value != passwordValue) {
-      return tr('errors.passwords_not_equal');
-    }
-    return null;
+  Widget buildRequiredTextField(String name, String label) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildLabel(label.tr()),
+          const Gap(3),
+          FormBuilderTextField(
+            name: name,
+            validator: FormBuilderValidators.required(errorText: 'errors.field_empty'.tr()),
+            decoration: buildInputDecoration(label.tr()),
+          ),
+          const Gap(10),
+        ],
+      );
+
+  Widget buildRequiredDateField(String name, String label) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildLabel(label.tr()),
+          const Gap(3),
+          FormBuilderDateTimePicker(
+            name: name,
+            inputType: InputType.date,
+            format: DateFormat('dd.MM.yyyy'),
+            firstDate: DateTime(1900),
+            lastDate: DateTime.now(),
+            validator: FormBuilderValidators.required(errorText: 'errors.field_empty'.tr()),
+            decoration: buildInputDecoration(label.tr()),
+          ),
+          const Gap(10),
+        ],
+      );
+
+  InputDecoration buildInputDecoration(String hint, {Widget? suffixIcon}) {
+    return InputDecoration(
+      hintText: hint.tr(),
+      suffixIcon: suffixIcon,
+      filled: true,
+      fillColor: Colors.white,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+    );
   }
 }
