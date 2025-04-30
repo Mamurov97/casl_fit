@@ -146,7 +146,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 prefs.setGuid(guid);
                 prefs.setRole(role);
                 prefs.setAuthStatus(true);
-                print(prefs.isAuthorized);
                 emit(state.copyWith(registerStatus: BlocStatus.success));
               }
             } catch (e) {

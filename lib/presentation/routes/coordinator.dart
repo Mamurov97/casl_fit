@@ -42,14 +42,12 @@ String? _redirects() {
 }
 
 String getInitialLocation() {
-  print(UserData.token);
   final route = UserData.token.isEmpty
       ? Routes.signIn.path
       : UserData.passCodeStatus
       ? Routes.checkPassCode.path
       : Routes.setPassCode.path;
 
-  print(route);
   return route;
 }
 
