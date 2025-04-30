@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                              c ),
+                               ),
                               /*IconNotificationButton(
                                 onPressed: () {},
                                 icon: AppIcons.notification,
