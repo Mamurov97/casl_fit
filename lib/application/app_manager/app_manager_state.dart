@@ -12,18 +12,3 @@ class AppManagerError extends AppManagerState {
 
   final String error;
 }
-
-class AppCheckVersionInitial extends AppManagerState {}
-
-class AppCheckVersionSuccess extends AppManagerState {
-  final bool update;
-  final String updateStatus;
-
-  AppCheckVersionSuccess(this.update, this.updateStatus);
-}
-
-class AppCheckVersionError extends AppManagerState {
-  AppCheckVersionError(this.error);
-
-  final String error;
-}

@@ -4,24 +4,26 @@ part of 'auth_bloc.dart';
 class AuthState with _$AuthState {
   const factory AuthState({
     String? phoneNumber,
-    String? password,
-    String? registerPageType,
-    bool? isPrivacyPolicy,
+    String? fullName,
+    String? birthday,
     required VerifyPhoneNumberStatus authStatus,
-    required BlocStatus loginStatus,
-    required BlocStatus registerStatus,
     required BlocStatus otpStatus,
+    required BlocStatus registerStatus,
     required BlocStatus otpVerifyStatus,
-    required BlocStatus resetPasswordStatus,
     String? errorMessage,
+    // required BlocStatus loginStatus,
+    // required BlocStatus resetPasswordStatus,
+    // bool? isPrivacyPolicy,
+    // String? password,
+    // String? registerPageType,
   }) = _AuthState;
 
   factory AuthState.initial() => const AuthState(
         authStatus: VerifyPhoneNumberStatus.initial,
-        loginStatus: BlocStatus.initial,
         registerStatus: BlocStatus.initial,
         otpStatus: BlocStatus.initial,
         otpVerifyStatus: BlocStatus.initial,
-        resetPasswordStatus: BlocStatus.initial,
+        // loginStatus: BlocStatus.initial,
+        // resetPasswordStatus: BlocStatus.initial,
       );
 }

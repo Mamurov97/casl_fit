@@ -19,8 +19,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../application/profile/profile_bloc.dart';
 import '../../../application/profile/weight_height/weight_height_bloc.dart';
 import '../../../infrastructure/services/shared_service.dart';
-import 'components/custom_option.dart';
-import 'components/definition_item.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -294,8 +292,8 @@ class _ProfilePageState extends State<ProfilePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          return const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: LogoutButton(),
           );
         },

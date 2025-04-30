@@ -32,8 +32,6 @@ Dio createDio() {
     ..options = BaseOptions(
       baseUrl: 'http://10.100.104.104:9500/api/',
       // baseUrl: 'https://caslfit.uz/api/',
-       // baseUrl: 'http://10.100.104.125:9500/api/',
-    // baseUrl: 'https://caslfit.uz/api/',
       headers: {HttpHeaders.acceptHeader: 'application/json'},
     );
 }

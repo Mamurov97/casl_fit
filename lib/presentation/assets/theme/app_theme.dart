@@ -19,7 +19,7 @@ class AppTheme {
     themeMode = ThemeMode.light;
     colors = _getThemeColors();
 
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
 
     final textTheme = TextTheme(
       displayLarge: TextStyle(

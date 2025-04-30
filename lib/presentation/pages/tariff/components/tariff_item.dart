@@ -2,7 +2,6 @@ import 'package:casl_fit/infrastructure/dto/models/tariff/tariff_model.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
-import '../../../../utils/utils.dart';
 
 class TariffItem extends StatelessWidget {
   final Data? item;
@@ -14,15 +13,17 @@ class TariffItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       margin: EdgeInsets.only(bottom: 12.h),
       child: GestureDetector(
         onTap: () {
           onPressed();
         },
         child: Container(
-          decoration:
-              BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(12.r), border: Border.fromBorderSide(BorderSide(width: 1.w, color: AppTheme.colors.secondary))),
+          decoration: BoxDecoration(
+            color: AppTheme.colors.secondary,
+            borderRadius: BorderRadius.circular(12.r),
+          ),
           child: Padding(
             padding: EdgeInsets.all(8.r),
             child: Row(
@@ -33,7 +34,7 @@ class TariffItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        (item?.nameMobile ?? "").split('(')[0] ?? '',
+                        (item?.nameMobile ?? ""),
                         style: AppTheme.data.textTheme.titleLarge?.copyWith(color: AppTheme.colors.white),
                       ),
                       const SizedBox(height: 8),
@@ -102,20 +103,20 @@ class TariffItem extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),*/
 
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            height: 20.h,
-                            AppIcons.time,
-                            colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                          ),
-                          Gap(8.w),
-                          Text(
-                            "${extractHourMinute(item?.limitTimeFrom ?? "")} - ${extractHourMinute(item?.limitTimeTo ?? "")}",
-                            style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     SvgPicture.asset(
+                      //       height: 20.h,
+                      //       AppIcons.time,
+                      //       colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                      //     ),
+                      //     Gap(8.w),
+                      //     Text(
+                      //       "${extractHourMinute(item?.limitTimeFrom ?? "")} - ${extractHourMinute(item?.limitTimeTo ?? "")}",
+                      //       style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
+                      //     ),
+                      //   ],
+                      // ),
 
                       const SizedBox(height: 8),
 

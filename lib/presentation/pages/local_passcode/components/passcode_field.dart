@@ -1,3 +1,4 @@
+import 'package:casl_fit/application/local_passcode/passcode_cubit.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +6,6 @@ import 'package:flutter_animator/flutter_animator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:vibration/vibration.dart';
-
-import '../../../../application/auth/passcode/passcode_cubit.dart';
 
 class PasscodeField extends StatelessWidget {
   const PasscodeField({super.key});
@@ -50,7 +49,7 @@ class PasscodeField extends StatelessWidget {
                             ? theme.colorScheme.error
                             : state.filledInputCount >= i
                                 ? CupertinoColors.activeGreen
-                                : Colors.white24,
+                                : Colors.white30,
                         shape: BoxShape.circle,
                       ),
                     ),

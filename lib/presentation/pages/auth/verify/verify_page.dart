@@ -1,4 +1,5 @@
 import 'package:casl_fit/application/auth/init/auth_bloc.dart';
+import 'package:casl_fit/domain/common/data/user_data.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/domain/common/second_to_time.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
@@ -12,9 +13,9 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
 class VerifyPage extends StatefulWidget {
-  final String password;
+  const VerifyPage({super.key, required this.type});
 
-  const VerifyPage({super.key, required this.password});
+  final String type;
 
   @override
   State<VerifyPage> createState() => _VerifyPageState();
@@ -29,31 +30,24 @@ class _VerifyPageState extends State<VerifyPage> {
     type: MaskAutoCompletionType.lazy,
   );
 
+  final controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return DeFocus(
       child: Scaffold(
         body: BlocConsumer<AuthBloc, AuthState>(
+          listenWhen: (prev, cur) => (prev.otpVerifyStatus != cur.otpVerifyStatus) || (prev.registerStatus != cur.registerStatus),
           listener: (context, state) {
-
             //login statusini eshitish
-            if (state.registerPageType == 'register_type') {
-              if (state.registerStatus.isSuccess) context.go('/root/qr_code');
-              if (state.registerStatus.isError) {
-                Toast.showErrorToast(message: state.errorMessage);
-              }
-              context.read<AuthBloc>().add(const ChangeLoginStatusEvent());
+            final route = UserData.passCodeStatus ? Routes.checkPassCode.path : Routes.setPassCode.path;
+            if (state.otpVerifyStatus.isSuccess && widget.type == "login") context.go(route);
+            if (state.registerStatus.isSuccess && widget.type == "register") context.go(route);
+            if (state.otpVerifyStatus.isError || state.registerStatus.isError) {
+              Toast.showErrorToast(message: state.errorMessage);
+              controller.clear();
             }
-            //reset password statusini eshitish
-            if (state.registerPageType == 'password_recovery_type') {
-              if (state.resetPasswordStatus.isSuccess) {
-                context.go(Routes.signIn.path);
-              }
-              if (state.resetPasswordStatus.isError) {
-                Toast.showErrorToast(message: state.errorMessage);
-              }
-              context.read<AuthBloc>().add(const ChangeResetPasswordStatusEvent());
-            }
+            context.read<AuthBloc>().add(const ChangeOtpVerifyStatusEvent());
           },
           builder: (context, state) {
             return Stack(
@@ -103,12 +97,12 @@ class _VerifyPageState extends State<VerifyPage> {
                         ),
                         Gap(0.026.sh),
                         PintPutX(
+                          controller: controller,
                           onComplete: (value) {
-                            if (state.registerPageType == 'register_type') {
+                            if(widget.type == "login"){
+                              context.read<AuthBloc>().add(VerifyOtpEvent(otpCode: value));
+                            }else{
                               context.read<AuthBloc>().add(RegisterEvent(otpCode: value));
-                            }
-                            if (state.registerPageType == 'password_recovery_type') {
-                              context.read<AuthBloc>().add(PasswordRecoveryEvent(otpCode: value, phone: state.phoneNumber.toString(), password: state.password.toString()));
                             }
                           },
                         ),
@@ -156,7 +150,7 @@ class _VerifyPageState extends State<VerifyPage> {
                             ),
                           ],
                         ),
-                        if (state.resetPasswordStatus.isLoading || state.registerStatus.isLoading) Center(child: CircularProgressIndicator(color: AppTheme.colors.primary))
+                        if (state.otpVerifyStatus.isLoading) Center(child: CircularProgressIndicator(color: AppTheme.colors.primary))
                       ],
                     ),
                   ),

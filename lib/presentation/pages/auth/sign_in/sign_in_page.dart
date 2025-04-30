@@ -4,7 +4,9 @@ import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:casl_fit/presentation/components/dialogs/auth_dialogs.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
+import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -39,19 +41,14 @@ class _SignInPageState extends State<SignInPage> {
           if (state.authStatus.isRegister) {
             AuthDialogs.showRegisterDialog(
               context,
-              onRegister: () {
-                context.read<AuthBloc>().add(const SetRegisterPageType(type: 'register_type'));
-                context.push(Routes.register.path);
-              },
+              onRegister: () => context.push(Routes.register.path),
             );
             context.read<AuthBloc>().add(const ChangeAuthStatusEvent());
           }
           if (state.authStatus.isNotFound) AuthDialogs.showNotFoundDialog(context);
-
-          if (state.loginStatus.isSuccess) context.go('/root/qr_code');
-          if (state.loginStatus.isError) {
-            Toast.showErrorToast(message: state.errorMessage);
-            context.read<AuthBloc>().add(const ChangeLoginStatusEvent());
+          if (state.otpStatus.isSuccess) {
+            context.read<AuthBloc>().add(const ChangeOtpStatusEvent());
+            context.push(Routes.verify.path, extra: 'login');
           }
         },
         builder: (context, state) {
@@ -75,12 +72,15 @@ class _SignInPageState extends State<SignInPage> {
                     padding: EdgeInsets.all(14.w),
                     child: FormBuilder(
                       key: formKey,
-                      enabled: !(state.loginStatus.isLoading || state.authStatus.isLoading),
+                      enabled: !(state.authStatus.isLoading || state.otpStatus.isLoading),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(tr('sign_in.phone_number'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
+                          Center(child: Text(tr('sign_in.login'), style: Theme.of(context).textTheme.displayLarge!.copyWith(color: CupertinoColors.white))),
+                          Gap(20.h),
+                          Text(tr('sign_in.phone_number'), style: Theme.of(context).textTheme.labelLarge!.copyWith(color: CupertinoColors.white)),
+                          Gap(3.h),
                           FormBuilderTextField(
                             initialValue: '+998',
                             name: "phone",
@@ -127,64 +127,44 @@ class _SignInPageState extends State<SignInPage> {
                             },
                           ),
                           Gap(10.h),
-                          Text(tr('sign_in.password'), style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CupertinoColors.white)),
-                          FormBuilderTextField(
-                            initialValue: '',
-                            name: 'password',
-                            obscureText: !passwordVisible,
-                            decoration: InputDecoration(
-                              hintText: tr('sign_in.password'),
-                              suffixIcon: IconButton(
-                                icon: Icon(passwordVisible ? Icons.visibility_off : Icons.visibility),
-                                onPressed: () {
-                                  passwordVisible = !passwordVisible;
-                                  setState(() {});
-                                },
+                          EasyRichText(
+                            "\"${tr('continue')}\"${tr('register.privacy_policy')}",
+                            textAlign: TextAlign.center,
+                            defaultStyle: AppTheme.data.textTheme.bodyMedium!.copyWith(color: AppTheme.colors.white),
+                            patternList: [
+                              EasyRichTextPattern(
+                                targetString: 'register.privacy_policy_clickable'.tr(),
+                                style: AppTheme.data.textTheme.bodyMedium!.copyWith(
+                                  color: AppTheme.colors.primary,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: AppTheme.colors.primary,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    context.push("${Routes.register.path}${Routes.privacyPolicy.path}");
+                                  },
                               ),
-                            ),
-                            textInputAction: TextInputAction.done,
-                            validator: (v) {
-                              if (v?.isEmpty ?? false) {
-                                return tr('errors.field_empty');
-                              }
-                              return null;
-                            },
-                          ),
-                          Container(
-                            height: 35.h,
-                            alignment: Alignment.bottomLeft,
-                            child: Visibility(
-                              visible: state.authStatus.isLogin,
-                              child: TextButtonX(
-                                onPressed: () {
-                                  context.read<AuthBloc>().add(const SetRegisterPageType(type: 'password_recovery_type'));
-
-                                  context.push(Routes.register.path);
-                                },
-                                text: 'sign_in.password_recovery'.tr(),
-                              ),
-                            ),
+                            ],
                           ),
                           Gap(20.h),
                           ElevatedButton(
-                            onPressed: state.loginStatus.isLoading
+                            onPressed: state.authStatus.isLoading || state.otpStatus.isLoading
                                 ? null
                                 : () {
                                     if (formKey.currentState!.validate()) {
-                                      context.read<AuthBloc>().add(
-                                            LoginEvent(
-                                              phone: maskFormatter.getUnmaskedText(),
-                                              password: formKey.currentState?.fields["password"]?.value,
-                                            ),
-                                          );
+                                      if (state.authStatus.isLogin) {
+                                        context.read<AuthBloc>().add(const SendOtpEvent());
+                                      } else {
+                                        context.read<AuthBloc>().add(CheckPhoneNumber(phone: maskFormatter.getUnmaskedText()));
+                                      }
                                     }
                                   },
-                            child: state.loginStatus.isLoading
+                            child: state.authStatus.isLoading || state.otpStatus.isLoading
                                 ? LoadingAnimationWidget.fallingDot(
                                     color: AppTheme.colors.primary,
                                     size: ScreenSize.h36,
                                   )
-                                : Text(tr('sign_in.login')),
+                                : Text(tr('continue')),
                           ),
                         ],
                       ),

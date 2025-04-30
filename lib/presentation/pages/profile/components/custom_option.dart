@@ -2,7 +2,6 @@ import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../assets/theme/app_theme.dart';
 
 class CustomProfileOption extends StatelessWidget {
   final String icon;
@@ -11,13 +10,13 @@ class CustomProfileOption extends StatelessWidget {
   final Color textColor;
 
    const CustomProfileOption({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.onTap,
 
     this.textColor = Colors.white,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
