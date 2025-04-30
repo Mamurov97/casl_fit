@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:casl_fit/application/home/home_bloc.dart';
+import 'package:casl_fit/application/profile/profile_bloc.dart';
 import 'package:casl_fit/application/tariff/tariff_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
@@ -50,7 +51,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()..checkVersion()),
         BlocProvider(create: (context) => AuthBloc()),
+        BlocProvider(create: (context)=>ProfileBloc()..add(GetUserBalance())..add(GetProfileDataEvent())),
         BlocProvider(create: (context) => HomeBloc()
+
           ..add(const GetLiveCountUserEvent())..add(const HomeEvent.getDailyUserCount())),
         BlocProvider(create: (context) => TariffBloc()..add(const GetCurrentTariffs())),
       ],
