@@ -36,10 +36,14 @@ class _VerifyPageState extends State<VerifyPage> {
     return DeFocus(
       child: Scaffold(
         body: BlocConsumer<AuthBloc, AuthState>(
+          listenWhen: (prev, cur) => (prev.otpVerifyStatus != cur.otpVerifyStatus) || (prev.registerStatus != cur.registerStatus),
           listener: (context, state) {
+            print('------------------');
+            print(state.toString());
             //login statusini eshitish
 
-            if (state.otpVerifyStatus.isSuccess) context.go('/root/qr_code');
+            if (state.otpVerifyStatus.isSuccess && widget.type == "login") context.go('/root/qr_code');
+            if (state.registerStatus.isSuccess && widget.type == "register") context.go('/root/qr_code');
             if (state.otpVerifyStatus.isError) {
               Toast.showErrorToast(message: state.errorMessage);
               controller.clear();

@@ -1,6 +1,5 @@
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,7 +9,6 @@ import '../../../domain/common/data/user_data.dart';
 import '../../../domain/common/enums/passcode_step.dart';
 import '../../../infrastructure/services/shared_service.dart';
 import '../../components/basic_widgets.dart';
-import '../../routes/entity/routes.dart';
 import 'components/passcode_field.dart';
 import 'components/passcode_keyboard.dart';
 

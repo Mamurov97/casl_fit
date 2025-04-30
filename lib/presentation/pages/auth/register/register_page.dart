@@ -24,6 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return DeFocus(
       child: BlocConsumer<AuthBloc, AuthState>(
+        listenWhen: (prev, cur) => prev.otpStatus != cur.otpStatus,
         listener: (context, state) {
           if (state.otpStatus.isSuccess) {
             context.push(Routes.verify.path, extra: 'register');

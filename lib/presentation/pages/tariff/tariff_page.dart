@@ -27,7 +27,7 @@ class TariffPage extends StatefulWidget {
 class _TariffPageState extends State<TariffPage> {
   int selectedIndex = 0;
   List<TariffModel> localCategoryList = [];
-  ItemScrollController _scrollController = ItemScrollController();
+  final ItemScrollController _scrollController = ItemScrollController();
 
   @override
   void initState() {
@@ -42,7 +42,6 @@ class _TariffPageState extends State<TariffPage> {
   Widget build(BuildContext context) {
     final isAllType = widget.tariffType == TariffType.allTarif;
 
-    final categoryList = widget.categoryTariffList ?? [];
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -116,10 +115,6 @@ class _TariffPageState extends State<TariffPage> {
                     : const Expanded(child: EmptyPage()),
               ],
             );
-
-            return SizedBox();
-            //   }
-            //  return const SizedBox();
           },
         ),
       ),

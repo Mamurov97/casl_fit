@@ -24,13 +24,6 @@ class TariffDetailPage extends StatelessWidget {
       }
     ];
 
-    final List<Map<String, dynamic>> narxInfo = [
-      {
-        "label": "Narxi",
-        "value": "${NumberFormat("#,###", "uz_UZ").format(model.price ?? 0).replaceAll(",", " ")} so'm",
-      },
-    ];
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,

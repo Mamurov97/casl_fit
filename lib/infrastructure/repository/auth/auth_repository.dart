@@ -17,7 +17,7 @@ class AuthRepository {
   }
 
   Future<Map<String, dynamic>> register({required String phone, required Map<String, dynamic> data, required String otpCode}) async {
-    final response = await dio.post('auth/register', data: {"phone": phone.replaceRange(0, 3, ''), "data": data, "otp_code": otpCode});
+    final response = await dio.post('auth/register', data: {"phone": phone.replaceRange(0, 3, ''), "name": data['name'], 'date_birthday' : data['date_birthday'], "otp_code": otpCode});
     return response.data;
   }
 

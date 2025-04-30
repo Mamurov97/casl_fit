@@ -47,7 +47,7 @@ class PasscodeKeyboard extends StatelessWidget {
       shape: const CircleBorder(),
       child: Container(
         alignment: Alignment.center,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.white12
         ),
