@@ -7,4 +7,5 @@ class UserData {
   static String guid = '';
   static String role = '';
   static bool authStatus = false;
+  static bool passCodeStatus = false;
 }

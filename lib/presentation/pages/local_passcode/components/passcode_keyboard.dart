@@ -49,7 +49,7 @@ class PasscodeKeyboard extends StatelessWidget {
         alignment: Alignment.center,
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.white12
+          color: Colors.white38
         ),
         child: Text(
           text,

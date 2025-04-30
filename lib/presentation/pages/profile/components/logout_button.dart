@@ -48,7 +48,7 @@ class _LogoutButtonState extends State<LogoutButton> {
               var passCode = prefService.passcode;
               prefService.clear();
               prefService.setPasscode(passCode);
-              prefService.setAuthStatus(true);
+              prefService.setAuthStatus(false);
               context.go(Routes.signIn.path);
             },
           ),

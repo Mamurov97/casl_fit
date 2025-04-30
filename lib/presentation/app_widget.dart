@@ -23,7 +23,7 @@ class AppWidget extends StatelessWidget {
           );
         } else if (state is AppManagerError) {
           return ErrorView(error: state.error);
-        } else {
+        } else if (state is AppManagerInitial) {
           return OKToast(
             child: MaterialApp.router(
               title: 'CaslFit',
@@ -60,6 +60,10 @@ class AppWidget extends StatelessWidget {
             ),
           );
         }
+        return const Directionality(
+          textDirection: ui.TextDirection.ltr,
+          child: CircularIndicator(),
+        );
       },
     );
   }

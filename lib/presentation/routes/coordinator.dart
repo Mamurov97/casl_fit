@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+
 import '../../application/home/home_bloc.dart';
 import '../../application/profile/profile_bloc.dart';
 import '../../application/profile/weight_height/weight_height_bloc.dart';
@@ -19,6 +20,7 @@ import 'entity/pages.dart';
 import 'entity/routes.dart';
 
 final controller = ScrollController();
+
 Future<void> clearAndRoot() async {
   var pref = await SharedPrefService.initialize();
   var passCode = pref.passcode;
@@ -38,12 +40,24 @@ String? _redirects() {
 
   return null;
 }
+
+String getInitialLocation() {
+  print(UserData.token);
+  final route = UserData.token.isEmpty
+      ? Routes.signIn.path
+      : UserData.passCodeStatus
+      ? Routes.checkPassCode.path
+      : Routes.setPassCode.path;
+
+  print(route);
+  return route;
+}
+
 final rootNavigatorKey = GlobalKey<NavigatorState>();
 
-
 final GoRouter router = GoRouter(
-  initialLocation: "${Routes.root.path}${Routes.home.path}",
-  // initialLocation: Routes.signIn.path,
+  initialLocation: getInitialLocation(),
+  debugLogDiagnostics: false,
   navigatorKey: rootNavigatorKey,
   routes: <GoRoute>[
     ///auth
@@ -56,12 +70,12 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
-      name: Routes.register.name,
-      path: Routes.register.path,
-      pageBuilder: (context, state) => MaterialPage<void>(
-        key: state.pageKey,
-        child: const RegisterPage(),
-      ),
+        name: Routes.register.name,
+        path: Routes.register.path,
+        pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const RegisterPage(),
+            ),
         routes: [
           GoRoute(
             name: Routes.privacyPolicy.name,
@@ -120,7 +134,6 @@ final GoRouter router = GoRouter(
       redirect: (context, state) => _redirects(),
       routes: [
         StatefulShellRoute.indexedStack(
-
           builder: (context, state, navigatorShell) {
             int screen = 0;
 
@@ -177,9 +190,7 @@ final GoRouter router = GoRouter(
                           }),
                     ],
                     pageBuilder: (context, state) {
-                      return MaterialPage<void>(
-                          key: state.pageKey,
-                          child: const HomePage());
+                      return MaterialPage<void>(key: state.pageKey, child: const HomePage());
                     }),
               ],
             ),
@@ -245,7 +256,7 @@ final GoRouter router = GoRouter(
                         key: state.pageKey,
                         child: BlocProvider(
                           create: (context) => TariffBloc()
-                           // ..add(const GetCategoryTariff())
+// ..add(const GetCategoryTariff())
                             ..add(const GetTariffs()),
                           child: const TariffTabbar(),
                         ));
@@ -288,25 +299,25 @@ final GoRouter router = GoRouter(
       ],
     ),
   ],
-  // errorBuilder: (context, state) => const SizedBox(),
+// errorBuilder: (context, state) => const SizedBox(),
 );
 
 final tabs = [
   PersistentRouterTabConfig(
     item: ItemConfig(
       icon: SvgPicture.asset(
-          AppIcons.home,
-          height: 20.sp,
-          colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-        ),
-        activeForegroundColor: AppTheme.colors.primary,
+        AppIcons.home,
+        height: 20.sp,
+        colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+      ),
+      activeForegroundColor: AppTheme.colors.primary,
       inactiveForegroundColor: AppTheme.colors.white,
       inactiveIcon: SvgPicture.asset(
-          AppIcons.home,
-          height: 20.sp,
+        AppIcons.home,
+        height: 20.sp,
         colorFilter: ColorFilter.mode(AppTheme.colors.white, BlendMode.srcIn),
       ),
-        title: 'root.home'.tr(),
+      title: 'root.home'.tr(),
       textStyle: AppTheme.data.textTheme.labelSmall!,
     ),
   ),

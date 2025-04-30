@@ -8,27 +8,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'application/app_manager/app_manager_cubit.dart';
 import 'application/auth/init/auth_bloc.dart';
+import 'application/check_version/check_version_cubit.dart';
 import 'domain/common/app_init.dart';
 import 'presentation/app_widget.dart';
 
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(() async {
     await initializeApp();
-    await SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
+    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     runApp(
       EasyLocalization(
-        supportedLocales: const [
-          // Locale('en'),
-          Locale('uz'),
-          // Locale('ru'),
-        ],
+        supportedLocales: const [Locale('uz')],
         useFallbackTranslations: true,
         useOnlyLangCode: true,
-        // fallbackLocale: const Locale('ru'),
         startLocale: const Locale('uz'),
         path: 'assets/translations',
         child: const MyApp(),
@@ -48,10 +43,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()..checkVersion()),
+        BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()),
+        BlocProvider(create: (context) => CheckVersionCubit()..checkVersion()),
         BlocProvider(create: (context) => AuthBloc()),
-        BlocProvider(create: (context) => HomeBloc()
-          ..add(const GetLiveCountUserEvent())..add(const HomeEvent.getDailyUserCount())),
+        BlocProvider(
+            create: (context) => HomeBloc()
+              ..add(const GetLiveCountUserEvent())
+              ..add(const HomeEvent.getDailyUserCount())),
         BlocProvider(create: (context) => TariffBloc()..add(const GetCurrentTariffs())),
       ],
       child: ScreenUtilInit(

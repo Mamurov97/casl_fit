@@ -90,12 +90,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 UserData.phone = phone;
                 UserData.guid = guid;
                 UserData.role = role;
+                UserData.authStatus = true;
                 prefs.setUserId(userId);
                 prefs.setName(name);
                 prefs.setImage(image);
                 prefs.setPhone(phone);
                 prefs.setGuid(guid);
                 prefs.setRole(role);
+                prefs.setAuthStatus(true);
                 emit(state.copyWith(otpVerifyStatus: BlocStatus.success));
               }
             } catch (e) {
@@ -136,12 +138,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 UserData.phone = phone;
                 UserData.guid = guid;
                 UserData.role = role;
+                UserData.authStatus = true;
                 prefs.setUserId(userId);
                 prefs.setName(name);
                 prefs.setImage(image);
                 prefs.setPhone(phone);
                 prefs.setGuid(guid);
                 prefs.setRole(role);
+                prefs.setAuthStatus(true);
+                print(prefs.isAuthorized);
                 emit(state.copyWith(registerStatus: BlocStatus.success));
               }
             } catch (e) {

@@ -1,4 +1,5 @@
 import 'package:casl_fit/application/auth/init/auth_bloc.dart';
+import 'package:casl_fit/domain/common/data/user_data.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/domain/common/second_to_time.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
@@ -38,13 +39,11 @@ class _VerifyPageState extends State<VerifyPage> {
         body: BlocConsumer<AuthBloc, AuthState>(
           listenWhen: (prev, cur) => (prev.otpVerifyStatus != cur.otpVerifyStatus) || (prev.registerStatus != cur.registerStatus),
           listener: (context, state) {
-            print('------------------');
-            print(state.toString());
             //login statusini eshitish
-
-            if (state.otpVerifyStatus.isSuccess && widget.type == "login") context.go('/root/qr_code');
-            if (state.registerStatus.isSuccess && widget.type == "register") context.go('/root/qr_code');
-            if (state.otpVerifyStatus.isError) {
+            final route = UserData.passCodeStatus ? Routes.checkPassCode.path : Routes.setPassCode.path;
+            if (state.otpVerifyStatus.isSuccess && widget.type == "login") context.go(route);
+            if (state.registerStatus.isSuccess && widget.type == "register") context.go(route);
+            if (state.otpVerifyStatus.isError || state.registerStatus.isError) {
               Toast.showErrorToast(message: state.errorMessage);
               controller.clear();
             }
