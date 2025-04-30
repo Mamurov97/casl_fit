@@ -162,6 +162,9 @@ final GoRouter router = GoRouter(
                         if (controller.hasClients) {
                           controller.jumpTo(0);
                         }
+                      } else if (index == 4) {
+
+                        context.read<ProfileBloc>().add(GetUserBalance());
                       }
                     },
                     navBarBuilder: (navBarConfig) => CustomNavBar(navBarConfig: navBarConfig),
@@ -284,11 +287,7 @@ final GoRouter router = GoRouter(
                     ],
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(
-                          key: state.pageKey,
-                          child: BlocProvider(
-                            create: (context) => ProfileBloc()..add(GetProfileDataEvent()),
-                            child: const ProfilePage(),
-                          ));
+                          key: state.pageKey, child: const ProfilePage());
                     }),
               ],
             ),

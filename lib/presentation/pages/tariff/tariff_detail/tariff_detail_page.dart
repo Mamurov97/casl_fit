@@ -15,7 +15,7 @@ class TariffDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> abonementInfo = [
-      {"label": "Davomiyligi", "value": "${model.monthlyLimit} oy"},
+      {"label": "Davomiyligi", "value": model.monthlyLimit==0?"1 kun":"${model.monthlyLimit} oy"},
       {"label": "Tashrif kuni ", "value": (model.dailyLimit ?? 0) > 29 ? "Har kuni" : "Oyda ${model.dailyLimit} kun"},
       {"label": "Tashrif vaqti ", "value": "${extractHourMinute(model.limitTimeFrom ?? "")} - ${extractHourMinute(model.limitTimeTo ?? "")}"},
       {

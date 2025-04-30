@@ -7,6 +7,11 @@ class ProfileRepository{
     return response.data;
   }
 
+  Future<Map<String, dynamic>> getBalance(String userGuid) async {
+    final response = await dio.get('home/get-real-user-balan/$userGuid');
+    return response.data;
+  }
+
   Future<Map<String, dynamic>> getPlan() async {
     final response = await dio.get('tariff/all');
     return response.data;
