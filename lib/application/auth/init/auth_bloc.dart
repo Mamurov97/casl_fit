@@ -25,7 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(state.copyWith(authStatus: VerifyPhoneNumberStatus.error, errorMessage: response['error']['message']));
         }
       } catch (e) {
-        emit(state.copyWith(authStatus: VerifyPhoneNumberStatus.error, errorMessage: 'errors.unknown'.tr()));
+        emit(state.copyWith(authStatus: VerifyPhoneNumberStatus.error, errorMessage: e.toString()));
       }
     });
 
@@ -34,35 +34,43 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(authStatus: VerifyPhoneNumberStatus.initial));
     });
 
-    //Register page typeini o'zgartirish
-    on<SetRegisterPageType>((event, emit) async {
-      emit(state.copyWith(registerPageType: event.type));
-    });
-
-    //Login yoki parol xato bo'lsa loginStatusni initialga qaytarish
-    on<ChangeLoginStatusEvent>((event, emit) async {
-      emit(state.copyWith(loginStatus: BlocStatus.initial));
-    });
-
     // OtpStatusni initialga qaytarish
     on<ChangeOtpStatusEvent>((event, emit) async {
       emit(state.copyWith(otpStatus: BlocStatus.initial));
     });
 
-    // ResetPasswordStatusni initialga qaytarish
-    on<ChangeResetPasswordStatusEvent>((event, emit) async {
-      emit(state.copyWith(resetPasswordStatus: BlocStatus.initial));
+    // OtpVerifyStatusni initialga qaytarish
+    on<ChangeOtpVerifyStatusEvent>((event, emit) async {
+      emit(state.copyWith(otpVerifyStatus: BlocStatus.initial));
     });
-    on<PrivacyPolicyEvent>((event, emit) async {
-      emit(state.copyWith(isPrivacyPolicy: event.isPrivacyPolicy));
+
+    // OTP yuborish
+    on<SendOtpEvent>((event, emit) async {
+      emit(state.copyWith(otpStatus: BlocStatus.loading, phoneNumber: state.phoneNumber));
+      try {
+        final response = await repo.sendOtp(phone: state.phoneNumber ?? '');
+        if (response['status'] == true) {
+          emit(state.copyWith(otpStatus: BlocStatus.success));
+        } else {
+          emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: response['error']['message']));
+        }
+      } catch (e) {
+        emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
+      }
     });
+
+    on<SetRegisterData>((event, emit) {
+      emit(state.copyWith(fullName: event.name, birthday: event.birthday));
+      add(const SendOtpEvent());
+    });
+
     // Login jarayonini boshlash
-    on<LoginEvent>((event, emit) async {
-      emit(state.copyWith(loginStatus: BlocStatus.loading));
+    on<VerifyOtpEvent>((event, emit) async {
+      emit(state.copyWith(otpVerifyStatus: BlocStatus.loading));
       final prefs = await SharedPrefService.initialize();
 
       try {
-        await repo.login(phone: event.phone, password: event.password).then((response) async {
+        await repo.verifyOtp(phone: state.phoneNumber ?? '', otpCode: event.otpCode).then((response) async {
           if (response['status'] == true) {
             final String token = response['result']['token'] ?? '';
             prefs.setToken(token);
@@ -88,17 +96,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 prefs.setPhone(phone);
                 prefs.setGuid(guid);
                 prefs.setRole(role);
-                emit(state.copyWith(loginStatus: BlocStatus.success));
+                emit(state.copyWith(otpVerifyStatus: BlocStatus.success));
               }
             } catch (e) {
-              emit(state.copyWith(loginStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
+              emit(state.copyWith(otpVerifyStatus: BlocStatus.error, errorMessage: e.toString()));
             }
           } else {
-            emit(state.copyWith(loginStatus: BlocStatus.error, errorMessage: 'errors.incorrect_password'.tr()));
+            emit(state.copyWith(otpVerifyStatus: BlocStatus.error, errorMessage: 'errors.incorrect_password'.tr()));
           }
         });
       } catch (e) {
-        emit(state.copyWith(loginStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
+        emit(state.copyWith(otpVerifyStatus: BlocStatus.error, errorMessage: e.toString()));
       }
     });
 
@@ -108,7 +116,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final prefs = await SharedPrefService.initialize();
 
       try {
-        await repo.register(phone: state.phoneNumber ?? '', password: state.password ?? '', otpCode: event.otpCode).then((response) async {
+        await repo.register(phone: state.phoneNumber ?? '', data: {"name": state.fullName ?? "", "date_birthday": state.birthday ?? ""}, otpCode: event.otpCode).then((response) async {
           if (response['status'] == true) {
             final String token = response['result']['token'] ?? '';
             prefs.setToken(token);
@@ -148,34 +156,37 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
 
-    // OTP yuborish
-    on<SendOtpEvent>((event, emit) async {
-      emit(state.copyWith(otpStatus: BlocStatus.loading, password: event.password));
-      try {
-        final response = await repo.sendOtp(phone: state.phoneNumber ?? '');
-        if (response['status'] == true) {
-          emit(state.copyWith(otpStatus: BlocStatus.success));
-        } else {
-          emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: response['error']['message']));
-        }
-      } catch (e) {
-        emit(state.copyWith(otpStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
-      }
-    });
+    // // ResetPasswordStatusni initialga qaytarish
+    // on<ChangeResetPasswordStatusEvent>((event, emit) async {
+    //   emit(state.copyWith(resetPasswordStatus: BlocStatus.initial));
+    // });
+    // on<PrivacyPolicyEvent>((event, emit) async {
+    //   emit(state.copyWith(isPrivacyPolicy: event.isPrivacyPolicy));
+    // });
 
-    // Parolni tiklash jarayonini boshlash
-    on<PasswordRecoveryEvent>((event, emit) async {
-      emit(state.copyWith(resetPasswordStatus: BlocStatus.loading));
-      try {
-        final response = await repo.resetPassword(password: event.password, otpCode: event.otpCode, phone: event.phone);
-        if (response['status'] == true) {
-          emit(state.copyWith(resetPasswordStatus: BlocStatus.success));
-        } else {
-          emit(state.copyWith(resetPasswordStatus: BlocStatus.error, errorMessage: response['error']['message']));
-        }
-      } catch (e) {
-        emit(state.copyWith(resetPasswordStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
-      }
-    });
+    // // Parolni tiklash jarayonini boshlash
+    // on<PasswordRecoveryEvent>((event, emit) async {
+    //   emit(state.copyWith(resetPasswordStatus: BlocStatus.loading));
+    //   try {
+    //     final response = await repo.resetPassword(password: event.password, otpCode: event.otpCode, phone: event.phone);
+    //     if (response['status'] == true) {
+    //       emit(state.copyWith(resetPasswordStatus: BlocStatus.success));
+    //     } else {
+    //       emit(state.copyWith(resetPasswordStatus: BlocStatus.error, errorMessage: response['error']['message']));
+    //     }
+    //   } catch (e) {
+    //     emit(state.copyWith(resetPasswordStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
+    //   }
+    // });
+
+    // //Register page typeini o'zgartirish
+    // on<SetRegisterPageType>((event, emit) async {
+    //   emit(state.copyWith(registerPageType: event.type));
+    // });
+    //
+    // //Login yoki parol xato bo'lsa loginStatusni initialga qaytarish
+    // on<ChangeLoginStatusEvent>((event, emit) async {
+    //   emit(state.copyWith(loginStatus: BlocStatus.initial));
+    // });
   }
 }

@@ -93,7 +93,7 @@ final GoRouter router = GoRouter(
       path: Routes.verify.path,
       pageBuilder: (context, state) => MaterialPage<void>(
         key: state.pageKey,
-        child: VerifyPage(password: state.extra as String),
+        child: VerifyPage(type: state.extra as String),
       ),
     ),
     GoRoute(

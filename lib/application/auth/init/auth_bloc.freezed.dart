@@ -19,107 +19,78 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
+    required TResult Function() sendOtp,
+    required TResult Function(String otpCode) verifyOtp,
     required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeOtpVerifyStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function(String name, String birthday) setRegisterData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otpCode)? verifyOtp,
     TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeOtpVerifyStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function(String name, String birthday)? setRegisterData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
+    TResult Function()? sendOtp,
+    TResult Function(String otpCode)? verifyOtp,
     TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeOtpVerifyStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function(String name, String birthday)? setRegisterData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeOtpVerifyStatusEvent value)
+        changeOtpVerifyStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(SetRegisterData value) setRegisterData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(SetRegisterData value)? setRegisterData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult Function(RegisterEvent value)? register,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult Function(SetRegisterData value)? setRegisterData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -215,18 +186,13 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
+    required TResult Function() sendOtp,
+    required TResult Function(String otpCode) verifyOtp,
     required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeOtpVerifyStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function(String name, String birthday) setRegisterData,
   }) {
     return checkPhoneNumber(phone);
   }
@@ -235,18 +201,13 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otpCode)? verifyOtp,
     TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeOtpVerifyStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function(String name, String birthday)? setRegisterData,
   }) {
     return checkPhoneNumber?.call(phone);
   }
@@ -255,18 +216,13 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
+    TResult Function()? sendOtp,
+    TResult Function(String otpCode)? verifyOtp,
     TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeOtpVerifyStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function(String name, String birthday)? setRegisterData,
     required TResult orElse(),
   }) {
     if (checkPhoneNumber != null) {
@@ -279,21 +235,15 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeOtpVerifyStatusEvent value)
+        changeOtpVerifyStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(SetRegisterData value) setRegisterData,
   }) {
     return checkPhoneNumber(this);
   }
@@ -302,18 +252,14 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(SetRegisterData value)? setRegisterData,
   }) {
     return checkPhoneNumber?.call(this);
   }
@@ -322,18 +268,14 @@ class _$CheckPhoneNumberImpl implements CheckPhoneNumber {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult Function(RegisterEvent value)? register,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult Function(SetRegisterData value)? setRegisterData,
     required TResult orElse(),
   }) {
     if (checkPhoneNumber != null) {
@@ -357,19 +299,18 @@ abstract class CheckPhoneNumber implements AuthEvent {
 }
 
 /// @nodoc
-abstract class _$$ChangeAuthStatusEventImplCopyWith<$Res> {
-  factory _$$ChangeAuthStatusEventImplCopyWith(
-          _$ChangeAuthStatusEventImpl value,
-          $Res Function(_$ChangeAuthStatusEventImpl) then) =
-      __$$ChangeAuthStatusEventImplCopyWithImpl<$Res>;
+abstract class _$$SendOtpEventImplCopyWith<$Res> {
+  factory _$$SendOtpEventImplCopyWith(
+          _$SendOtpEventImpl value, $Res Function(_$SendOtpEventImpl) then) =
+      __$$SendOtpEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ChangeAuthStatusEventImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$ChangeAuthStatusEventImpl>
-    implements _$$ChangeAuthStatusEventImplCopyWith<$Res> {
-  __$$ChangeAuthStatusEventImplCopyWithImpl(_$ChangeAuthStatusEventImpl _value,
-      $Res Function(_$ChangeAuthStatusEventImpl) _then)
+class __$$SendOtpEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$SendOtpEventImpl>
+    implements _$$SendOtpEventImplCopyWith<$Res> {
+  __$$SendOtpEventImplCopyWithImpl(
+      _$SendOtpEventImpl _value, $Res Function(_$SendOtpEventImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthEvent
@@ -378,19 +319,18 @@ class __$$ChangeAuthStatusEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
-  const _$ChangeAuthStatusEventImpl();
+class _$SendOtpEventImpl implements SendOtpEvent {
+  const _$SendOtpEventImpl();
 
   @override
   String toString() {
-    return 'AuthEvent.changeAuthStatusEvent()';
+    return 'AuthEvent.sendOtp()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChangeAuthStatusEventImpl);
+        (other.runtimeType == runtimeType && other is _$SendOtpEventImpl);
   }
 
   @override
@@ -400,62 +340,47 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
+    required TResult Function() sendOtp,
+    required TResult Function(String otpCode) verifyOtp,
     required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeOtpVerifyStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function(String name, String birthday) setRegisterData,
   }) {
-    return changeAuthStatusEvent();
+    return sendOtp();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otpCode)? verifyOtp,
     TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeOtpVerifyStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function(String name, String birthday)? setRegisterData,
   }) {
-    return changeAuthStatusEvent?.call();
+    return sendOtp?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
+    TResult Function()? sendOtp,
+    TResult Function(String otpCode)? verifyOtp,
     TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeOtpVerifyStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function(String name, String birthday)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (changeAuthStatusEvent != null) {
-      return changeAuthStatusEvent();
+    if (sendOtp != null) {
+      return sendOtp();
     }
     return orElse();
   }
@@ -464,620 +389,75 @@ class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeOtpVerifyStatusEvent value)
+        changeOtpVerifyStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(SetRegisterData value) setRegisterData,
   }) {
-    return changeAuthStatusEvent(this);
+    return sendOtp(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(SetRegisterData value)? setRegisterData,
   }) {
-    return changeAuthStatusEvent?.call(this);
+    return sendOtp?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (changeAuthStatusEvent != null) {
-      return changeAuthStatusEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ChangeAuthStatusEvent implements AuthEvent {
-  const factory ChangeAuthStatusEvent() = _$ChangeAuthStatusEventImpl;
-}
-
-/// @nodoc
-abstract class _$$ChangeLoginStatusEventImplCopyWith<$Res> {
-  factory _$$ChangeLoginStatusEventImplCopyWith(
-          _$ChangeLoginStatusEventImpl value,
-          $Res Function(_$ChangeLoginStatusEventImpl) then) =
-      __$$ChangeLoginStatusEventImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ChangeLoginStatusEventImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$ChangeLoginStatusEventImpl>
-    implements _$$ChangeLoginStatusEventImplCopyWith<$Res> {
-  __$$ChangeLoginStatusEventImplCopyWithImpl(
-      _$ChangeLoginStatusEventImpl _value,
-      $Res Function(_$ChangeLoginStatusEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$ChangeLoginStatusEventImpl implements ChangeLoginStatusEvent {
-  const _$ChangeLoginStatusEventImpl();
-
-  @override
-  String toString() {
-    return 'AuthEvent.changeLoginStatusEvent()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChangeLoginStatusEventImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
-    required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
-  }) {
-    return changeLoginStatusEvent();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
-    TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-  }) {
-    return changeLoginStatusEvent?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
-    TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (changeLoginStatusEvent != null) {
-      return changeLoginStatusEvent();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
-    required TResult Function(SendOtpEvent value) sendOtp,
-    required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
-  }) {
-    return changeLoginStatusEvent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult? Function(SendOtpEvent value)? sendOtp,
-    TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-  }) {
-    return changeLoginStatusEvent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
     TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult Function(SendOtpEvent value)? sendOtp,
-    TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (changeLoginStatusEvent != null) {
-      return changeLoginStatusEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ChangeLoginStatusEvent implements AuthEvent {
-  const factory ChangeLoginStatusEvent() = _$ChangeLoginStatusEventImpl;
-}
-
-/// @nodoc
-abstract class _$$ChangeOtpStatusEventImplCopyWith<$Res> {
-  factory _$$ChangeOtpStatusEventImplCopyWith(_$ChangeOtpStatusEventImpl value,
-          $Res Function(_$ChangeOtpStatusEventImpl) then) =
-      __$$ChangeOtpStatusEventImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ChangeOtpStatusEventImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$ChangeOtpStatusEventImpl>
-    implements _$$ChangeOtpStatusEventImplCopyWith<$Res> {
-  __$$ChangeOtpStatusEventImplCopyWithImpl(_$ChangeOtpStatusEventImpl _value,
-      $Res Function(_$ChangeOtpStatusEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$ChangeOtpStatusEventImpl implements ChangeOtpStatusEvent {
-  const _$ChangeOtpStatusEventImpl();
-
-  @override
-  String toString() {
-    return 'AuthEvent.changeOtpStatusEvent()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChangeOtpStatusEventImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
-    required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
-  }) {
-    return changeOtpStatusEvent();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
-    TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-  }) {
-    return changeOtpStatusEvent?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
-    TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (changeOtpStatusEvent != null) {
-      return changeOtpStatusEvent();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
-    required TResult Function(SendOtpEvent value) sendOtp,
-    required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
-  }) {
-    return changeOtpStatusEvent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult? Function(SendOtpEvent value)? sendOtp,
-    TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-  }) {
-    return changeOtpStatusEvent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
     TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
+    TResult Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
     TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult Function(SendOtpEvent value)? sendOtp,
-    TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult Function(SetRegisterData value)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (changeOtpStatusEvent != null) {
-      return changeOtpStatusEvent(this);
+    if (sendOtp != null) {
+      return sendOtp(this);
     }
     return orElse();
   }
 }
 
-abstract class ChangeOtpStatusEvent implements AuthEvent {
-  const factory ChangeOtpStatusEvent() = _$ChangeOtpStatusEventImpl;
+abstract class SendOtpEvent implements AuthEvent {
+  const factory SendOtpEvent() = _$SendOtpEventImpl;
 }
 
 /// @nodoc
-abstract class _$$ChangeResetPasswordStatusEventImplCopyWith<$Res> {
-  factory _$$ChangeResetPasswordStatusEventImplCopyWith(
-          _$ChangeResetPasswordStatusEventImpl value,
-          $Res Function(_$ChangeResetPasswordStatusEventImpl) then) =
-      __$$ChangeResetPasswordStatusEventImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ChangeResetPasswordStatusEventImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$ChangeResetPasswordStatusEventImpl>
-    implements _$$ChangeResetPasswordStatusEventImplCopyWith<$Res> {
-  __$$ChangeResetPasswordStatusEventImplCopyWithImpl(
-      _$ChangeResetPasswordStatusEventImpl _value,
-      $Res Function(_$ChangeResetPasswordStatusEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$ChangeResetPasswordStatusEventImpl
-    implements ChangeResetPasswordStatusEvent {
-  const _$ChangeResetPasswordStatusEventImpl();
-
-  @override
-  String toString() {
-    return 'AuthEvent.changeResetPasswordStatusEvent()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChangeResetPasswordStatusEventImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
-    required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
-  }) {
-    return changeResetPasswordStatusEvent();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
-    TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-  }) {
-    return changeResetPasswordStatusEvent?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
-    TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (changeResetPasswordStatusEvent != null) {
-      return changeResetPasswordStatusEvent();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
-    required TResult Function(SendOtpEvent value) sendOtp,
-    required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
-  }) {
-    return changeResetPasswordStatusEvent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult? Function(SendOtpEvent value)? sendOtp,
-    TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-  }) {
-    return changeResetPasswordStatusEvent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult Function(SendOtpEvent value)? sendOtp,
-    TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (changeResetPasswordStatusEvent != null) {
-      return changeResetPasswordStatusEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ChangeResetPasswordStatusEvent implements AuthEvent {
-  const factory ChangeResetPasswordStatusEvent() =
-      _$ChangeResetPasswordStatusEventImpl;
-}
-
-/// @nodoc
-abstract class _$$SetRegisterPageTypeImplCopyWith<$Res> {
-  factory _$$SetRegisterPageTypeImplCopyWith(_$SetRegisterPageTypeImpl value,
-          $Res Function(_$SetRegisterPageTypeImpl) then) =
-      __$$SetRegisterPageTypeImplCopyWithImpl<$Res>;
+abstract class _$$VerifyOtpEventImplCopyWith<$Res> {
+  factory _$$VerifyOtpEventImplCopyWith(_$VerifyOtpEventImpl value,
+          $Res Function(_$VerifyOtpEventImpl) then) =
+      __$$VerifyOtpEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String type});
+  $Res call({String otpCode});
 }
 
 /// @nodoc
-class __$$SetRegisterPageTypeImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$SetRegisterPageTypeImpl>
-    implements _$$SetRegisterPageTypeImplCopyWith<$Res> {
-  __$$SetRegisterPageTypeImplCopyWithImpl(_$SetRegisterPageTypeImpl _value,
-      $Res Function(_$SetRegisterPageTypeImpl) _then)
+class __$$VerifyOtpEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$VerifyOtpEventImpl>
+    implements _$$VerifyOtpEventImplCopyWith<$Res> {
+  __$$VerifyOtpEventImplCopyWithImpl(
+      _$VerifyOtpEventImpl _value, $Res Function(_$VerifyOtpEventImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthEvent
@@ -1085,12 +465,12 @@ class __$$SetRegisterPageTypeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
+    Object? otpCode = null,
   }) {
-    return _then(_$SetRegisterPageTypeImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+    return _then(_$VerifyOtpEventImpl(
+      otpCode: null == otpCode
+          ? _value.otpCode
+          : otpCode // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1098,97 +478,82 @@ class __$$SetRegisterPageTypeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SetRegisterPageTypeImpl implements SetRegisterPageType {
-  const _$SetRegisterPageTypeImpl({required this.type});
+class _$VerifyOtpEventImpl implements VerifyOtpEvent {
+  const _$VerifyOtpEventImpl({required this.otpCode});
 
   @override
-  final String type;
+  final String otpCode;
 
   @override
   String toString() {
-    return 'AuthEvent.setRegisterPageTypeEvent(type: $type)';
+    return 'AuthEvent.verifyOtp(otpCode: $otpCode)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SetRegisterPageTypeImpl &&
-            (identical(other.type, type) || other.type == type));
+            other is _$VerifyOtpEventImpl &&
+            (identical(other.otpCode, otpCode) || other.otpCode == otpCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, type);
+  int get hashCode => Object.hash(runtimeType, otpCode);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SetRegisterPageTypeImplCopyWith<_$SetRegisterPageTypeImpl> get copyWith =>
-      __$$SetRegisterPageTypeImplCopyWithImpl<_$SetRegisterPageTypeImpl>(
+  _$$VerifyOtpEventImplCopyWith<_$VerifyOtpEventImpl> get copyWith =>
+      __$$VerifyOtpEventImplCopyWithImpl<_$VerifyOtpEventImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
+    required TResult Function() sendOtp,
+    required TResult Function(String otpCode) verifyOtp,
     required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeOtpVerifyStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function(String name, String birthday) setRegisterData,
   }) {
-    return setRegisterPageTypeEvent(type);
+    return verifyOtp(otpCode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otpCode)? verifyOtp,
     TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeOtpVerifyStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function(String name, String birthday)? setRegisterData,
   }) {
-    return setRegisterPageTypeEvent?.call(type);
+    return verifyOtp?.call(otpCode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
+    TResult Function()? sendOtp,
+    TResult Function(String otpCode)? verifyOtp,
     TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeOtpVerifyStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function(String name, String birthday)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (setRegisterPageTypeEvent != null) {
-      return setRegisterPageTypeEvent(type);
+    if (verifyOtp != null) {
+      return verifyOtp(otpCode);
     }
     return orElse();
   }
@@ -1197,301 +562,66 @@ class _$SetRegisterPageTypeImpl implements SetRegisterPageType {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeOtpVerifyStatusEvent value)
+        changeOtpVerifyStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(SetRegisterData value) setRegisterData,
   }) {
-    return setRegisterPageTypeEvent(this);
+    return verifyOtp(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(SetRegisterData value)? setRegisterData,
   }) {
-    return setRegisterPageTypeEvent?.call(this);
+    return verifyOtp?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (setRegisterPageTypeEvent != null) {
-      return setRegisterPageTypeEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SetRegisterPageType implements AuthEvent {
-  const factory SetRegisterPageType({required final String type}) =
-      _$SetRegisterPageTypeImpl;
-
-  String get type;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SetRegisterPageTypeImplCopyWith<_$SetRegisterPageTypeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoginEventImplCopyWith<$Res> {
-  factory _$$LoginEventImplCopyWith(
-          _$LoginEventImpl value, $Res Function(_$LoginEventImpl) then) =
-      __$$LoginEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String phone, String password});
-}
-
-/// @nodoc
-class __$$LoginEventImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$LoginEventImpl>
-    implements _$$LoginEventImplCopyWith<$Res> {
-  __$$LoginEventImplCopyWithImpl(
-      _$LoginEventImpl _value, $Res Function(_$LoginEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? phone = null,
-    Object? password = null,
-  }) {
-    return _then(_$LoginEventImpl(
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LoginEventImpl implements LoginEvent {
-  const _$LoginEventImpl({required this.phone, required this.password});
-
-  @override
-  final String phone;
-  @override
-  final String password;
-
-  @override
-  String toString() {
-    return 'AuthEvent.login(phone: $phone, password: $password)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoginEventImpl &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.password, password) ||
-                other.password == password));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, phone, password);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoginEventImplCopyWith<_$LoginEventImpl> get copyWith =>
-      __$$LoginEventImplCopyWithImpl<_$LoginEventImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
-    required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
-  }) {
-    return login(phone, password);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
-    TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-  }) {
-    return login?.call(phone, password);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
-    TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (login != null) {
-      return login(phone, password);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
-    required TResult Function(SendOtpEvent value) sendOtp,
-    required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
-  }) {
-    return login(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult? Function(SendOtpEvent value)? sendOtp,
-    TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-  }) {
-    return login?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
     TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult Function(SendOtpEvent value)? sendOtp,
-    TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult Function(SetRegisterData value)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (login != null) {
-      return login(this);
+    if (verifyOtp != null) {
+      return verifyOtp(this);
     }
     return orElse();
   }
 }
 
-abstract class LoginEvent implements AuthEvent {
-  const factory LoginEvent(
-      {required final String phone,
-      required final String password}) = _$LoginEventImpl;
+abstract class VerifyOtpEvent implements AuthEvent {
+  const factory VerifyOtpEvent({required final String otpCode}) =
+      _$VerifyOtpEventImpl;
 
-  String get phone;
-  String get password;
+  String get otpCode;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoginEventImplCopyWith<_$LoginEventImpl> get copyWith =>
+  _$$VerifyOtpEventImplCopyWith<_$VerifyOtpEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1564,18 +694,13 @@ class _$RegisterEventImpl implements RegisterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
+    required TResult Function() sendOtp,
+    required TResult Function(String otpCode) verifyOtp,
     required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeOtpVerifyStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function(String name, String birthday) setRegisterData,
   }) {
     return register(otpCode);
   }
@@ -1584,18 +709,13 @@ class _$RegisterEventImpl implements RegisterEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otpCode)? verifyOtp,
     TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeOtpVerifyStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function(String name, String birthday)? setRegisterData,
   }) {
     return register?.call(otpCode);
   }
@@ -1604,18 +724,13 @@ class _$RegisterEventImpl implements RegisterEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
+    TResult Function()? sendOtp,
+    TResult Function(String otpCode)? verifyOtp,
     TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeOtpVerifyStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function(String name, String birthday)? setRegisterData,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -1628,21 +743,15 @@ class _$RegisterEventImpl implements RegisterEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeOtpVerifyStatusEvent value)
+        changeOtpVerifyStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(SetRegisterData value) setRegisterData,
   }) {
     return register(this);
   }
@@ -1651,18 +760,14 @@ class _$RegisterEventImpl implements RegisterEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(SetRegisterData value)? setRegisterData,
   }) {
     return register?.call(this);
   }
@@ -1671,18 +776,14 @@ class _$RegisterEventImpl implements RegisterEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult Function(RegisterEvent value)? register,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult Function(SetRegisterData value)? setRegisterData,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -1706,150 +807,90 @@ abstract class RegisterEvent implements AuthEvent {
 }
 
 /// @nodoc
-abstract class _$$PasswordRecoveryEventImplCopyWith<$Res> {
-  factory _$$PasswordRecoveryEventImplCopyWith(
-          _$PasswordRecoveryEventImpl value,
-          $Res Function(_$PasswordRecoveryEventImpl) then) =
-      __$$PasswordRecoveryEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String phone, String password, String otpCode});
+abstract class _$$ChangeAuthStatusEventImplCopyWith<$Res> {
+  factory _$$ChangeAuthStatusEventImplCopyWith(
+          _$ChangeAuthStatusEventImpl value,
+          $Res Function(_$ChangeAuthStatusEventImpl) then) =
+      __$$ChangeAuthStatusEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PasswordRecoveryEventImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$PasswordRecoveryEventImpl>
-    implements _$$PasswordRecoveryEventImplCopyWith<$Res> {
-  __$$PasswordRecoveryEventImplCopyWithImpl(_$PasswordRecoveryEventImpl _value,
-      $Res Function(_$PasswordRecoveryEventImpl) _then)
+class __$$ChangeAuthStatusEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ChangeAuthStatusEventImpl>
+    implements _$$ChangeAuthStatusEventImplCopyWith<$Res> {
+  __$$ChangeAuthStatusEventImplCopyWithImpl(_$ChangeAuthStatusEventImpl _value,
+      $Res Function(_$ChangeAuthStatusEventImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? phone = null,
-    Object? password = null,
-    Object? otpCode = null,
-  }) {
-    return _then(_$PasswordRecoveryEventImpl(
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      otpCode: null == otpCode
-          ? _value.otpCode
-          : otpCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
-  const _$PasswordRecoveryEventImpl(
-      {required this.phone, required this.password, required this.otpCode});
-
-  @override
-  final String phone;
-  @override
-  final String password;
-  @override
-  final String otpCode;
+class _$ChangeAuthStatusEventImpl implements ChangeAuthStatusEvent {
+  const _$ChangeAuthStatusEventImpl();
 
   @override
   String toString() {
-    return 'AuthEvent.passwordRecovery(phone: $phone, password: $password, otpCode: $otpCode)';
+    return 'AuthEvent.changeAuthStatusEvent()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PasswordRecoveryEventImpl &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.otpCode, otpCode) || other.otpCode == otpCode));
+            other is _$ChangeAuthStatusEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phone, password, otpCode);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PasswordRecoveryEventImplCopyWith<_$PasswordRecoveryEventImpl>
-      get copyWith => __$$PasswordRecoveryEventImplCopyWithImpl<
-          _$PasswordRecoveryEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
+    required TResult Function() sendOtp,
+    required TResult Function(String otpCode) verifyOtp,
     required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeOtpVerifyStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function(String name, String birthday) setRegisterData,
   }) {
-    return passwordRecovery(phone, password, otpCode);
+    return changeAuthStatusEvent();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otpCode)? verifyOtp,
     TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeOtpVerifyStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function(String name, String birthday)? setRegisterData,
   }) {
-    return passwordRecovery?.call(phone, password, otpCode);
+    return changeAuthStatusEvent?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
+    TResult Function()? sendOtp,
+    TResult Function(String otpCode)? verifyOtp,
     TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeOtpVerifyStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function(String name, String birthday)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (passwordRecovery != null) {
-      return passwordRecovery(phone, password, otpCode);
+    if (changeAuthStatusEvent != null) {
+      return changeAuthStatusEvent();
     }
     return orElse();
   }
@@ -1858,213 +899,146 @@ class _$PasswordRecoveryEventImpl implements PasswordRecoveryEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeOtpVerifyStatusEvent value)
+        changeOtpVerifyStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(SetRegisterData value) setRegisterData,
   }) {
-    return passwordRecovery(this);
+    return changeAuthStatusEvent(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(SetRegisterData value)? setRegisterData,
   }) {
-    return passwordRecovery?.call(this);
+    return changeAuthStatusEvent?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult Function(RegisterEvent value)? register,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult Function(SetRegisterData value)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (passwordRecovery != null) {
-      return passwordRecovery(this);
+    if (changeAuthStatusEvent != null) {
+      return changeAuthStatusEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class PasswordRecoveryEvent implements AuthEvent {
-  const factory PasswordRecoveryEvent(
-      {required final String phone,
-      required final String password,
-      required final String otpCode}) = _$PasswordRecoveryEventImpl;
-
-  String get phone;
-  String get password;
-  String get otpCode;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PasswordRecoveryEventImplCopyWith<_$PasswordRecoveryEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+abstract class ChangeAuthStatusEvent implements AuthEvent {
+  const factory ChangeAuthStatusEvent() = _$ChangeAuthStatusEventImpl;
 }
 
 /// @nodoc
-abstract class _$$SendOtpEventImplCopyWith<$Res> {
-  factory _$$SendOtpEventImplCopyWith(
-          _$SendOtpEventImpl value, $Res Function(_$SendOtpEventImpl) then) =
-      __$$SendOtpEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String password});
+abstract class _$$ChangeOtpVerifyStatusEventImplCopyWith<$Res> {
+  factory _$$ChangeOtpVerifyStatusEventImplCopyWith(
+          _$ChangeOtpVerifyStatusEventImpl value,
+          $Res Function(_$ChangeOtpVerifyStatusEventImpl) then) =
+      __$$ChangeOtpVerifyStatusEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SendOtpEventImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$SendOtpEventImpl>
-    implements _$$SendOtpEventImplCopyWith<$Res> {
-  __$$SendOtpEventImplCopyWithImpl(
-      _$SendOtpEventImpl _value, $Res Function(_$SendOtpEventImpl) _then)
+class __$$ChangeOtpVerifyStatusEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ChangeOtpVerifyStatusEventImpl>
+    implements _$$ChangeOtpVerifyStatusEventImplCopyWith<$Res> {
+  __$$ChangeOtpVerifyStatusEventImplCopyWithImpl(
+      _$ChangeOtpVerifyStatusEventImpl _value,
+      $Res Function(_$ChangeOtpVerifyStatusEventImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? password = null,
-  }) {
-    return _then(_$SendOtpEventImpl(
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$SendOtpEventImpl implements SendOtpEvent {
-  const _$SendOtpEventImpl({required this.password});
-
-  @override
-  final String password;
+class _$ChangeOtpVerifyStatusEventImpl implements ChangeOtpVerifyStatusEvent {
+  const _$ChangeOtpVerifyStatusEventImpl();
 
   @override
   String toString() {
-    return 'AuthEvent.sendOtp(password: $password)';
+    return 'AuthEvent.changeOtpVerifyStatusEvent()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SendOtpEventImpl &&
-            (identical(other.password, password) ||
-                other.password == password));
+            other is _$ChangeOtpVerifyStatusEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, password);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SendOtpEventImplCopyWith<_$SendOtpEventImpl> get copyWith =>
-      __$$SendOtpEventImplCopyWithImpl<_$SendOtpEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
+    required TResult Function() sendOtp,
+    required TResult Function(String otpCode) verifyOtp,
     required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeOtpVerifyStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function(String name, String birthday) setRegisterData,
   }) {
-    return sendOtp(password);
+    return changeOtpVerifyStatusEvent();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otpCode)? verifyOtp,
     TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeOtpVerifyStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function(String name, String birthday)? setRegisterData,
   }) {
-    return sendOtp?.call(password);
+    return changeOtpVerifyStatusEvent?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
+    TResult Function()? sendOtp,
+    TResult Function(String otpCode)? verifyOtp,
     TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeOtpVerifyStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function(String name, String birthday)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (sendOtp != null) {
-      return sendOtp(password);
+    if (changeOtpVerifyStatusEvent != null) {
+      return changeOtpVerifyStatusEvent();
     }
     return orElse();
   }
@@ -2073,98 +1047,221 @@ class _$SendOtpEventImpl implements SendOtpEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeOtpVerifyStatusEvent value)
+        changeOtpVerifyStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(SetRegisterData value) setRegisterData,
   }) {
-    return sendOtp(this);
+    return changeOtpVerifyStatusEvent(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(SetRegisterData value)? setRegisterData,
   }) {
-    return sendOtp?.call(this);
+    return changeOtpVerifyStatusEvent?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult Function(RegisterEvent value)? register,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult Function(SetRegisterData value)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (sendOtp != null) {
-      return sendOtp(this);
+    if (changeOtpVerifyStatusEvent != null) {
+      return changeOtpVerifyStatusEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class SendOtpEvent implements AuthEvent {
-  const factory SendOtpEvent({required final String password}) =
-      _$SendOtpEventImpl;
+abstract class ChangeOtpVerifyStatusEvent implements AuthEvent {
+  const factory ChangeOtpVerifyStatusEvent() = _$ChangeOtpVerifyStatusEventImpl;
+}
 
-  String get password;
+/// @nodoc
+abstract class _$$ChangeOtpStatusEventImplCopyWith<$Res> {
+  factory _$$ChangeOtpStatusEventImplCopyWith(_$ChangeOtpStatusEventImpl value,
+          $Res Function(_$ChangeOtpStatusEventImpl) then) =
+      __$$ChangeOtpStatusEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ChangeOtpStatusEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ChangeOtpStatusEventImpl>
+    implements _$$ChangeOtpStatusEventImplCopyWith<$Res> {
+  __$$ChangeOtpStatusEventImplCopyWithImpl(_$ChangeOtpStatusEventImpl _value,
+      $Res Function(_$ChangeOtpStatusEventImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SendOtpEventImplCopyWith<_$SendOtpEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$VerifyOtpEventImplCopyWith<$Res> {
-  factory _$$VerifyOtpEventImplCopyWith(_$VerifyOtpEventImpl value,
-          $Res Function(_$VerifyOtpEventImpl) then) =
-      __$$VerifyOtpEventImplCopyWithImpl<$Res>;
+
+class _$ChangeOtpStatusEventImpl implements ChangeOtpStatusEvent {
+  const _$ChangeOtpStatusEventImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.changeOtpStatusEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeOtpStatusEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phone) checkPhoneNumber,
+    required TResult Function() sendOtp,
+    required TResult Function(String otpCode) verifyOtp,
+    required TResult Function(String otpCode) register,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeOtpVerifyStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function(String name, String birthday) setRegisterData,
+  }) {
+    return changeOtpStatusEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone)? checkPhoneNumber,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otpCode)? verifyOtp,
+    TResult? Function(String otpCode)? register,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeOtpVerifyStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function(String name, String birthday)? setRegisterData,
+  }) {
+    return changeOtpStatusEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone)? checkPhoneNumber,
+    TResult Function()? sendOtp,
+    TResult Function(String otpCode)? verifyOtp,
+    TResult Function(String otpCode)? register,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeOtpVerifyStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function(String name, String birthday)? setRegisterData,
+    required TResult orElse(),
+  }) {
+    if (changeOtpStatusEvent != null) {
+      return changeOtpStatusEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
+    required TResult Function(SendOtpEvent value) sendOtp,
+    required TResult Function(VerifyOtpEvent value) verifyOtp,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeOtpVerifyStatusEvent value)
+        changeOtpVerifyStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(SetRegisterData value) setRegisterData,
+  }) {
+    return changeOtpStatusEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult? Function(SendOtpEvent value)? sendOtp,
+    TResult? Function(VerifyOtpEvent value)? verifyOtp,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(SetRegisterData value)? setRegisterData,
+  }) {
+    return changeOtpStatusEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
+    TResult Function(SendOtpEvent value)? sendOtp,
+    TResult Function(VerifyOtpEvent value)? verifyOtp,
+    TResult Function(RegisterEvent value)? register,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult Function(SetRegisterData value)? setRegisterData,
+    required TResult orElse(),
+  }) {
+    if (changeOtpStatusEvent != null) {
+      return changeOtpStatusEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeOtpStatusEvent implements AuthEvent {
+  const factory ChangeOtpStatusEvent() = _$ChangeOtpStatusEventImpl;
+}
+
+/// @nodoc
+abstract class _$$SetRegisterDataImplCopyWith<$Res> {
+  factory _$$SetRegisterDataImplCopyWith(_$SetRegisterDataImpl value,
+          $Res Function(_$SetRegisterDataImpl) then) =
+      __$$SetRegisterDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int otpCode});
+  $Res call({String name, String birthday});
 }
 
 /// @nodoc
-class __$$VerifyOtpEventImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$VerifyOtpEventImpl>
-    implements _$$VerifyOtpEventImplCopyWith<$Res> {
-  __$$VerifyOtpEventImplCopyWithImpl(
-      _$VerifyOtpEventImpl _value, $Res Function(_$VerifyOtpEventImpl) _then)
+class __$$SetRegisterDataImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$SetRegisterDataImpl>
+    implements _$$SetRegisterDataImplCopyWith<$Res> {
+  __$$SetRegisterDataImplCopyWithImpl(
+      _$SetRegisterDataImpl _value, $Res Function(_$SetRegisterDataImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AuthEvent
@@ -2172,110 +1269,104 @@ class __$$VerifyOtpEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? otpCode = null,
+    Object? name = null,
+    Object? birthday = null,
   }) {
-    return _then(_$VerifyOtpEventImpl(
-      otpCode: null == otpCode
-          ? _value.otpCode
-          : otpCode // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$SetRegisterDataImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      birthday: null == birthday
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$VerifyOtpEventImpl implements VerifyOtpEvent {
-  const _$VerifyOtpEventImpl({required this.otpCode});
+class _$SetRegisterDataImpl implements SetRegisterData {
+  const _$SetRegisterDataImpl({required this.name, required this.birthday});
 
   @override
-  final int otpCode;
+  final String name;
+  @override
+  final String birthday;
 
   @override
   String toString() {
-    return 'AuthEvent.verifyOtp(otpCode: $otpCode)';
+    return 'AuthEvent.setRegisterData(name: $name, birthday: $birthday)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$VerifyOtpEventImpl &&
-            (identical(other.otpCode, otpCode) || other.otpCode == otpCode));
+            other is _$SetRegisterDataImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.birthday, birthday) ||
+                other.birthday == birthday));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, otpCode);
+  int get hashCode => Object.hash(runtimeType, name, birthday);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$VerifyOtpEventImplCopyWith<_$VerifyOtpEventImpl> get copyWith =>
-      __$$VerifyOtpEventImplCopyWithImpl<_$VerifyOtpEventImpl>(
+  _$$SetRegisterDataImplCopyWith<_$SetRegisterDataImpl> get copyWith =>
+      __$$SetRegisterDataImplCopyWithImpl<_$SetRegisterDataImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
+    required TResult Function() sendOtp,
+    required TResult Function(String otpCode) verifyOtp,
     required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
+    required TResult Function() changeAuthStatusEvent,
+    required TResult Function() changeOtpVerifyStatusEvent,
+    required TResult Function() changeOtpStatusEvent,
+    required TResult Function(String name, String birthday) setRegisterData,
   }) {
-    return verifyOtp(otpCode);
+    return setRegisterData(name, birthday);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otpCode)? verifyOtp,
     TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult? Function()? changeAuthStatusEvent,
+    TResult? Function()? changeOtpVerifyStatusEvent,
+    TResult? Function()? changeOtpStatusEvent,
+    TResult? Function(String name, String birthday)? setRegisterData,
   }) {
-    return verifyOtp?.call(otpCode);
+    return setRegisterData?.call(name, birthday);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
+    TResult Function()? sendOtp,
+    TResult Function(String otpCode)? verifyOtp,
     TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
+    TResult Function()? changeAuthStatusEvent,
+    TResult Function()? changeOtpVerifyStatusEvent,
+    TResult Function()? changeOtpStatusEvent,
+    TResult Function(String name, String birthday)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (verifyOtp != null) {
-      return verifyOtp(otpCode);
+    if (setRegisterData != null) {
+      return setRegisterData(name, birthday);
     }
     return orElse();
   }
@@ -2284,307 +1375,80 @@ class _$VerifyOtpEventImpl implements VerifyOtpEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
     required TResult Function(SendOtpEvent value) sendOtp,
     required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
+    required TResult Function(RegisterEvent value) register,
+    required TResult Function(ChangeAuthStatusEvent value)
+        changeAuthStatusEvent,
+    required TResult Function(ChangeOtpVerifyStatusEvent value)
+        changeOtpVerifyStatusEvent,
+    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
+    required TResult Function(SetRegisterData value) setRegisterData,
   }) {
-    return verifyOtp(this);
+    return setRegisterData(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult? Function(SendOtpEvent value)? sendOtp,
     TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult? Function(RegisterEvent value)? register,
+    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult? Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult? Function(SetRegisterData value)? setRegisterData,
   }) {
-    return verifyOtp?.call(this);
+    return setRegisterData?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
     TResult Function(SendOtpEvent value)? sendOtp,
     TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (verifyOtp != null) {
-      return verifyOtp(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class VerifyOtpEvent implements AuthEvent {
-  const factory VerifyOtpEvent({required final int otpCode}) =
-      _$VerifyOtpEventImpl;
-
-  int get otpCode;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$VerifyOtpEventImplCopyWith<_$VerifyOtpEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$PrivacyPolicyEventImplCopyWith<$Res> {
-  factory _$$PrivacyPolicyEventImplCopyWith(_$PrivacyPolicyEventImpl value,
-          $Res Function(_$PrivacyPolicyEventImpl) then) =
-      __$$PrivacyPolicyEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool isPrivacyPolicy});
-}
-
-/// @nodoc
-class __$$PrivacyPolicyEventImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$PrivacyPolicyEventImpl>
-    implements _$$PrivacyPolicyEventImplCopyWith<$Res> {
-  __$$PrivacyPolicyEventImplCopyWithImpl(_$PrivacyPolicyEventImpl _value,
-      $Res Function(_$PrivacyPolicyEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isPrivacyPolicy = null,
-  }) {
-    return _then(_$PrivacyPolicyEventImpl(
-      isPrivacyPolicy: null == isPrivacyPolicy
-          ? _value.isPrivacyPolicy
-          : isPrivacyPolicy // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$PrivacyPolicyEventImpl implements PrivacyPolicyEvent {
-  const _$PrivacyPolicyEventImpl({required this.isPrivacyPolicy});
-
-  @override
-  final bool isPrivacyPolicy;
-
-  @override
-  String toString() {
-    return 'AuthEvent.isPrivacyPolicy(isPrivacyPolicy: $isPrivacyPolicy)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PrivacyPolicyEventImpl &&
-            (identical(other.isPrivacyPolicy, isPrivacyPolicy) ||
-                other.isPrivacyPolicy == isPrivacyPolicy));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, isPrivacyPolicy);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PrivacyPolicyEventImplCopyWith<_$PrivacyPolicyEventImpl> get copyWith =>
-      __$$PrivacyPolicyEventImplCopyWithImpl<_$PrivacyPolicyEventImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String phone) checkPhoneNumber,
-    required TResult Function() changeAuthStatusEvent,
-    required TResult Function() changeLoginStatusEvent,
-    required TResult Function() changeOtpStatusEvent,
-    required TResult Function() changeResetPasswordStatusEvent,
-    required TResult Function(String type) setRegisterPageTypeEvent,
-    required TResult Function(String phone, String password) login,
-    required TResult Function(String otpCode) register,
-    required TResult Function(String phone, String password, String otpCode)
-        passwordRecovery,
-    required TResult Function(String password) sendOtp,
-    required TResult Function(int otpCode) verifyOtp,
-    required TResult Function(bool isPrivacyPolicy) isPrivacyPolicy,
-  }) {
-    return isPrivacyPolicy(this.isPrivacyPolicy);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone)? checkPhoneNumber,
-    TResult? Function()? changeAuthStatusEvent,
-    TResult? Function()? changeLoginStatusEvent,
-    TResult? Function()? changeOtpStatusEvent,
-    TResult? Function()? changeResetPasswordStatusEvent,
-    TResult? Function(String type)? setRegisterPageTypeEvent,
-    TResult? Function(String phone, String password)? login,
-    TResult? Function(String otpCode)? register,
-    TResult? Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult? Function(String password)? sendOtp,
-    TResult? Function(int otpCode)? verifyOtp,
-    TResult? Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-  }) {
-    return isPrivacyPolicy?.call(this.isPrivacyPolicy);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone)? checkPhoneNumber,
-    TResult Function()? changeAuthStatusEvent,
-    TResult Function()? changeLoginStatusEvent,
-    TResult Function()? changeOtpStatusEvent,
-    TResult Function()? changeResetPasswordStatusEvent,
-    TResult Function(String type)? setRegisterPageTypeEvent,
-    TResult Function(String phone, String password)? login,
-    TResult Function(String otpCode)? register,
-    TResult Function(String phone, String password, String otpCode)?
-        passwordRecovery,
-    TResult Function(String password)? sendOtp,
-    TResult Function(int otpCode)? verifyOtp,
-    TResult Function(bool isPrivacyPolicy)? isPrivacyPolicy,
-    required TResult orElse(),
-  }) {
-    if (isPrivacyPolicy != null) {
-      return isPrivacyPolicy(this.isPrivacyPolicy);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CheckPhoneNumber value) checkPhoneNumber,
-    required TResult Function(ChangeAuthStatusEvent value)
-        changeAuthStatusEvent,
-    required TResult Function(ChangeLoginStatusEvent value)
-        changeLoginStatusEvent,
-    required TResult Function(ChangeOtpStatusEvent value) changeOtpStatusEvent,
-    required TResult Function(ChangeResetPasswordStatusEvent value)
-        changeResetPasswordStatusEvent,
-    required TResult Function(SetRegisterPageType value)
-        setRegisterPageTypeEvent,
-    required TResult Function(LoginEvent value) login,
-    required TResult Function(RegisterEvent value) register,
-    required TResult Function(PasswordRecoveryEvent value) passwordRecovery,
-    required TResult Function(SendOtpEvent value) sendOtp,
-    required TResult Function(VerifyOtpEvent value) verifyOtp,
-    required TResult Function(PrivacyPolicyEvent value) isPrivacyPolicy,
-  }) {
-    return isPrivacyPolicy(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult? Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult? Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult? Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult? Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult? Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult? Function(LoginEvent value)? login,
-    TResult? Function(RegisterEvent value)? register,
-    TResult? Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult? Function(SendOtpEvent value)? sendOtp,
-    TResult? Function(VerifyOtpEvent value)? verifyOtp,
-    TResult? Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
-  }) {
-    return isPrivacyPolicy?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CheckPhoneNumber value)? checkPhoneNumber,
-    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
-    TResult Function(ChangeLoginStatusEvent value)? changeLoginStatusEvent,
-    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
-    TResult Function(ChangeResetPasswordStatusEvent value)?
-        changeResetPasswordStatusEvent,
-    TResult Function(SetRegisterPageType value)? setRegisterPageTypeEvent,
-    TResult Function(LoginEvent value)? login,
     TResult Function(RegisterEvent value)? register,
-    TResult Function(PasswordRecoveryEvent value)? passwordRecovery,
-    TResult Function(SendOtpEvent value)? sendOtp,
-    TResult Function(VerifyOtpEvent value)? verifyOtp,
-    TResult Function(PrivacyPolicyEvent value)? isPrivacyPolicy,
+    TResult Function(ChangeAuthStatusEvent value)? changeAuthStatusEvent,
+    TResult Function(ChangeOtpVerifyStatusEvent value)?
+        changeOtpVerifyStatusEvent,
+    TResult Function(ChangeOtpStatusEvent value)? changeOtpStatusEvent,
+    TResult Function(SetRegisterData value)? setRegisterData,
     required TResult orElse(),
   }) {
-    if (isPrivacyPolicy != null) {
-      return isPrivacyPolicy(this);
+    if (setRegisterData != null) {
+      return setRegisterData(this);
     }
     return orElse();
   }
 }
 
-abstract class PrivacyPolicyEvent implements AuthEvent {
-  const factory PrivacyPolicyEvent({required final bool isPrivacyPolicy}) =
-      _$PrivacyPolicyEventImpl;
+abstract class SetRegisterData implements AuthEvent {
+  const factory SetRegisterData(
+      {required final String name,
+      required final String birthday}) = _$SetRegisterDataImpl;
 
-  bool get isPrivacyPolicy;
+  String get name;
+  String get birthday;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PrivacyPolicyEventImplCopyWith<_$PrivacyPolicyEventImpl> get copyWith =>
+  _$$SetRegisterDataImplCopyWith<_$SetRegisterDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$AuthState {
   String? get phoneNumber => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
-  String? get registerPageType => throw _privateConstructorUsedError;
-  bool? get isPrivacyPolicy => throw _privateConstructorUsedError;
+  String? get fullName => throw _privateConstructorUsedError;
+  String? get birthday => throw _privateConstructorUsedError;
   VerifyPhoneNumberStatus get authStatus => throw _privateConstructorUsedError;
-  BlocStatus get loginStatus => throw _privateConstructorUsedError;
-  BlocStatus get registerStatus => throw _privateConstructorUsedError;
   BlocStatus get otpStatus => throw _privateConstructorUsedError;
+  BlocStatus get registerStatus => throw _privateConstructorUsedError;
   BlocStatus get otpVerifyStatus => throw _privateConstructorUsedError;
-  BlocStatus get resetPasswordStatus => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of AuthState
@@ -2601,15 +1465,12 @@ abstract class $AuthStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String? phoneNumber,
-      String? password,
-      String? registerPageType,
-      bool? isPrivacyPolicy,
+      String? fullName,
+      String? birthday,
       VerifyPhoneNumberStatus authStatus,
-      BlocStatus loginStatus,
-      BlocStatus registerStatus,
       BlocStatus otpStatus,
+      BlocStatus registerStatus,
       BlocStatus otpVerifyStatus,
-      BlocStatus resetPasswordStatus,
       String? errorMessage});
 }
 
@@ -2629,15 +1490,12 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? phoneNumber = freezed,
-    Object? password = freezed,
-    Object? registerPageType = freezed,
-    Object? isPrivacyPolicy = freezed,
+    Object? fullName = freezed,
+    Object? birthday = freezed,
     Object? authStatus = null,
-    Object? loginStatus = null,
-    Object? registerStatus = null,
     Object? otpStatus = null,
+    Object? registerStatus = null,
     Object? otpVerifyStatus = null,
-    Object? resetPasswordStatus = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2645,41 +1503,29 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      fullName: freezed == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
-      registerPageType: freezed == registerPageType
-          ? _value.registerPageType
-          : registerPageType // ignore: cast_nullable_to_non_nullable
+      birthday: freezed == birthday
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
               as String?,
-      isPrivacyPolicy: freezed == isPrivacyPolicy
-          ? _value.isPrivacyPolicy
-          : isPrivacyPolicy // ignore: cast_nullable_to_non_nullable
-              as bool?,
       authStatus: null == authStatus
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
               as VerifyPhoneNumberStatus,
-      loginStatus: null == loginStatus
-          ? _value.loginStatus
-          : loginStatus // ignore: cast_nullable_to_non_nullable
+      otpStatus: null == otpStatus
+          ? _value.otpStatus
+          : otpStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
       registerStatus: null == registerStatus
           ? _value.registerStatus
           : registerStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
-      otpStatus: null == otpStatus
-          ? _value.otpStatus
-          : otpStatus // ignore: cast_nullable_to_non_nullable
-              as BlocStatus,
       otpVerifyStatus: null == otpVerifyStatus
           ? _value.otpVerifyStatus
           : otpVerifyStatus // ignore: cast_nullable_to_non_nullable
-              as BlocStatus,
-      resetPasswordStatus: null == resetPasswordStatus
-          ? _value.resetPasswordStatus
-          : resetPasswordStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -2699,15 +1545,12 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? phoneNumber,
-      String? password,
-      String? registerPageType,
-      bool? isPrivacyPolicy,
+      String? fullName,
+      String? birthday,
       VerifyPhoneNumberStatus authStatus,
-      BlocStatus loginStatus,
-      BlocStatus registerStatus,
       BlocStatus otpStatus,
+      BlocStatus registerStatus,
       BlocStatus otpVerifyStatus,
-      BlocStatus resetPasswordStatus,
       String? errorMessage});
 }
 
@@ -2725,15 +1568,12 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? phoneNumber = freezed,
-    Object? password = freezed,
-    Object? registerPageType = freezed,
-    Object? isPrivacyPolicy = freezed,
+    Object? fullName = freezed,
+    Object? birthday = freezed,
     Object? authStatus = null,
-    Object? loginStatus = null,
-    Object? registerStatus = null,
     Object? otpStatus = null,
+    Object? registerStatus = null,
     Object? otpVerifyStatus = null,
-    Object? resetPasswordStatus = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$AuthStateImpl(
@@ -2741,41 +1581,29 @@ class __$$AuthStateImplCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      fullName: freezed == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
-      registerPageType: freezed == registerPageType
-          ? _value.registerPageType
-          : registerPageType // ignore: cast_nullable_to_non_nullable
+      birthday: freezed == birthday
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
               as String?,
-      isPrivacyPolicy: freezed == isPrivacyPolicy
-          ? _value.isPrivacyPolicy
-          : isPrivacyPolicy // ignore: cast_nullable_to_non_nullable
-              as bool?,
       authStatus: null == authStatus
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
               as VerifyPhoneNumberStatus,
-      loginStatus: null == loginStatus
-          ? _value.loginStatus
-          : loginStatus // ignore: cast_nullable_to_non_nullable
+      otpStatus: null == otpStatus
+          ? _value.otpStatus
+          : otpStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
       registerStatus: null == registerStatus
           ? _value.registerStatus
           : registerStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
-      otpStatus: null == otpStatus
-          ? _value.otpStatus
-          : otpStatus // ignore: cast_nullable_to_non_nullable
-              as BlocStatus,
       otpVerifyStatus: null == otpVerifyStatus
           ? _value.otpVerifyStatus
           : otpVerifyStatus // ignore: cast_nullable_to_non_nullable
-              as BlocStatus,
-      resetPasswordStatus: null == resetPasswordStatus
-          ? _value.resetPasswordStatus
-          : resetPasswordStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -2790,43 +1618,34 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
       {this.phoneNumber,
-      this.password,
-      this.registerPageType,
-      this.isPrivacyPolicy,
+      this.fullName,
+      this.birthday,
       required this.authStatus,
-      required this.loginStatus,
-      required this.registerStatus,
       required this.otpStatus,
+      required this.registerStatus,
       required this.otpVerifyStatus,
-      required this.resetPasswordStatus,
       this.errorMessage});
 
   @override
   final String? phoneNumber;
   @override
-  final String? password;
+  final String? fullName;
   @override
-  final String? registerPageType;
-  @override
-  final bool? isPrivacyPolicy;
+  final String? birthday;
   @override
   final VerifyPhoneNumberStatus authStatus;
   @override
-  final BlocStatus loginStatus;
+  final BlocStatus otpStatus;
   @override
   final BlocStatus registerStatus;
   @override
-  final BlocStatus otpStatus;
-  @override
   final BlocStatus otpVerifyStatus;
-  @override
-  final BlocStatus resetPasswordStatus;
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'AuthState(phoneNumber: $phoneNumber, password: $password, registerPageType: $registerPageType, isPrivacyPolicy: $isPrivacyPolicy, authStatus: $authStatus, loginStatus: $loginStatus, registerStatus: $registerStatus, otpStatus: $otpStatus, otpVerifyStatus: $otpVerifyStatus, resetPasswordStatus: $resetPasswordStatus, errorMessage: $errorMessage)';
+    return 'AuthState(phoneNumber: $phoneNumber, fullName: $fullName, birthday: $birthday, authStatus: $authStatus, otpStatus: $otpStatus, registerStatus: $registerStatus, otpVerifyStatus: $otpVerifyStatus, errorMessage: $errorMessage)';
   }
 
   @override
@@ -2836,42 +1655,25 @@ class _$AuthStateImpl implements _AuthState {
             other is _$AuthStateImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.registerPageType, registerPageType) ||
-                other.registerPageType == registerPageType) &&
-            (identical(other.isPrivacyPolicy, isPrivacyPolicy) ||
-                other.isPrivacyPolicy == isPrivacyPolicy) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.birthday, birthday) ||
+                other.birthday == birthday) &&
             (identical(other.authStatus, authStatus) ||
                 other.authStatus == authStatus) &&
-            (identical(other.loginStatus, loginStatus) ||
-                other.loginStatus == loginStatus) &&
-            (identical(other.registerStatus, registerStatus) ||
-                other.registerStatus == registerStatus) &&
             (identical(other.otpStatus, otpStatus) ||
                 other.otpStatus == otpStatus) &&
+            (identical(other.registerStatus, registerStatus) ||
+                other.registerStatus == registerStatus) &&
             (identical(other.otpVerifyStatus, otpVerifyStatus) ||
                 other.otpVerifyStatus == otpVerifyStatus) &&
-            (identical(other.resetPasswordStatus, resetPasswordStatus) ||
-                other.resetPasswordStatus == resetPasswordStatus) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      phoneNumber,
-      password,
-      registerPageType,
-      isPrivacyPolicy,
-      authStatus,
-      loginStatus,
-      registerStatus,
-      otpStatus,
-      otpVerifyStatus,
-      resetPasswordStatus,
-      errorMessage);
+  int get hashCode => Object.hash(runtimeType, phoneNumber, fullName, birthday,
+      authStatus, otpStatus, registerStatus, otpVerifyStatus, errorMessage);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -2885,37 +1687,28 @@ class _$AuthStateImpl implements _AuthState {
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {final String? phoneNumber,
-      final String? password,
-      final String? registerPageType,
-      final bool? isPrivacyPolicy,
+      final String? fullName,
+      final String? birthday,
       required final VerifyPhoneNumberStatus authStatus,
-      required final BlocStatus loginStatus,
-      required final BlocStatus registerStatus,
       required final BlocStatus otpStatus,
+      required final BlocStatus registerStatus,
       required final BlocStatus otpVerifyStatus,
-      required final BlocStatus resetPasswordStatus,
       final String? errorMessage}) = _$AuthStateImpl;
 
   @override
   String? get phoneNumber;
   @override
-  String? get password;
+  String? get fullName;
   @override
-  String? get registerPageType;
-  @override
-  bool? get isPrivacyPolicy;
+  String? get birthday;
   @override
   VerifyPhoneNumberStatus get authStatus;
   @override
-  BlocStatus get loginStatus;
+  BlocStatus get otpStatus;
   @override
   BlocStatus get registerStatus;
   @override
-  BlocStatus get otpStatus;
-  @override
   BlocStatus get otpVerifyStatus;
-  @override
-  BlocStatus get resetPasswordStatus;
   @override
   String? get errorMessage;
 

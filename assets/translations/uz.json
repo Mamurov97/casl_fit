@@ -38,9 +38,13 @@
     }
   },
   "register": {
-    "password": "Parol",
-    "retry_password": "Parolni takrorlang",
-    "privacy_policy": "Maxfiylik siyosatiga rozimisiz ?"
+    "privacy_policy": " tugmasini bosish orqali siz ommaviy oferta shartlariga rozilik bildirgan bo‘lasiz.",
+    "privacy_policy_clickable": "ommaviy oferta",
+    "register" : "Ro'yxatdan o'tish",
+    "name": "Ism",
+    "surname": "Familiya",
+    "patronymic": "Sharif",
+    "date_birthday": "Tug'ilgan sana"
   },
   "verify": {
     "verify_code": "Tasdiqlash kodi",
@@ -67,7 +71,7 @@
     "no_letter": "Kamida bitta harf kiritilishi kerak.",
     "no_digit": "Kamida bitta raqam kiritilishi kerak.",
     "passwords_not_equal": "Parollar mos kelmadi.",
-    "incorrect_password": "Noto'g'ri parol kiritildi",
+    "incorrect_password": "Tasdiqlash kodi noto'g'ri",
     "unknown": "Noma'lum xatolik yuz berdi.",
     "empty": "Ma'lumot yo'q",
     "coming_soon": "Tez kunda!",
@@ -85,9 +89,8 @@
     "get_new_qr": "Yangi QR kod olish"
   },
   "tariff": {
-    "all_tariff":"Barcha tariflar"
+    "all_tariff": "Barcha tariflar"
   },
-
   "profile": {
     "edit_profile": "Profilni tahrirlash",
     "notification": "Bildirishnomalar",
