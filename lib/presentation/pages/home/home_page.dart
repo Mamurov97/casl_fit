@@ -1,8 +1,7 @@
+import 'dart:async';
 import 'dart:ui';
-
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
-import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -19,8 +18,24 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
   final RefreshController _refreshController = RefreshController(initialRefresh: false);
+  Timer? _timer;
+  @override
+  void initState() {
+    super.initState();
+
+    _timer = Timer.periodic(const Duration(minutes: 1), (_) {
+      context.read<HomeBloc>().add(const HomeEvent.getLiveUserCount());
+    });
+
+  }
+  @override
+  void dispose() {
+    super.dispose();
+  _timer?.cancel();
+  }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
@@ -77,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                              ),
+                              c ),
                               /*IconNotificationButton(
                                 onPressed: () {},
                                 icon: AppIcons.notification,
@@ -88,6 +103,34 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Gap(8.h),
+                        state.dailyUserCountStatus == BlocStatus.success
+                            ? DatePickerCarousel(
+                                onPressed: (int weekDay) {
+                                  context.read<HomeBloc>().add(HomeEvent.getWeekDay(weekDay));
+                                },
+                              )
+                            : const SizedBox(),
+                        Gap(4.h),
+                        state.dailyUserCountStatus == BlocStatus.success
+                            ? Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Hafta kunlari bo'yicha o'rtacha tashriflar soni", style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.white, fontSize: 12.sp)),
+                                    Gap(4.h),
+                                    MultiLineChartCarousel(
+                                        dailyCountResponse: (state.dailyCountResponse?.data ?? [])[state.weekDay - 1],
+                                        startWorkTime: state.dailyCountResponse?.startWorkTime ?? "09:00",
+                                        endWorkTime: state.dailyCountResponse?.endWorkTime ?? "23:00"),
+                                  ],
+                                ),
+                              )
+                            : const Center(
+                                child: CircularIndicator(),
+                              ),
+                        Gap(12.h),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.w),
                           child: Container(
@@ -97,10 +140,78 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: BorderRadius.circular(12.r),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(12.r),
+                              padding: EdgeInsets.symmetric(vertical:24.h,horizontal: 12.w),
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  SvgPicture.asset(
+                                  Text(
+                                    "Hozirda zalda ",
+                                    style: AppTheme.data.textTheme.titleMedium!.copyWith(fontSize: 16.sp, color: AppTheme.colors.white),
+                                  ),
+                                  Padding(
+                                    padding:  EdgeInsets.only(right: 12.w),
+                                    child: Text(
+                                      "${(state.liveUserCount ?? 0)}",
+                                      style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary, fontSize: 28.sp),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+/*const Spacer(),
+                                  GestureDetector(
+                                    onTap: () {
+                                      context.read<HomeBloc>().add(const HomeEvent.getLiveUserCount());
+                                    },
+                                    child: Icon(
+                                      Icons.refresh,
+                                      color: AppTheme.colors.primary,
+                                    ),
+                                  )*/
+/*    Center(
+                    child: Container(
+                      decoration: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(24.r)),
+                      height: 0.18.sh,
+                      padding: EdgeInsets.all(16.r),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Zaldagi sportchilar soni",
+                            style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.white, fontSize: 16.sp),
+                          ),
+                          const Spacer(),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.w),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  "10",
+                                  style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.primary, fontSize: 26.sp),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),*/  /*   SvgPicture.asset(
                                     height: 24.h,
                                     AppIcons.people,
                                     colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
@@ -133,79 +244,4 @@ class _HomePageState extends State<HomePage> {
                                                   strokeWidth: 2,
                                                 )),
                                           ),
-                                        ),
-                                  /*const Spacer(),
-                                  GestureDetector(
-                                    onTap: () {
-                                      context.read<HomeBloc>().add(const HomeEvent.getLiveUserCount());
-                                    },
-                                    child: Icon(
-                                      Icons.refresh,
-                                      color: AppTheme.colors.primary,
-                                    ),
-                                  )*/
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        state.dailyUserCountStatus == BlocStatus.success
-                            ? DatePickerCarousel(
-                                onPressed: (int weekDay) {
-                                  context.read<HomeBloc>().add(HomeEvent.getWeekDay(weekDay));
-                                },
-                              )
-                            : const SizedBox(),
-                        Gap(4.h),
-                        state.dailyUserCountStatus == BlocStatus.success
-                            ? Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.w),
-                                child: MultiLineChartCarousel(
-                                    dailyCountResponse: (state.dailyCountResponse?.data ?? [])[state.weekDay - 1],
-                                    startWorkTime: state.dailyCountResponse?.startWorkTime ?? "09:00",
-                                    endWorkTime: state.dailyCountResponse?.endWorkTime ?? "23:00"),
-                              )
-                            : const Center(
-                                child: CircularIndicator(),
-                              ),
-                      ],
-                    ),
-                  ),
-                ),
-              )
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
-/*    Center(
-                    child: Container(
-                      decoration: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(24.r)),
-                      height: 0.18.sh,
-                      padding: EdgeInsets.all(16.r),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Zaldagi sportchilar soni",
-                            style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.white, fontSize: 16.sp),
-                          ),
-                          const Spacer(),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 12.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "10",
-                                  style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.primary, fontSize: 26.sp),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),*/
+                                        ),*/

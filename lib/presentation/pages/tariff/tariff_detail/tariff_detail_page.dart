@@ -17,7 +17,7 @@ class TariffDetailPage extends StatelessWidget {
     final List<Map<String, String>> abonementInfo = [
       {"label": "Davomiyligi", "value": "${model.monthlyLimit} oy"},
       {"label": "Tashrif kuni ", "value": (model.dailyLimit ?? 0) > 29 ? "Har kuni" : "Oyda ${model.dailyLimit} kun"},
-      {"label": "Tashrif vaqti ", "value": "${extractHourMinute(model.limitTimeFrom ?? "")} dan ${extractHourMinute(model.limitTimeTo ?? "")} gacha"},
+      {"label": "Tashrif vaqti ", "value": "${extractHourMinute(model.limitTimeFrom ?? "")} - ${extractHourMinute(model.limitTimeTo ?? "")}"},
       {
         "label": "Narxi",
         "value": "${NumberFormat("#,###", "uz_UZ").format(model.price ?? 0).replaceAll(",", " ")} so'm",

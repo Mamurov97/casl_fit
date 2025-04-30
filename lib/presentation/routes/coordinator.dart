@@ -73,6 +73,22 @@ final GoRouter router = GoRouter(
           ),
         ]),
     GoRoute(
+      name: Routes.setPassCode.name,
+      path: Routes.setPassCode.path,
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: state.pageKey,
+        child: const SetPasscodePage(),
+      ),
+    ),
+    GoRoute(
+      name: Routes.checkPassCode.name,
+      path: Routes.checkPassCode.path,
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: state.pageKey,
+        child: const CheckPasscodePage(),
+      ),
+    ),
+    GoRoute(
       name: Routes.verify.name,
       path: Routes.verify.path,
       pageBuilder: (context, state) => MaterialPage<void>(
@@ -104,8 +120,10 @@ final GoRouter router = GoRouter(
       redirect: (context, state) => _redirects(),
       routes: [
         StatefulShellRoute.indexedStack(
+
           builder: (context, state, navigatorShell) {
             int screen = 0;
+
             return PopScope(
               canPop: false,
               onPopInvoked: (bool didPop) async {
@@ -129,6 +147,7 @@ final GoRouter router = GoRouter(
                     navBarOverlap: const NavBarOverlap.full(),
                     onTabChanged: (index) {
                       if (index == 0) {
+                        context.read<HomeBloc>().add(const HomeEvent.getLiveUserCount());
                         if (controller.hasClients) {
                           controller.jumpTo(0);
                         }
@@ -160,12 +179,7 @@ final GoRouter router = GoRouter(
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(
                           key: state.pageKey,
-                          child: BlocProvider(
-                            create: (context) => HomeBloc()
-                              ..add(const GetLiveCountUserEvent())
-                              ..add(const HomeEvent.getDailyUserCount()),
-                            child: const HomePage(),
-                          ));
+                          child: const HomePage());
                     }),
               ],
             ),
@@ -280,19 +294,21 @@ final GoRouter router = GoRouter(
 final tabs = [
   PersistentRouterTabConfig(
     item: ItemConfig(
-        icon: SvgPicture.asset(
+      icon: SvgPicture.asset(
           AppIcons.home,
           height: 20.sp,
           colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
         ),
         activeForegroundColor: AppTheme.colors.primary,
-        inactiveIcon: SvgPicture.asset(
+      inactiveForegroundColor: AppTheme.colors.white,
+      inactiveIcon: SvgPicture.asset(
           AppIcons.home,
           height: 20.sp,
-          colorFilter: ColorFilter.mode(AppTheme.colors.gray900, BlendMode.srcIn),
-        ),
+        colorFilter: ColorFilter.mode(AppTheme.colors.white, BlendMode.srcIn),
+      ),
         title: 'root.home'.tr(),
-        textStyle: AppTheme.data.textTheme.labelSmall!.copyWith(color: AppTheme.colors.gray900)),
+      textStyle: AppTheme.data.textTheme.labelSmall!,
+    ),
   ),
   PersistentRouterTabConfig(
     item: ItemConfig(
@@ -302,10 +318,11 @@ final tabs = [
           colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
         ),
         activeForegroundColor: AppTheme.colors.primary,
+        inactiveForegroundColor: AppTheme.colors.white,
         inactiveIcon: SvgPicture.asset(
           AppIcons.dumbbell,
           height: 20.sp,
-          colorFilter: ColorFilter.mode(AppTheme.colors.gray900, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(AppTheme.colors.white, BlendMode.srcIn),
         ),
         title: 'root.status'.tr(),
         textStyle: AppTheme.data.textTheme.labelSmall!),
@@ -318,10 +335,11 @@ final tabs = [
           colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
         ),
         activeForegroundColor: AppTheme.colors.primary,
+        inactiveForegroundColor: AppTheme.colors.white,
         inactiveIcon: SvgPicture.asset(
           AppIcons.qrcode,
           height: 20.sp,
-          colorFilter: ColorFilter.mode(AppTheme.colors.gray900, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(AppTheme.colors.white, BlendMode.srcIn),
         ),
         title: 'root.qrcode'.tr(),
         textStyle: AppTheme.data.textTheme.labelSmall!),
@@ -334,10 +352,11 @@ final tabs = [
           colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
         ),
         activeForegroundColor: AppTheme.colors.primary,
+        inactiveForegroundColor: AppTheme.colors.white,
         inactiveIcon: SvgPicture.asset(
           AppIcons.program,
           height: 20.sp,
-          colorFilter: ColorFilter.mode(AppTheme.colors.gray900, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(AppTheme.colors.white, BlendMode.srcIn),
         ),
         title: 'root.program'.tr(),
         textStyle: AppTheme.data.textTheme.labelSmall!),
@@ -350,10 +369,11 @@ final tabs = [
           colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
         ),
         activeForegroundColor: AppTheme.colors.primary,
+        inactiveForegroundColor: AppTheme.colors.white,
         inactiveIcon: SvgPicture.asset(
           AppIcons.profile,
           height: 20.sp,
-          colorFilter: ColorFilter.mode(AppTheme.colors.gray900, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(AppTheme.colors.white, BlendMode.srcIn),
         ),
         title: 'root.profile'.tr(),
         textStyle: AppTheme.data.textTheme.labelSmall!),

@@ -66,7 +66,7 @@ class TariffItem extends StatelessWidget {
                           ),
                           Gap(8.w),
                           Text(
-                            "${item?.monthlyLimit} oy",
+                            item?.monthlyLimit==0?"1 kun":"${item?.monthlyLimit} oy",
                             style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
                           ),
                         ],
@@ -102,6 +102,24 @@ class TariffItem extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 8),*/
+
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            height: 20.h,
+                            AppIcons.time,
+                            colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                          ),
+                          Gap(8.w),
+                          Text(
+                            "${extractHourMinute(item?.limitTimeFrom ?? "")} - ${extractHourMinute(item?.limitTimeTo ?? "")}",
+                            style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 8),
+
                       Row(
                         children: [
                           SvgPicture.asset(
@@ -116,6 +134,7 @@ class TariffItem extends StatelessWidget {
                           ),
                         ],
                       ),
+
                     ],
                   ),
                 ),

@@ -24,6 +24,32 @@ class MultiLineChartCarousel extends StatelessWidget {
     final double maxY = flSpots.map((spot) => spot.y).fold<double>(0, (prev, y) => y > prev ? y : prev);
 
     final bool hasNonZeroClient = dataSets[0].any((spot) => spot.y > 0);
+
+    final lineBarsData = [
+      LineChartBarData(
+        spots: dataSets[0],
+        isCurved: true,
+        color: AppTheme.colors.primary,
+        barWidth: 2,
+        belowBarData: BarAreaData(show: true),
+        isStrokeCapRound: true,
+        shadow: const Shadow(blurRadius: 12.0, color: Colors.black, offset: Offset(2, 3)),
+        dotData: FlDotData(
+          show: true,
+          getDotPainter: (spot, percent, barData, index) {
+            return FlDotCirclePainter(
+              radius: 3.r,
+              color: AppTheme.colors.primary,
+              strokeWidth: 1,
+              strokeColor: AppTheme.colors.primary,
+            );
+          },
+        ),
+        showingIndicators: List.generate(dataSets[0].length, (i) => i),
+        curveSmoothness: hasNonZeroClient ? 0.4 : 0.0,
+      ),
+    ];
+
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4.r),
@@ -45,6 +71,52 @@ class MultiLineChartCarousel extends StatelessWidget {
               transformationController: _transformationController,
             ),
             LineChartData(
+              showingTooltipIndicators: List.generate(flSpots.length, (index) {
+                return ShowingTooltipIndicators([
+                  LineBarSpot(
+                    lineBarsData[0],
+                    index,
+                    flSpots[index],
+                  ),
+                ]);
+              }),
+              lineTouchData: LineTouchData(
+                enabled: false,
+                touchTooltipData: LineTouchTooltipData(
+                  tooltipMargin: 4.h,
+                  tooltipHorizontalAlignment: FLHorizontalAlignment.right,
+                  tooltipPadding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 0),
+                  getTooltipColor: (touchedSpot) => Colors.grey.withAlpha(4),
+                  getTooltipItems: (touchedSpots) {
+                    return touchedSpots.map((touchedSpot) {
+                      return LineTooltipItem(
+                        touchedSpot.y.toStringAsFixed(0),
+                        TextStyle(color: AppTheme.colors.white, fontSize: 11.sp, fontWeight: FontWeight.bold),
+                      );
+                    }).toList();
+                  },
+                ),
+                getTouchedSpotIndicator:
+                    (LineChartBarData barData, List<int> spotIndexes) {
+                  return spotIndexes.map((index) {
+                    return TouchedSpotIndicatorData(
+                       FlLine(
+                        color:AppTheme.colors.primary.withValues(alpha: 0.2),
+                         strokeWidth: 2
+                      ),
+                      FlDotData(
+                        show: true,
+                        getDotPainter: (spot, percent, barData, index) =>
+                            FlDotCirclePainter(
+                              radius: 0,
+                              strokeWidth: 5,
+                              strokeColor: AppTheme.colors.primary,
+                            ),
+                      ),
+                    );
+                  }).toList();
+                },
+              ),
               backgroundColor: AppTheme.colors.secondary,
               gridData: const FlGridData(show: true),
               borderData: FlBorderData(show: true),
@@ -97,34 +169,11 @@ class MultiLineChartCarousel extends StatelessWidget {
                   topTitles: const AxisTitles(
                     sideTitles: SideTitles(showTitles: false),
                   )),
-              lineBarsData: [
-                LineChartBarData(
-                    spots: dataSets[0],
-                    isCurved: true,
-                    color: AppTheme.colors.primary,
-                    barWidth: 2,
-                    belowBarData: BarAreaData(show: true),
-                    isStrokeCapRound: true,
-                    shadow: const Shadow(blurRadius: 12.0, color: Colors.black, offset: Offset(2, 3)),
-                    dotData: FlDotData(
-                      show: true,
-                      getDotPainter: (spot, percent, barData, index) {
-                        return FlDotCirclePainter(
-                        radius: 3,
-                        color: AppTheme.colors.primary,
-                          strokeWidth: 1,
-                          strokeColor: AppTheme.colors.primary,
-                        );
-                      },
-                    ),
-                    showingIndicators: List.generate(dataSets[0].length, (i) => i),
-                  curveSmoothness: hasNonZeroClient ? 0.4 : 0.0,
-                ),
-              ],
+              lineBarsData: lineBarsData,
               minX: 0,
               maxX: (hours.length).toDouble(),
               minY: 0,
-              maxY: maxY + 1,
+              maxY: maxY + 7,
             ),
           ),
         ),

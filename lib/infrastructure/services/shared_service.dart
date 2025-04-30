@@ -10,6 +10,7 @@ class SharedPrefService {
   static const String _role = 'role';
   static const String _isAuthorized = 'is_authorized';
   static const String _passcode = 'passcode';
+  static const String _pinStatus = 'pin_status';
   static late SharedPreferences _preference;
 
   const SharedPrefService._();
@@ -28,6 +29,11 @@ class SharedPrefService {
   void setUserId(int userId) => _preference.setInt(_userId, userId);
 
   int get getUserId => _preference.getInt(_userId) ?? 0;
+
+  /// pin status
+  void setPinStatus(bool pinStatus) => _preference.setBool(_pinStatus, pinStatus);
+
+  bool get pinStatus => _preference.getBool(_pinStatus) ?? false;
 
   ///name
   void setName(String name) => _preference.setString(_name, name);
