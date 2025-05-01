@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:casl_fit/application/app_manager/app_manager_cubit.dart';
-import 'package:casl_fit/domain/common/data/user_data.dart';
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/profile_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
@@ -14,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../application/profile/profile_bloc.dart';
 import '../../../application/profile/weight_height/weight_height_bloc.dart';
@@ -184,7 +182,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ),
                                         ),
                                         Text(
-                                          maskFormatter.maskText("+998${data.tel}" ?? ""),
+                                          maskFormatter.maskText("+998${data.tel??'xxxxxxx'}"),
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
                                             color: Colors.white,

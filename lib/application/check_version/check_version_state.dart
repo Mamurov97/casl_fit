@@ -8,8 +8,9 @@ class AppCheckVersionInitial extends CheckVersionState {}
 class AppCheckVersionSuccess extends CheckVersionState {
   final bool update;
   final String updateStatus;
+  final List<String> features;
 
-  AppCheckVersionSuccess(this.update, this.updateStatus);
+  AppCheckVersionSuccess(this.update, this.updateStatus, this.features);
 }
 
 class AppCheckVersionError extends CheckVersionState {

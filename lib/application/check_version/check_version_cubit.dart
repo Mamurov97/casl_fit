@@ -23,7 +23,8 @@ class CheckVersionCubit extends Cubit<CheckVersionState> {
       }
       Response response = await dio.post("auth/mobile-check-version", data: {"platform_type": info, "app_version": packageInfo.version});
       var result = response.data;
-      emit(AppCheckVersionSuccess(result["result"]["update"], result["result"]["update_status"]));
+      List<String> features = (response.data['result']['news'] as List?)?.map((e) => e as String).toList()??[];
+      emit(AppCheckVersionSuccess(result["result"]["update"], result["result"]["update_status"], features));
     } catch (e) {
       emit(AppCheckVersionError(e.toString()));
     }
