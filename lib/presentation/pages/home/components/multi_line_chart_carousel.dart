@@ -31,9 +31,19 @@ class MultiLineChartCarousel extends StatelessWidget {
         isCurved: true,
         color: AppTheme.colors.primary,
         barWidth: 2,
-        belowBarData: BarAreaData(show: true),
+        belowBarData: BarAreaData(
+          show: true,
+          gradient: LinearGradient(
+            colors: [
+              AppTheme.colors.primary.withValues(alpha: 0.25),
+              AppTheme.colors.primary.withValues(alpha: 0.05),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         isStrokeCapRound: true,
-        shadow: const Shadow(blurRadius: 12.0, color: Colors.black, offset: Offset(2, 3)),
+        // shadow: Shadow(blurRadius: 12.0, color: AppTheme.colors.primary, offset: const Offset(0, 5)),
         dotData: FlDotData(
           show: true,
           getDotPainter: (spot, percent, barData, index) {
@@ -45,7 +55,7 @@ class MultiLineChartCarousel extends StatelessWidget {
             );
           },
         ),
-        showingIndicators: List.generate(dataSets[0].length, (i) => i),
+        // showingIndicators: List.generate(dataSets[0].length, (i) => i),
         curveSmoothness: hasNonZeroClient ? 0.4 : 0.0,
       ),
     ];
@@ -83,35 +93,31 @@ class MultiLineChartCarousel extends StatelessWidget {
               lineTouchData: LineTouchData(
                 enabled: false,
                 touchTooltipData: LineTouchTooltipData(
-                  tooltipMargin: 4.h,
-                  tooltipHorizontalAlignment: FLHorizontalAlignment.right,
-                  tooltipPadding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 0),
-                  getTooltipColor: (touchedSpot) => Colors.grey.withAlpha(4),
+                  tooltipBorderRadius: BorderRadius.circular(20.r),
+                  tooltipMargin: 8.h,
+                  tooltipPadding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 4.h),
+                  tooltipHorizontalAlignment: FLHorizontalAlignment.center,
+                  getTooltipColor: (touchedSpot) => AppTheme.colors.primary,
                   getTooltipItems: (touchedSpots) {
                     return touchedSpots.map((touchedSpot) {
                       return LineTooltipItem(
                         touchedSpot.y.toStringAsFixed(0),
-                        TextStyle(color: AppTheme.colors.white, fontSize: 11.sp, fontWeight: FontWeight.bold),
+                        TextStyle(color: AppTheme.colors.black, fontSize: 10.sp, fontWeight: FontWeight.bold),
                       );
                     }).toList();
                   },
                 ),
-                getTouchedSpotIndicator:
-                    (LineChartBarData barData, List<int> spotIndexes) {
+                getTouchedSpotIndicator: (LineChartBarData barData, List<int> spotIndexes) {
                   return spotIndexes.map((index) {
                     return TouchedSpotIndicatorData(
-                       FlLine(
-                        color:AppTheme.colors.primary.withValues(alpha: 0.2),
-                         strokeWidth: 2
-                      ),
+                      FlLine(color: AppTheme.colors.primary.withValues(alpha: 0.2), strokeWidth: 2),
                       FlDotData(
                         show: true,
-                        getDotPainter: (spot, percent, barData, index) =>
-                            FlDotCirclePainter(
-                              radius: 0,
-                              strokeWidth: 5,
-                              strokeColor: AppTheme.colors.primary,
-                            ),
+                        getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
+                          radius: 0,
+                          strokeWidth: 5,
+                          strokeColor: AppTheme.colors.primary,
+                        ),
                       ),
                     );
                   }).toList();
@@ -124,7 +130,7 @@ class MultiLineChartCarousel extends StatelessWidget {
                   bottomTitles: AxisTitles(
                     axisNameSize: 100,
                     sideTitles: SideTitles(
-                      reservedSize:26.h ,
+                      reservedSize: 26.h,
                       //  reservedSize: 40,
                       showTitles: true,
                       interval: 1,
@@ -134,7 +140,9 @@ class MultiLineChartCarousel extends StatelessWidget {
                           return Transform.rotate(
                             angle: -0.785398,
                             child: Padding(
-                              padding: const EdgeInsets.only(top: 8.0,),
+                              padding: const EdgeInsets.only(
+                                top: 8.0,
+                              ),
                               child: Text(
                                 hours[index],
                                 style: AppTheme.data.textTheme.titleMedium?.copyWith(
@@ -160,7 +168,7 @@ class MultiLineChartCarousel extends StatelessWidget {
                         return value != 0
                             ? Padding(
                                 padding: const EdgeInsets.only(top: 0),
-                                child: Text('${value.toInt()}', style: AppTheme.data.textTheme.titleMedium?.copyWith(fontSize:12.sp, color: AppTheme.colors.white)),
+                                child: Text('${value.toInt()}', style: AppTheme.data.textTheme.titleMedium?.copyWith(fontSize: 12.sp, color: AppTheme.colors.white)),
                               )
                             : const SizedBox();
                       },

@@ -1,13 +1,15 @@
 import 'dart:async';
 import 'dart:ui';
+
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
+import 'package:casl_fit/presentation/pages/home/components/weekday_select.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
 import '../../../application/home/home_bloc.dart';
 import '../../components/basic_widgets.dart';
-import 'components/date_picker_carousel.dart';
 import 'components/multi_line_chart_carousel.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,9 +18,11 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
 class _HomePageState extends State<HomePage> {
   final RefreshController _refreshController = RefreshController(initialRefresh: false);
   Timer? _timer;
+
   @override
   void initState() {
     super.initState();
@@ -26,16 +30,16 @@ class _HomePageState extends State<HomePage> {
     _timer = Timer.periodic(const Duration(minutes: 1), (_) {
       context.read<HomeBloc>().add(const HomeEvent.getLiveUserCount());
     });
-
   }
+
   @override
   void dispose() {
     super.dispose();
-  _timer?.cancel();
+    _timer?.cancel();
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
@@ -92,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                               ),
+                              ),
                               /*IconNotificationButton(
                                 onPressed: () {},
                                 icon: AppIcons.notification,
@@ -104,11 +108,11 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Gap(8.h),
                         state.dailyUserCountStatus == BlocStatus.success
-                            ? DatePickerCarousel(
-                                onPressed: (int weekDay) {
-                                  context.read<HomeBloc>().add(HomeEvent.getWeekDay(weekDay));
-                                },
-                              )
+                            ? UzbekWeekdaySelector(
+                              onChanged: (v) {
+                                context.read<HomeBloc>().add(HomeEvent.getWeekDay(v));
+                              },
+                            )
                             : const SizedBox(),
                         Gap(4.h),
                         state.dailyUserCountStatus == BlocStatus.success
@@ -118,10 +122,10 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Hafta kunlari bo'yicha o'rtacha tashriflar soni", style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.white, fontSize: 12.sp)),
+                                    Text("Kunlik tashriflar statistikasi", style: AppTheme.data.textTheme.titleLarge!.copyWith(color: AppTheme.colors.white)),
                                     Gap(4.h),
                                     MultiLineChartCarousel(
-                                        dailyCountResponse: (state.dailyCountResponse?.data ?? [])[state.weekDay - 1],
+                                        dailyCountResponse: (state.dailyCountResponse?.data ?? [])[state.weekDay],
                                         startWorkTime: state.dailyCountResponse?.startWorkTime ?? "09:00",
                                         endWorkTime: state.dailyCountResponse?.endWorkTime ?? "23:00"),
                                   ],
@@ -140,22 +144,32 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: BorderRadius.circular(12.r),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(vertical:24.h,horizontal: 12.w),
+                              padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 12.w),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    "Hozirda zalda ",
-                                    style: AppTheme.data.textTheme.titleMedium!.copyWith(fontSize: 16.sp, color: AppTheme.colors.white),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset(
+                                        AppIcons.people,
+                                        colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                                      ),
+                                      Gap(10.w),
+                                      Text(
+                                        "Hozirda zalda ",
+                                        style: AppTheme.data.textTheme.headlineMedium!.copyWith(color: AppTheme.colors.white),
+                                      ),
+                                    ],
                                   ),
                                   Padding(
-                                    padding:  EdgeInsets.only(right: 12.w),
+                                    padding: EdgeInsets.only(right: 12.w),
                                     child: Text(
                                       "${(state.liveUserCount ?? 0)}",
-                                      style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary, fontSize: 28.sp),
+                                      style: AppTheme.data.textTheme.displayMedium!.copyWith(color: AppTheme.colors.primary),
                                     ),
                                   ),
-
                                 ],
                               ),
                             ),
@@ -173,75 +187,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-/*const Spacer(),
-                                  GestureDetector(
-                                    onTap: () {
-                                      context.read<HomeBloc>().add(const HomeEvent.getLiveUserCount());
-                                    },
-                                    child: Icon(
-                                      Icons.refresh,
-                                      color: AppTheme.colors.primary,
-                                    ),
-                                  )*/
-/*    Center(
-                    child: Container(
-                      decoration: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(24.r)),
-                      height: 0.18.sh,
-                      padding: EdgeInsets.all(16.r),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Zaldagi sportchilar soni",
-                            style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.white, fontSize: 16.sp),
-                          ),
-                          const Spacer(),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 12.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "10",
-                                  style: AppTheme.data.textTheme.titleSmall?.copyWith(color: AppTheme.colors.primary, fontSize: 26.sp),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),*/  /*   SvgPicture.asset(
-                                    height: 24.h,
-                                    AppIcons.people,
-                                    colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                                  ),
-                                  Gap(8.h),
-                                  state.status != BlocStatus.loading
-                                      ? EasyRichText(
-                                          state.liveUserCount != 0 ? "Hozirda zalda ${state.liveUserCount ?? 0} kishi " : "Hozirda zalda hech kim yo'q ",
-                                          textAlign: TextAlign.center,
-                                          defaultStyle: AppTheme.data.textTheme.titleSmall!.copyWith(fontSize: 15.sp, color: AppTheme.colors.white),
-                                          patternList: [
-                                            EasyRichTextPattern(
-                                              targetString: "Hozirda zalda",
-                                              style: AppTheme.data.textTheme.titleSmall!.copyWith(color: AppTheme.colors.white, fontSize: 15.sp),
-                                            ),
-                                            EasyRichTextPattern(
-                                              targetString: "${(state.liveUserCount ?? 0)}",
-                                              style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary, fontSize: 15.sp),
-                                            )
-                                          ],
-                                        )
-                                      : Padding(
-                                          padding: EdgeInsets.only(left: 24.w),
-                                          child: Center(
-                                            child: SizedBox(
-                                                height: 12.h,
-                                                width: 12.w,
-                                                child: CircularProgressIndicator(
-                                                  color: AppTheme.colors.primary,
-                                                  strokeWidth: 2,
-                                                )),
-                                          ),
-                                        ),*/

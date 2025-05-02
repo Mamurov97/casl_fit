@@ -20,12 +20,14 @@ class AppIcons {
   static const age = 'assets/icons/age.svg';
   static const money = 'assets/icons/money.svg';
   static const dumbbell = 'assets/icons/dumbbell.svg';
+  static const dumbbellFilled = 'assets/icons/dumbbell_filled.svg';
   static const people = 'assets/icons/people.svg';
   static const calendar = 'assets/icons/calendar.svg';
   static const day = 'assets/icons/day.svg';
   static const time = 'assets/icons/time.svg';
   static const wave = 'assets/icons/wave.svg';
   static const balance = 'assets/icons/balance.svg';
+  static const weekday = 'assets/icons/weekday.svg';
 }
 
 class AppImages {

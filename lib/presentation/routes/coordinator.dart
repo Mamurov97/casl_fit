@@ -181,15 +181,6 @@ final GoRouter router = GoRouter(
                     name: Routes.home.name,
                     path: Routes.home.path,
                     redirect: (context, state) => _redirects(),
-                    routes: [
-                      GoRoute(
-                          name: Routes.booking.name,
-                          path: Routes.booking.path,
-                          redirect: (context, state) => _redirects(),
-                          pageBuilder: (context, state) {
-                            return MaterialPage<void>(key: state.pageKey, child: const BookingPage());
-                          }),
-                    ],
                     pageBuilder: (context, state) {
                       return MaterialPage<void>(key: state.pageKey, child: const HomePage());
                     }),

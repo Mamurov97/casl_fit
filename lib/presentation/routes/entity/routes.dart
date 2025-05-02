@@ -32,7 +32,6 @@ class Routes implements Coordinate {
   static const profile = Routes._(name: 'profile', path: '/profile');
 
   ///home
-  static const booking = Routes._(name: "booking", path: "/booking");
 
   ///Tariff
   static const allTariff = Routes._(name: "all_tariff", path: '/all_tariff');

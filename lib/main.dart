@@ -47,7 +47,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()),
         BlocProvider(create: (context) => CheckVersionCubit()..checkVersion()),
         BlocProvider(create: (context) => AuthBloc()),
-        BlocProvider(create: (context)=>ProfileBloc()..add(GetUserBalance())..add(GetProfileDataEvent())),
+        BlocProvider(
+            create: (context) => ProfileBloc()
+              ..add(GetUserBalance())
+              ..add(GetProfileDataEvent())),
         BlocProvider(
             create: (context) => HomeBloc()
               ..add(const GetLiveCountUserEvent())
