@@ -38,25 +38,6 @@ class TariffItem extends StatelessWidget {
                         style: AppTheme.data.textTheme.titleLarge?.copyWith(color: AppTheme.colors.white),
                       ),
                       const SizedBox(height: 8),
-
-                      /*   (!isArrow)
-                          ? Expanded(
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset(
-                                    height: 20.h,
-                                    AppIcons.beginTime,
-                                    colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                                  ),
-                                  Gap(8.w),
-                                  Text(
-                                    "${item?.monthlyLimit} oy ",
-                                    style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
-                                  ),
-                                ],
-                              ),
-                            )
-                          :*/
                       Row(
                         children: [
                           SvgPicture.asset(
@@ -66,22 +47,7 @@ class TariffItem extends StatelessWidget {
                           ),
                           Gap(8.w),
                           Text(
-                            item?.monthlyLimit==0?"1 kun":"${item?.monthlyLimit} oy",
-                            style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      /*Row(
-                        children: [
-                          SvgPicture.asset(
-                            height: 20.h,
-                            AppIcons.day,
-                            colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                          ),
-                          Gap(8.w),
-                          Text(
-                            "Tashrif kunlari: Har kuni",
+                            item?.monthlyLimit == 0 ? "1 kun" : "${item?.monthlyLimit} oy",
                             style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
                           ),
                         ],
@@ -96,30 +62,13 @@ class TariffItem extends StatelessWidget {
                           ),
                           Gap(8.w),
                           Text(
-                            "${extractHourMinute(item?.limitTimeFrom ?? "")} dan ${extractHourMinute(item?.limitTimeTo ?? "")} gacha",
+                            "${DateFormat.Hm().format(DateTime.parse(item?.limitTimeFrom ?? '0001-01-01T00:00:00'))} - "
+                            "${DateFormat.Hm().format(DateTime.parse(item?.limitTimeTo ?? '0001-01-01T00:00:00'))}",
                             style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),*/
-
-                      // Row(
-                      //   children: [
-                      //     SvgPicture.asset(
-                      //       height: 20.h,
-                      //       AppIcons.time,
-                      //       colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                      //     ),
-                      //     Gap(8.w),
-                      //     Text(
-                      //       "${extractHourMinute(item?.limitTimeFrom ?? "")} - ${extractHourMinute(item?.limitTimeTo ?? "")}",
-                      //       style: AppTheme.data.textTheme.bodySmall?.copyWith(color: AppTheme.colors.white, fontSize: 12.sp),
-                      //     ),
-                      //   ],
-                      // ),
-
                       const SizedBox(height: 8),
-
                       Row(
                         children: [
                           SvgPicture.asset(
@@ -134,11 +83,10 @@ class TariffItem extends StatelessWidget {
                           ),
                         ],
                       ),
-
                     ],
                   ),
                 ),
-                //   if (isArrow) Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 24.r)
+                if (isArrow) Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 24.r)
               ],
             ),
           ),

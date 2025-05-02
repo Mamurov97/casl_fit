@@ -169,28 +169,30 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ),
                                   SizedBox(width: 10.w),
                                   Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            data.name ?? "",
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(vertical: 10.h),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              data.name ?? "",
+                                              textAlign: TextAlign.start,
+                                              maxLines: 3,
+                                              style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary),
+                                            ),
+                                          ),
+                                          Text(
+                                            maskFormatter.maskText("+998${data.tel??'xxxxxxx'}"),
                                             textAlign: TextAlign.start,
-                                            maxLines: 3,
-                                            style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.primary),
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12.sp,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          maskFormatter.maskText("+998${data.tel??'xxxxxxx'}"),
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],

@@ -57,7 +57,7 @@ class TariffDetailPage extends StatelessWidget {
               child: Column(
                 children: [
                   TariffItem(
-                    isArrow: true,
+                    isArrow: false,
                     item: model,
                     onPressed: () {},
                   ),

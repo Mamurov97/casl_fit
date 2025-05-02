@@ -1,4 +1,3 @@
-import 'package:casl_fit/application/tariff/tariff_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,8 +44,8 @@ String getInitialLocation() {
   final route = UserData.token.isEmpty
       ? Routes.signIn.path
       : UserData.passCodeStatus
-      ? Routes.checkPassCode.path
-      : Routes.setPassCode.path;
+          ? Routes.checkPassCode.path
+          : Routes.setPassCode.path;
 
   return route;
 }
@@ -163,7 +162,6 @@ final GoRouter router = GoRouter(
                           controller.jumpTo(0);
                         }
                       } else if (index == 4) {
-
                         context.read<ProfileBloc>().add(GetUserBalance());
                       }
                     },
@@ -245,13 +243,9 @@ final GoRouter router = GoRouter(
                   ],
                   pageBuilder: (context, state) {
                     return MaterialPage<void>(
-                        key: state.pageKey,
-                        child: BlocProvider(
-                          create: (context) => TariffBloc()
-// ..add(const GetCategoryTariff())
-                            ..add(const GetTariffs()),
-                          child: const TariffTabbar(),
-                        ));
+                      key: state.pageKey,
+                      child: const TariffTabbar(),
+                    );
                   },
                 )
               ],
@@ -277,8 +271,7 @@ final GoRouter router = GoRouter(
                           }),
                     ],
                     pageBuilder: (context, state) {
-                      return MaterialPage<void>(
-                          key: state.pageKey, child: const ProfilePage());
+                      return MaterialPage<void>(key: state.pageKey, child: const ProfilePage());
                     }),
               ],
             ),

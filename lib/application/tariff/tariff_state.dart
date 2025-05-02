@@ -5,14 +5,10 @@ class TariffState with _$TariffState {
   const factory TariffState({
     required BlocStatus allTariffStatus,
     required BlocStatus currentTariffStatus,
-    required BlocStatus categoryTariffStatus,
-    required bool hasLoadedTariffs,
     List<TariffModel>? tariffs,
-    List<Data>? localTariffList,
-    List<CategoryTariffModel>? categoryTariffs,
-    List<TariffModel>? currentTariff,
+    List<Data>? currentTariff,
     String? errorMessage,
   }) = _TariffState;
 
-  factory TariffState.initial() => const TariffState(hasLoadedTariffs:false,categoryTariffStatus: BlocStatus.initial,allTariffStatus: BlocStatus.initial, currentTariffStatus: BlocStatus.initial);
+  factory TariffState.initial() => const TariffState(allTariffStatus: BlocStatus.initial, currentTariffStatus: BlocStatus.initial);
 }

@@ -20,27 +20,18 @@ mixin _$TariffEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getTariffs,
     required TResult Function() getCurrentTariffs,
-    required TResult Function(String? searchText) searchTariffs,
-    required TResult Function() getCategoryTariff,
-    required TResult Function(List<Data> tariffList) getTariffList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTariffs,
     TResult? Function()? getCurrentTariffs,
-    TResult? Function(String? searchText)? searchTariffs,
-    TResult? Function()? getCategoryTariff,
-    TResult? Function(List<Data> tariffList)? getTariffList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTariffs,
     TResult Function()? getCurrentTariffs,
-    TResult Function(String? searchText)? searchTariffs,
-    TResult Function()? getCategoryTariff,
-    TResult Function(List<Data> tariffList)? getTariffList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,27 +39,18 @@ mixin _$TariffEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetTariffs value) getTariffs,
     required TResult Function(GetCurrentTariffs value) getCurrentTariffs,
-    required TResult Function(SearchTariffs value) searchTariffs,
-    required TResult Function(GetCategoryTariff value) getCategoryTariff,
-    required TResult Function(GetTariffList value) getTariffList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetTariffs value)? getTariffs,
     TResult? Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult? Function(SearchTariffs value)? searchTariffs,
-    TResult? Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult? Function(GetTariffList value)? getTariffList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetTariffs value)? getTariffs,
     TResult Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult Function(SearchTariffs value)? searchTariffs,
-    TResult Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult Function(GetTariffList value)? getTariffList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,9 +120,6 @@ class _$GetTariffsImpl implements GetTariffs {
   TResult when<TResult extends Object?>({
     required TResult Function() getTariffs,
     required TResult Function() getCurrentTariffs,
-    required TResult Function(String? searchText) searchTariffs,
-    required TResult Function() getCategoryTariff,
-    required TResult Function(List<Data> tariffList) getTariffList,
   }) {
     return getTariffs();
   }
@@ -150,9 +129,6 @@ class _$GetTariffsImpl implements GetTariffs {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTariffs,
     TResult? Function()? getCurrentTariffs,
-    TResult? Function(String? searchText)? searchTariffs,
-    TResult? Function()? getCategoryTariff,
-    TResult? Function(List<Data> tariffList)? getTariffList,
   }) {
     return getTariffs?.call();
   }
@@ -162,9 +138,6 @@ class _$GetTariffsImpl implements GetTariffs {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTariffs,
     TResult Function()? getCurrentTariffs,
-    TResult Function(String? searchText)? searchTariffs,
-    TResult Function()? getCategoryTariff,
-    TResult Function(List<Data> tariffList)? getTariffList,
     required TResult orElse(),
   }) {
     if (getTariffs != null) {
@@ -178,9 +151,6 @@ class _$GetTariffsImpl implements GetTariffs {
   TResult map<TResult extends Object?>({
     required TResult Function(GetTariffs value) getTariffs,
     required TResult Function(GetCurrentTariffs value) getCurrentTariffs,
-    required TResult Function(SearchTariffs value) searchTariffs,
-    required TResult Function(GetCategoryTariff value) getCategoryTariff,
-    required TResult Function(GetTariffList value) getTariffList,
   }) {
     return getTariffs(this);
   }
@@ -190,9 +160,6 @@ class _$GetTariffsImpl implements GetTariffs {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetTariffs value)? getTariffs,
     TResult? Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult? Function(SearchTariffs value)? searchTariffs,
-    TResult? Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult? Function(GetTariffList value)? getTariffList,
   }) {
     return getTariffs?.call(this);
   }
@@ -202,9 +169,6 @@ class _$GetTariffsImpl implements GetTariffs {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetTariffs value)? getTariffs,
     TResult Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult Function(SearchTariffs value)? searchTariffs,
-    TResult Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult Function(GetTariffList value)? getTariffList,
     required TResult orElse(),
   }) {
     if (getTariffs != null) {
@@ -261,9 +225,6 @@ class _$GetCurrentTariffsImpl implements GetCurrentTariffs {
   TResult when<TResult extends Object?>({
     required TResult Function() getTariffs,
     required TResult Function() getCurrentTariffs,
-    required TResult Function(String? searchText) searchTariffs,
-    required TResult Function() getCategoryTariff,
-    required TResult Function(List<Data> tariffList) getTariffList,
   }) {
     return getCurrentTariffs();
   }
@@ -273,9 +234,6 @@ class _$GetCurrentTariffsImpl implements GetCurrentTariffs {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTariffs,
     TResult? Function()? getCurrentTariffs,
-    TResult? Function(String? searchText)? searchTariffs,
-    TResult? Function()? getCategoryTariff,
-    TResult? Function(List<Data> tariffList)? getTariffList,
   }) {
     return getCurrentTariffs?.call();
   }
@@ -285,9 +243,6 @@ class _$GetCurrentTariffsImpl implements GetCurrentTariffs {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTariffs,
     TResult Function()? getCurrentTariffs,
-    TResult Function(String? searchText)? searchTariffs,
-    TResult Function()? getCategoryTariff,
-    TResult Function(List<Data> tariffList)? getTariffList,
     required TResult orElse(),
   }) {
     if (getCurrentTariffs != null) {
@@ -301,9 +256,6 @@ class _$GetCurrentTariffsImpl implements GetCurrentTariffs {
   TResult map<TResult extends Object?>({
     required TResult Function(GetTariffs value) getTariffs,
     required TResult Function(GetCurrentTariffs value) getCurrentTariffs,
-    required TResult Function(SearchTariffs value) searchTariffs,
-    required TResult Function(GetCategoryTariff value) getCategoryTariff,
-    required TResult Function(GetTariffList value) getTariffList,
   }) {
     return getCurrentTariffs(this);
   }
@@ -313,9 +265,6 @@ class _$GetCurrentTariffsImpl implements GetCurrentTariffs {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetTariffs value)? getTariffs,
     TResult? Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult? Function(SearchTariffs value)? searchTariffs,
-    TResult? Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult? Function(GetTariffList value)? getTariffList,
   }) {
     return getCurrentTariffs?.call(this);
   }
@@ -325,9 +274,6 @@ class _$GetCurrentTariffsImpl implements GetCurrentTariffs {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetTariffs value)? getTariffs,
     TResult Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult Function(SearchTariffs value)? searchTariffs,
-    TResult Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult Function(GetTariffList value)? getTariffList,
     required TResult orElse(),
   }) {
     if (getCurrentTariffs != null) {
@@ -342,465 +288,11 @@ abstract class GetCurrentTariffs implements TariffEvent {
 }
 
 /// @nodoc
-abstract class _$$SearchTariffsImplCopyWith<$Res> {
-  factory _$$SearchTariffsImplCopyWith(
-          _$SearchTariffsImpl value, $Res Function(_$SearchTariffsImpl) then) =
-      __$$SearchTariffsImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? searchText});
-}
-
-/// @nodoc
-class __$$SearchTariffsImplCopyWithImpl<$Res>
-    extends _$TariffEventCopyWithImpl<$Res, _$SearchTariffsImpl>
-    implements _$$SearchTariffsImplCopyWith<$Res> {
-  __$$SearchTariffsImplCopyWithImpl(
-      _$SearchTariffsImpl _value, $Res Function(_$SearchTariffsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TariffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? searchText = freezed,
-  }) {
-    return _then(_$SearchTariffsImpl(
-      searchText: freezed == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SearchTariffsImpl implements SearchTariffs {
-  const _$SearchTariffsImpl({this.searchText});
-
-  @override
-  final String? searchText;
-
-  @override
-  String toString() {
-    return 'TariffEvent.searchTariffs(searchText: $searchText)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SearchTariffsImpl &&
-            (identical(other.searchText, searchText) ||
-                other.searchText == searchText));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, searchText);
-
-  /// Create a copy of TariffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SearchTariffsImplCopyWith<_$SearchTariffsImpl> get copyWith =>
-      __$$SearchTariffsImplCopyWithImpl<_$SearchTariffsImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getTariffs,
-    required TResult Function() getCurrentTariffs,
-    required TResult Function(String? searchText) searchTariffs,
-    required TResult Function() getCategoryTariff,
-    required TResult Function(List<Data> tariffList) getTariffList,
-  }) {
-    return searchTariffs(searchText);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getTariffs,
-    TResult? Function()? getCurrentTariffs,
-    TResult? Function(String? searchText)? searchTariffs,
-    TResult? Function()? getCategoryTariff,
-    TResult? Function(List<Data> tariffList)? getTariffList,
-  }) {
-    return searchTariffs?.call(searchText);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getTariffs,
-    TResult Function()? getCurrentTariffs,
-    TResult Function(String? searchText)? searchTariffs,
-    TResult Function()? getCategoryTariff,
-    TResult Function(List<Data> tariffList)? getTariffList,
-    required TResult orElse(),
-  }) {
-    if (searchTariffs != null) {
-      return searchTariffs(searchText);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetTariffs value) getTariffs,
-    required TResult Function(GetCurrentTariffs value) getCurrentTariffs,
-    required TResult Function(SearchTariffs value) searchTariffs,
-    required TResult Function(GetCategoryTariff value) getCategoryTariff,
-    required TResult Function(GetTariffList value) getTariffList,
-  }) {
-    return searchTariffs(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetTariffs value)? getTariffs,
-    TResult? Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult? Function(SearchTariffs value)? searchTariffs,
-    TResult? Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult? Function(GetTariffList value)? getTariffList,
-  }) {
-    return searchTariffs?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetTariffs value)? getTariffs,
-    TResult Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult Function(SearchTariffs value)? searchTariffs,
-    TResult Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult Function(GetTariffList value)? getTariffList,
-    required TResult orElse(),
-  }) {
-    if (searchTariffs != null) {
-      return searchTariffs(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SearchTariffs implements TariffEvent {
-  const factory SearchTariffs({final String? searchText}) = _$SearchTariffsImpl;
-
-  String? get searchText;
-
-  /// Create a copy of TariffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SearchTariffsImplCopyWith<_$SearchTariffsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$GetCategoryTariffImplCopyWith<$Res> {
-  factory _$$GetCategoryTariffImplCopyWith(_$GetCategoryTariffImpl value,
-          $Res Function(_$GetCategoryTariffImpl) then) =
-      __$$GetCategoryTariffImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetCategoryTariffImplCopyWithImpl<$Res>
-    extends _$TariffEventCopyWithImpl<$Res, _$GetCategoryTariffImpl>
-    implements _$$GetCategoryTariffImplCopyWith<$Res> {
-  __$$GetCategoryTariffImplCopyWithImpl(_$GetCategoryTariffImpl _value,
-      $Res Function(_$GetCategoryTariffImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TariffEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$GetCategoryTariffImpl implements GetCategoryTariff {
-  const _$GetCategoryTariffImpl();
-
-  @override
-  String toString() {
-    return 'TariffEvent.getCategoryTariff()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetCategoryTariffImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getTariffs,
-    required TResult Function() getCurrentTariffs,
-    required TResult Function(String? searchText) searchTariffs,
-    required TResult Function() getCategoryTariff,
-    required TResult Function(List<Data> tariffList) getTariffList,
-  }) {
-    return getCategoryTariff();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getTariffs,
-    TResult? Function()? getCurrentTariffs,
-    TResult? Function(String? searchText)? searchTariffs,
-    TResult? Function()? getCategoryTariff,
-    TResult? Function(List<Data> tariffList)? getTariffList,
-  }) {
-    return getCategoryTariff?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getTariffs,
-    TResult Function()? getCurrentTariffs,
-    TResult Function(String? searchText)? searchTariffs,
-    TResult Function()? getCategoryTariff,
-    TResult Function(List<Data> tariffList)? getTariffList,
-    required TResult orElse(),
-  }) {
-    if (getCategoryTariff != null) {
-      return getCategoryTariff();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetTariffs value) getTariffs,
-    required TResult Function(GetCurrentTariffs value) getCurrentTariffs,
-    required TResult Function(SearchTariffs value) searchTariffs,
-    required TResult Function(GetCategoryTariff value) getCategoryTariff,
-    required TResult Function(GetTariffList value) getTariffList,
-  }) {
-    return getCategoryTariff(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetTariffs value)? getTariffs,
-    TResult? Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult? Function(SearchTariffs value)? searchTariffs,
-    TResult? Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult? Function(GetTariffList value)? getTariffList,
-  }) {
-    return getCategoryTariff?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetTariffs value)? getTariffs,
-    TResult Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult Function(SearchTariffs value)? searchTariffs,
-    TResult Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult Function(GetTariffList value)? getTariffList,
-    required TResult orElse(),
-  }) {
-    if (getCategoryTariff != null) {
-      return getCategoryTariff(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class GetCategoryTariff implements TariffEvent {
-  const factory GetCategoryTariff() = _$GetCategoryTariffImpl;
-}
-
-/// @nodoc
-abstract class _$$GetTariffListImplCopyWith<$Res> {
-  factory _$$GetTariffListImplCopyWith(
-          _$GetTariffListImpl value, $Res Function(_$GetTariffListImpl) then) =
-      __$$GetTariffListImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Data> tariffList});
-}
-
-/// @nodoc
-class __$$GetTariffListImplCopyWithImpl<$Res>
-    extends _$TariffEventCopyWithImpl<$Res, _$GetTariffListImpl>
-    implements _$$GetTariffListImplCopyWith<$Res> {
-  __$$GetTariffListImplCopyWithImpl(
-      _$GetTariffListImpl _value, $Res Function(_$GetTariffListImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TariffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? tariffList = null,
-  }) {
-    return _then(_$GetTariffListImpl(
-      null == tariffList
-          ? _value._tariffList
-          : tariffList // ignore: cast_nullable_to_non_nullable
-              as List<Data>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$GetTariffListImpl implements GetTariffList {
-  const _$GetTariffListImpl(final List<Data> tariffList)
-      : _tariffList = tariffList;
-
-  final List<Data> _tariffList;
-  @override
-  List<Data> get tariffList {
-    if (_tariffList is EqualUnmodifiableListView) return _tariffList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tariffList);
-  }
-
-  @override
-  String toString() {
-    return 'TariffEvent.getTariffList(tariffList: $tariffList)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetTariffListImpl &&
-            const DeepCollectionEquality()
-                .equals(other._tariffList, _tariffList));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_tariffList));
-
-  /// Create a copy of TariffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetTariffListImplCopyWith<_$GetTariffListImpl> get copyWith =>
-      __$$GetTariffListImplCopyWithImpl<_$GetTariffListImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getTariffs,
-    required TResult Function() getCurrentTariffs,
-    required TResult Function(String? searchText) searchTariffs,
-    required TResult Function() getCategoryTariff,
-    required TResult Function(List<Data> tariffList) getTariffList,
-  }) {
-    return getTariffList(tariffList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getTariffs,
-    TResult? Function()? getCurrentTariffs,
-    TResult? Function(String? searchText)? searchTariffs,
-    TResult? Function()? getCategoryTariff,
-    TResult? Function(List<Data> tariffList)? getTariffList,
-  }) {
-    return getTariffList?.call(tariffList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getTariffs,
-    TResult Function()? getCurrentTariffs,
-    TResult Function(String? searchText)? searchTariffs,
-    TResult Function()? getCategoryTariff,
-    TResult Function(List<Data> tariffList)? getTariffList,
-    required TResult orElse(),
-  }) {
-    if (getTariffList != null) {
-      return getTariffList(tariffList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetTariffs value) getTariffs,
-    required TResult Function(GetCurrentTariffs value) getCurrentTariffs,
-    required TResult Function(SearchTariffs value) searchTariffs,
-    required TResult Function(GetCategoryTariff value) getCategoryTariff,
-    required TResult Function(GetTariffList value) getTariffList,
-  }) {
-    return getTariffList(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetTariffs value)? getTariffs,
-    TResult? Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult? Function(SearchTariffs value)? searchTariffs,
-    TResult? Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult? Function(GetTariffList value)? getTariffList,
-  }) {
-    return getTariffList?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetTariffs value)? getTariffs,
-    TResult Function(GetCurrentTariffs value)? getCurrentTariffs,
-    TResult Function(SearchTariffs value)? searchTariffs,
-    TResult Function(GetCategoryTariff value)? getCategoryTariff,
-    TResult Function(GetTariffList value)? getTariffList,
-    required TResult orElse(),
-  }) {
-    if (getTariffList != null) {
-      return getTariffList(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class GetTariffList implements TariffEvent {
-  const factory GetTariffList(final List<Data> tariffList) =
-      _$GetTariffListImpl;
-
-  List<Data> get tariffList;
-
-  /// Create a copy of TariffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetTariffListImplCopyWith<_$GetTariffListImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$TariffState {
   BlocStatus get allTariffStatus => throw _privateConstructorUsedError;
   BlocStatus get currentTariffStatus => throw _privateConstructorUsedError;
-  BlocStatus get categoryTariffStatus => throw _privateConstructorUsedError;
-  bool get hasLoadedTariffs => throw _privateConstructorUsedError;
   List<TariffModel>? get tariffs => throw _privateConstructorUsedError;
-  List<Data>? get localTariffList => throw _privateConstructorUsedError;
-  List<CategoryTariffModel>? get categoryTariffs =>
-      throw _privateConstructorUsedError;
-  List<TariffModel>? get currentTariff => throw _privateConstructorUsedError;
+  List<Data>? get currentTariff => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of TariffState
@@ -819,12 +311,8 @@ abstract class $TariffStateCopyWith<$Res> {
   $Res call(
       {BlocStatus allTariffStatus,
       BlocStatus currentTariffStatus,
-      BlocStatus categoryTariffStatus,
-      bool hasLoadedTariffs,
       List<TariffModel>? tariffs,
-      List<Data>? localTariffList,
-      List<CategoryTariffModel>? categoryTariffs,
-      List<TariffModel>? currentTariff,
+      List<Data>? currentTariff,
       String? errorMessage});
 }
 
@@ -845,11 +333,7 @@ class _$TariffStateCopyWithImpl<$Res, $Val extends TariffState>
   $Res call({
     Object? allTariffStatus = null,
     Object? currentTariffStatus = null,
-    Object? categoryTariffStatus = null,
-    Object? hasLoadedTariffs = null,
     Object? tariffs = freezed,
-    Object? localTariffList = freezed,
-    Object? categoryTariffs = freezed,
     Object? currentTariff = freezed,
     Object? errorMessage = freezed,
   }) {
@@ -862,30 +346,14 @@ class _$TariffStateCopyWithImpl<$Res, $Val extends TariffState>
           ? _value.currentTariffStatus
           : currentTariffStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
-      categoryTariffStatus: null == categoryTariffStatus
-          ? _value.categoryTariffStatus
-          : categoryTariffStatus // ignore: cast_nullable_to_non_nullable
-              as BlocStatus,
-      hasLoadedTariffs: null == hasLoadedTariffs
-          ? _value.hasLoadedTariffs
-          : hasLoadedTariffs // ignore: cast_nullable_to_non_nullable
-              as bool,
       tariffs: freezed == tariffs
           ? _value.tariffs
           : tariffs // ignore: cast_nullable_to_non_nullable
               as List<TariffModel>?,
-      localTariffList: freezed == localTariffList
-          ? _value.localTariffList
-          : localTariffList // ignore: cast_nullable_to_non_nullable
-              as List<Data>?,
-      categoryTariffs: freezed == categoryTariffs
-          ? _value.categoryTariffs
-          : categoryTariffs // ignore: cast_nullable_to_non_nullable
-              as List<CategoryTariffModel>?,
       currentTariff: freezed == currentTariff
           ? _value.currentTariff
           : currentTariff // ignore: cast_nullable_to_non_nullable
-              as List<TariffModel>?,
+              as List<Data>?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -905,12 +373,8 @@ abstract class _$$TariffStateImplCopyWith<$Res>
   $Res call(
       {BlocStatus allTariffStatus,
       BlocStatus currentTariffStatus,
-      BlocStatus categoryTariffStatus,
-      bool hasLoadedTariffs,
       List<TariffModel>? tariffs,
-      List<Data>? localTariffList,
-      List<CategoryTariffModel>? categoryTariffs,
-      List<TariffModel>? currentTariff,
+      List<Data>? currentTariff,
       String? errorMessage});
 }
 
@@ -929,11 +393,7 @@ class __$$TariffStateImplCopyWithImpl<$Res>
   $Res call({
     Object? allTariffStatus = null,
     Object? currentTariffStatus = null,
-    Object? categoryTariffStatus = null,
-    Object? hasLoadedTariffs = null,
     Object? tariffs = freezed,
-    Object? localTariffList = freezed,
-    Object? categoryTariffs = freezed,
     Object? currentTariff = freezed,
     Object? errorMessage = freezed,
   }) {
@@ -946,30 +406,14 @@ class __$$TariffStateImplCopyWithImpl<$Res>
           ? _value.currentTariffStatus
           : currentTariffStatus // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
-      categoryTariffStatus: null == categoryTariffStatus
-          ? _value.categoryTariffStatus
-          : categoryTariffStatus // ignore: cast_nullable_to_non_nullable
-              as BlocStatus,
-      hasLoadedTariffs: null == hasLoadedTariffs
-          ? _value.hasLoadedTariffs
-          : hasLoadedTariffs // ignore: cast_nullable_to_non_nullable
-              as bool,
       tariffs: freezed == tariffs
           ? _value._tariffs
           : tariffs // ignore: cast_nullable_to_non_nullable
               as List<TariffModel>?,
-      localTariffList: freezed == localTariffList
-          ? _value._localTariffList
-          : localTariffList // ignore: cast_nullable_to_non_nullable
-              as List<Data>?,
-      categoryTariffs: freezed == categoryTariffs
-          ? _value._categoryTariffs
-          : categoryTariffs // ignore: cast_nullable_to_non_nullable
-              as List<CategoryTariffModel>?,
       currentTariff: freezed == currentTariff
           ? _value._currentTariff
           : currentTariff // ignore: cast_nullable_to_non_nullable
-              as List<TariffModel>?,
+              as List<Data>?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -984,26 +428,16 @@ class _$TariffStateImpl implements _TariffState {
   const _$TariffStateImpl(
       {required this.allTariffStatus,
       required this.currentTariffStatus,
-      required this.categoryTariffStatus,
-      required this.hasLoadedTariffs,
       final List<TariffModel>? tariffs,
-      final List<Data>? localTariffList,
-      final List<CategoryTariffModel>? categoryTariffs,
-      final List<TariffModel>? currentTariff,
+      final List<Data>? currentTariff,
       this.errorMessage})
       : _tariffs = tariffs,
-        _localTariffList = localTariffList,
-        _categoryTariffs = categoryTariffs,
         _currentTariff = currentTariff;
 
   @override
   final BlocStatus allTariffStatus;
   @override
   final BlocStatus currentTariffStatus;
-  @override
-  final BlocStatus categoryTariffStatus;
-  @override
-  final bool hasLoadedTariffs;
   final List<TariffModel>? _tariffs;
   @override
   List<TariffModel>? get tariffs {
@@ -1014,29 +448,9 @@ class _$TariffStateImpl implements _TariffState {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<Data>? _localTariffList;
+  final List<Data>? _currentTariff;
   @override
-  List<Data>? get localTariffList {
-    final value = _localTariffList;
-    if (value == null) return null;
-    if (_localTariffList is EqualUnmodifiableListView) return _localTariffList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<CategoryTariffModel>? _categoryTariffs;
-  @override
-  List<CategoryTariffModel>? get categoryTariffs {
-    final value = _categoryTariffs;
-    if (value == null) return null;
-    if (_categoryTariffs is EqualUnmodifiableListView) return _categoryTariffs;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<TariffModel>? _currentTariff;
-  @override
-  List<TariffModel>? get currentTariff {
+  List<Data>? get currentTariff {
     final value = _currentTariff;
     if (value == null) return null;
     if (_currentTariff is EqualUnmodifiableListView) return _currentTariff;
@@ -1049,7 +463,7 @@ class _$TariffStateImpl implements _TariffState {
 
   @override
   String toString() {
-    return 'TariffState(allTariffStatus: $allTariffStatus, currentTariffStatus: $currentTariffStatus, categoryTariffStatus: $categoryTariffStatus, hasLoadedTariffs: $hasLoadedTariffs, tariffs: $tariffs, localTariffList: $localTariffList, categoryTariffs: $categoryTariffs, currentTariff: $currentTariff, errorMessage: $errorMessage)';
+    return 'TariffState(allTariffStatus: $allTariffStatus, currentTariffStatus: $currentTariffStatus, tariffs: $tariffs, currentTariff: $currentTariff, errorMessage: $errorMessage)';
   }
 
   @override
@@ -1061,15 +475,7 @@ class _$TariffStateImpl implements _TariffState {
                 other.allTariffStatus == allTariffStatus) &&
             (identical(other.currentTariffStatus, currentTariffStatus) ||
                 other.currentTariffStatus == currentTariffStatus) &&
-            (identical(other.categoryTariffStatus, categoryTariffStatus) ||
-                other.categoryTariffStatus == categoryTariffStatus) &&
-            (identical(other.hasLoadedTariffs, hasLoadedTariffs) ||
-                other.hasLoadedTariffs == hasLoadedTariffs) &&
             const DeepCollectionEquality().equals(other._tariffs, _tariffs) &&
-            const DeepCollectionEquality()
-                .equals(other._localTariffList, _localTariffList) &&
-            const DeepCollectionEquality()
-                .equals(other._categoryTariffs, _categoryTariffs) &&
             const DeepCollectionEquality()
                 .equals(other._currentTariff, _currentTariff) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -1081,11 +487,7 @@ class _$TariffStateImpl implements _TariffState {
       runtimeType,
       allTariffStatus,
       currentTariffStatus,
-      categoryTariffStatus,
-      hasLoadedTariffs,
       const DeepCollectionEquality().hash(_tariffs),
-      const DeepCollectionEquality().hash(_localTariffList),
-      const DeepCollectionEquality().hash(_categoryTariffs),
       const DeepCollectionEquality().hash(_currentTariff),
       errorMessage);
 
@@ -1102,12 +504,8 @@ abstract class _TariffState implements TariffState {
   const factory _TariffState(
       {required final BlocStatus allTariffStatus,
       required final BlocStatus currentTariffStatus,
-      required final BlocStatus categoryTariffStatus,
-      required final bool hasLoadedTariffs,
       final List<TariffModel>? tariffs,
-      final List<Data>? localTariffList,
-      final List<CategoryTariffModel>? categoryTariffs,
-      final List<TariffModel>? currentTariff,
+      final List<Data>? currentTariff,
       final String? errorMessage}) = _$TariffStateImpl;
 
   @override
@@ -1115,17 +513,9 @@ abstract class _TariffState implements TariffState {
   @override
   BlocStatus get currentTariffStatus;
   @override
-  BlocStatus get categoryTariffStatus;
-  @override
-  bool get hasLoadedTariffs;
-  @override
   List<TariffModel>? get tariffs;
   @override
-  List<Data>? get localTariffList;
-  @override
-  List<CategoryTariffModel>? get categoryTariffs;
-  @override
-  List<TariffModel>? get currentTariff;
+  List<Data>? get currentTariff;
   @override
   String? get errorMessage;
 

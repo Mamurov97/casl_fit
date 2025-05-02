@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:casl_fit/infrastructure/dto/models/tariff/category_tariff.dart';
 import 'package:casl_fit/infrastructure/dto/models/tariff/tariff_model.dart';
 import 'package:casl_fit/infrastructure/repository/tariff/tariff_repository.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -20,7 +19,7 @@ class TariffBloc extends Bloc<TariffEvent, TariffState> {
       try {
         final response = await repo.getCurrentTariffs();
         if (response['status'] == true) {
-          final List<TariffModel>? tariffs = response['result'].map<TariffModel>((item) => TariffModel.fromJson(item)).toList();
+          final List<Data>? tariffs = response['result'].map<Data>((item) => Data.fromJson(item)).toList();
           if ((tariffs ?? []).isNotEmpty) {
             emit(state.copyWith(currentTariffStatus: BlocStatus.success, currentTariff: tariffs));
           } else {
@@ -44,7 +43,6 @@ class TariffBloc extends Bloc<TariffEvent, TariffState> {
             emit(state.copyWith(
               allTariffStatus: BlocStatus.success,
               tariffs: tariffs,
-              hasLoadedTariffs: true,
             ));
           } else {
             emit(state.copyWith(allTariffStatus: BlocStatus.empty));
@@ -57,45 +55,5 @@ class TariffBloc extends Bloc<TariffEvent, TariffState> {
       }
     });
 
-    on<GetCategoryTariff>((event, emit) async {
-      emit(state.copyWith(categoryTariffStatus: BlocStatus.loading));
-      try {
-        final response = await repo.getCategoryTariffs();
-        if (response['status'] == true) {
-          final List<CategoryTariffModel>? categoryTariffs = response['result'].map<CategoryTariffModel>((item) => CategoryTariffModel.fromJson(item)).toList();
-          if ((categoryTariffs ?? []).isNotEmpty) {
-            emit(state.copyWith(categoryTariffStatus: BlocStatus.success, categoryTariffs: categoryTariffs));
-          } else {
-            emit(state.copyWith(categoryTariffStatus: BlocStatus.empty));
-          }
-        } else {
-          emit(state.copyWith(categoryTariffStatus: BlocStatus.error, errorMessage: response['error']['message']));
-        }
-      } catch (e) {
-        emit(state.copyWith(categoryTariffStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
-      }
-    });
-    /*on<SearchTariffs>((event, emit) async {
-      emit(state.copyWith(allTariffStatus: BlocStatus.loading));
-      try {
-        final response = await repo.getTariffs(searchText: event.searchText);
-        if (response['status'] == true) {
-          final List<TariffModel>? tariffs = response['result'].map<TariffModel>((item) => TariffModel.fromJson(item)).toList();
-          if ((tariffs ?? []).isNotEmpty) {
-            emit(state.copyWith(allTariffStatus: BlocStatus.success, tariffs: tariffs));
-          } else {
-            emit(state.copyWith(allTariffStatus: BlocStatus.empty));
-          }
-        } else {
-          emit(state.copyWith(allTariffStatus: BlocStatus.error, errorMessage: response['error']['message']));
-        }
-      } catch (e) {
-        emit(state.copyWith(allTariffStatus: BlocStatus.error, errorMessage: 'errors.unknown'.tr()));
-      }
-    });*/
-
-    on<GetTariffList>((event, emit) async {
-      emit(state.copyWith(localTariffList: event.tariffList));
-    });
   }
 }

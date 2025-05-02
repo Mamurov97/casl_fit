@@ -55,7 +55,10 @@ class MyApp extends StatelessWidget {
             create: (context) => HomeBloc()
               ..add(const GetLiveCountUserEvent())
               ..add(const HomeEvent.getDailyUserCount())),
-        BlocProvider(create: (context) => TariffBloc()..add(const GetCurrentTariffs())),
+        BlocProvider(
+            create: (context) => TariffBloc()
+              ..add(const GetCurrentTariffs())
+              ..add(const GetTariffs())),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
