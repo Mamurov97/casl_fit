@@ -47,21 +47,23 @@ class _UzbekWeekdaySelectorState extends State<UzbekWeekdaySelector> {
               widget.onChanged(index);
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
-              width: 0.12.sw,
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              width: 0.14.sw,
 
               decoration: BoxDecoration(
                 color: isSelected ? AppTheme.colors.primary : AppTheme.colors.secondary,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     weekDays[index],
                     style: TextStyle(
                       color: !isSelected ? Colors.white : Colors.black87,
                       fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                      fontSize: 12.sp,
                     ),
                   ),
                   SvgPicture.asset(

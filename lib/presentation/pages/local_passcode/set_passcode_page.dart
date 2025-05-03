@@ -22,58 +22,61 @@ class SetPasscodePage extends StatelessWidget {
       create: (context) => PasscodeCubit(passcodeStep: PasscodeStep.create),
       child: Builder(
         builder: (context) {
-          return Scaffold(
-            body: Stack(
-              children: [
-                Image.asset(
-                  AppImages.background,
-                  height: 1.sh,
-                  width: 1.sw,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.center,
-                ),
-                BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                  child: Container(
-                    color: Colors.black.withValues(alpha: 0.4),
+          return SafeArea(
+            top: false,
+            child: Scaffold(
+              body: Stack(
+                children: [
+                  Image.asset(
+                    AppImages.background,
                     height: 1.sh,
                     width: 1.sw,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.center,
                   ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: BlocConsumer<PasscodeCubit, PasscodeState>(
-                        listener: (context, state) {
-                          if (state.isProcessCompleted) {
-                            SharedPrefService.initialize().then((pref) {
-                              pref.setPasscode(state.passcodeOne.substring(0, 4));
-                            });
-                            UserData.passCodeStatus = true;
-
-                            if (context.mounted) {
-                              context.go("${Routes.root.path}${Routes.home.path}");
-                            }
-                          }
-                        },
-                        builder: (context, state) {
-                          return Text(
-                            state.passcodeStep == PasscodeStep.create ? "passcode.set_passcode".tr() : "passcode.confirm_passcode".tr(),
-                            style: Theme.of(context).textTheme.headlineLarge!.copyWith(fontSize: 20.sp, color: Colors.white),
-                          );
-                        },
-                      ),
+                  BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                    child: Container(
+                      color: Colors.black.withValues(alpha: 0.4),
+                      height: 1.sh,
+                      width: 1.sw,
                     ),
-                    Gap(25.h),
-                    const PasscodeField(),
-                    Gap(25.h),
-                    const PasscodeKeyboard(),
-                    Gap(30.h),
-                  ],
-                ),
-              ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: BlocConsumer<PasscodeCubit, PasscodeState>(
+                          listener: (context, state) {
+                            if (state.isProcessCompleted) {
+                              SharedPrefService.initialize().then((pref) {
+                                pref.setPasscode(state.passcodeOne.substring(0, 4));
+                              });
+                              UserData.passCodeStatus = true;
+
+                              if (context.mounted) {
+                                context.go("${Routes.root.path}${Routes.home.path}");
+                              }
+                            }
+                          },
+                          builder: (context, state) {
+                            return Text(
+                              state.passcodeStep == PasscodeStep.create ? "passcode.set_passcode".tr() : "passcode.confirm_passcode".tr(),
+                              style: Theme.of(context).textTheme.headlineLarge!.copyWith(fontSize: 20.sp, color: Colors.white),
+                            );
+                          },
+                        ),
+                      ),
+                      Gap(25.h),
+                      const PasscodeField(),
+                      Gap(25.h),
+                      const PasscodeKeyboard(),
+                      Gap(30.h),
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
         },

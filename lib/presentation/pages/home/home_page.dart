@@ -41,6 +41,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "CASL FIT",
+          style: AppTheme.data.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: AppTheme.colors.primary, fontSize: 20.sp, letterSpacing: 2.3),
+        ),
+        titleSpacing: 8.w,
+        backgroundColor: Colors.transparent,
+      ),
+      extendBodyBehindAppBar: true,
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           return Stack(
@@ -79,40 +88,13 @@ class _HomePageState extends State<HomePage> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.w),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "CASL FIT",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: AppTheme.data.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: AppTheme.colors.primary, fontSize: 18.sp, letterSpacing: 2.3),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              /*IconNotificationButton(
-                                onPressed: () {},
-                                icon: AppIcons.notification,
-                                iconColor: AppTheme.colors.white,
-                                count: 2,
-                              ),*/
-                            ],
-                          ),
-                        ),
                         Gap(8.h),
                         state.dailyUserCountStatus == BlocStatus.success
                             ? UzbekWeekdaySelector(
-                              onChanged: (v) {
-                                context.read<HomeBloc>().add(HomeEvent.getWeekDay(v));
-                              },
-                            )
+                                onChanged: (v) {
+                                  context.read<HomeBloc>().add(HomeEvent.getWeekDay(v));
+                                },
+                              )
                             : const SizedBox(),
                         Gap(4.h),
                         state.dailyUserCountStatus == BlocStatus.success

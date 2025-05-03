@@ -107,22 +107,6 @@ final GoRouter router = GoRouter(
         child: VerifyPage(type: state.extra as String),
       ),
     ),
-    GoRoute(
-      name: Routes.checkPasscode.name,
-      path: Routes.checkPasscode.path,
-      pageBuilder: (context, state) => MaterialPage<void>(
-        key: state.pageKey,
-        child: const CheckPasscodePage(),
-      ),
-    ),
-    GoRoute(
-      name: Routes.createPasscode.name,
-      path: Routes.createPasscode.path,
-      pageBuilder: (context, state) => MaterialPage<void>(
-        key: state.pageKey,
-        child: const SetPasscodePage(),
-      ),
-    ),
 
     ///bottom_navigation_bar
     GoRoute(
