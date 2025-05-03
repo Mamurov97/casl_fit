@@ -4,13 +4,12 @@ import 'package:casl_fit/application/app_manager/app_manager_cubit.dart';
 import 'package:casl_fit/application/check_version/check_version_cubit.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oktoast/oktoast.dart';
 
 import 'components/dialogs/update_dialog.dart';
-import 'routes/coordinator.dart'; // router shu yerda
+import 'routes/coordinator.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -31,7 +30,7 @@ class AppWidget extends StatelessWidget {
             child: BlocListener<CheckVersionCubit, CheckVersionState>(
               listener: (context, state) {
                 if (state is AppCheckVersionSuccess) {
-                  if (state.update == true && !kDebugMode) {
+                  if (state.update == true) {
                     WidgetsBinding.instance.addPostFrameCallback((_) {
                       final navigator = rootNavigatorKey.currentState;
                       if (navigator?.mounted ?? false) {

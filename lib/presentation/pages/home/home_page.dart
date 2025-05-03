@@ -10,6 +10,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../application/home/home_bloc.dart';
 import '../../components/basic_widgets.dart';
+import '../../components/line_wave.dart';
 import 'components/multi_line_chart_carousel.dart';
 
 class HomePage extends StatefulWidget {
@@ -121,39 +122,47 @@ class _HomePageState extends State<HomePage> {
                           padding: EdgeInsets.symmetric(horizontal: 8.w),
                           child: Container(
                             width: 1.sw,
+                            height: 100.h,
                             decoration: BoxDecoration(
                               color: AppTheme.colors.secondary,
                               borderRadius: BorderRadius.circular(12.r),
                             ),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 12.w),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      SvgPicture.asset(
-                                        AppIcons.people,
-                                        colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                                      ),
-                                      Gap(10.w),
-                                      Text(
-                                        "Hozirda zalda ",
-                                        style: AppTheme.data.textTheme.headlineMedium!.copyWith(color: AppTheme.colors.white),
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 12.w),
-                                    child: Text(
-                                      "${(state.liveUserCount ?? 0)}",
-                                      style: AppTheme.data.textTheme.displayMedium!.copyWith(color: AppTheme.colors.primary),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                  padding: EdgeInsets.symmetric(vertical: 35.h),
+
+                            child:Stack(
+                              children: [
+                                 Padding(
+                                   padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                   child: Row(
+                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                     children: [
+                                       Row(
+                                         mainAxisSize: MainAxisSize.min,
+                                         crossAxisAlignment: CrossAxisAlignment.center,
+                                         children: [
+                                           SvgPicture.asset(
+                                             AppIcons.people,
+                                             colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                                           ),
+                                           Gap(10.w),
+                                           Text(
+                                             "Hozirda zalda ",
+                                             style: AppTheme.data.textTheme.headlineMedium!.copyWith(color: AppTheme.colors.white),
+                                           ),
+                                         ],
+                                       ),
+                                       Padding(
+                                         padding: EdgeInsets.only(right: 12.w),
+                                         child: Text(
+                                           "${(state.liveUserCount ?? 0)}",
+                                           style: AppTheme.data.textTheme.displayMedium!.copyWith(color: AppTheme.colors.primary),
+                                         ),
+                                       ),
+                                     ],
+                                   ),
+                                 ),
+                                const MultiLineWaveAnimation(),
+                              ],
                             ),
                           ),
                         ),

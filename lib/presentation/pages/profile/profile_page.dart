@@ -59,91 +59,52 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text('profile.profile'.tr(), style: const TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
-      body: SmartRefresher(
-        controller: _refreshController,
-        onRefresh: () {
-          context.read<ProfileBloc>().add(GetUserBalance());
-          context.read<ProfileBloc>().add(GetProfileDataEvent());
-          _refreshController.refreshCompleted();
-        },
-        onLoading: () {
-          _refreshController.loadComplete();
-        },
-        child: Stack(
-          children: [
-            Image.asset(
-              AppImages.background,
+      body: Stack(
+        children: [
+          Image.asset(
+            AppImages.background,
+            height: 1.sh,
+            width: 1.sw,
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+          ),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+            child: Container(
+              color: Colors.black.withValues(alpha: 0.3),
               height: 1.sh,
               width: 1.sw,
-              fit: BoxFit.cover,
-              alignment: Alignment.center,
             ),
-            BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-              child: Container(
-                color: Colors.black.withValues(alpha: 0.3),
-                height: 1.sh,
-                width: 1.sw,
-              ),
-            ),
-            SafeArea(
-              child: BlocConsumer<ProfileBloc, ProfileState>(
-                listener: (context, state) {},
-                builder: (context, state) {
-                  if (state.status == BlocStatus.loading) {
-                    return const CircularIndicator();
-                  } else if (state.status == BlocStatus.error) {
-                    return ErrorPage(
-                        onPressed: () {
-                          context.read<ProfileBloc>().add(GetProfileDataEvent());
-                        },
-                        error: state.errorMessage.toString());
-                  } else if (state.status == BlocStatus.success) {
-                    ProfileResponse data = state.profileResponse ?? ProfileResponse();
-                    return SingleChildScrollView(
+          ),
+          SafeArea(
+            child: BlocConsumer<ProfileBloc, ProfileState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                if (state.status == BlocStatus.loading) {
+                  return const CircularIndicator();
+                } else if (state.status == BlocStatus.error) {
+                  return ErrorPage(
+                      onPressed: () {
+                        context.read<ProfileBloc>().add(GetProfileDataEvent());
+                      },
+                      error: state.errorMessage.toString());
+                } else if (state.status == BlocStatus.success) {
+                  ProfileResponse data = state.profileResponse ?? ProfileResponse();
+                  return SmartRefresher(
+                    controller: _refreshController,
+                    onRefresh: () {
+                      context.read<ProfileBloc>().add(GetUserBalance());
+                      context.read<ProfileBloc>().add(GetProfileDataEvent());
+                      _refreshController.refreshCompleted();
+                    },
+                    onLoading: () {
+                      _refreshController.loadComplete();
+                    },
+                    child: SingleChildScrollView(
                       padding: EdgeInsets.symmetric(horizontal: 16.w),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          /*   Container(
-                            height: 80.h,
-                            width: 80.w,
-                            decoration:  BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                              border: Border.fromBorderSide(
-                                BorderSide(
-                                  color: AppTheme.colors.primary,
-                                  width: 2.0,
-                                ),
-                              ),
-
-                            ),
-                            child: Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Icon(
-                                CupertinoIcons.person_alt,
-                                size: 50.w,
-                              ),
-                            ),
-                          ),
-                          Gap(8.h),
-                          Text(
-                            data.name ?? "",
-                            textAlign: TextAlign.start,
-                            maxLines: 3,
-                            style: AppTheme.data.textTheme.titleMedium!.copyWith(color: AppTheme.colors.white),
-                          ),
-                          Gap(4.h),
-                          Text(
-                            maskFormatter.maskText("+998${data.tel}" ?? ""),
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              color: Colors.white60,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),*/
                           Container(
                             padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
                             margin: EdgeInsets.only(bottom: 20.h),
@@ -280,14 +241,14 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),*/
                         ],
                       ),
-                    );
-                  }
-                  return const SizedBox();
-                },
-              ),
+                    ),
+                  );
+                }
+                return const SizedBox();
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: BlocBuilder<ProfileBloc, ProfileState>(
