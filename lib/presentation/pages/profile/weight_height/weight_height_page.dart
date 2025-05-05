@@ -1,10 +1,12 @@
 import 'dart:ui';
+
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/infrastructure/dto/models/home/profile/weight_height_response.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/components/basic_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../application/profile/weight_height/weight_height_bloc.dart';
 import '../../../components/screens/empty_page.dart';
 import '../components/create_weight_dialog.dart';
@@ -45,29 +47,29 @@ class WeightHeightPage extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return BlocProvider(
-                        create: (context) => WeightHeightBloc()..add(WeightHeightEnumEvent(weightHeightEnum: variableState.weightHeightEnum)),
-                        child: const CreateWeightDialog(),
-                      );
-                    }).then((value) {
-                  if (value == true&&context.mounted) {
-                    context.read<WeightHeightBloc>().add(GetWeightHeightEvent(weightHeightEnum: variableState.weightHeightEnum));
-                  }
+                              create: (context) => WeightHeightBloc()..add(WeightHeightEnumEvent(weightHeightEnum: variableState.weightHeightEnum)),
+                              child: const CreateWeightDialog(),
+                            );
+                          }).then((value) {
+                        if (value == true && context.mounted) {
+                          context.read<WeightHeightBloc>().add(GetWeightHeightEvent(weightHeightEnum: variableState.weightHeightEnum));
+                        }
                       });
                     } else {
-                      Toast.showInfoToast(message: 'Bir oyda faqat bir marta malumot kiritish mumkin');
+                      Toast.showInfoToast(message: '3 Kunda bir marotaba ${variableState.weightHeightEnum == WeightHeightEnum.height ? "Bo'y" : "Vazn"} kiritish mumkin');
                     }
                   },
                   child: Container(
                     decoration: BoxDecoration(color: AppTheme.colors.primary, borderRadius: BorderRadius.circular(8.r)),
                     child: Padding(
-                  padding: EdgeInsets.all(2.w),
-                  child: Icon(
-                    Icons.add,
-                    color: AppTheme.colors.secondary,
-                    size: 25.w,
+                      padding: EdgeInsets.all(2.w),
+                      child: Icon(
+                        Icons.add,
+                        color: AppTheme.colors.secondary,
+                        size: 25.w,
+                      ),
+                    ),
                   ),
-                ),
-              ),
                 );
               },
             ),
@@ -121,7 +123,7 @@ class WeightHeightPage extends StatelessWidget {
                   return const Center(
                     child: CircularIndicator(),
                   );
-                }else if (state.status == BlocStatus.empty) {
+                } else if (state.status == BlocStatus.empty) {
                   return const EmptyPage();
                 } else {
                   return ErrorPage(
@@ -147,22 +149,34 @@ class WeightHeightPage extends StatelessWidget {
   }
 
   bool checkStatus(List<WeightHeightResponse> list) {
-    for (int i = 0; i < list.length; i++) {
-      var now = DateTime.now();
-      var dateString = list[i].date ?? '';
+    final now = DateTime.now();
+    final threeDaysAgo = now.subtract(const Duration(days: 3));
 
-      var dateParts = dateString.split('.');
-      if (dateParts.length == 3) {
-        var day = int.parse(dateParts[0]);
-        var month = int.parse(dateParts[1]);
-        var year = int.parse(dateParts[2]);
-        var time = DateTime(year, month, day);
+    for (final item in list) {
+      final dateString = item.date;
 
-        if (now.year == time.year && now.month == time.month) {
+      if (dateString == null || dateString.trim().isEmpty) continue;
+
+      final dateParts = dateString.split('.');
+      if (dateParts.length != 3) continue;
+
+      try {
+        final day = int.parse(dateParts[0]);
+        final month = int.parse(dateParts[1]);
+        final year = int.parse(dateParts[2]);
+
+        final date = DateTime(year, month, day);
+
+        // Agar sana bugungi kundan 3 kun orqaga qadar bo'lsa (shu jumladan bugungi kun)
+        if (!date.isBefore(threeDaysAgo) && !date.isAfter(now)) {
           return false;
         }
+      } catch (e) {
+        // noto‘g‘ri sanani e’tiborsiz qoldiramiz
+        continue;
       }
     }
+
     return true;
   }
 }

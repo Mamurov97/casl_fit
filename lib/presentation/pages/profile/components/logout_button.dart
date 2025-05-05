@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:easy_localization/easy_localization.dart';
+
 import '../../../assets/res/app_assets.dart';
 import '../../../assets/theme/app_theme.dart';
 import '../../../components/dialogs/exit_dialog.dart';
@@ -33,13 +33,7 @@ class _LogoutButtonState extends State<LogoutButton> {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppTheme.colors.primary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.r),
-        ),
-      ),
+    return IconButton(
       onPressed: () {
         showDialog(
           context: context,
@@ -54,23 +48,10 @@ class _LogoutButtonState extends State<LogoutButton> {
           ),
         );
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              AppIcons.logout,
-              height: 16.sp,
-              colorFilter: ColorFilter.mode(AppTheme.colors.secondary, BlendMode.srcIn),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              'profile.logout'.tr(),
-              style: TextStyle(color: AppTheme.colors.secondary),
-            ),
-          ],
-        ),
+      icon: SvgPicture.asset(
+        AppIcons.logout,
+        height: 25.sp,
+        colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
       ),
     );
   }

@@ -57,6 +57,16 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text('profile.profile'.tr(), style: const TextStyle(color: Colors.white)),
+        actions: [
+          BlocBuilder<ProfileBloc, ProfileState>(
+            builder: (context, state) {
+              return const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: LogoutButton(),
+              );
+            },
+          )
+        ],
         centerTitle: true,
       ),
       body: Stack(
@@ -249,15 +259,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
         ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: BlocBuilder<ProfileBloc, ProfileState>(
-        builder: (context, state) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: LogoutButton(),
-          );
-        },
       ),
     );
   }
