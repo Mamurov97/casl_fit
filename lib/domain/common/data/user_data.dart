@@ -8,4 +8,5 @@ class UserData {
   static String role = '';
   static bool authStatus = false;
   static bool passCodeStatus = false;
+  static Map<String, dynamic> deviceInfo = {};
 }
