@@ -198,12 +198,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                   });
                                 },
                               ),
-                              InfoItem(
-                                type: 'yosh',
-                                text: "Yosh",
-                                icon: AppIcons.age,
-                                value: (state.profileResponse?.age ?? 0).toString(),
-                              ),
                             ],
                           ),
                           Gap(20.h),
