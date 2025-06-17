@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "868341109544",
+    "project_id": "casl-fit-app",
+    "storage_bucket": "casl-fit-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868341109544:android:3c92fd04c90e13062bb61d",
+        "android_client_info": {
+          "package_name": "com.garantsoft.casl_fit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLqslXVAVYUM7jRqedMHRd55OsitMns08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
