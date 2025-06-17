@@ -9,6 +9,7 @@ class HomeState with _$HomeState {
     DailyCountResponse? dailyCountResponse,
     String? errorMessage,
     int? liveUserCount,
+    int? notificationCount,
   }) = _HomeState;
 
   factory HomeState.initial() => HomeState(

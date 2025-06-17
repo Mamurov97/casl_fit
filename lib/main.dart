@@ -13,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'application/app_manager/app_manager_cubit.dart';
 import 'application/auth/init/auth_bloc.dart';
 import 'application/check_version/check_version_cubit.dart';
+import 'application/home/notification/notification_bloc.dart';
 import 'domain/common/app_init.dart';
 import 'presentation/app_widget.dart';
 
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()),
         BlocProvider(create: (context) => CheckVersionCubit()..checkVersion()),
         BlocProvider(create: (context) => AuthBloc()),
+        BlocProvider(create: (context) => NotificationBloc()),
         BlocProvider(
             create: (context) => ProfileBloc()
               ..add(GetUserBalance())
@@ -54,6 +56,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => HomeBloc()
               ..add(const GetLiveCountUserEvent())
+              ..add(const GetNotificationCountEvent())
               ..add(const HomeEvent.getDailyUserCount())),
         BlocProvider(
             create: (context) => TariffBloc()

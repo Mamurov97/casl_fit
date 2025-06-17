@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getNotificationCount,
     required TResult Function() getLiveUserCount,
     required TResult Function() getDailyUserCount,
     required TResult Function(int weekDay) getWeekDay,
@@ -25,6 +26,7 @@ mixin _$HomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNotificationCount,
     TResult? Function()? getLiveUserCount,
     TResult? Function()? getDailyUserCount,
     TResult? Function(int weekDay)? getWeekDay,
@@ -32,6 +34,7 @@ mixin _$HomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNotificationCount,
     TResult Function()? getLiveUserCount,
     TResult Function()? getDailyUserCount,
     TResult Function(int weekDay)? getWeekDay,
@@ -40,6 +43,8 @@ mixin _$HomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetNotificationCountEvent value)
+        getNotificationCount,
     required TResult Function(GetLiveCountUserEvent value) getLiveUserCount,
     required TResult Function(GetDailyUserCountEvent value) getDailyUserCount,
     required TResult Function(GetWeekDayEvent value) getWeekDay,
@@ -47,6 +52,7 @@ mixin _$HomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetNotificationCountEvent value)? getNotificationCount,
     TResult? Function(GetLiveCountUserEvent value)? getLiveUserCount,
     TResult? Function(GetDailyUserCountEvent value)? getDailyUserCount,
     TResult? Function(GetWeekDayEvent value)? getWeekDay,
@@ -54,6 +60,7 @@ mixin _$HomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetNotificationCountEvent value)? getNotificationCount,
     TResult Function(GetLiveCountUserEvent value)? getLiveUserCount,
     TResult Function(GetDailyUserCountEvent value)? getDailyUserCount,
     TResult Function(GetWeekDayEvent value)? getWeekDay,
@@ -80,6 +87,127 @@ class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
 
   /// Create a copy of HomeEvent
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$GetNotificationCountEventImplCopyWith<$Res> {
+  factory _$$GetNotificationCountEventImplCopyWith(
+          _$GetNotificationCountEventImpl value,
+          $Res Function(_$GetNotificationCountEventImpl) then) =
+      __$$GetNotificationCountEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetNotificationCountEventImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$GetNotificationCountEventImpl>
+    implements _$$GetNotificationCountEventImplCopyWith<$Res> {
+  __$$GetNotificationCountEventImplCopyWithImpl(
+      _$GetNotificationCountEventImpl _value,
+      $Res Function(_$GetNotificationCountEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GetNotificationCountEventImpl implements GetNotificationCountEvent {
+  const _$GetNotificationCountEventImpl();
+
+  @override
+  String toString() {
+    return 'HomeEvent.getNotificationCount()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetNotificationCountEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getNotificationCount,
+    required TResult Function() getLiveUserCount,
+    required TResult Function() getDailyUserCount,
+    required TResult Function(int weekDay) getWeekDay,
+  }) {
+    return getNotificationCount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNotificationCount,
+    TResult? Function()? getLiveUserCount,
+    TResult? Function()? getDailyUserCount,
+    TResult? Function(int weekDay)? getWeekDay,
+  }) {
+    return getNotificationCount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNotificationCount,
+    TResult Function()? getLiveUserCount,
+    TResult Function()? getDailyUserCount,
+    TResult Function(int weekDay)? getWeekDay,
+    required TResult orElse(),
+  }) {
+    if (getNotificationCount != null) {
+      return getNotificationCount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetNotificationCountEvent value)
+        getNotificationCount,
+    required TResult Function(GetLiveCountUserEvent value) getLiveUserCount,
+    required TResult Function(GetDailyUserCountEvent value) getDailyUserCount,
+    required TResult Function(GetWeekDayEvent value) getWeekDay,
+  }) {
+    return getNotificationCount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetNotificationCountEvent value)? getNotificationCount,
+    TResult? Function(GetLiveCountUserEvent value)? getLiveUserCount,
+    TResult? Function(GetDailyUserCountEvent value)? getDailyUserCount,
+    TResult? Function(GetWeekDayEvent value)? getWeekDay,
+  }) {
+    return getNotificationCount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetNotificationCountEvent value)? getNotificationCount,
+    TResult Function(GetLiveCountUserEvent value)? getLiveUserCount,
+    TResult Function(GetDailyUserCountEvent value)? getDailyUserCount,
+    TResult Function(GetWeekDayEvent value)? getWeekDay,
+    required TResult orElse(),
+  }) {
+    if (getNotificationCount != null) {
+      return getNotificationCount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetNotificationCountEvent implements HomeEvent {
+  const factory GetNotificationCountEvent() = _$GetNotificationCountEventImpl;
 }
 
 /// @nodoc
@@ -125,6 +253,7 @@ class _$GetLiveCountUserEventImpl implements GetLiveCountUserEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getNotificationCount,
     required TResult Function() getLiveUserCount,
     required TResult Function() getDailyUserCount,
     required TResult Function(int weekDay) getWeekDay,
@@ -135,6 +264,7 @@ class _$GetLiveCountUserEventImpl implements GetLiveCountUserEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNotificationCount,
     TResult? Function()? getLiveUserCount,
     TResult? Function()? getDailyUserCount,
     TResult? Function(int weekDay)? getWeekDay,
@@ -145,6 +275,7 @@ class _$GetLiveCountUserEventImpl implements GetLiveCountUserEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNotificationCount,
     TResult Function()? getLiveUserCount,
     TResult Function()? getDailyUserCount,
     TResult Function(int weekDay)? getWeekDay,
@@ -159,6 +290,8 @@ class _$GetLiveCountUserEventImpl implements GetLiveCountUserEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetNotificationCountEvent value)
+        getNotificationCount,
     required TResult Function(GetLiveCountUserEvent value) getLiveUserCount,
     required TResult Function(GetDailyUserCountEvent value) getDailyUserCount,
     required TResult Function(GetWeekDayEvent value) getWeekDay,
@@ -169,6 +302,7 @@ class _$GetLiveCountUserEventImpl implements GetLiveCountUserEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetNotificationCountEvent value)? getNotificationCount,
     TResult? Function(GetLiveCountUserEvent value)? getLiveUserCount,
     TResult? Function(GetDailyUserCountEvent value)? getDailyUserCount,
     TResult? Function(GetWeekDayEvent value)? getWeekDay,
@@ -179,6 +313,7 @@ class _$GetLiveCountUserEventImpl implements GetLiveCountUserEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetNotificationCountEvent value)? getNotificationCount,
     TResult Function(GetLiveCountUserEvent value)? getLiveUserCount,
     TResult Function(GetDailyUserCountEvent value)? getDailyUserCount,
     TResult Function(GetWeekDayEvent value)? getWeekDay,
@@ -239,6 +374,7 @@ class _$GetDailyUserCountEventImpl implements GetDailyUserCountEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getNotificationCount,
     required TResult Function() getLiveUserCount,
     required TResult Function() getDailyUserCount,
     required TResult Function(int weekDay) getWeekDay,
@@ -249,6 +385,7 @@ class _$GetDailyUserCountEventImpl implements GetDailyUserCountEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNotificationCount,
     TResult? Function()? getLiveUserCount,
     TResult? Function()? getDailyUserCount,
     TResult? Function(int weekDay)? getWeekDay,
@@ -259,6 +396,7 @@ class _$GetDailyUserCountEventImpl implements GetDailyUserCountEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNotificationCount,
     TResult Function()? getLiveUserCount,
     TResult Function()? getDailyUserCount,
     TResult Function(int weekDay)? getWeekDay,
@@ -273,6 +411,8 @@ class _$GetDailyUserCountEventImpl implements GetDailyUserCountEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetNotificationCountEvent value)
+        getNotificationCount,
     required TResult Function(GetLiveCountUserEvent value) getLiveUserCount,
     required TResult Function(GetDailyUserCountEvent value) getDailyUserCount,
     required TResult Function(GetWeekDayEvent value) getWeekDay,
@@ -283,6 +423,7 @@ class _$GetDailyUserCountEventImpl implements GetDailyUserCountEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetNotificationCountEvent value)? getNotificationCount,
     TResult? Function(GetLiveCountUserEvent value)? getLiveUserCount,
     TResult? Function(GetDailyUserCountEvent value)? getDailyUserCount,
     TResult? Function(GetWeekDayEvent value)? getWeekDay,
@@ -293,6 +434,7 @@ class _$GetDailyUserCountEventImpl implements GetDailyUserCountEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetNotificationCountEvent value)? getNotificationCount,
     TResult Function(GetLiveCountUserEvent value)? getLiveUserCount,
     TResult Function(GetDailyUserCountEvent value)? getDailyUserCount,
     TResult Function(GetWeekDayEvent value)? getWeekDay,
@@ -378,6 +520,7 @@ class _$GetWeekDayEventImpl implements GetWeekDayEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getNotificationCount,
     required TResult Function() getLiveUserCount,
     required TResult Function() getDailyUserCount,
     required TResult Function(int weekDay) getWeekDay,
@@ -388,6 +531,7 @@ class _$GetWeekDayEventImpl implements GetWeekDayEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNotificationCount,
     TResult? Function()? getLiveUserCount,
     TResult? Function()? getDailyUserCount,
     TResult? Function(int weekDay)? getWeekDay,
@@ -398,6 +542,7 @@ class _$GetWeekDayEventImpl implements GetWeekDayEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNotificationCount,
     TResult Function()? getLiveUserCount,
     TResult Function()? getDailyUserCount,
     TResult Function(int weekDay)? getWeekDay,
@@ -412,6 +557,8 @@ class _$GetWeekDayEventImpl implements GetWeekDayEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetNotificationCountEvent value)
+        getNotificationCount,
     required TResult Function(GetLiveCountUserEvent value) getLiveUserCount,
     required TResult Function(GetDailyUserCountEvent value) getDailyUserCount,
     required TResult Function(GetWeekDayEvent value) getWeekDay,
@@ -422,6 +569,7 @@ class _$GetWeekDayEventImpl implements GetWeekDayEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetNotificationCountEvent value)? getNotificationCount,
     TResult? Function(GetLiveCountUserEvent value)? getLiveUserCount,
     TResult? Function(GetDailyUserCountEvent value)? getDailyUserCount,
     TResult? Function(GetWeekDayEvent value)? getWeekDay,
@@ -432,6 +580,7 @@ class _$GetWeekDayEventImpl implements GetWeekDayEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetNotificationCountEvent value)? getNotificationCount,
     TResult Function(GetLiveCountUserEvent value)? getLiveUserCount,
     TResult Function(GetDailyUserCountEvent value)? getDailyUserCount,
     TResult Function(GetWeekDayEvent value)? getWeekDay,
@@ -465,6 +614,7 @@ mixin _$HomeState {
       throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   int? get liveUserCount => throw _privateConstructorUsedError;
+  int? get notificationCount => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -484,7 +634,8 @@ abstract class $HomeStateCopyWith<$Res> {
       int weekDay,
       DailyCountResponse? dailyCountResponse,
       String? errorMessage,
-      int? liveUserCount});
+      int? liveUserCount,
+      int? notificationCount});
 
   $DailyCountResponseCopyWith<$Res>? get dailyCountResponse;
 }
@@ -510,6 +661,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? dailyCountResponse = freezed,
     Object? errorMessage = freezed,
     Object? liveUserCount = freezed,
+    Object? notificationCount = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -535,6 +687,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
       liveUserCount: freezed == liveUserCount
           ? _value.liveUserCount
           : liveUserCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      notificationCount: freezed == notificationCount
+          ? _value.notificationCount
+          : notificationCount // ignore: cast_nullable_to_non_nullable
               as int?,
     ) as $Val);
   }
@@ -569,7 +725,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       int weekDay,
       DailyCountResponse? dailyCountResponse,
       String? errorMessage,
-      int? liveUserCount});
+      int? liveUserCount,
+      int? notificationCount});
 
   @override
   $DailyCountResponseCopyWith<$Res>? get dailyCountResponse;
@@ -594,6 +751,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? dailyCountResponse = freezed,
     Object? errorMessage = freezed,
     Object? liveUserCount = freezed,
+    Object? notificationCount = freezed,
   }) {
     return _then(_$HomeStateImpl(
       status: null == status
@@ -620,6 +778,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.liveUserCount
           : liveUserCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      notificationCount: freezed == notificationCount
+          ? _value.notificationCount
+          : notificationCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -633,7 +795,8 @@ class _$HomeStateImpl implements _HomeState {
       required this.weekDay,
       this.dailyCountResponse,
       this.errorMessage,
-      this.liveUserCount});
+      this.liveUserCount,
+      this.notificationCount});
 
   @override
   final BlocStatus status;
@@ -647,10 +810,12 @@ class _$HomeStateImpl implements _HomeState {
   final String? errorMessage;
   @override
   final int? liveUserCount;
+  @override
+  final int? notificationCount;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, dailyUserCountStatus: $dailyUserCountStatus, weekDay: $weekDay, dailyCountResponse: $dailyCountResponse, errorMessage: $errorMessage, liveUserCount: $liveUserCount)';
+    return 'HomeState(status: $status, dailyUserCountStatus: $dailyUserCountStatus, weekDay: $weekDay, dailyCountResponse: $dailyCountResponse, errorMessage: $errorMessage, liveUserCount: $liveUserCount, notificationCount: $notificationCount)';
   }
 
   @override
@@ -667,12 +832,21 @@ class _$HomeStateImpl implements _HomeState {
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.liveUserCount, liveUserCount) ||
-                other.liveUserCount == liveUserCount));
+                other.liveUserCount == liveUserCount) &&
+            (identical(other.notificationCount, notificationCount) ||
+                other.notificationCount == notificationCount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, dailyUserCountStatus,
-      weekDay, dailyCountResponse, errorMessage, liveUserCount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      dailyUserCountStatus,
+      weekDay,
+      dailyCountResponse,
+      errorMessage,
+      liveUserCount,
+      notificationCount);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -690,7 +864,8 @@ abstract class _HomeState implements HomeState {
       required final int weekDay,
       final DailyCountResponse? dailyCountResponse,
       final String? errorMessage,
-      final int? liveUserCount}) = _$HomeStateImpl;
+      final int? liveUserCount,
+      final int? notificationCount}) = _$HomeStateImpl;
 
   @override
   BlocStatus get status;
@@ -704,6 +879,8 @@ abstract class _HomeState implements HomeState {
   String? get errorMessage;
   @override
   int? get liveUserCount;
+  @override
+  int? get notificationCount;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

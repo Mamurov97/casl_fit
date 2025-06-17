@@ -160,12 +160,23 @@ final GoRouter router = GoRouter(
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                    name: Routes.home.name,
-                    path: Routes.home.path,
-                    redirect: (context, state) => _redirects(),
-                    pageBuilder: (context, state) {
-                      return MaterialPage<void>(key: state.pageKey, child: const HomePage());
-                    }),
+                  name: Routes.home.name,
+                  path: Routes.home.path,
+                  redirect: (context, state) => _redirects(),
+                  pageBuilder: (context, state) {
+                    return MaterialPage<void>(key: state.pageKey, child: const HomePage());
+                  },
+                  routes: [
+                    GoRoute(
+                      name: Routes.notification.name,
+                      path: Routes.notification.path,
+                      redirect: (context, state) => _redirects(),
+                      pageBuilder: (context, state) {
+                        return MaterialPage<void>(key: state.pageKey, child: const NotificationPage());
+                      },
+                    ),
+                  ],
+                ),
               ],
             ),
             StatefulShellBranch(

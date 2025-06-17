@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:badges/badges.dart' as badges;
 import 'package:casl_fit/domain/common/enums/bloc_status.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:casl_fit/presentation/pages/home/components/weekday_select.dart';
+import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -43,12 +45,35 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        titleSpacing: 8.w,
+        backgroundColor: Colors.transparent,
         title: Text(
           "CASL FIT",
           style: AppTheme.data.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: AppTheme.colors.primary, fontSize: 20.sp, letterSpacing: 2.3),
         ),
-        titleSpacing: 8.w,
-        backgroundColor: Colors.transparent,
+        actions: [
+          BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              return IconButton(
+                onPressed: () {
+                  context.push("${Routes.root.path}${Routes.home.path}${Routes.notification.path}").then((v){
+                    if(context.mounted){
+                      context.read<HomeBloc>().add(const HomeEvent.getNotificationCount());
+                    }
+                  });
+                },
+                icon: badges.Badge(
+                  showBadge: (state.notificationCount ?? 0) > 0,
+                  position: badges.BadgePosition.topEnd(top: 0, end: 0),
+                  child: SvgPicture.asset(
+                    AppIcons.notification,
+                    colorFilter: ColorFilter.mode(AppTheme.colors.white, BlendMode.srcIn),
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       extendBodyBehindAppBar: true,
       body: BlocBuilder<HomeBloc, HomeState>(
@@ -127,40 +152,39 @@ class _HomePageState extends State<HomePage> {
                               color: AppTheme.colors.secondary,
                               borderRadius: BorderRadius.circular(12.r),
                             ),
-                                  padding: EdgeInsets.symmetric(vertical: 35.h),
-
-                            child:Stack(
+                            padding: EdgeInsets.symmetric(vertical: 35.h),
+                            child: Stack(
                               children: [
-                                 Padding(
-                                   padding: EdgeInsets.symmetric(horizontal: 12.w),
-                                   child: Row(
-                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                     children: [
-                                       Row(
-                                         mainAxisSize: MainAxisSize.min,
-                                         crossAxisAlignment: CrossAxisAlignment.center,
-                                         children: [
-                                           SvgPicture.asset(
-                                             AppIcons.people,
-                                             colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
-                                           ),
-                                           Gap(10.w),
-                                           Text(
-                                             "Hozirda zalda ",
-                                             style: AppTheme.data.textTheme.headlineMedium!.copyWith(color: AppTheme.colors.white),
-                                           ),
-                                         ],
-                                       ),
-                                       Padding(
-                                         padding: EdgeInsets.only(right: 12.w),
-                                         child: Text(
-                                           "${(state.liveUserCount ?? 0)}",
-                                           style: AppTheme.data.textTheme.displayMedium!.copyWith(color: AppTheme.colors.primary),
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                 ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          SvgPicture.asset(
+                                            AppIcons.people,
+                                            colorFilter: ColorFilter.mode(AppTheme.colors.primary, BlendMode.srcIn),
+                                          ),
+                                          Gap(10.w),
+                                          Text(
+                                            "Hozirda zalda ",
+                                            style: AppTheme.data.textTheme.headlineMedium!.copyWith(color: AppTheme.colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(right: 12.w),
+                                        child: Text(
+                                          "${(state.liveUserCount ?? 0)}",
+                                          style: AppTheme.data.textTheme.displayMedium!.copyWith(color: AppTheme.colors.primary),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                                 const MultiLineWaveAnimation(),
                               ],
                             ),

@@ -10,7 +10,6 @@ class Routes implements Coordinate {
   final String path;
 
   ///auth
-  ///
   static const signIn = Routes._(name: 'sign_in_page', path: '/sign_in');
   static const register = Routes._(name: 'register_page', path: '/register');
   static const verify = Routes._(name: 'verify_page', path: '/verify');
@@ -30,6 +29,7 @@ class Routes implements Coordinate {
   static const profile = Routes._(name: 'profile', path: '/profile');
 
   ///home
+  static const notification = Routes._(name: "notification", path: '/notification');
 
   ///Tariff
   static const allTariff = Routes._(name: "all_tariff", path: '/all_tariff');

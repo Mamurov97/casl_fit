@@ -13,6 +13,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeState.initial()) {
     final repo = HomeRepository();
 
+    on<GetNotificationCountEvent>((event, emit) async {
+      final response = await repo.getNotificationsCount();
+      emit(state.copyWith(status: BlocStatus.success, notificationCount: response['result']['unread_count']));
+    });
+
     on<GetLiveCountUserEvent>((event, emit) async {
       try {
         emit(state.copyWith(status: BlocStatus.loading));

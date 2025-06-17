@@ -25,8 +25,8 @@ class AppIcons {
   static const calendar = 'assets/icons/calendar.svg';
   static const day = 'assets/icons/day.svg';
   static const time = 'assets/icons/time.svg';
-  static const wave = 'assets/icons/wave.svg';
   static const balance = 'assets/icons/balance.svg';
+  static const readAll = 'assets/icons/read_all.svg';
   static const weekday = 'assets/icons/weekday.svg';
 }
 

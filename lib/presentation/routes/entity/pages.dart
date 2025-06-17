@@ -16,6 +16,7 @@ export '../../pages/tariff/tariff_page.dart';
 export '../../pages/profile/profile_page.dart';
 
 export 'package:casl_fit/presentation/pages/profile/weight_height/weight_height_page.dart';
+export 'package:casl_fit/presentation/pages/home/notification/notification_page.dart';
 
 export 'package:casl_fit/presentation/components/screens/coming_soon_page.dart';
 export 'package:casl_fit/presentation/pages/auth/privacy_policy/privacy_policy_page.dart';
