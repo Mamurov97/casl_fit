@@ -1,9 +1,14 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:casl_fit/application/home/home_bloc.dart';
 import 'package:casl_fit/application/profile/profile_bloc.dart';
 import 'package:casl_fit/application/tariff/tariff_bloc.dart';
+import 'package:casl_fit/presentation/components/notification.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,12 +20,52 @@ import 'application/auth/init/auth_bloc.dart';
 import 'application/check_version/check_version_cubit.dart';
 import 'application/home/notification/notification_bloc.dart';
 import 'domain/common/app_init.dart';
+import 'firebase_options.dart';
 import 'presentation/app_widget.dart';
+
+@pragma('vm:entry-point')
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+}
+
+Future<void> getDeviceToken() async {
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  NotificationSettings settings = await messaging.requestPermission();
+
+  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    String? token = await messaging.getToken();
+    print('Device Token: $token');
+  } else {
+    print('Push notificationga ruxsat berilmadi');
+  }
+}
 
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    getDeviceToken();
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
     await initializeApp();
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    AwesomeNotifications().initialize(
+      null,
+      [
+        NotificationChannel(
+          icon: 'resource://drawable/applogo',
+          // bu yerda small icon resursi,
+          channelKey: 'basic_channel',
+          channelName: 'Basic Notifications',
+          channelDescription: 'Bildirishnomalar',
+          defaultColor: Colors.white,
+          ledColor: Colors.white,
+          importance: NotificationImportance.High,
+          channelShowBadge: true,
+        ),
+      ],
+    );
+    AwesomeNotifications().setGlobalBadgeCounter(0);
     runApp(
       EasyLocalization(
         supportedLocales: const [Locale('uz')],
@@ -38,9 +83,34 @@ Future<void> main() async {
   });
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        AwesomeNotifications().requestPermissionToSendNotifications();
+      }
+    });
+
+    // Foreground holatda pushni tinglash
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      if (Platform.isIOS) {
+        if (message.notification == null) {
+          showAwesomeNotification(message);
+        }
+      } else {
+        showAwesomeNotification(message);
+      }
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
