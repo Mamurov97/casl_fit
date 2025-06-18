@@ -42,22 +42,29 @@ class Data {
   bool? probniyTarif;
   int? price;
   String? groupGuid;
+  String? startDate;
+  String? endDate;
+  String? remainder;
 
-  Data(
-      {this.tarifGuid,
-        this.code,
-        this.name,
-        this.nameMobile,
-        this.noLimit,
-        this.dailyLimit,
-        this.monthlyLimit,
-        this.noLimitTime,
-        this.limitTimeFrom,
-        this.limitTimeTo,
-        this.description,
-        this.probniyTarif,
-        this.price,
-        this.groupGuid});
+  Data({
+    this.tarifGuid,
+    this.code,
+    this.name,
+    this.nameMobile,
+    this.noLimit,
+    this.dailyLimit,
+    this.monthlyLimit,
+    this.noLimitTime,
+    this.limitTimeFrom,
+    this.limitTimeTo,
+    this.description,
+    this.probniyTarif,
+    this.price,
+    this.groupGuid,
+    this.startDate,
+    this.endDate,
+    this.remainder,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     tarifGuid = json['tarif_guid'];
@@ -74,6 +81,9 @@ class Data {
     probniyTarif = json['probniy_tarif'];
     price = json['price'];
     groupGuid = json['group_guid'];
+    startDate = json['start_time'];
+    endDate = json['end_time'];
+    remainder = json['remainder'];
   }
 
   Map<String, dynamic> toJson() {
@@ -92,6 +102,9 @@ class Data {
     data['probniy_tarif'] = probniyTarif;
     data['price'] = price;
     data['group_guid'] = groupGuid;
+    data['start_time'] = startDate;
+    data['end_time'] = endDate;
+    data['remainder'] = remainder;
     return data;
   }
 }
