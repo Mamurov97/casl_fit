@@ -28,24 +28,10 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
 }
 
-Future<void> getDeviceToken() async {
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-  NotificationSettings settings = await messaging.requestPermission();
-
-  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    String? token = await messaging.getToken();
-    print('Device Token: $token');
-  } else {
-    print('Push notificationga ruxsat berilmadi');
-  }
-}
-
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-    getDeviceToken();
     FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
     await initializeApp();
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

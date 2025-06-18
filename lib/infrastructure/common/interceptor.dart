@@ -5,6 +5,7 @@ import 'package:casl_fit/domain/common/data/user_data.dart';
 import 'package:casl_fit/presentation/routes/index_routes.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -38,7 +39,7 @@ class DioInterceptor extends Interceptor {
     if (!nonToken.any((endPoint) => options.path.endsWith(endPoint))) {
       options.headers.addAll({
         HttpHeaders.authorizationHeader: 'Bearer ${UserData.token}',
-        "device_type":Platform.isIOS ?  "IOS": "Android",
+        "device_type": Platform.isIOS ? "IOS" : "Android",
         "device-info": jsonEncode(UserData.deviceInfo),
       });
     }
@@ -48,12 +49,23 @@ class DioInterceptor extends Interceptor {
 
   Future<void> getDeviceInfo() async {
     final deviceInfoPlugin = DeviceInfoPlugin();
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    NotificationSettings settings = await messaging.requestPermission();
+    String? token;
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      token = await messaging.getToken();
+      print('Device Token: $token');
+    } else {
+      print('Push notificationga ruxsat berilmadi');
+    }
     var deviceData = <String, dynamic>{};
     Map<String, dynamic> readAndroidBuildData(AndroidDeviceInfo build) {
       return <String, dynamic>{
         'device_system': 'android',
         'model': build.model,
         'device_id': build.id,
+        'device_token': token,
         'is_physical_device': build.isPhysicalDevice,
       };
     }
@@ -63,6 +75,7 @@ class DioInterceptor extends Interceptor {
         'device_system': data.systemName,
         'model': data.model,
         'device_id': data.identifierForVendor,
+        'device_token': token,
         'is_physical_device': data.isPhysicalDevice,
       };
     }
