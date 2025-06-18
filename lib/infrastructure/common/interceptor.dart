@@ -54,7 +54,7 @@ class DioInterceptor extends Interceptor {
     NotificationSettings settings = await messaging.requestPermission();
     String? token;
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      // token = await messaging.getToken();
+      token = await messaging.getToken();
       print('Device Token: $token');
     } else {
       print('Push notificationga ruxsat berilmadi');
