@@ -101,7 +101,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()),
+        BlocProvider<AppManagerCubit>(create: (context) => AppManagerCubit()..init()..check()),
         BlocProvider(create: (context) => CheckVersionCubit()..checkVersion()),
         BlocProvider(create: (context) => AuthBloc()),
         BlocProvider(create: (context) => NotificationBloc()),

@@ -16,6 +16,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppManagerCubit.context = context;
     return BlocBuilder<AppManagerCubit, AppManagerState>(
       builder: (context, state) {
         if (state is AppManagerLoading) {

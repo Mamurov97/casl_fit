@@ -23,14 +23,15 @@ class _NotificationPageState extends State<NotificationPage> {
     super.initState();
     context.read<NotificationBloc>().add(const GetNotifications());
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      // backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0,
+        titleSpacing: 8.w,
         title: const Text("Bildirishnomalar", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         actions: [
@@ -76,88 +77,92 @@ class _NotificationPageState extends State<NotificationPage> {
                 return const Center(child: Text("No notifications"));
               }
               if (state.statusGet == BlocStatus.success) {
-                return ListView.separated(
-                  itemCount: state.notifications.length,
-                  separatorBuilder: (context, index) => Gap(8.h),
-                  itemBuilder: (context, index) {
-                    return badges.Badge(
-                      showBadge: !(state.notifications[index].viewed??true),
-                      position: badges.BadgePosition.topEnd(top: 0, end: 0),
-                      badgeContent: const SizedBox(height: 5, width: 5),
-                      child: GestureDetector(
-                        onTap: () {
-                          final notification = state.notifications[index];
-                          showCupertinoModalPopup(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return CupertinoActionSheet(
-                                title: Text(notification.title ?? '', style: AppTheme.data.textTheme.displayLarge!.copyWith(fontSize: 16)),
-                                message: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(notification.body ?? 'Ma\'lumot yo\'q', style: AppTheme.data.textTheme.bodyMedium),
-                                    const SizedBox(height: 8),
-                                    Row(
-                                      children: [
-                                        const Text(
-                                          "Yuborilgan sana: ",
-                                          style: TextStyle(fontWeight: FontWeight.bold),
-                                        ),
-                                        Text(notification.date ?? "No Date"),
-                                      ],
-                                    ),
-                                  ],
+                return SafeArea(
+                  child: ListView.separated(
+                    itemCount: state.notifications.length,
+                    separatorBuilder: (context, index) => Gap(8.h),
+                    itemBuilder: (context, index) {
+                      return badges.Badge(
+                        showBadge: !(state.notifications[index].viewed ?? true),
+                        position: badges.BadgePosition.topEnd(top: 0, end: 0),
+                        badgeContent: const SizedBox(height: 5, width: 5),
+                        child: GestureDetector(
+                          onTap: () {
+                            final notification = state.notifications[index];
+                            showCupertinoModalPopup(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return CupertinoActionSheet(
+                                  title: Text(notification.title ?? '', style: AppTheme.data.textTheme.displayLarge!.copyWith(fontSize: 16)),
+                                  message: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(notification.body ?? 'Ma\'lumot yo\'q', style: AppTheme.data.textTheme.bodyMedium),
+                                      const SizedBox(height: 8),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const Text(
+                                            "Yuborilgan sana: ",
+                                            style: TextStyle(fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(notification.date ?? "No Date"),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  cancelButton: CupertinoActionSheetAction(
+                                    onPressed: () {
+                                      Navigator.pop(context, true);
+                                    },
+                                    isDefaultAction: false,
+                                    isDestructiveAction: true,
+                                    child: const Text("Yopish"),
+                                  ),
+                                );
+                              },
+                            ).then((v) {
+                              if (context.mounted && v == true) {
+                                context.read<NotificationBloc>().add(ShowNotification(notification));
+                              }
+                            });
+                          },
+                          child: Card(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+                            elevation: 5,
+                            color: Colors.grey.shade300,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(8.w, 8.h, 0, 0),
+                                  child: Text(state.notifications[index].title ?? "", style: AppTheme.data.textTheme.titleLarge),
                                 ),
-                                cancelButton: CupertinoActionSheetAction(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  isDefaultAction: false,
-                                  isDestructiveAction: true,
-                                  child: const Text("Yopish"),
+                                const Divider(),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(8.w, 0, 8.w, 0),
+                                  height: 30.h,
+                                  child: Text(
+                                    state.notifications[index].body ?? "",
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: AppTheme.data.textTheme.labelSmall,
+                                  ),
                                 ),
-                              );
-                            },
-                          ).then((v){
-                            if(context.mounted){
-                              context.read<NotificationBloc>().add(ShowNotification(notification));
-                            }
-                          });
-                        },
-                        child: Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-                          elevation: 5,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(8.w, 8.h, 0, 0),
-                                child: Text(state.notifications[index].title ?? "", style: AppTheme.data.textTheme.titleLarge),
-                              ),
-                              const Divider(),
-                              Container(
-                                padding: EdgeInsets.fromLTRB(8.w, 0, 8.w, 0),
-                                height: 30.h,
-                                child: Text(
-                                  state.notifications[index].body ?? "",
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: AppTheme.data.textTheme.labelSmall,
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(8.w, 0, 8.w, 8.h),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [Text("20.10.2025", style: AppTheme.data.textTheme.labelLarge)],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(8.w, 0, 8.w, 8.h),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [Text("20.10.2025", style: AppTheme.data.textTheme.labelLarge)],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 );
               }
               return const SizedBox();

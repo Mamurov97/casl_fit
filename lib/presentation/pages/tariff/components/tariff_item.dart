@@ -121,9 +121,9 @@ class TariffItem extends StatelessWidget {
                             Expanded(
                               child: Center(
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 6.h),
+                                  padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 2.h),
                                   decoration: BoxDecoration(
-                                    color: Colors.red.withOpacity(0.15),
+                                    color: Colors.red.withAlpha(38),
                                     borderRadius: BorderRadius.circular(8.r),
                                     border: Border.all(color: Colors.red),
                                   ),
@@ -134,7 +134,7 @@ class TariffItem extends StatelessWidget {
                                       Text(
                                         "$daysLeft kun qoldi",
                                         style: AppTheme.data.textTheme.bodySmall?.copyWith(
-                                          color: Colors.red,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 12.sp,
                                         ),
