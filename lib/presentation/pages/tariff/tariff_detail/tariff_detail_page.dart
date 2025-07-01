@@ -12,10 +12,11 @@ class TariffDetailPage extends StatelessWidget {
   const TariffDetailPage({super.key, required this.model});
 
   final Data model;
+
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> abonementInfo = [
-      {"label": "Davomiyligi", "value": model.monthlyLimit==0?"1 kun":"${model.monthlyLimit} oy"},
+      {"label": "Davomiyligi", "value": model.monthlyLimit == 0 ? "1 kun" : "${model.monthlyLimit} oy"},
       {"label": "Tashrif kuni ", "value": (model.dailyLimit ?? 0) > 29 ? "Har kuni" : "Oyda ${model.dailyLimit} kun"},
       {"label": "Tashrif vaqti ", "value": "${extractHourMinute(model.limitTimeFrom ?? "")} - ${extractHourMinute(model.limitTimeTo ?? "")}"},
       {
@@ -23,6 +24,10 @@ class TariffDetailPage extends StatelessWidget {
         "value": "${NumberFormat("#,###", "uz_UZ").format(model.price ?? 0).replaceAll(",", " ")} so'm",
       }
     ];
+    final startDate = model.startDate != null ? DateTime.tryParse(model.startDate!) : null;
+    final endDate = model.endDate != null ? DateTime.tryParse(model.endDate!) : null;
+    final int daysLeft = endDate != null ? endDate.difference(DateTime.now()).inDays : -1;
+    final bool showWarning = daysLeft >= 0 && daysLeft < 40;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -79,6 +84,63 @@ class TariffDetailPage extends StatelessWidget {
                             },
                           ),
                         ),
+                        Gap(12.h),
+                        if (startDate != null && endDate != null)
+                          Container(
+                            decoration: BoxDecoration(color: AppTheme.colors.secondary, borderRadius: BorderRadius.circular(8.r)),
+                            padding: EdgeInsets.all(12.r),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.calendar_today, size: 18.r, color: AppTheme.colors.primary),
+                                    Gap(8.w),
+                                    Text(
+                                      "Amal qilish muddati:",
+                                      style: AppTheme.data.textTheme.bodyMedium?.copyWith(
+                                        color: AppTheme.colors.white,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Gap(6.h),
+                                Text(
+                                  "${DateFormat.yMMMMd('uz_UZ').format(startDate)} — ${DateFormat.yMMMMd('uz_UZ').format(endDate)}",
+                                  style: AppTheme.data.textTheme.bodySmall?.copyWith(color: Colors.white70),
+                                ),
+                                if (showWarning) ...[
+                                  Gap(10.h),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.red.withAlpha(36),
+
+                                      border: Border.all(color: Colors.red),
+                                      borderRadius: BorderRadius.circular(8.r),
+                                    ),
+                                    padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.warning_amber_rounded, size: 18.r, color: Colors.red),
+                                        Gap(8.w),
+                                        Text(
+                                          "$daysLeft kun qoldi",
+                                          style: AppTheme.data.textTheme.bodySmall?.copyWith(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13.sp,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+
                         /*      SizedBox(height: 18.h),
                         sectionTitle("Narxi"),
                         ListView.builder(

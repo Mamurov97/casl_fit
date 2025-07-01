@@ -30,12 +30,17 @@ Dio createDio() {
       ],
     )
     ..options = BaseOptions(
-      baseUrl: 'http://10.100.104.104:9500/api/',
-      // baseUrl: 'https://caslfit.uz/api/',
+      // baseUrl: 'http://10.100.104.104:9500/api/',
+      baseUrl: 'https://caslfit.uz/api/',
       headers: {HttpHeaders.acceptHeader: 'application/json'},
     );
 }
 
-const String baseUrlAppImage = "https://caslfit.uz/";
+// const String baseUrlAppImage = "https://caslfit.uz/";
 
 final dio = createDio();
+
+class ApiMethods {
+  static String key = "";
+  static String id = "";
+}

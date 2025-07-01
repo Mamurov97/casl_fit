@@ -44,7 +44,7 @@ class Data {
   String? groupGuid;
   String? startDate;
   String? endDate;
-  String? remainder;
+  num? remainder;
 
   Data({
     this.tarifGuid,

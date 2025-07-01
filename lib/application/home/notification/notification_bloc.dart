@@ -15,18 +15,30 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   NotificationBloc() : super(const NotificationState()) {
     on<GetNotifications>((event, emit) async {
       emit(state.copyWith(statusGet: BlocStatus.loading));
+
       try {
-        final response = await repo.getNotifications();
-        if (response["status"] == true) {
-          final notifications = response["result"].map<NotificationModel>((e) => NotificationModel.fromJson(e)).toList();
-          emit(state.copyWith(statusGet: BlocStatus.success, notifications: notifications));
-        } else {
-          emit(state.copyWith(statusGet: BlocStatus.error, errorMessage: response["message"].toString()));
+        final response = await repo.getNotifications(status: event.status);
+        final notifications = response["result"].map<NotificationModel>((e) => NotificationModel.fromJson(e)).toList();
+
+        if (event.status == 1) {
+          emit(state.copyWith(
+            newsNotifications: notifications,
+            statusGet: notifications.isEmpty ? BlocStatus.empty : BlocStatus.success,
+          ));
+        } else if (event.status == 2) {
+          emit(state.copyWith(
+            personalNotifications: notifications,
+            statusGet: notifications.isEmpty ? BlocStatus.empty : BlocStatus.success,
+          ));
         }
       } catch (e) {
-        emit(state.copyWith(statusGet: BlocStatus.error, errorMessage: e.toString()));
+        emit(state.copyWith(
+          statusGet: BlocStatus.error,
+          errorMessage: e.toString(),
+        ));
       }
     });
+
 
     on<ShowNotification>((event, emit) async {
       emit(state.copyWith(statusShow: BlocStatus.loading));
@@ -34,7 +46,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
         final response = await repo.showNotification(event.notification.id!);
         if (response["status"] == true) {
           emit(state.copyWith(statusShow: BlocStatus.success));
-          add(const GetNotifications());
+          add( GetNotifications(status: event.status));
         } else {
           emit(state.copyWith(statusShow: BlocStatus.error, errorMessage: response["message"].toString()));
         }
@@ -49,7 +61,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
         final response = await repo.readAllNotifications();
         if (response["status"] == true) {
           emit(state.copyWith(statusReadAll: BlocStatus.success));
-          add(const GetNotifications());
+          add( GetNotifications(status: event.status));
         } else {
           emit(state.copyWith(statusReadAll: BlocStatus.error, errorMessage: response["message"].toString()));
         }

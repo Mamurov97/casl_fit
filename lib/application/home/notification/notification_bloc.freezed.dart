@@ -16,25 +16,29 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NotificationEvent {
+  int get status => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getNotifications,
-    required TResult Function(NotificationModel notification) showNotification,
-    required TResult Function() readAllNotifications,
+    required TResult Function(int status) getNotifications,
+    required TResult Function(NotificationModel notification, int status)
+        showNotification,
+    required TResult Function(int status) readAllNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getNotifications,
-    TResult? Function(NotificationModel notification)? showNotification,
-    TResult? Function()? readAllNotifications,
+    TResult? Function(int status)? getNotifications,
+    TResult? Function(NotificationModel notification, int status)?
+        showNotification,
+    TResult? Function(int status)? readAllNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getNotifications,
-    TResult Function(NotificationModel notification)? showNotification,
-    TResult Function()? readAllNotifications,
+    TResult Function(int status)? getNotifications,
+    TResult Function(NotificationModel notification, int status)?
+        showNotification,
+    TResult Function(int status)? readAllNotifications,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +64,12 @@ mixin _$NotificationEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of NotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $NotificationEventCopyWith<NotificationEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -67,6 +77,8 @@ abstract class $NotificationEventCopyWith<$Res> {
   factory $NotificationEventCopyWith(
           NotificationEvent value, $Res Function(NotificationEvent) then) =
       _$NotificationEventCopyWithImpl<$Res, NotificationEvent>;
+  @useResult
+  $Res call({int status});
 }
 
 /// @nodoc
@@ -81,13 +93,29 @@ class _$NotificationEventCopyWithImpl<$Res, $Val extends NotificationEvent>
 
   /// Create a copy of NotificationEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$GetNotificationsImplCopyWith<$Res> {
+abstract class _$$GetNotificationsImplCopyWith<$Res>
+    implements $NotificationEventCopyWith<$Res> {
   factory _$$GetNotificationsImplCopyWith(_$GetNotificationsImpl value,
           $Res Function(_$GetNotificationsImpl) then) =
       __$$GetNotificationsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int status});
 }
 
 /// @nodoc
@@ -100,57 +128,86 @@ class __$$GetNotificationsImplCopyWithImpl<$Res>
 
   /// Create a copy of NotificationEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$GetNotificationsImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetNotificationsImpl implements GetNotifications {
-  const _$GetNotificationsImpl();
+  const _$GetNotificationsImpl({required this.status});
+
+  @override
+  final int status;
 
   @override
   String toString() {
-    return 'NotificationEvent.getNotifications()';
+    return 'NotificationEvent.getNotifications(status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetNotificationsImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetNotificationsImpl &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, status);
+
+  /// Create a copy of NotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetNotificationsImplCopyWith<_$GetNotificationsImpl> get copyWith =>
+      __$$GetNotificationsImplCopyWithImpl<_$GetNotificationsImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getNotifications,
-    required TResult Function(NotificationModel notification) showNotification,
-    required TResult Function() readAllNotifications,
+    required TResult Function(int status) getNotifications,
+    required TResult Function(NotificationModel notification, int status)
+        showNotification,
+    required TResult Function(int status) readAllNotifications,
   }) {
-    return getNotifications();
+    return getNotifications(status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getNotifications,
-    TResult? Function(NotificationModel notification)? showNotification,
-    TResult? Function()? readAllNotifications,
+    TResult? Function(int status)? getNotifications,
+    TResult? Function(NotificationModel notification, int status)?
+        showNotification,
+    TResult? Function(int status)? readAllNotifications,
   }) {
-    return getNotifications?.call();
+    return getNotifications?.call(status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getNotifications,
-    TResult Function(NotificationModel notification)? showNotification,
-    TResult Function()? readAllNotifications,
+    TResult Function(int status)? getNotifications,
+    TResult Function(NotificationModel notification, int status)?
+        showNotification,
+    TResult Function(int status)? readAllNotifications,
     required TResult orElse(),
   }) {
     if (getNotifications != null) {
-      return getNotifications();
+      return getNotifications(status);
     }
     return orElse();
   }
@@ -191,16 +248,29 @@ class _$GetNotificationsImpl implements GetNotifications {
 }
 
 abstract class GetNotifications implements NotificationEvent {
-  const factory GetNotifications() = _$GetNotificationsImpl;
+  const factory GetNotifications({required final int status}) =
+      _$GetNotificationsImpl;
+
+  @override
+  int get status;
+
+  /// Create a copy of NotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetNotificationsImplCopyWith<_$GetNotificationsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ShowNotificationImplCopyWith<$Res> {
+abstract class _$$ShowNotificationImplCopyWith<$Res>
+    implements $NotificationEventCopyWith<$Res> {
   factory _$$ShowNotificationImplCopyWith(_$ShowNotificationImpl value,
           $Res Function(_$ShowNotificationImpl) then) =
       __$$ShowNotificationImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({NotificationModel notification});
+  $Res call({NotificationModel notification, int status});
 }
 
 /// @nodoc
@@ -217,12 +287,17 @@ class __$$ShowNotificationImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? notification = null,
+    Object? status = null,
   }) {
     return _then(_$ShowNotificationImpl(
       null == notification
           ? _value.notification
           : notification // ignore: cast_nullable_to_non_nullable
               as NotificationModel,
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -230,14 +305,16 @@ class __$$ShowNotificationImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ShowNotificationImpl implements ShowNotification {
-  const _$ShowNotificationImpl(this.notification);
+  const _$ShowNotificationImpl(this.notification, this.status);
 
   @override
   final NotificationModel notification;
+  @override
+  final int status;
 
   @override
   String toString() {
-    return 'NotificationEvent.showNotification(notification: $notification)';
+    return 'NotificationEvent.showNotification(notification: $notification, status: $status)';
   }
 
   @override
@@ -246,11 +323,12 @@ class _$ShowNotificationImpl implements ShowNotification {
         (other.runtimeType == runtimeType &&
             other is _$ShowNotificationImpl &&
             (identical(other.notification, notification) ||
-                other.notification == notification));
+                other.notification == notification) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, notification);
+  int get hashCode => Object.hash(runtimeType, notification, status);
 
   /// Create a copy of NotificationEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -264,33 +342,36 @@ class _$ShowNotificationImpl implements ShowNotification {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getNotifications,
-    required TResult Function(NotificationModel notification) showNotification,
-    required TResult Function() readAllNotifications,
+    required TResult Function(int status) getNotifications,
+    required TResult Function(NotificationModel notification, int status)
+        showNotification,
+    required TResult Function(int status) readAllNotifications,
   }) {
-    return showNotification(notification);
+    return showNotification(notification, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getNotifications,
-    TResult? Function(NotificationModel notification)? showNotification,
-    TResult? Function()? readAllNotifications,
+    TResult? Function(int status)? getNotifications,
+    TResult? Function(NotificationModel notification, int status)?
+        showNotification,
+    TResult? Function(int status)? readAllNotifications,
   }) {
-    return showNotification?.call(notification);
+    return showNotification?.call(notification, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getNotifications,
-    TResult Function(NotificationModel notification)? showNotification,
-    TResult Function()? readAllNotifications,
+    TResult Function(int status)? getNotifications,
+    TResult Function(NotificationModel notification, int status)?
+        showNotification,
+    TResult Function(int status)? readAllNotifications,
     required TResult orElse(),
   }) {
     if (showNotification != null) {
-      return showNotification(notification);
+      return showNotification(notification, status);
     }
     return orElse();
   }
@@ -331,23 +412,31 @@ class _$ShowNotificationImpl implements ShowNotification {
 }
 
 abstract class ShowNotification implements NotificationEvent {
-  const factory ShowNotification(final NotificationModel notification) =
+  const factory ShowNotification(
+          final NotificationModel notification, final int status) =
       _$ShowNotificationImpl;
 
   NotificationModel get notification;
+  @override
+  int get status;
 
   /// Create a copy of NotificationEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShowNotificationImplCopyWith<_$ShowNotificationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ReadAllNotificationsImplCopyWith<$Res> {
+abstract class _$$ReadAllNotificationsImplCopyWith<$Res>
+    implements $NotificationEventCopyWith<$Res> {
   factory _$$ReadAllNotificationsImplCopyWith(_$ReadAllNotificationsImpl value,
           $Res Function(_$ReadAllNotificationsImpl) then) =
       __$$ReadAllNotificationsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int status});
 }
 
 /// @nodoc
@@ -360,58 +449,87 @@ class __$$ReadAllNotificationsImplCopyWithImpl<$Res>
 
   /// Create a copy of NotificationEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$ReadAllNotificationsImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ReadAllNotificationsImpl implements ReadAllNotifications {
-  const _$ReadAllNotificationsImpl();
+  const _$ReadAllNotificationsImpl({required this.status});
+
+  @override
+  final int status;
 
   @override
   String toString() {
-    return 'NotificationEvent.readAllNotifications()';
+    return 'NotificationEvent.readAllNotifications(status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReadAllNotificationsImpl);
+            other is _$ReadAllNotificationsImpl &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, status);
+
+  /// Create a copy of NotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReadAllNotificationsImplCopyWith<_$ReadAllNotificationsImpl>
+      get copyWith =>
+          __$$ReadAllNotificationsImplCopyWithImpl<_$ReadAllNotificationsImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getNotifications,
-    required TResult Function(NotificationModel notification) showNotification,
-    required TResult Function() readAllNotifications,
+    required TResult Function(int status) getNotifications,
+    required TResult Function(NotificationModel notification, int status)
+        showNotification,
+    required TResult Function(int status) readAllNotifications,
   }) {
-    return readAllNotifications();
+    return readAllNotifications(status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getNotifications,
-    TResult? Function(NotificationModel notification)? showNotification,
-    TResult? Function()? readAllNotifications,
+    TResult? Function(int status)? getNotifications,
+    TResult? Function(NotificationModel notification, int status)?
+        showNotification,
+    TResult? Function(int status)? readAllNotifications,
   }) {
-    return readAllNotifications?.call();
+    return readAllNotifications?.call(status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getNotifications,
-    TResult Function(NotificationModel notification)? showNotification,
-    TResult Function()? readAllNotifications,
+    TResult Function(int status)? getNotifications,
+    TResult Function(NotificationModel notification, int status)?
+        showNotification,
+    TResult Function(int status)? readAllNotifications,
     required TResult orElse(),
   }) {
     if (readAllNotifications != null) {
-      return readAllNotifications();
+      return readAllNotifications(status);
     }
     return orElse();
   }
@@ -452,7 +570,18 @@ class _$ReadAllNotificationsImpl implements ReadAllNotifications {
 }
 
 abstract class ReadAllNotifications implements NotificationEvent {
-  const factory ReadAllNotifications() = _$ReadAllNotificationsImpl;
+  const factory ReadAllNotifications({required final int status}) =
+      _$ReadAllNotificationsImpl;
+
+  @override
+  int get status;
+
+  /// Create a copy of NotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReadAllNotificationsImplCopyWith<_$ReadAllNotificationsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -460,7 +589,9 @@ mixin _$NotificationState {
   BlocStatus get statusGet => throw _privateConstructorUsedError;
   BlocStatus get statusShow => throw _privateConstructorUsedError;
   BlocStatus get statusReadAll => throw _privateConstructorUsedError;
-  List<NotificationModel> get notifications =>
+  List<NotificationModel> get newsNotifications =>
+      throw _privateConstructorUsedError;
+  List<NotificationModel> get personalNotifications =>
       throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -481,7 +612,8 @@ abstract class $NotificationStateCopyWith<$Res> {
       {BlocStatus statusGet,
       BlocStatus statusShow,
       BlocStatus statusReadAll,
-      List<NotificationModel> notifications,
+      List<NotificationModel> newsNotifications,
+      List<NotificationModel> personalNotifications,
       String? errorMessage});
 }
 
@@ -503,7 +635,8 @@ class _$NotificationStateCopyWithImpl<$Res, $Val extends NotificationState>
     Object? statusGet = null,
     Object? statusShow = null,
     Object? statusReadAll = null,
-    Object? notifications = null,
+    Object? newsNotifications = null,
+    Object? personalNotifications = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -519,9 +652,13 @@ class _$NotificationStateCopyWithImpl<$Res, $Val extends NotificationState>
           ? _value.statusReadAll
           : statusReadAll // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
-      notifications: null == notifications
-          ? _value.notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
+      newsNotifications: null == newsNotifications
+          ? _value.newsNotifications
+          : newsNotifications // ignore: cast_nullable_to_non_nullable
+              as List<NotificationModel>,
+      personalNotifications: null == personalNotifications
+          ? _value.personalNotifications
+          : personalNotifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationModel>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -543,7 +680,8 @@ abstract class _$$NotificationStateImplCopyWith<$Res>
       {BlocStatus statusGet,
       BlocStatus statusShow,
       BlocStatus statusReadAll,
-      List<NotificationModel> notifications,
+      List<NotificationModel> newsNotifications,
+      List<NotificationModel> personalNotifications,
       String? errorMessage});
 }
 
@@ -563,7 +701,8 @@ class __$$NotificationStateImplCopyWithImpl<$Res>
     Object? statusGet = null,
     Object? statusShow = null,
     Object? statusReadAll = null,
-    Object? notifications = null,
+    Object? newsNotifications = null,
+    Object? personalNotifications = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$NotificationStateImpl(
@@ -579,9 +718,13 @@ class __$$NotificationStateImplCopyWithImpl<$Res>
           ? _value.statusReadAll
           : statusReadAll // ignore: cast_nullable_to_non_nullable
               as BlocStatus,
-      notifications: null == notifications
-          ? _value._notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
+      newsNotifications: null == newsNotifications
+          ? _value._newsNotifications
+          : newsNotifications // ignore: cast_nullable_to_non_nullable
+              as List<NotificationModel>,
+      personalNotifications: null == personalNotifications
+          ? _value._personalNotifications
+          : personalNotifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationModel>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -598,9 +741,11 @@ class _$NotificationStateImpl implements _NotificationState {
       {this.statusGet = BlocStatus.initial,
       this.statusShow = BlocStatus.initial,
       this.statusReadAll = BlocStatus.initial,
-      final List<NotificationModel> notifications = const [],
+      final List<NotificationModel> newsNotifications = const [],
+      final List<NotificationModel> personalNotifications = const [],
       this.errorMessage})
-      : _notifications = notifications;
+      : _newsNotifications = newsNotifications,
+        _personalNotifications = personalNotifications;
 
   @override
   @JsonKey()
@@ -611,13 +756,24 @@ class _$NotificationStateImpl implements _NotificationState {
   @override
   @JsonKey()
   final BlocStatus statusReadAll;
-  final List<NotificationModel> _notifications;
+  final List<NotificationModel> _newsNotifications;
   @override
   @JsonKey()
-  List<NotificationModel> get notifications {
-    if (_notifications is EqualUnmodifiableListView) return _notifications;
+  List<NotificationModel> get newsNotifications {
+    if (_newsNotifications is EqualUnmodifiableListView)
+      return _newsNotifications;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_notifications);
+    return EqualUnmodifiableListView(_newsNotifications);
+  }
+
+  final List<NotificationModel> _personalNotifications;
+  @override
+  @JsonKey()
+  List<NotificationModel> get personalNotifications {
+    if (_personalNotifications is EqualUnmodifiableListView)
+      return _personalNotifications;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_personalNotifications);
   }
 
   @override
@@ -625,7 +781,7 @@ class _$NotificationStateImpl implements _NotificationState {
 
   @override
   String toString() {
-    return 'NotificationState(statusGet: $statusGet, statusShow: $statusShow, statusReadAll: $statusReadAll, notifications: $notifications, errorMessage: $errorMessage)';
+    return 'NotificationState(statusGet: $statusGet, statusShow: $statusShow, statusReadAll: $statusReadAll, newsNotifications: $newsNotifications, personalNotifications: $personalNotifications, errorMessage: $errorMessage)';
   }
 
   @override
@@ -640,7 +796,9 @@ class _$NotificationStateImpl implements _NotificationState {
             (identical(other.statusReadAll, statusReadAll) ||
                 other.statusReadAll == statusReadAll) &&
             const DeepCollectionEquality()
-                .equals(other._notifications, _notifications) &&
+                .equals(other._newsNotifications, _newsNotifications) &&
+            const DeepCollectionEquality()
+                .equals(other._personalNotifications, _personalNotifications) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -651,7 +809,8 @@ class _$NotificationStateImpl implements _NotificationState {
       statusGet,
       statusShow,
       statusReadAll,
-      const DeepCollectionEquality().hash(_notifications),
+      const DeepCollectionEquality().hash(_newsNotifications),
+      const DeepCollectionEquality().hash(_personalNotifications),
       errorMessage);
 
   /// Create a copy of NotificationState
@@ -669,7 +828,8 @@ abstract class _NotificationState implements NotificationState {
       {final BlocStatus statusGet,
       final BlocStatus statusShow,
       final BlocStatus statusReadAll,
-      final List<NotificationModel> notifications,
+      final List<NotificationModel> newsNotifications,
+      final List<NotificationModel> personalNotifications,
       final String? errorMessage}) = _$NotificationStateImpl;
 
   @override
@@ -679,7 +839,9 @@ abstract class _NotificationState implements NotificationState {
   @override
   BlocStatus get statusReadAll;
   @override
-  List<NotificationModel> get notifications;
+  List<NotificationModel> get newsNotifications;
+  @override
+  List<NotificationModel> get personalNotifications;
   @override
   String? get errorMessage;
 

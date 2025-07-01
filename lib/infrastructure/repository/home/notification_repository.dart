@@ -1,8 +1,8 @@
 import '../../common/network_provider.dart';
 
 class NotificationRepository {
-  Future<Map<String, dynamic>> getNotifications() async {
-    final response = await dio.get('notification/all');
+  Future<Map<String, dynamic>> getNotifications({required int status}) async {
+    final response = await dio.get('notification/all',data: {'status':status});
     return response.data;
   }
 

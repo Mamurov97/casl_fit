@@ -8,9 +8,11 @@ import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../application/app_manager/app_manager_cubit.dart';
 import 'dio_exception.dart';
+import 'network_provider.dart';
 
 class DioInterceptor extends Interceptor {
   @override
@@ -33,6 +35,8 @@ class DioInterceptor extends Interceptor {
 
   @override
   Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+    AppManagerCubit.context!.read<AppManagerCubit>().check();
+
     const nonToken = ["auth/verify/number", "auth/register", "auth/login", "auth/otp", "auth/otp/verify"];
     if (UserData.deviceInfo.isEmpty) await getDeviceInfo();
 
@@ -43,6 +47,10 @@ class DioInterceptor extends Interceptor {
         "device-info": jsonEncode(UserData.deviceInfo),
       });
     }
+    options.headers.addAll({
+      "x-casl-fit-request-id": ApiMethods.id,
+      "x-casl-fit-request-key": ApiMethods.key
+    });
     options.path = options.path.replaceAll(RegExp(r'/[{][A-Za-z_]+\}+'), '');
     return super.onRequest(options, handler);
   }

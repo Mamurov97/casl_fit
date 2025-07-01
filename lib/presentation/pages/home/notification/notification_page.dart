@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:badges/badges.dart' as badges;
+import 'package:casl_fit/infrastructure/dto/models/home/notification_model.dart';
 import 'package:casl_fit/presentation/assets/asset_index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,26 +18,54 @@ class NotificationPage extends StatefulWidget {
   State<NotificationPage> createState() => _NotificationPageState();
 }
 
-class _NotificationPageState extends State<NotificationPage> {
+class _NotificationPageState extends State<NotificationPage> with TickerProviderStateMixin{
+  late TabController tabController;
+
   @override
   void initState() {
+    tabController = TabController(
+      length: 2,
+      initialIndex: 0,
+      animationDuration: const Duration(seconds: 0),
+      vsync: this,
+    );
+
+    // Dastlab birinchi tab uchun chaqirish
+    context.read<NotificationBloc>().add(
+      GetNotifications(status: tabController.index + 1),
+    );
+
+    tabController.addListener(() {
+      if (!tabController.indexIsChanging) {
+        context.read<NotificationBloc>().add(
+          GetNotifications(status: tabController.index + 1),
+        );
+      }
+    });
+
     super.initState();
-    context.read<NotificationBloc>().add(const GetNotifications());
+  }
+
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      // backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0,
+        titleSpacing: 8.w,
         title: const Text("Bildirishnomalar", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
-              context.read<NotificationBloc>().add(const ReadAllNotifications());
+              context.read<NotificationBloc>().add( ReadAllNotifications(status: tabController.index+1));
             },
             icon: SvgPicture.asset(
               AppIcons.readAll,
@@ -46,6 +75,42 @@ class _NotificationPageState extends State<NotificationPage> {
             ),
           ),
         ],
+        bottom: PreferredSize(
+            preferredSize: Size.fromHeight(50.h),
+            child: Padding(
+              padding: EdgeInsets.all(8.r),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppTheme.colors.secondary,
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
+                child: TabBar(
+                  controller: tabController,
+                  isScrollable: false,
+                  physics: const BouncingScrollPhysics(),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  dividerColor: Colors.transparent,
+                  splashBorderRadius: BorderRadius.circular(8.r),
+                  indicator: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
+                  indicatorPadding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
+                  labelColor: Colors.black,
+                  unselectedLabelColor: Colors.white,
+                  labelStyle: AppTheme.data.textTheme.titleSmall?.copyWith(
+                    fontSize: 14.h,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  unselectedLabelStyle: AppTheme.data.textTheme.titleSmall?.copyWith(
+                    fontSize: 14.h,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  tabs: const [
+                    Tab(text: "Yangiliklar"),
+                    Tab(text: "Shaxsiy"),
+                  ],
+                ),
+              ),
+            )),
+        elevation: 0,
       ),
       body: Stack(
         children: [
@@ -64,107 +129,128 @@ class _NotificationPageState extends State<NotificationPage> {
               width: 1.sw,
             ),
           ),
-          BlocBuilder<NotificationBloc, NotificationState>(
-            builder: (context, state) {
-              if (state.statusGet == BlocStatus.loading) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              if (state.statusGet == BlocStatus.error) {
-                return Center(child: Text(state.errorMessage.toString()));
-              }
-              if (state.statusGet == BlocStatus.empty) {
-                return const Center(child: Text("No notifications"));
-              }
-              if (state.statusGet == BlocStatus.success) {
-                return ListView.separated(
-                  itemCount: state.notifications.length,
-                  separatorBuilder: (context, index) => Gap(8.h),
-                  itemBuilder: (context, index) {
-                    return badges.Badge(
-                      showBadge: !(state.notifications[index].viewed??true),
-                      position: badges.BadgePosition.topEnd(top: 0, end: 0),
-                      badgeContent: const SizedBox(height: 5, width: 5),
-                      child: GestureDetector(
-                        onTap: () {
-                          final notification = state.notifications[index];
-                          showCupertinoModalPopup(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return CupertinoActionSheet(
-                                title: Text(notification.title ?? '', style: AppTheme.data.textTheme.displayLarge!.copyWith(fontSize: 16)),
-                                message: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(notification.body ?? 'Ma\'lumot yo\'q', style: AppTheme.data.textTheme.bodyMedium),
-                                    const SizedBox(height: 8),
-                                    Row(
-                                      children: [
-                                        const Text(
-                                          "Yuborilgan sana: ",
-                                          style: TextStyle(fontWeight: FontWeight.bold),
-                                        ),
-                                        Text(notification.date ?? "No Date"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                cancelButton: CupertinoActionSheetAction(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  isDefaultAction: false,
-                                  isDestructiveAction: true,
-                                  child: const Text("Yopish"),
-                                ),
-                              );
-                            },
-                          ).then((v){
-                            if(context.mounted){
-                              context.read<NotificationBloc>().add(ShowNotification(notification));
-                            }
-                          });
-                        },
-                        child: Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-                          elevation: 5,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(8.w, 8.h, 0, 0),
-                                child: Text(state.notifications[index].title ?? "", style: AppTheme.data.textTheme.titleLarge),
-                              ),
-                              const Divider(),
-                              Container(
-                                padding: EdgeInsets.fromLTRB(8.w, 0, 8.w, 0),
-                                height: 30.h,
-                                child: Text(
-                                  state.notifications[index].body ?? "",
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: AppTheme.data.textTheme.labelSmall,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(8.w, 0, 8.w, 8.h),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [Text("20.10.2025", style: AppTheme.data.textTheme.labelLarge)],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                );
-              }
-              return const SizedBox();
-            },
+          TabBarView(
+            controller: tabController,
+            children: [
+              _buildNotificationList(
+                context,
+                selector: (state) => state.newsNotifications,
+                statusSelector: (state) => state.statusGet,
+              ),
+              _buildNotificationList(
+                context,
+                selector: (state) => state.personalNotifications,
+                statusSelector: (state) => state.statusGet,
+              ),
+
+            ],
           ),
+
         ],
       ),
     );
   }
+  Widget _buildNotificationList(
+      BuildContext context, {
+        required List<NotificationModel> Function(NotificationState) selector,
+        required BlocStatus Function(NotificationState) statusSelector,
+      }) {
+    return BlocBuilder<NotificationBloc, NotificationState>(
+      builder: (context, state) {
+        final notifications = selector(state);
+        final status = statusSelector(state);
+
+        if (status == BlocStatus.loading) {
+          return  Center(child: CircularProgressIndicator(color: AppTheme.colors.primary));
+        }
+        if (status == BlocStatus.error) {
+          return Center(child: Text(state.errorMessage ?? 'Error'));
+        }
+        if (status == BlocStatus.empty) {
+          return const Center(child: Text('No notifications'));
+        }
+        if (status == BlocStatus.success) {
+          return SafeArea(
+            child: ListView.separated(
+              itemCount: notifications.length,
+              separatorBuilder: (context, index) => Gap(8.h),
+              itemBuilder: (context, index) {
+                final notification = notifications[index];
+                return badges.Badge(
+                  showBadge: !(notification.viewed ?? true),
+                  position: badges.BadgePosition.topEnd(top: 0, end: 0),
+                  badgeContent: const SizedBox(height: 5, width: 5),
+                  child: GestureDetector(
+                    onTap: () {
+                      showCupertinoModalPopup(
+                        context: context,
+                        builder: (context) {
+                          return CupertinoActionSheet(
+                            title: Text(notification.title ?? ''),
+                            message: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(notification.body ?? 'Maʼlumot yoʻq'),
+                                const SizedBox(height: 8),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text("Yuborilgan sana: ", style: TextStyle(fontWeight: FontWeight.bold)),
+                                    Text(notification.date ?? 'No Date'),
+                                  ],
+                                )
+                              ],
+                            ),
+                            cancelButton: CupertinoActionSheetAction(
+                              onPressed: () => Navigator.pop(context, true),
+                              isDestructiveAction: true,
+                              child: const Text('Yopish'),
+                            ),
+                          );
+                        },
+                      ).then((value) {
+                        if (context.mounted && value == true) {
+                          context.read<NotificationBloc>().add(ShowNotification(notification,tabController.index+1));
+                        }
+                      });
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+                      elevation: 5,
+                      color: Colors.grey.shade300,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.r),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(notification.title ?? "", style: AppTheme.data.textTheme.titleLarge),
+                            const Divider(),
+                            Text(
+                              notification.body ?? "",
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTheme.data.textTheme.labelSmall,
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                notification.date ?? "",
+                                style: AppTheme.data.textTheme.labelLarge,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+        }
+        return const SizedBox();
+      },
+    );
+  }
+
 }
