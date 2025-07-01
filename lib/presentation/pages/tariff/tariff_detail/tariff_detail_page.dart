@@ -27,7 +27,7 @@ class TariffDetailPage extends StatelessWidget {
     final startDate = model.startDate != null ? DateTime.tryParse(model.startDate!) : null;
     final endDate = model.endDate != null ? DateTime.tryParse(model.endDate!) : null;
     final int daysLeft = endDate != null ? endDate.difference(DateTime.now()).inDays : -1;
-    final bool showWarning = daysLeft >= 0 && daysLeft < 40;
+    final bool showWarning = daysLeft >= 0 && daysLeft < 4;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
