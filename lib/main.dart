@@ -6,6 +6,7 @@ import 'package:casl_fit/application/home/home_bloc.dart';
 import 'package:casl_fit/application/profile/profile_bloc.dart';
 import 'package:casl_fit/application/tariff/tariff_bloc.dart';
 import 'package:casl_fit/presentation/components/notification.dart';
+import 'package:casl_fit/utils/screenshot_toggle/screenshot.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -34,6 +35,7 @@ Future<void> main() async {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
     await initializeApp();
+    myScreenshotOn();
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     AwesomeNotifications().initialize(
       null,
