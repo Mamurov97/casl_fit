@@ -106,7 +106,7 @@ class AppTheme {
         ),
         iconTheme: IconThemeData(color: Colors.white, size: 20.sp),
       ),
-      dialogTheme: DialogTheme(backgroundColor: colors.background),
+      dialogTheme: DialogThemeData(backgroundColor: colors.background),
       toggleButtonsTheme: ToggleButtonsThemeData(
         selectedColor: colors.primary,
         selectedBorderColor: colors.primary,
@@ -128,7 +128,7 @@ class AppTheme {
           textStyle: textTheme.titleMedium,
         ),
       ),
-      tabBarTheme: TabBarTheme(
+      tabBarTheme: TabBarThemeData(
         labelColor: colors.text900,
         unselectedLabelColor: colors.text900,
         labelStyle: textTheme.labelLarge?.copyWith(fontSize: 13.sp),

@@ -1,3 +1,4 @@
+import 'package:casl_fit/utils/screenshot_toggle/screenshot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -147,6 +148,12 @@ final GoRouter router = GoRouter(
                         }
                       } else if (index == 4) {
                         context.read<ProfileBloc>().add(GetUserBalance());
+                      }
+
+                      if(index==2){
+                        myScreenshotOff();
+                      }else{
+                        myScreenshotOn();
                       }
                     },
                     navBarBuilder: (navBarConfig) => CustomNavBar(navBarConfig: navBarConfig),
